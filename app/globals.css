@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --plum: #9f2576;
+  --violet: #8b268a;
+  --rose: #e34f87;
+  --sky: #99bfcd;
+  --cream: #f9f4e9;
+  --ink: #2b1026;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-plum: var(--plum);
+  --color-violet: var(--violet);
+  --color-rose: var(--rose);
+  --color-sky: var(--sky);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --font-display: var(--font-cinzel);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--rose);
+  color: var(--cream);
+}
+
+/* Fina línea con degradado de marca */
+.brand-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--violet), var(--rose), transparent);
 }
