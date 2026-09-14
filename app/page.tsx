@@ -41,7 +41,7 @@ export default function Home() {
       <footer className="flex items-center justify-center gap-3 px-6 pb-10 text-sm text-ink/60">
         <span>Organiza</span>
         <Image
-          src="/aisc/Property%201=AISC%20Lockup%20Color.svg"
+          src="/aisc/Property1=AISCLockupColor.svg"
           alt="AISC Madrid"
           width={126}
           height={32}
