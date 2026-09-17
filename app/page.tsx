@@ -7,7 +7,7 @@ export default function Home() {
       {/* Hero */}
       <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6 py-16 text-center">
         <Image
-          src="/LogoHackUc3m.svg"
+          src="/IsologoHackUc3m.svg"
           alt=""
           width={180}
           height={180}
@@ -39,7 +39,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="flex items-center justify-center gap-3 px-6 pb-10 text-sm text-ink/60">
-        <span>Organiza</span>
+        <span><a href="https://aiscmadrid.com">Organiza</a></span>
         <Image
           src="/aisc/Property1=AISCLockupColor.svg"
           alt="AISC Madrid"
