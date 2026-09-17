@@ -39,15 +39,20 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="flex items-center justify-center gap-3 px-6 pb-10 text-sm text-ink/60">
-        <span><a href="https://aiscmadrid.com">Organiza</a></span>
-        <Image
-          src="/aisc/Property1=AISCLockupColor.svg"
-          alt="AISC Madrid"
-          width={126}
-          height={32}
-          unoptimized
-          className="h-8 w-auto"
-        />
+        <a
+          href="https://aiscmadrid.com"
+          className="flex items-center gap-3"
+        >
+          <span>Organiza</span>
+          <Image
+            src="/aisc/Property1=AISCLockupColor.svg"
+            alt="AISC Madrid"
+            width={126}
+            height={32}
+            unoptimized
+            className="h-8 w-auto"
+          />
+        </a>
       </footer>
     </main>
   );
