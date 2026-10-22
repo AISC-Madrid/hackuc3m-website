@@ -29,7 +29,7 @@ export default function Home() {
         <div className="brand-rule my-10 w-full max-w-md" />
 
         <div className="flex flex-col gap-2 font-display text-lg tracking-wide text-ink sm:flex-row sm:gap-6">
-          <span>20 – 21 febrero 2027</span>
+          <span>19 – 20 febrero 2027</span>
           <span className="hidden text-sky sm:inline">◆</span>
           <span>EPS · Campus de Leganés</span>
         </div>
