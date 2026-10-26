@@ -1,7 +1,10 @@
 import { bindings } from "./cloudflare";
+import { confirmationEmail } from "./confirmation-email";
+import { readContent } from "./content";
 export async function sendConfirmation(id: number, email: string) {
   const env = await bindings();
   if (!env.RESEND_API_KEY) return false;
+  const message = confirmationEmail(await readContent());
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -13,8 +16,7 @@ export async function sendConfirmation(id: number, email: string) {
       from: env.EMAIL_FROM,
       to: [email],
       reply_to: env.ADMIN_EMAIL,
-      subject: "Tu preinscripción a HackUC3M ’27",
-      text: "Hemos guardado tu preinscripción a HackUC3M ’27. Tendrás prioridad cuando abramos las inscripciones. Te enviaremos el enlace de inscripción a este email cuando abramos las inscripciones. La preinscripción no confirma una plaza; la participación se confirmará durante la inscripción.\n\nPara darte de baja o gestionar tus datos, escribe a aisc.asoc@uc3m.es.\n\nNos vemos en Leganés,\nAISC Madrid",
+      ...message,
     }),
     signal: AbortSignal.timeout(8000),
   });
