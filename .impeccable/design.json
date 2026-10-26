@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T17:29:01.954583+00:00",
+  "title": "Design System: HackUC3M",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0162 316.25)",
+          "oklch(26% 0.0162 316.25)",
+          "oklch(38% 0.0162 316.25)",
+          "oklch(49% 0.0162 316.25)",
+          "oklch(61% 0.0162 316.25)",
+          "oklch(72% 0.0162 316.25)",
+          "oklch(84% 0.0162 316.25)",
+          "oklch(95% 0.0162 316.25)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0229 319.46)",
+          "oklch(26% 0.0229 319.46)",
+          "oklch(38% 0.0229 319.46)",
+          "oklch(49% 0.0229 319.46)",
+          "oklch(61% 0.0229 319.46)",
+          "oklch(72% 0.0229 319.46)",
+          "oklch(84% 0.0229 319.46)",
+          "oklch(95% 0.0229 319.46)"
+        ]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised",
+        "tonalRamp": [
+          "oklch(15% 0.0283 318.30)",
+          "oklch(26% 0.0283 318.30)",
+          "oklch(38% 0.0283 318.30)",
+          "oklch(49% 0.0283 318.30)",
+          "oklch(61% 0.0283 318.30)",
+          "oklch(72% 0.0283 318.30)",
+          "oklch(84% 0.0283 318.30)",
+          "oklch(95% 0.0283 318.30)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0155 86.42)",
+          "oklch(26% 0.0155 86.42)",
+          "oklch(38% 0.0155 86.42)",
+          "oklch(49% 0.0155 86.42)",
+          "oklch(61% 0.0155 86.42)",
+          "oklch(72% 0.0155 86.42)",
+          "oklch(84% 0.0155 86.42)",
+          "oklch(95% 0.0155 86.42)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0263 327.90)",
+          "oklch(26% 0.0263 327.90)",
+          "oklch(38% 0.0263 327.90)",
+          "oklch(49% 0.0263 327.90)",
+          "oklch(61% 0.0263 327.90)",
+          "oklch(72% 0.0263 327.90)",
+          "oklch(84% 0.0263 327.90)",
+          "oklch(95% 0.0263 327.90)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0359 320.34)",
+          "oklch(26% 0.0359 320.34)",
+          "oklch(38% 0.0359 320.34)",
+          "oklch(49% 0.0359 320.34)",
+          "oklch(61% 0.0359 320.34)",
+          "oklch(72% 0.0359 320.34)",
+          "oklch(84% 0.0359 320.34)",
+          "oklch(95% 0.0359 320.34)"
+        ]
+      },
+      "plum": {
+        "role": "primary",
+        "displayName": "Plum",
+        "tonalRamp": [
+          "oklch(15% 0.1764 345.02)",
+          "oklch(26% 0.1764 345.02)",
+          "oklch(38% 0.1764 345.02)",
+          "oklch(49% 0.1764 345.02)",
+          "oklch(61% 0.1764 345.02)",
+          "oklch(72% 0.1764 345.02)",
+          "oklch(84% 0.1764 345.02)",
+          "oklch(95% 0.1764 345.02)"
+        ]
+      },
+      "rose": {
+        "role": "primary",
+        "displayName": "Rose",
+        "tonalRamp": [
+          "oklch(15% 0.1889 0.65)",
+          "oklch(26% 0.1889 0.65)",
+          "oklch(38% 0.1889 0.65)",
+          "oklch(49% 0.1889 0.65)",
+          "oklch(61% 0.1889 0.65)",
+          "oklch(72% 0.1889 0.65)",
+          "oklch(84% 0.1889 0.65)",
+          "oklch(95% 0.1889 0.65)"
+        ]
+      },
+      "sky": {
+        "role": "secondary",
+        "displayName": "Sky",
+        "tonalRamp": [
+          "oklch(15% 0.0453 222.32)",
+          "oklch(26% 0.0453 222.32)",
+          "oklch(38% 0.0453 222.32)",
+          "oklch(49% 0.0453 222.32)",
+          "oklch(61% 0.0453 222.32)",
+          "oklch(72% 0.0453 222.32)",
+          "oklch(84% 0.0453 222.32)",
+          "oklch(95% 0.0453 222.32)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hero brand",
+        "purpose": "Cinzel for HackUC3M hero brand only."
+      },
+      "body": {
+        "displayName": "Interface",
+        "purpose": "Geist for all other interface text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "primary-action",
+        "value": "0 3px 12px #09040d40",
+        "purpose": "Small primary-button depth."
+      }
+    ],
+    "motion": [
+      {
+        "name": "hover",
+        "value": "280ms ease",
+        "purpose": "Button and header interaction rhythm."
+      },
+      {
+        "name": "nav-ease",
+        "value": "280ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "purpose": "Navigation color and underline."
+      },
+      {
+        "name": "hero-arrive",
+        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "TranslateY(8px) and blur(5px) settle to zero once."
+      },
+      {
+        "name": "light-breathe",
+        "value": "12s ease-in-out infinite alternate",
+        "purpose": "Ambient light opacity 0.6 to 1; disabled with reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "650px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main pre-registration action.",
+      "html": "<button class=\"ds-primary\">Preinscribirme <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:15px 23px;font:500 14px Geist,sans-serif;line-height:1.5;border:1px solid;border-radius:9px;cursor:pointer;transition:background-color 280ms ease,border-color 280ms ease,color 280ms ease,box-shadow 280ms ease;background:#9f2576;color:#fff4ed;border-color:#bf4b93;box-shadow:0 3px 12px #09040d40}.ds-primary:hover{background:#b43186}.ds-primary:disabled{opacity:.55;cursor:wait}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Secondary action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Supporting collaboration action.",
+      "html": "<button class=\"ds-secondary\">Quiero colaborar <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:15px 23px;font:500 14px Geist,sans-serif;line-height:1.5;border:1px solid;border-radius:9px;cursor:pointer;transition:background-color 280ms ease,border-color 280ms ease,color 280ms ease,box-shadow 280ms ease;background:#251a28;color:#e4d5e2;border-color:#49334b}.ds-secondary:hover{background:#342238;border-color:#6b466d}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Email field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Persistent label and recessed email input.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Tu email</label><input class=\"ds-input\" id=\"ds-email\" type=\"email\" placeholder=\"tu@email.com\"/>",
+      "css": ".ds-label{display:block;font:11px Geist,sans-serif;color:#e2d0df;margin-bottom:8px}.ds-input{background:#160f19;border:1px solid #523b54;min-height:44px;padding:11px 12px;border-radius:6px;color:var(--ink,#f9f4e9);font:12px Geist,sans-serif}.ds-input::placeholder{color:#aa90a3}.ds-input:focus{border-color:#85879a}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Navigation links",
+      "kind": "nav",
+      "description": "Muted navigation with a fine animated underline.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#encuentro\">El hackathon</a><a href=\"#retos\">Tracks</a><a href=\"#dudas\">FAQ</a></nav>",
+      "css": ".ds-nav{display:flex;gap:25px;font:12px Geist,sans-serif;color:var(--muted,#ad9eac)}.ds-nav a{color:inherit;text-decoration:none;position:relative;padding-block:12px;transition:color 280ms cubic-bezier(.2,.8,.2,1)}.ds-nav a::after{content:\"\";position:absolute;bottom:5px;left:0;right:0;height:1px;background:#c77eae;transform:scaleX(0);transform-origin:left;transition:transform 280ms cubic-bezier(.2,.8,.2,1)}.ds-nav a:hover{color:var(--ink,#f9f4e9)}.ds-nav a:hover::after,.ds-nav a:focus-visible::after{transform:scaleX(1)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Signup panel",
+      "kind": "card",
+      "refersTo": "signup-panel",
+      "description": "Quiet bordered container for the signup flow.",
+      "html": "<section class=\"ds-panel\"><h3>Preinscripción a HackUC3M ’27.</h3><p>Te enviaremos el enlace cuando abramos inscripciones. Tendrás prioridad para apuntarte.</p></section>",
+      "css": ".ds-panel{background:#201623;border:1px solid #48304a;border-radius:12px;padding:30px;max-width:410px;font-family:Geist,sans-serif;color:var(--ink,#f9f4e9)}.ds-panel h3{margin:0 0 27px;font-size:17px;font-weight:500;letter-spacing:-.025em;line-height:1.35}.ds-panel p{margin:0;font-size:12px;line-height:1.7;color:var(--muted,#ad9eac)}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "HackUC3M, precisely expressed",
+    "overview": "A precise, restrained dark interface carries HackUC3M’s original plum, rose and cream identity. Thin dividers, generous breathing room and small functional details establish a Linear-like clarity; the Cinzel hero wordmark supplies the distinct brand voice.\n\nMotion is quiet and local: the hero title settles once and a diffuse plum light breathes behind it. The navigation symbol is the supplied cropped mark, without lettering; the rejected floating hero emblem is absent.",
+    "keyCharacteristics": [
+      "Dark aubergine tonal surfaces with selective brand accents.",
+      "Geist for the interface; Cinzel reserved for the hero brand.",
+      "Fine borders, calm spacing and smooth interactive states."
+    ],
+    "rules": [
+      {
+        "name": "The Single Display Voice Rule",
+        "body": "Use Cinzel only for the hero brand; the rest of the interface speaks in Geist.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do preserve the supplied HackUC3M symbol and original brand palette.",
+      "Do keep Cinzel confined to the hero brand and use Geist for interface text.",
+      "Do retain visible keyboard focus and disable motion for reduced-motion preferences."
+    ],
+    "donts": [
+      "Don’t restore the floating hero emblem or poster treatment.",
+      "Don’t turn the restrained interface into a field of decorative cards or accent fills.",
+      "Don’t communicate success or errors through color alone."
+    ]
+  }
+}

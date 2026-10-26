@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Geist } from "next/font/google";
 import "./globals.css";
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
-  subsets: ["latin"],
-});
+const cinzel = Cinzel({ variable: "--font-cinzel", subsets: ["latin"] });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +10,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "HackUC3M '27 · Primer hackathon oficial de la UC3M",
+  title: "HackUC3M '27 · Hackathon en la Universidad Carlos III de Madrid",
   description:
-    "20 y 21 de febrero de 2027 · EPS, Campus de Leganés. Dos días, retos reales propuestos por la industria y el mejor talento técnico universitario.",
+    "19 y 20 de febrero de 2027 · EPS, Campus de Leganés. Dos días, retos reales propuestos por la industria y el mejor talento técnico universitario.",
 };
 
 export default function RootLayout({
@@ -26,7 +23,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${cinzel.variable} ${geistSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>

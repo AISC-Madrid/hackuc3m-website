@@ -1,3 +1,4 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 import path from "node:path";
 import type { NextConfig } from "next";
 
@@ -9,5 +10,7 @@ const nextConfig: NextConfig = {
   },
   output: "standalone",
 };
+
+initOpenNextCloudflareForDev();
 
 export default nextConfig;

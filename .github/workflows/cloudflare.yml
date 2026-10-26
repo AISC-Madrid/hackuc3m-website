@@ -1,0 +1,60 @@
+name: Validate and deploy
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Lint and Cloudflare build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build:cloudflare
+        env:
+          WRANGLER_SEND_METRICS: "false"
+
+  deploy:
+    name: Deploy main to Cloudflare
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: Production
+    concurrency:
+      group: cloudflare-production
+      cancel-in-progress: false
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 5a698af4c4ad2ddb4dcb235f73183314
+      WRANGLER_SEND_METRICS: "false"
+    steps:
+      - name: Check deployment credential
+        shell: bash
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Add CLOUDFLARE_API_TOKEN to the Production environment secrets before deploying."
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build:cloudflare
+      - name: Apply database migrations
+        run: npm run db:remote
+      - name: Deploy the reviewed commit
+        run: npx opennextjs-cloudflare deploy
