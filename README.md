@@ -15,15 +15,29 @@ The public page is `/`, the editor is `/admin`, and privacy information is `/pri
 
 ## Team workflow and deployment
 
-Use a feature branch, push it to GitHub, and open a pull request. The workflow in `.github/workflows/cloudflare.yml` runs lint and the full Cloudflare build for every PR. Merging into `main` runs the same checks, applies D1 migrations, and deploys that commit from GitHub Actions using the existing `Production` environment. A PR or feature-branch push does not deploy to production.
+Use a feature branch, push it to GitHub, and open a pull request. GitHub Actions runs lint and the full OpenNext/Cloudflare build. The workflow only validates; it has no deployment job or production credentials. Configure branch protection on `main` to require `Lint and Cloudflare build` and the team's chosen reviews.
 
-Before the first GitHub deployment, add `CLOUDFLARE_API_TOKEN` to **GitHub → Settings → Environments → Production → Environment secrets**. Use a Cloudflare token scoped to the AISC account with Workers Scripts Edit, D1 Edit, Account Settings Read, and Workers Routes Edit / Zone Read for `hackuc3m.com`. The workflow fails explicitly if the token is missing. Keep the Resend key in the existing Cloudflare Worker secret; GitHub does not need it to build.
+Production is deployed by **Cloudflare Workers Builds**, using its native GitHub integration. In the existing `hackuc3m` Worker, go to **Settings → Builds → Connect repository** and select `AISC-Madrid/hackuc3m-website`. Authorize the Cloudflare GitHub application for this repository if prompted; do not create a second Worker.
 
-For team review, configure branch protection on `main` to require the `Lint and Cloudflare build` check and the team's chosen review rules. No branch protection rules are changed automatically by this project.
+Use these settings:
+
+| Setting           | Value                                                   |
+| ----------------- | ------------------------------------------------------- |
+| Production branch | `main`                                                  |
+| Root directory    | Repository root (`/`)                                   |
+| Build command     | `npm run lint && npm run build:cloudflare`              |
+| Deploy command    | `npm run db:remote && npx opennextjs-cloudflare deploy` |
+| Build variable    | `NODE_VERSION=22`                                       |
+
+Cloudflare creates or lets you select its build token; **no Cloudflare API token is needed in GitHub**. The selected Cloudflare build token must also have **Account → D1 → Edit**, because the deploy command applies database migrations. The automatically generated default token may need that permission added in Cloudflare's **My Profile → API Tokens**. Keep the Resend key in the existing Worker's runtime secrets; do not put it in build variables.
+
+The connected production branch must contain this PR before its first successful build: the current old `main` does not yet contain the OpenNext scripts or Worker configuration. Keep automatic preview builds disabled until preview bindings use a separate database and email configuration; preview version URLs must not write to production D1 or send real confirmation emails.
+
+Merge reviewed changes to `main`; Cloudflare then builds and deploys that commit. Disconnect the old Vercel deployment as part of the platform cutover so there is one production deployment path. Connecting GitHub, configuring the native build, changing DNS, and disconnecting Vercel are dashboard setup steps, not changes performed by a local deploy command.
 
 ## Cloudflare
 
-The project is configured for the AISC Cloudflare account (`aisc.asoc@uc3m.es`). The `hackuc3m` D1 database is already created in Western Europe. Version database changes in `migrations/`; the GitHub production job applies them. Generate binding types after changing configuration with `npm run cf:typegen`. Use `npm run build:cloudflare` to validate locally and `npm run preview` for the local Workers runtime. Local development and review must not modify production.
+The project is configured for the AISC Cloudflare account (`aisc.asoc@uc3m.es`). The `hackuc3m` D1 database is already created in Western Europe. Version database changes in `migrations/`; the Cloudflare deploy command applies them. Generate binding types after changing configuration with `npm run cf:typegen`. Use `npm run build:cloudflare` to validate locally and `npm run preview` for the local Workers runtime. Local development and review must not modify production.
 
 `hackuc3m.com/*` is configured as a Worker route in `wrangler.jsonc`. Its DNS record must have the Cloudflare proxy enabled. The direct Worker address is https://hackuc3m.aisc-asoc.workers.dev.
 

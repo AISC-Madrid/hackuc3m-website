@@ -10,4 +10,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Team workflow
 
-Work on a feature branch and open a pull request. Production deployment runs through the GitHub workflow after changes reach `main`. Do not deploy from a local CLI, change production settings, or modify production data without an explicit request for that specific action. Keep credentials in Cloudflare or GitHub secrets; never commit `.dev.vars`, local database files, or exports.
+Work on a feature branch and open a pull request. GitHub Actions validates pull requests. Production deployment runs through Cloudflare Workers Builds, connected to this GitHub repository and its `main` branch. Do not deploy from a local CLI, change production settings, or modify production data without an explicit request for that specific action. Keep credentials in Cloudflare or GitHub secrets; never commit `.dev.vars`, local database files, or exports.
