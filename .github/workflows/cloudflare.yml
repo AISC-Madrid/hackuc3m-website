@@ -21,6 +21,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      - run: npm test
       - run: npm run build:cloudflare
         env:
           WRANGLER_SEND_METRICS: "false"

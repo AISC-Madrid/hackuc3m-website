@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --test scripts/design-tokens.test.mjs",
     "preview": "npm run build:cloudflare && opennextjs-cloudflare preview",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv",
     "db:local": "wrangler d1 migrations apply hackuc3m --local",
