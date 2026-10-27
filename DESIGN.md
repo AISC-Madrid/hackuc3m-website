@@ -285,7 +285,7 @@ Archivos en `public/`: `IsologoHackUc3m.svg` (moneda + texto), `IsotipoHackUc3m.
 - Usa siempre las versiones en color: el fondo es crema.
 - Nunca apliques `filter`, cambies colores, estires, rotes ni recortes un logo.
 - Isotipo en cabecera a 48 px (40 px en móvil). Lockup de AISC a 120–160 px de ancho.
-- Charlie, la mascota (retrato de Carlos III), está en `public/charlie.svg` y ya usa la paleta. Mismas reglas que los logos; hoy solo aparece en la página 404.
+- Charlie, la mascota (retrato de Carlos III), está en `public/charlie.svg` y ya usa la paleta. Mismas reglas que los logos. La página 404 usa `public/charlie-404.svg`, la misma ilustración pasada por SVGO con 2 decimales y conservando el `viewBox` (164 KB frente a 457 KB; sin diferencias visibles).
 - No afirmes ser «el primer» ni «el oficial» hackathon.
 
 ## Emails

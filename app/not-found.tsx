@@ -7,7 +7,7 @@ export default function NotFound() {
       <p className="not-found-code" aria-hidden="true">
         <span>4</span>
         <span className="charlie-coin">
-          <Image src="/charlie.svg" alt="" width={624} height={628} unoptimized />
+          <Image src="/charlie-404.svg" alt="" width={624} height={628} unoptimized />
         </span>
         <span>4</span>
       </p>
