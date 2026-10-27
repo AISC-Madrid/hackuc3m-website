@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-27T07:40:00.578Z",
+  "title": "Design System: HackUC3M",
+  "extensions": {
+    "colorMeta": {
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "tonalRamp": [
+          "oklch(15% 0.0227 98.64)",
+          "oklch(26% 0.0227 98.64)",
+          "oklch(38% 0.0227 98.64)",
+          "oklch(49% 0.0227 98.64)",
+          "oklch(61% 0.0227 98.64)",
+          "oklch(72% 0.0227 98.64)",
+          "oklch(84% 0.0227 98.64)",
+          "oklch(95% 0.0227 98.64)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0171 76.11)",
+          "oklch(26% 0.0171 76.11)",
+          "oklch(38% 0.0171 76.11)",
+          "oklch(49% 0.0171 76.11)",
+          "oklch(61% 0.0171 76.11)",
+          "oklch(72% 0.0171 76.11)",
+          "oklch(84% 0.0171 76.11)",
+          "oklch(95% 0.0171 76.11)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0213 13.92)",
+          "oklch(26% 0.0213 13.92)",
+          "oklch(38% 0.0213 13.92)",
+          "oklch(49% 0.0213 13.92)",
+          "oklch(61% 0.0213 13.92)",
+          "oklch(72% 0.0213 13.92)",
+          "oklch(84% 0.0213 13.92)",
+          "oklch(95% 0.0213 13.92)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0478 339.03)",
+          "oklch(26% 0.0478 339.03)",
+          "oklch(38% 0.0478 339.03)",
+          "oklch(49% 0.0478 339.03)",
+          "oklch(61% 0.0478 339.03)",
+          "oklch(72% 0.0478 339.03)",
+          "oklch(84% 0.0478 339.03)",
+          "oklch(95% 0.0478 339.03)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink soft",
+        "tonalRamp": [
+          "oklch(15% 0.0315 347.04)",
+          "oklch(26% 0.0315 347.04)",
+          "oklch(38% 0.0315 347.04)",
+          "oklch(49% 0.0315 347.04)",
+          "oklch(61% 0.0315 347.04)",
+          "oklch(72% 0.0315 347.04)",
+          "oklch(84% 0.0315 347.04)",
+          "oklch(95% 0.0315 347.04)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink muted",
+        "tonalRamp": [
+          "oklch(15% 0.0231 358.32)",
+          "oklch(26% 0.0231 358.32)",
+          "oklch(38% 0.0231 358.32)",
+          "oklch(49% 0.0231 358.32)",
+          "oklch(61% 0.0231 358.32)",
+          "oklch(72% 0.0231 358.32)",
+          "oklch(84% 0.0231 358.32)",
+          "oklch(95% 0.0231 358.32)"
+        ]
+      },
+      "plum": {
+        "role": "primary",
+        "displayName": "Plum",
+        "tonalRamp": [
+          "oklch(15% 0.1134 339.19)",
+          "oklch(26% 0.1134 339.19)",
+          "oklch(38% 0.1134 339.19)",
+          "oklch(49% 0.1134 339.19)",
+          "oklch(61% 0.1134 339.19)",
+          "oklch(72% 0.1134 339.19)",
+          "oklch(84% 0.1134 339.19)",
+          "oklch(95% 0.1134 339.19)"
+        ]
+      },
+      "plum-deep": {
+        "role": "primary",
+        "displayName": "Plum deep",
+        "tonalRamp": [
+          "oklch(15% 0.0939 338.95)",
+          "oklch(26% 0.0939 338.95)",
+          "oklch(38% 0.0939 338.95)",
+          "oklch(49% 0.0939 338.95)",
+          "oklch(61% 0.0939 338.95)",
+          "oklch(72% 0.0939 338.95)",
+          "oklch(84% 0.0939 338.95)",
+          "oklch(95% 0.0939 338.95)"
+        ]
+      },
+      "mauve": {
+        "role": "secondary",
+        "displayName": "Mauve",
+        "tonalRamp": [
+          "oklch(15% 0.0563 341.13)",
+          "oklch(26% 0.0563 341.13)",
+          "oklch(38% 0.0563 341.13)",
+          "oklch(49% 0.0563 341.13)",
+          "oklch(61% 0.0563 341.13)",
+          "oklch(72% 0.0563 341.13)",
+          "oklch(84% 0.0563 341.13)",
+          "oklch(95% 0.0563 341.13)"
+        ]
+      },
+      "mauve-deep": {
+        "role": "secondary",
+        "displayName": "Mauve deep",
+        "tonalRamp": [
+          "oklch(15% 0.0864 339.75)",
+          "oklch(26% 0.0864 339.75)",
+          "oklch(38% 0.0864 339.75)",
+          "oklch(49% 0.0864 339.75)",
+          "oklch(61% 0.0864 339.75)",
+          "oklch(72% 0.0864 339.75)",
+          "oklch(84% 0.0864 339.75)",
+          "oklch(95% 0.0864 339.75)"
+        ]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15% 0.0318 238.99)",
+          "oklch(26% 0.0318 238.99)",
+          "oklch(38% 0.0318 238.99)",
+          "oklch(49% 0.0318 238.99)",
+          "oklch(61% 0.0318 238.99)",
+          "oklch(72% 0.0318 238.99)",
+          "oklch(84% 0.0318 238.99)",
+          "oklch(95% 0.0318 238.99)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Wordmark",
+        "purpose": "Cinzel 700 with positive tracking for the HackUC3M ’27 wordmark only."
+      },
+      "facts": {
+        "displayName": "Key facts",
+        "purpose": "Cinzel 400 for the single date ◆ venue line."
+      },
+      "display-mobile": {
+        "displayName": "Wordmark (mobile)",
+        "purpose": "Smaller wordmark below 650px so it stays on one line."
+      },
+      "title": {
+        "displayName": "Page title",
+        "purpose": "Geist 600 for h1 on inner pages."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Geist 600 for section titles, one tone."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Geist 600 24px for inner-page h2 and status messages."
+      },
+      "heading": {
+        "displayName": "Heading",
+        "purpose": "Geist 600 20px for h3 and panel titles."
+      },
+      "numeral": {
+        "displayName": "Error numeral",
+        "purpose": "Geist 600 in plum for the 404 numeral, with Charlie's coin as the zero. Decorative only."
+      },
+      "body": {
+        "displayName": "Interface",
+        "purpose": "Geist for all other text; 14px minimum; no tracked-caps labels above headings."
+      },
+      "email-display": {
+        "displayName": "Email wordmark",
+        "purpose": "Georgia stands in for Cinzel in email clients."
+      },
+      "email-body": {
+        "displayName": "Email text",
+        "purpose": "Arial stands in for Geist in email clients."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "The single easing curve of the system."
+      },
+      {
+        "name": "state",
+        "value": "200ms ease-out",
+        "purpose": "Colour, border and underline changes."
+      },
+      {
+        "name": "press",
+        "value": "160ms ease-out",
+        "purpose": "Buttons scale to 0.97 while pressed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "650px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one main action on screen: plum pill with cream text.",
+      "html": "<button class=\"ds-primary\">Preinscribirme <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 28px;font:500 14px Geist,sans-serif;line-height:1.2;border:1px solid transparent;border-radius:9999px;cursor:pointer;transition:background-color 200ms cubic-bezier(.23,1,.32,1),border-color 200ms cubic-bezier(.23,1,.32,1),color 200ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);background:#7e3a6b;color:#f3f0df}.ds-primary:hover{background:#652f56}.ds-primary:active{transform:scale(.97)}.ds-primary:disabled{opacity:.6;cursor:wait;transform:none}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Secondary action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Supporting action and header call: mauve outline, plum text.",
+      "html": "<button class=\"ds-secondary\">Quiero colaborar <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 28px;font:500 14px Geist,sans-serif;line-height:1.2;border:1px solid transparent;border-radius:9999px;cursor:pointer;transition:background-color 200ms cubic-bezier(.23,1,.32,1),border-color 200ms cubic-bezier(.23,1,.32,1),color 200ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);background:transparent;color:#7e3a6b;border-color:#c49db5}.ds-secondary:hover{border-color:#7e3a6b}.ds-secondary:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Email field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Persistent label above a cream field with a mauve-deep boundary.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Tu email</label><input class=\"ds-input\" id=\"ds-email\" type=\"email\" placeholder=\"tu@email.com\"/>",
+      "css": ".ds-label{display:block;font:500 14px Geist,sans-serif;color:#2c1425;margin-bottom:8px}.ds-input{width:100%;min-height:48px;padding:12px 14px;background:#f3f0df;border:1px solid #9e678c;border-radius:12px;color:#2c1425;font:16px Geist,sans-serif;transition:border-color 200ms cubic-bezier(.23,1,.32,1)}.ds-input::placeholder{color:#705f64}.ds-input:hover,.ds-input:focus{border-color:#7e3a6b}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Navigation links",
+      "kind": "nav",
+      "description": "Ink-soft links with a plum underline that grows from the left.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#encuentro\">El hackathon</a><a href=\"#retos\">Tracks</a><a href=\"#dudas\">FAQ</a></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;font:14px Geist,sans-serif;color:#58444e}.ds-nav a{color:inherit;text-decoration:none;position:relative;padding-block:12px;transition:color 200ms cubic-bezier(.23,1,.32,1)}.ds-nav a::after{content:\"\";position:absolute;bottom:8px;left:0;right:0;height:1px;background:#7e3a6b;transform:scaleX(0);transform-origin:left;transition:transform 200ms cubic-bezier(.23,1,.32,1)}.ds-nav a:hover{color:#2c1425}.ds-nav a:hover::after,.ds-nav a:focus-visible::after{transform:scaleX(1)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat surface panel with a 1px line border; no shadow.",
+      "html": "<section class=\"ds-panel\"><h3>Varios retos confirmados</h3><p>Pronto publicaremos los tracks, las empresas participantes y todos los detalles.</p></section>",
+      "css": ".ds-panel{background:#ece4d9;border:1px solid #decbcc;border-radius:12px;padding:32px;max-width:480px;font-family:Geist,sans-serif;color:#2c1425}.ds-panel h3{margin:0 0 8px;font-size:20px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.ds-panel p{margin:0;font-size:16px;line-height:1.65;color:#58444e}"
+    },
+    {
+      "name": "Hero wordmark",
+      "kind": "custom",
+      "description": "Cinzel wordmark, brand rule and key facts line.",
+      "html": "<div class=\"ds-hero\"><h1>HackUC3M <span>’27</span></h1><p class=\"ds-lead\">El hackathon de la Universidad Carlos III de Madrid.</p><div class=\"ds-rule\"></div><p class=\"ds-facts\"><span>19–20 febrero 2027</span><span aria-hidden=\"true\">◆</span><span>EPS · Campus de Leganés</span></p></div>",
+      "css": ".ds-hero{background:#f3f0df;padding:48px 24px;text-align:center;color:#2c1425}.ds-lead{margin:24px auto 0;max-width:36rem;font:18px/1.6 Geist,sans-serif;color:#58444e}.ds-hero h1{margin:0;font:700 clamp(3rem,8vw,4.5rem)/1.05 Cinzel,serif;letter-spacing:.025em;color:#7e3a6b}.ds-hero h1 span{color:#9e678c}.ds-rule{max-width:28rem;height:1px;margin:40px auto;background:linear-gradient(90deg,transparent,#7e3a6b,#c49db5,transparent)}.ds-facts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;margin:0;font:18px/1.4 Cinzel,serif;letter-spacing:.025em}.ds-facts span[aria-hidden]{color:#9db2c1}"
+    }
+  ],
+  "narrative": {
+    "northStar": "HackUC3M, on cream paper",
+    "overview": "A light, warm, university interface built on the logo’s own palette: cream, plum, mauve and a greyish blue, with a plum-derived ink for text. The Cinzel wordmark and a thin plum-to-mauve rule carry the brand voice; everything else is plain Geist.\n\nThe interface is flat. Space, one-pixel lines and tonal surfaces create structure; there are no shadows, glows, gradients (other than the brand rule) or ambient motion. Motion is limited to short colour transitions and a slight press on buttons.",
+    "keyCharacteristics": [
+      "Cream page background on every surface; no dark mode.",
+      "Logo palette only: plum for brand and action, mauve for detail, blue as ornament.",
+      "Cinzel limited to the wordmark and the key facts line; Geist for the interface, with no tracked-caps labels above headings.",
+      "Flat panels with 1px lines, pill buttons and 12px fields."
+    ],
+    "rules": [
+      {
+        "name": "The Logo Palette Rule",
+        "body": "Use only the eleven tokens in DESIGN.md; every colour is a logo colour or derived from one. npm test enforces it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signature Rule",
+        "body": "Cinzel only for the wordmark and the date ◆ venue line, always with positive tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Rule",
+        "body": "No shadows, glows, blur or gradients; the brand rule is the only gradient.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the cream background and the logo palette on every new surface.",
+      "Do keep one visible primary action and pill-shaped buttons.",
+      "Do keep visible plum focus, 44px targets and reduced-motion support."
+    ],
+    "donts": [
+      "Don’t bring back the dark aubergine theme, radial glow or blurred hero entrance.",
+      "Don’t add colours, greys, two-tone headlines, tracked-caps labels above headings or text below 14px.",
+      "Don’t communicate success or errors through colour alone."
+    ]
+  }
+}

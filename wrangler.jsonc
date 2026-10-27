@@ -1,0 +1,46 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hackuc3m",
+  "account_id": "5a698af4c4ad2ddb4dcb235f73183314",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-26",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "hackuc3m"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "hackuc3m",
+      "database_id": "88894f62-d501-435f-a339-c9098d5c1be3",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "SITE_URL": "https://hackuc3m.com",
+    "ACCESS_TEAM_DOMAIN": "winter-cloud-1122.cloudflareaccess.com",
+    "ACCESS_AUD": "273f530cbfab52a539da9b4494ff2c1dc95fc043f874400f3ac76257f4186ec8",
+    "ADMIN_EMAIL": "aisc.asoc@uc3m.es",
+    "EMAIL_FROM": "HackUC3M <hola@hackuc3m.com>"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "routes": [
+    {
+      "pattern": "hackuc3m.com/*",
+      "zone_name": "hackuc3m.com"
+    }
+  ],
+  "workers_dev": true
+}

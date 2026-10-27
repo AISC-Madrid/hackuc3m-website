@@ -6,12 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test scripts/design-tokens.test.mjs",
+    "preview": "npm run build:cloudflare && opennextjs-cloudflare preview",
+    "cf:typegen": "wrangler types --env-interface CloudflareEnv",
+    "db:local": "wrangler d1 migrations apply hackuc3m --local",
+    "db:remote": "wrangler d1 migrations apply hackuc3m --remote",
+    "build:cloudflare": "opennextjs-cloudflare build"
   },
   "dependencies": {
-    "next": "16.2.4",
+    "next": "16.4.3",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "@opennextjs/cloudflare": "1.20.13",
+    "jose": "^6.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -19,8 +27,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
+    "eslint-config-next": "16.4.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.93.1"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
