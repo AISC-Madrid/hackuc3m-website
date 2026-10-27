@@ -99,7 +99,9 @@ export default function Editor() {
   }
   return (
     <main className="admin-shell">
-      <Link href="/">Volver a la web</Link>
+      <Link className="text-link" href="/">
+        Volver a la web
+      </Link>
       <h1>Organización HackUC3M</h1>
       <p role="status">{status}</p>
       {content && (
@@ -179,6 +181,7 @@ export default function Editor() {
                 />
                 <button
                   type="button"
+                  className="button secondary compact"
                   onClick={() =>
                     setContent({
                       ...content,
@@ -192,6 +195,7 @@ export default function Editor() {
             ))}
             <button
               type="button"
+              className="button secondary compact"
               onClick={() =>
                 setContent({
                   ...content,
@@ -236,6 +240,7 @@ export default function Editor() {
                 />
                 <button
                   type="button"
+                  className="button secondary compact"
                   onClick={() =>
                     setContent({
                       ...content,
@@ -249,6 +254,7 @@ export default function Editor() {
             ))}
             <button
               type="button"
+              className="button secondary compact"
               onClick={() =>
                 setContent({
                   ...content,
@@ -296,6 +302,7 @@ export default function Editor() {
                 />
                 <button
                   type="button"
+                  className="button secondary compact"
                   onClick={() =>
                     setContent({
                       ...content,
@@ -309,6 +316,7 @@ export default function Editor() {
             ))}
             <button
               type="button"
+              className="button secondary compact"
               onClick={() =>
                 setContent({
                   ...content,
@@ -326,7 +334,7 @@ export default function Editor() {
               >
                 {saving ? "Publicando…" : "Publicar cambios"}
               </button>
-              <Link href="/" target="_blank">
+              <Link className="text-link" href="/" target="_blank">
                 Ver la web
               </Link>
             </div>
@@ -337,10 +345,19 @@ export default function Editor() {
             aunque alguien vuelva a apuntarse.
           </p>
           <div className="admin-actions">
-            <button type="button" onClick={exportCSV}>
+            <button
+              type="button"
+              className="button secondary compact"
+              onClick={exportCSV}
+            >
               Descargar CSV
             </button>
-            <button type="button" disabled={saving} onClick={retryEmails}>
+            <button
+              type="button"
+              className="button secondary compact"
+              disabled={saving}
+              onClick={retryEmails}
+            >
               Enviar confirmaciones pendientes (5)
             </button>
           </div>

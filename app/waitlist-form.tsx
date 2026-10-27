@@ -49,6 +49,7 @@ export default function WaitlistForm({ open }: { open: boolean }) {
     return (
       <div className="signup-form signup-success" role="status">
         <svg
+          aria-hidden="true"
           width="40"
           height="40"
           viewBox="0 0 40 40"
@@ -66,7 +67,7 @@ export default function WaitlistForm({ open }: { open: boolean }) {
     );
   return (
     <form onSubmit={submit} className="signup-form">
-      <h3>Preinscripción a HackUC3M ’27.</h3>
+      <h3>Preinscripción a HackUC3M ’27</h3>
       <label htmlFor="name">
         Tu nombre <span>(opcional)</span>
       </label>

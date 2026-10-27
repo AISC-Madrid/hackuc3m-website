@@ -3,7 +3,9 @@ export const metadata = { title: "Privacidad · HackUC3M" };
 export default function Privacy() {
   return (
     <main className="prose-page">
-      <Link href="/">Volver a HackUC3M</Link>
+      <Link className="text-link" href="/">
+        Volver a HackUC3M
+      </Link>
       <h1>Tu email, para HackUC3M.</h1>
       <p>
         La organización de HackUC3M (AISC Madrid) utiliza los datos que

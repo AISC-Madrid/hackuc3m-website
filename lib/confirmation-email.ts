@@ -26,33 +26,35 @@ export function confirmationEmail(content: Pick<EventContent, "date" | "venue">)
     }
   </style>
 </head>
-<body style="margin:0;padding:0;background-color:#eee8ee;color:#281c2c;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;">
+<body style="margin:0;padding:0;background-color:#ece4d9;color:#2c1425;font-family:Arial,Helvetica,sans-serif;-webkit-text-size-adjust:100%;">
   <div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">Tendrás prioridad. Te enviaremos el enlace cuando abramos las inscripciones.</div>
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eee8ee;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#ece4d9;">
     <tr><td align="center" style="padding:32px 12px;">
       <!--[if mso]><table role="presentation" width="600" align="center"><tr><td><![endif]-->
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;">
-        <tr><td class="email-gutter" bgcolor="#1c141e" style="padding:34px 44px 38px;background-color:#1c141e;">
-          <a href="https://hackuc3m.com" style="font-family:Georgia,'Times New Roman',serif;font-size:29px;line-height:38px;letter-spacing:-1px;text-decoration:none;color:#f9f4e9;">HackUC3M <span style="color:#e34f87;">’27</span></a>
-          <p style="margin:18px 0 0;font-size:13px;line-height:21px;color:#c7b7c5;">${escapeHtml(content.date)}<br>${escapeHtml(content.venue)} · UC3M</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;background-color:#f3f0df;border:1px solid #decbcc;border-radius:12px;">
+        <tr><td class="email-gutter" style="padding:36px 44px 28px;border-bottom:1px solid #c49db5;">
+          <a href="https://hackuc3m.com" style="font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:36px;font-weight:700;letter-spacing:1px;text-decoration:none;color:#7e3a6b;">HackUC3M ’27</a>
+          <p style="margin:12px 0 0;font-size:14px;line-height:22px;color:#705f64;">${escapeHtml(content.date)} ◆ ${escapeHtml(content.venue)} · UC3M</p>
         </td></tr>
-        <tr><td class="email-gutter" bgcolor="#f9f4e9" style="padding:42px 44px 40px;background-color:#f9f4e9;">
-          <h1 class="email-title" style="margin:0 0 22px;font-size:42px;line-height:1.12;letter-spacing:-1.2px;font-weight:600;color:#281c2c;">Estás en la lista.</h1>
-          <p style="margin:0 0 26px;font-size:16px;line-height:27px;color:#514254;">Tu preinscripción a HackUC3M ’27 está guardada. Nos alegra que quieras formar parte.</p>
+        <tr><td class="email-gutter" style="padding:40px 44px 40px;">
+          <h1 class="email-title" style="margin:0 0 20px;font-size:40px;line-height:1.15;letter-spacing:-0.8px;font-weight:600;color:#2c1425;">Estás en la lista.</h1>
+          <p style="margin:0 0 24px;font-size:16px;line-height:26px;color:#58444e;">Tu preinscripción a HackUC3M ’27 está guardada. Nos alegra que quieras formar parte.</p>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-            <tr><td style="padding:24px 0;border-top:1px solid #d9cdd5;border-bottom:1px solid #d9cdd5;">
-              <h2 style="margin:0 0 10px;font-size:20px;line-height:28px;font-weight:600;color:#842060;">Tendrás prioridad.</h2>
-              <p style="margin:0;font-size:16px;line-height:27px;color:#514254;">Cuando abramos las inscripciones, recibirás el enlace en este email para que puedas apuntarte. No tienes que hacer nada más por ahora.</p>
+            <tr><td style="padding:24px 0;border-top:1px solid #decbcc;border-bottom:1px solid #decbcc;">
+              <h2 style="margin:0 0 8px;font-size:20px;line-height:28px;font-weight:600;color:#7e3a6b;">Tendrás prioridad.</h2>
+              <p style="margin:0;font-size:16px;line-height:26px;color:#58444e;">Cuando abramos las inscripciones, recibirás el enlace en este email para que puedas apuntarte. No tienes que hacer nada más por ahora.</p>
             </td></tr>
           </table>
-          <p style="margin:22px 0 28px;font-size:13px;line-height:22px;color:#6b586b;">La preinscripción no confirma una plaza. La participación se confirmará durante el proceso de inscripción.</p>
-          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#9f2576" style="background-color:#9f2576;border-radius:8px;mso-padding-alt:16px 24px;">
-            <a href="https://hackuc3m.com" style="display:inline-block;padding:16px 24px;border:1px solid #9f2576;border-radius:8px;font-size:15px;line-height:20px;font-weight:600;text-decoration:none;color:#fff4ed;">Ver novedades</a>
+          <p style="margin:20px 0 28px;font-size:14px;line-height:22px;color:#705f64;">La preinscripción no confirma una plaza. La participación se confirmará durante el proceso de inscripción.</p>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#7e3a6b" style="background-color:#7e3a6b;border-radius:9999px;mso-padding-alt:14px 28px;">
+            <a href="https://hackuc3m.com" style="display:inline-block;padding:14px 28px;border:1px solid #7e3a6b;border-radius:9999px;font-size:14px;line-height:20px;font-weight:600;text-decoration:none;color:#f3f0df;">Ver novedades</a>
           </td></tr></table>
-          <p style="margin:32px 0 0;font-size:15px;line-height:25px;color:#514254;">Nos vemos en Leganés,<br><strong style="color:#281c2c;">AISC Madrid</strong></p>
+          <p style="margin:32px 0 0;font-size:16px;line-height:26px;color:#58444e;">Nos vemos en Leganés,<br><strong style="color:#2c1425;">AISC Madrid</strong></p>
         </td></tr>
+      </table>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;">
         <tr><td class="email-gutter" style="padding:24px 44px 8px;">
-          <p style="margin:0;font-size:12px;line-height:20px;color:#69546a;">Recibes este email porque te has preinscrito a HackUC3M. Para darte de baja o gestionar tus datos, escribe a <a href="mailto:aisc.asoc@uc3m.es" style="color:#842060;text-decoration:underline;">aisc.asoc@uc3m.es</a>.</p>
+          <p style="margin:0;font-size:14px;line-height:22px;color:#705f64;">Recibes este email porque te has preinscrito a HackUC3M. Para darte de baja o gestionar tus datos, escribe a <a href="mailto:aisc.asoc@uc3m.es" style="color:#7e3a6b;text-decoration:underline;">aisc.asoc@uc3m.es</a>.</p>
         </td></tr>
       </table>
       <!--[if mso]></td></tr></table><![endif]-->
