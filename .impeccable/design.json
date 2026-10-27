@@ -1,173 +1,222 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-26T17:29:01.954583+00:00",
+  "generatedAt": "2026-10-27T03:15:34.176Z",
   "title": "Design System: HackUC3M",
   "extensions": {
     "colorMeta": {
-      "paper": {
+      "cream": {
         "role": "neutral",
-        "displayName": "Paper",
+        "displayName": "Cream",
         "tonalRamp": [
-          "oklch(15% 0.0162 316.25)",
-          "oklch(26% 0.0162 316.25)",
-          "oklch(38% 0.0162 316.25)",
-          "oklch(49% 0.0162 316.25)",
-          "oklch(61% 0.0162 316.25)",
-          "oklch(72% 0.0162 316.25)",
-          "oklch(84% 0.0162 316.25)",
-          "oklch(95% 0.0162 316.25)"
+          "oklch(15% 0.0227 98.64)",
+          "oklch(26% 0.0227 98.64)",
+          "oklch(38% 0.0227 98.64)",
+          "oklch(49% 0.0227 98.64)",
+          "oklch(61% 0.0227 98.64)",
+          "oklch(72% 0.0227 98.64)",
+          "oklch(84% 0.0227 98.64)",
+          "oklch(95% 0.0227 98.64)"
         ]
       },
       "surface": {
         "role": "neutral",
         "displayName": "Surface",
         "tonalRamp": [
-          "oklch(15% 0.0229 319.46)",
-          "oklch(26% 0.0229 319.46)",
-          "oklch(38% 0.0229 319.46)",
-          "oklch(49% 0.0229 319.46)",
-          "oklch(61% 0.0229 319.46)",
-          "oklch(72% 0.0229 319.46)",
-          "oklch(84% 0.0229 319.46)",
-          "oklch(95% 0.0229 319.46)"
-        ]
-      },
-      "raised": {
-        "role": "neutral",
-        "displayName": "Raised",
-        "tonalRamp": [
-          "oklch(15% 0.0283 318.30)",
-          "oklch(26% 0.0283 318.30)",
-          "oklch(38% 0.0283 318.30)",
-          "oklch(49% 0.0283 318.30)",
-          "oklch(61% 0.0283 318.30)",
-          "oklch(72% 0.0283 318.30)",
-          "oklch(84% 0.0283 318.30)",
-          "oklch(95% 0.0283 318.30)"
-        ]
-      },
-      "ink": {
-        "role": "neutral",
-        "displayName": "Ink",
-        "tonalRamp": [
-          "oklch(15% 0.0155 86.42)",
-          "oklch(26% 0.0155 86.42)",
-          "oklch(38% 0.0155 86.42)",
-          "oklch(49% 0.0155 86.42)",
-          "oklch(61% 0.0155 86.42)",
-          "oklch(72% 0.0155 86.42)",
-          "oklch(84% 0.0155 86.42)",
-          "oklch(95% 0.0155 86.42)"
-        ]
-      },
-      "muted": {
-        "role": "neutral",
-        "displayName": "Muted",
-        "tonalRamp": [
-          "oklch(15% 0.0263 327.90)",
-          "oklch(26% 0.0263 327.90)",
-          "oklch(38% 0.0263 327.90)",
-          "oklch(49% 0.0263 327.90)",
-          "oklch(61% 0.0263 327.90)",
-          "oklch(72% 0.0263 327.90)",
-          "oklch(84% 0.0263 327.90)",
-          "oklch(95% 0.0263 327.90)"
+          "oklch(15% 0.0171 76.11)",
+          "oklch(26% 0.0171 76.11)",
+          "oklch(38% 0.0171 76.11)",
+          "oklch(49% 0.0171 76.11)",
+          "oklch(61% 0.0171 76.11)",
+          "oklch(72% 0.0171 76.11)",
+          "oklch(84% 0.0171 76.11)",
+          "oklch(95% 0.0171 76.11)"
         ]
       },
       "line": {
         "role": "neutral",
         "displayName": "Line",
         "tonalRamp": [
-          "oklch(15% 0.0359 320.34)",
-          "oklch(26% 0.0359 320.34)",
-          "oklch(38% 0.0359 320.34)",
-          "oklch(49% 0.0359 320.34)",
-          "oklch(61% 0.0359 320.34)",
-          "oklch(72% 0.0359 320.34)",
-          "oklch(84% 0.0359 320.34)",
-          "oklch(95% 0.0359 320.34)"
+          "oklch(15% 0.0213 13.92)",
+          "oklch(26% 0.0213 13.92)",
+          "oklch(38% 0.0213 13.92)",
+          "oklch(49% 0.0213 13.92)",
+          "oklch(61% 0.0213 13.92)",
+          "oklch(72% 0.0213 13.92)",
+          "oklch(84% 0.0213 13.92)",
+          "oklch(95% 0.0213 13.92)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0478 339.03)",
+          "oklch(26% 0.0478 339.03)",
+          "oklch(38% 0.0478 339.03)",
+          "oklch(49% 0.0478 339.03)",
+          "oklch(61% 0.0478 339.03)",
+          "oklch(72% 0.0478 339.03)",
+          "oklch(84% 0.0478 339.03)",
+          "oklch(95% 0.0478 339.03)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink soft",
+        "tonalRamp": [
+          "oklch(15% 0.0315 347.04)",
+          "oklch(26% 0.0315 347.04)",
+          "oklch(38% 0.0315 347.04)",
+          "oklch(49% 0.0315 347.04)",
+          "oklch(61% 0.0315 347.04)",
+          "oklch(72% 0.0315 347.04)",
+          "oklch(84% 0.0315 347.04)",
+          "oklch(95% 0.0315 347.04)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink muted",
+        "tonalRamp": [
+          "oklch(15% 0.0231 358.32)",
+          "oklch(26% 0.0231 358.32)",
+          "oklch(38% 0.0231 358.32)",
+          "oklch(49% 0.0231 358.32)",
+          "oklch(61% 0.0231 358.32)",
+          "oklch(72% 0.0231 358.32)",
+          "oklch(84% 0.0231 358.32)",
+          "oklch(95% 0.0231 358.32)"
         ]
       },
       "plum": {
         "role": "primary",
         "displayName": "Plum",
         "tonalRamp": [
-          "oklch(15% 0.1764 345.02)",
-          "oklch(26% 0.1764 345.02)",
-          "oklch(38% 0.1764 345.02)",
-          "oklch(49% 0.1764 345.02)",
-          "oklch(61% 0.1764 345.02)",
-          "oklch(72% 0.1764 345.02)",
-          "oklch(84% 0.1764 345.02)",
-          "oklch(95% 0.1764 345.02)"
+          "oklch(15% 0.1134 339.19)",
+          "oklch(26% 0.1134 339.19)",
+          "oklch(38% 0.1134 339.19)",
+          "oklch(49% 0.1134 339.19)",
+          "oklch(61% 0.1134 339.19)",
+          "oklch(72% 0.1134 339.19)",
+          "oklch(84% 0.1134 339.19)",
+          "oklch(95% 0.1134 339.19)"
         ]
       },
-      "rose": {
+      "plum-deep": {
         "role": "primary",
-        "displayName": "Rose",
+        "displayName": "Plum deep",
         "tonalRamp": [
-          "oklch(15% 0.1889 0.65)",
-          "oklch(26% 0.1889 0.65)",
-          "oklch(38% 0.1889 0.65)",
-          "oklch(49% 0.1889 0.65)",
-          "oklch(61% 0.1889 0.65)",
-          "oklch(72% 0.1889 0.65)",
-          "oklch(84% 0.1889 0.65)",
-          "oklch(95% 0.1889 0.65)"
+          "oklch(15% 0.0939 338.95)",
+          "oklch(26% 0.0939 338.95)",
+          "oklch(38% 0.0939 338.95)",
+          "oklch(49% 0.0939 338.95)",
+          "oklch(61% 0.0939 338.95)",
+          "oklch(72% 0.0939 338.95)",
+          "oklch(84% 0.0939 338.95)",
+          "oklch(95% 0.0939 338.95)"
         ]
       },
-      "sky": {
+      "mauve": {
         "role": "secondary",
-        "displayName": "Sky",
+        "displayName": "Mauve",
         "tonalRamp": [
-          "oklch(15% 0.0453 222.32)",
-          "oklch(26% 0.0453 222.32)",
-          "oklch(38% 0.0453 222.32)",
-          "oklch(49% 0.0453 222.32)",
-          "oklch(61% 0.0453 222.32)",
-          "oklch(72% 0.0453 222.32)",
-          "oklch(84% 0.0453 222.32)",
-          "oklch(95% 0.0453 222.32)"
+          "oklch(15% 0.0563 341.13)",
+          "oklch(26% 0.0563 341.13)",
+          "oklch(38% 0.0563 341.13)",
+          "oklch(49% 0.0563 341.13)",
+          "oklch(61% 0.0563 341.13)",
+          "oklch(72% 0.0563 341.13)",
+          "oklch(84% 0.0563 341.13)",
+          "oklch(95% 0.0563 341.13)"
+        ]
+      },
+      "mauve-deep": {
+        "role": "secondary",
+        "displayName": "Mauve deep",
+        "tonalRamp": [
+          "oklch(15% 0.0864 339.75)",
+          "oklch(26% 0.0864 339.75)",
+          "oklch(38% 0.0864 339.75)",
+          "oklch(49% 0.0864 339.75)",
+          "oklch(61% 0.0864 339.75)",
+          "oklch(72% 0.0864 339.75)",
+          "oklch(84% 0.0864 339.75)",
+          "oklch(95% 0.0864 339.75)"
+        ]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15% 0.0318 238.99)",
+          "oklch(26% 0.0318 238.99)",
+          "oklch(38% 0.0318 238.99)",
+          "oklch(49% 0.0318 238.99)",
+          "oklch(61% 0.0318 238.99)",
+          "oklch(72% 0.0318 238.99)",
+          "oklch(84% 0.0318 238.99)",
+          "oklch(95% 0.0318 238.99)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Hero brand",
-        "purpose": "Cinzel for HackUC3M hero brand only."
+        "displayName": "Wordmark",
+        "purpose": "Cinzel 700 with positive tracking for the HackUC3M ’27 wordmark only."
+      },
+      "facts": {
+        "displayName": "Key facts",
+        "purpose": "Cinzel 400 for the single date ◆ venue line."
+      },
+      "display-mobile": {
+        "displayName": "Wordmark (mobile)",
+        "purpose": "Smaller wordmark below 650px so it stays on one line."
+      },
+      "title": {
+        "displayName": "Page title",
+        "purpose": "Geist 600 for h1 on inner pages."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Geist 600 for section titles, one tone."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Geist 600 24px for inner-page h2 and status messages."
+      },
+      "heading": {
+        "displayName": "Heading",
+        "purpose": "Geist 600 20px for h3 and panel titles."
       },
       "body": {
         "displayName": "Interface",
-        "purpose": "Geist for all other interface text."
+        "purpose": "Geist for all other text; 14px minimum; no tracked-caps labels above headings."
+      },
+      "email-display": {
+        "displayName": "Email wordmark",
+        "purpose": "Georgia stands in for Cinzel in email clients."
+      },
+      "email-body": {
+        "displayName": "Email text",
+        "purpose": "Arial stands in for Geist in email clients."
       }
     },
-    "shadows": [
-      {
-        "name": "primary-action",
-        "value": "0 3px 12px #09040d40",
-        "purpose": "Small primary-button depth."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "hover",
-        "value": "280ms ease",
-        "purpose": "Button and header interaction rhythm."
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "The single easing curve of the system."
       },
       {
-        "name": "nav-ease",
-        "value": "280ms cubic-bezier(0.2, 0.8, 0.2, 1)",
-        "purpose": "Navigation color and underline."
+        "name": "state",
+        "value": "200ms ease-out",
+        "purpose": "Colour, border and underline changes."
       },
       {
-        "name": "hero-arrive",
-        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "TranslateY(8px) and blur(5px) settle to zero once."
-      },
-      {
-        "name": "light-breathe",
-        "value": "12s ease-in-out infinite alternate",
-        "purpose": "Ambient light opacity 0.6 to 1; disabled with reduced motion."
+        "name": "press",
+        "value": "160ms ease-out",
+        "purpose": "Buttons scale to 0.97 while pressed."
       }
     ],
     "breakpoints": [
@@ -186,66 +235,84 @@
       "name": "Primary action",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Main pre-registration action.",
+      "description": "The one main action on screen: plum pill with cream text.",
       "html": "<button class=\"ds-primary\">Preinscribirme <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
-      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:15px 23px;font:500 14px Geist,sans-serif;line-height:1.5;border:1px solid;border-radius:9px;cursor:pointer;transition:background-color 280ms ease,border-color 280ms ease,color 280ms ease,box-shadow 280ms ease;background:#9f2576;color:#fff4ed;border-color:#bf4b93;box-shadow:0 3px 12px #09040d40}.ds-primary:hover{background:#b43186}.ds-primary:disabled{opacity:.55;cursor:wait}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 28px;font:500 14px Geist,sans-serif;line-height:1.2;border:1px solid transparent;border-radius:9999px;cursor:pointer;transition:background-color 200ms cubic-bezier(.23,1,.32,1),border-color 200ms cubic-bezier(.23,1,.32,1),color 200ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);background:#7e3a6b;color:#f3f0df}.ds-primary:hover{background:#652f56}.ds-primary:active{transform:scale(.97)}.ds-primary:disabled{opacity:.6;cursor:wait;transform:none}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
     },
     {
       "name": "Secondary action",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Supporting collaboration action.",
+      "description": "Supporting action and header call: mauve outline, plum text.",
       "html": "<button class=\"ds-secondary\">Quiero colaborar <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
-      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:20px;min-height:52px;padding:15px 23px;font:500 14px Geist,sans-serif;line-height:1.5;border:1px solid;border-radius:9px;cursor:pointer;transition:background-color 280ms ease,border-color 280ms ease,color 280ms ease,box-shadow 280ms ease;background:#251a28;color:#e4d5e2;border-color:#49334b}.ds-secondary:hover{background:#342238;border-color:#6b466d}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 28px;font:500 14px Geist,sans-serif;line-height:1.2;border:1px solid transparent;border-radius:9999px;cursor:pointer;transition:background-color 200ms cubic-bezier(.23,1,.32,1),border-color 200ms cubic-bezier(.23,1,.32,1),color 200ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);background:transparent;color:#7e3a6b;border-color:#c49db5}.ds-secondary:hover{border-color:#7e3a6b}.ds-secondary:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
     },
     {
       "name": "Email field",
       "kind": "input",
       "refersTo": "input",
-      "description": "Persistent label and recessed email input.",
+      "description": "Persistent label above a cream field with a mauve-deep boundary.",
       "html": "<label class=\"ds-label\" for=\"ds-email\">Tu email</label><input class=\"ds-input\" id=\"ds-email\" type=\"email\" placeholder=\"tu@email.com\"/>",
-      "css": ".ds-label{display:block;font:11px Geist,sans-serif;color:#e2d0df;margin-bottom:8px}.ds-input{background:#160f19;border:1px solid #523b54;min-height:44px;padding:11px 12px;border-radius:6px;color:var(--ink,#f9f4e9);font:12px Geist,sans-serif}.ds-input::placeholder{color:#aa90a3}.ds-input:focus{border-color:#85879a}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "css": ".ds-label{display:block;font:500 14px Geist,sans-serif;color:#2c1425;margin-bottom:8px}.ds-input{width:100%;min-height:48px;padding:12px 14px;background:#f3f0df;border:1px solid #9e678c;border-radius:12px;color:#2c1425;font:16px Geist,sans-serif;transition:border-color 200ms cubic-bezier(.23,1,.32,1)}.ds-input::placeholder{color:#705f64}.ds-input:hover,.ds-input:focus{border-color:#7e3a6b}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
     },
     {
       "name": "Navigation links",
       "kind": "nav",
-      "description": "Muted navigation with a fine animated underline.",
+      "description": "Ink-soft links with a plum underline that grows from the left.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#encuentro\">El hackathon</a><a href=\"#retos\">Tracks</a><a href=\"#dudas\">FAQ</a></nav>",
-      "css": ".ds-nav{display:flex;gap:25px;font:12px Geist,sans-serif;color:var(--muted,#ad9eac)}.ds-nav a{color:inherit;text-decoration:none;position:relative;padding-block:12px;transition:color 280ms cubic-bezier(.2,.8,.2,1)}.ds-nav a::after{content:\"\";position:absolute;bottom:5px;left:0;right:0;height:1px;background:#c77eae;transform:scaleX(0);transform-origin:left;transition:transform 280ms cubic-bezier(.2,.8,.2,1)}.ds-nav a:hover{color:var(--ink,#f9f4e9)}.ds-nav a:hover::after,.ds-nav a:focus-visible::after{transform:scaleX(1)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible,.ds-panel:focus-visible{outline:2px solid #aaaac0;outline-offset:5px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "css": ".ds-nav{display:flex;gap:28px;font:14px Geist,sans-serif;color:#58444e}.ds-nav a{color:inherit;text-decoration:none;position:relative;padding-block:12px;transition:color 200ms cubic-bezier(.23,1,.32,1)}.ds-nav a::after{content:\"\";position:absolute;bottom:8px;left:0;right:0;height:1px;background:#7e3a6b;transform:scaleX(0);transform-origin:left;transition:transform 200ms cubic-bezier(.23,1,.32,1)}.ds-nav a:hover{color:#2c1425}.ds-nav a:hover::after,.ds-nav a:focus-visible::after{transform:scaleX(1)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
     },
     {
-      "name": "Signup panel",
+      "name": "Panel",
       "kind": "card",
-      "refersTo": "signup-panel",
-      "description": "Quiet bordered container for the signup flow.",
-      "html": "<section class=\"ds-panel\"><h3>Preinscripción a HackUC3M ’27.</h3><p>Te enviaremos el enlace cuando abramos inscripciones. Tendrás prioridad para apuntarte.</p></section>",
-      "css": ".ds-panel{background:#201623;border:1px solid #48304a;border-radius:12px;padding:30px;max-width:410px;font-family:Geist,sans-serif;color:var(--ink,#f9f4e9)}.ds-panel h3{margin:0 0 27px;font-size:17px;font-weight:500;letter-spacing:-.025em;line-height:1.35}.ds-panel p{margin:0;font-size:12px;line-height:1.7;color:var(--muted,#ad9eac)}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "refersTo": "panel",
+      "description": "Flat surface panel with a 1px line border; no shadow.",
+      "html": "<section class=\"ds-panel\"><h3>Varios retos confirmados</h3><p>Pronto publicaremos los tracks, las empresas participantes y todos los detalles.</p></section>",
+      "css": ".ds-panel{background:#ece4d9;border:1px solid #decbcc;border-radius:12px;padding:32px;max-width:480px;font-family:Geist,sans-serif;color:#2c1425}.ds-panel h3{margin:0 0 8px;font-size:20px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.ds-panel p{margin:0;font-size:16px;line-height:1.65;color:#58444e}"
+    },
+    {
+      "name": "Hero wordmark",
+      "kind": "custom",
+      "description": "Cinzel wordmark, brand rule and key facts line.",
+      "html": "<div class=\"ds-hero\"><h1>HackUC3M <span>’27</span></h1><p class=\"ds-lead\">El hackathon de la Universidad Carlos III de Madrid.</p><div class=\"ds-rule\"></div><p class=\"ds-facts\"><span>19–20 febrero 2027</span><span aria-hidden=\"true\">◆</span><span>EPS · Campus de Leganés</span></p></div>",
+      "css": ".ds-hero{background:#f3f0df;padding:48px 24px;text-align:center;color:#2c1425}.ds-lead{margin:24px auto 0;max-width:36rem;font:18px/1.6 Geist,sans-serif;color:#58444e}.ds-hero h1{margin:0;font:700 clamp(3rem,8vw,4.5rem)/1.05 Cinzel,serif;letter-spacing:.025em;color:#7e3a6b}.ds-hero h1 span{color:#9e678c}.ds-rule{max-width:28rem;height:1px;margin:40px auto;background:linear-gradient(90deg,transparent,#7e3a6b,#c49db5,transparent)}.ds-facts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;margin:0;font:18px/1.4 Cinzel,serif;letter-spacing:.025em}.ds-facts span[aria-hidden]{color:#9db2c1}"
     }
   ],
   "narrative": {
-    "northStar": "HackUC3M, precisely expressed",
-    "overview": "A precise, restrained dark interface carries HackUC3M’s original plum, rose and cream identity. Thin dividers, generous breathing room and small functional details establish a Linear-like clarity; the Cinzel hero wordmark supplies the distinct brand voice.\n\nMotion is quiet and local: the hero title settles once and a diffuse plum light breathes behind it. The navigation symbol is the supplied cropped mark, without lettering; the rejected floating hero emblem is absent.",
+    "northStar": "HackUC3M, on cream paper",
+    "overview": "A light, warm, university interface built on the logo’s own palette: cream, plum, mauve and a greyish blue, with a plum-derived ink for text. The Cinzel wordmark and a thin plum-to-mauve rule carry the brand voice; everything else is plain Geist.\n\nThe interface is flat. Space, one-pixel lines and tonal surfaces create structure; there are no shadows, glows, gradients (other than the brand rule) or ambient motion. Motion is limited to short colour transitions and a slight press on buttons.",
     "keyCharacteristics": [
-      "Dark aubergine tonal surfaces with selective brand accents.",
-      "Geist for the interface; Cinzel reserved for the hero brand.",
-      "Fine borders, calm spacing and smooth interactive states."
+      "Cream page background on every surface; no dark mode.",
+      "Logo palette only: plum for brand and action, mauve for detail, blue as ornament.",
+      "Cinzel limited to the wordmark and the key facts line; Geist for the interface, with no tracked-caps labels above headings.",
+      "Flat panels with 1px lines, pill buttons and 12px fields."
     ],
     "rules": [
       {
-        "name": "The Single Display Voice Rule",
-        "body": "Use Cinzel only for the hero brand; the rest of the interface speaks in Geist.",
+        "name": "The Logo Palette Rule",
+        "body": "Use only the eleven tokens in DESIGN.md; every colour is a logo colour or derived from one. npm test enforces it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signature Rule",
+        "body": "Cinzel only for the wordmark and the date ◆ venue line, always with positive tracking.",
         "section": "typography"
+      },
+      {
+        "name": "The Flat Rule",
+        "body": "No shadows, glows, blur or gradients; the brand rule is the only gradient.",
+        "section": "elevation"
       }
     ],
     "dos": [
-      "Do preserve the supplied HackUC3M symbol and original brand palette.",
-      "Do keep Cinzel confined to the hero brand and use Geist for interface text.",
-      "Do retain visible keyboard focus and disable motion for reduced-motion preferences."
+      "Do keep the cream background and the logo palette on every new surface.",
+      "Do keep one visible primary action and pill-shaped buttons.",
+      "Do keep visible plum focus, 44px targets and reduced-motion support."
     ],
     "donts": [
-      "Don’t restore the floating hero emblem or poster treatment.",
-      "Don’t turn the restrained interface into a field of decorative cards or accent fills.",
-      "Don’t communicate success or errors through color alone."
+      "Don’t bring back the dark aubergine theme, radial glow or blurred hero entrance.",
+      "Don’t add colours, greys, two-tone headlines, tracked-caps labels above headings or text below 14px.",
+      "Don’t communicate success or errors through colour alone."
     ]
   }
 }

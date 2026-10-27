@@ -1,148 +1,305 @@
 ---
 name: HackUC3M
-description: A restrained, precise hackathon interface in the original HackUC3M palette.
+description: Sistema visual claro de HackUC3M, construido sobre los colores del logo (crema, ciruela, malva y azul).
 colors:
-  paper: "#140f16"
-  surface: "#1c141e"
-  raised: "#251b28"
-  ink: "#f9f4e9"
-  muted: "#ad9eac"
-  line: "#342637"
-  plum: "#9f2576"
-  rose: "#e34f87"
-  sky: "#99bfcd"
+  cream: "#f3f0df"
+  surface: "#ece4d9"
+  line: "#decbcc"
+  ink: "#2c1425"
+  ink-soft: "#58444e"
+  ink-muted: "#705f64"
+  plum: "#7e3a6b"
+  plum-deep: "#652f56"
+  mauve: "#c49db5"
+  mauve-deep: "#9e678c"
+  blue: "#9db2c1"
 typography:
   display:
     fontFamily: "Cinzel, serif"
-    fontSize: "clamp(2.6rem, 5.3vw, 4.8rem)"
-    fontWeight: 500
-    lineHeight: 1.08
-    letterSpacing: "-0.035em"
+    fontSize: "clamp(3rem, 8vw, 4.5rem)"
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: "0.025em"
+  display-mobile:
+    fontFamily: "Cinzel, serif"
+    fontSize: "clamp(2rem, 9.5vw, 3rem)"
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: "0.025em"
+  facts:
+    fontFamily: "Cinzel, serif"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "0.025em"
+  title:
+    fontFamily: "Geist, sans-serif"
+    fontSize: "clamp(2rem, 5vw, 2.75rem)"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
   headline:
     fontFamily: "Geist, sans-serif"
-    fontSize: "clamp(2rem, 3.2vw, 2.8rem)"
-    fontWeight: 500
-    lineHeight: 1.18
-    letterSpacing: "-0.035em"
+    fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
+  subhead:
+    fontFamily: "Geist, sans-serif"
+    fontSize: "24px"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.01em"
+  heading:
+    fontFamily: "Geist, sans-serif"
+    fontSize: "20px"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.01em"
+  lead:
+    fontFamily: "Geist, sans-serif"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.6
   body:
     fontFamily: "Geist, sans-serif"
     fontSize: "16px"
-    lineHeight: 1.75
-  label:
+    fontWeight: 400
+    lineHeight: 1.65
+  small:
     fontFamily: "Geist, sans-serif"
-    fontSize: "12px"
+    fontSize: "14px"
+    fontWeight: 400
+    lineHeight: 1.5
+  email-display:
+    fontFamily: "Georgia, serif"
+    fontSize: "28px"
+    fontWeight: 700
+    letterSpacing: "1px"
+  email-body:
+    fontFamily: "Arial, Helvetica, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: 1.65
 rounded:
-  input: "6px"
-  header-action: "8px"
-  button: "9px"
+  pill: "9999px"
+  field: "12px"
   panel: "12px"
 spacing:
-  control-gap: "12px"
-  panel-padding: "30px"
+  unit: "4px"
+  control-gap: "16px"
+  panel-padding: "32px"
   section: "96px"
+  container: "1024px"
 components:
   button-primary:
     backgroundColor: "{colors.plum}"
-    textColor: "#fff4ed"
-    rounded: "{rounded.button}"
-    padding: "15px 23px"
-    height: "52px"
+    textColor: "{colors.cream}"
+    rounded: "{rounded.pill}"
+    padding: "12px 28px"
+    height: "48px"
   button-primary-hover:
-    backgroundColor: "#b43186"
+    backgroundColor: "{colors.plum-deep}"
   button-secondary:
-    backgroundColor: "#251a28"
-    textColor: "#e4d5e2"
-    rounded: "{rounded.button}"
-    padding: "15px 23px"
+    backgroundColor: "transparent"
+    textColor: "{colors.plum}"
+    borderColor: "{colors.mauve}"
+    rounded: "{rounded.pill}"
+    padding: "12px 28px"
+    height: "48px"
+  button-secondary-hover:
+    borderColor: "{colors.plum}"
   input:
-    backgroundColor: "#160f19"
+    backgroundColor: "{colors.cream}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.input}"
-    padding: "11px 12px"
-  signup-panel:
-    backgroundColor: "#201623"
+    borderColor: "{colors.mauve-deep}"
+    rounded: "{rounded.field}"
+    padding: "12px 14px"
+    height: "48px"
+  panel:
+    backgroundColor: "{colors.surface}"
+    borderColor: "{colors.line}"
     rounded: "{rounded.panel}"
-    padding: "30px"
+    padding: "{spacing.panel-padding}"
 ---
 
-# Design System: HackUC3M
+# Sistema de diseño: HackUC3M
 
-## Overview
+Esta es la referencia normativa para todo lo que lleve el nombre HackUC3M: la web pública, el panel de organización, los emails y cualquier pieza nueva. Si el código contradice este documento, manda este documento. Última actualización: 2026-10-27.
 
-**Creative North Star: "HackUC3M, precisely expressed"**
+## Dirección
 
-A precise, restrained dark interface carries HackUC3M’s original plum, rose and cream identity. Thin dividers, generous breathing room and small functional details establish a Linear-like clarity; the Cinzel hero wordmark supplies the distinct brand voice.
+HackUC3M es claro, cálido y universitario. La paleta sale del propio logo, la moneda: crema, ciruela, malva y un azul grisáceo. La voz propia la ponen el wordmark en Cinzel y una línea fina degradada de ciruela a malva; todo lo demás es Geist, limpio y legible.
 
-Motion is quiet and local: the hero title settles once and a diffuse plum light breathes behind it. The navigation symbol is the supplied cropped mark, without lettering; the rejected floating hero emblem is absent.
+Cuatro reglas resumen el sistema:
 
-**Key Characteristics:**
+- **Fondo crema siempre.** No hay modo oscuro, ni fondos negros, ni blanco puro como fondo de página.
+- **Los colores del logo, cada uno con un papel.** Ciruela para la marca y la acción, malva para el detalle, azul como ornamento. Nada fuera de la paleta.
+- **Plano.** La estructura la dan el espacio, las líneas finas y los fondos tonales. Sin brillos, sin glassmorphism, sin sombras difuminadas.
+- **Cinzel es la firma, no la interfaz.** Solo para el wordmark y la línea de datos clave.
 
-- Dark aubergine tonal surfaces with selective brand accents.
-- Geist for the interface; Cinzel reserved for the hero brand.
-- Fine borders, calm spacing and smooth interactive states.
+## Color
 
-## Colors
+Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El resto se deriva de ellos: la tinta es ciruela oscurecida y los neutros son tinta o malva mezclados sobre crema.
 
-The original brand accents sit within a warm, dark aubergine environment. Frontmatter contains the normative values.
+| Token | Hex | Papel |
+| --- | --- | --- |
+| Cream | `#f3f0df` | Fondo de página y de campos. La única superficie base. Color del logo. |
+| Surface | `#ece4d9` | Bandas y paneles que deben distinguirse del fondo (malva al 14 % sobre crema). |
+| Line | `#decbcc` | Separadores y bordes de paneles de 1 px (malva al 45 % sobre crema). |
+| Ink | `#2c1425` | Texto principal (ciruela al 35 % de luminosidad). |
+| Ink soft | `#58444e` | Párrafos secundarios y entradillas. |
+| Ink muted | `#705f64` | Metadatos, notas, pies, placeholders. El tono más claro permitido para texto. |
+| Plum | `#7e3a6b` | Wordmark, acción principal, enlaces, iconos de acento, foco. Color del logo. |
+| Plum deep | `#652f56` | Hover de la acción principal y mensajes de error. |
+| Mauve | `#c49db5` | Borde del botón secundario, subrayados, selección de texto, línea de marca. Nunca texto. Color del logo. |
+| Mauve deep | `#9e678c` | El año «'27» del hero y el borde de los campos de formulario. Solo texto display. |
+| Blue | `#9db2c1` | Ornamento: el rombo «◆» entre datos, puntos de estado. Nunca texto. Color del logo. |
 
-### Primary
+Contraste medido sobre crema: ink 14,9:1 · ink soft 7,8:1 · ink muted 5,2:1 · plum 6,8:1 · plum deep 8,8:1 · mauve deep 3,8:1 · mauve 2,1:1 · blue 1,9:1. Crema sobre plum: 6,8:1. Ink sobre mauve: 7,2:1.
 
-- **HackUC3M Plum:** primary actions and diffuse hero light.
-- **HackUC3M Rose:** hero year, footer year and consent selection.
+Reglas:
 
-### Secondary
+- Usa los tokens, nunca hex sueltos. Los tokens viven en el `:root` de `app/globals.css` (y como colores de Tailwind vía `@theme inline`) con exactamente los valores de esta tabla. `npm test` comprueba que la tabla, el frontmatter, `globals.css` y el email coinciden.
+- No inventes colores ni grises neutros. Si de verdad hace falta un tono nuevo, derívalo de la paleta, añádelo aquí y en `globals.css` en el mismo cambio.
+- Mauve deep solo como texto a partir de 24 px. Mauve y blue nunca como texto.
+- Los colores rojo, verde o ámbar de «error / éxito / aviso» no existen: los estados se comunican con texto e iconos, y el error usa plum deep.
+- El único degradado del sistema es la **línea de marca**: 1 px de alto, `linear-gradient(90deg, transparent, plum, mauve, transparent)`. No uses degradados en fondos, botones, tarjetas ni texto.
+- Selección de texto: fondo mauve, texto ink.
 
-- **Sky:** event icons and small availability dots.
+## Tipografía
 
-### Neutral
+Dos familias, cargadas con `next/font/google` en `app/layout.tsx`:
 
-- **Paper:** page background.
-- **Surface / Raised:** tonal layers for supporting UI.
-- **Ink:** cream primary text.
-- **Muted:** secondary copy.
-- **Line:** quiet section and component boundaries.
+- **Cinzel** (`--font-cinzel`): el wordmark «HackUC3M '27» (hero y pie) y la línea de datos clave (fecha ◆ lugar). Nada más.
+- **Geist** (`--font-geist-sans`): todo lo demás, incluidos los `h1` de páginas interiores.
 
-## Typography
+| Rol | Familia | Tamaño | Peso | Interlineado | Tracking | Uso |
+| --- | --- | --- | --- | --- | --- | --- |
+| Display | Cinzel | `clamp(3rem, 8vw, 4.5rem)` | 700 | 1.05 | 0.025em | Wordmark del hero |
+| Display móvil | Cinzel | `clamp(2rem, 9.5vw, 3rem)` | 700 | 1.05 | 0.025em | Wordmark por debajo de 650 px |
+| Datos clave | Cinzel | 18 px | 400 | 1.4 | 0.025em | Fecha ◆ lugar; wordmark del pie |
+| Título | Geist | `clamp(2rem, 5vw, 2.75rem)` | 600 | 1.15 | -0.02em | `h1` de páginas interiores |
+| Titular | Geist | `clamp(1.75rem, 3.5vw, 2.5rem)` | 600 | 1.15 | -0.02em | `h2` de sección |
+| Subtítulo | Geist | 24 px | 600 | 1.3 | -0.01em | `h2` de páginas interiores, mensajes de estado |
+| Encabezado | Geist | 20 px | 600 | 1.3 | -0.01em | `h3`, títulos de panel |
+| Entradilla | Geist | 18 px | 400 | 1.6 | 0 | Primer párrafo de un bloque |
+| Cuerpo | Geist | 16 px | 400 | 1.65 | 0 | Texto corrido |
+| Pequeño / UI | Geist | 14 px | 400–500 | 1.5 | 0 | Botones, navegación, notas, etiquetas |
 
-Geist is the interface family; Cinzel is reserved for the hero brand. Headlines use medium weight and tight tracking. Body copy is relaxed, while navigation, metadata and form labels are compact.
+Reglas:
 
-The hero display scales down to `clamp(2rem, 8.5vw, 3.5rem)` on mobile. Introductory copy uses the body role; smaller supporting paragraphs range from 12–14px. Hero description is 16px desktop and 14px mobile. Buttons use 14px text. Mobile form inputs use 16px to support comfortable entry.
+- No hay más tamaños que los de esta tabla. Si hace falta otro, añádelo aquí primero.
+- El wordmark siempre en una línea.
+- Cinzel lleva tracking positivo (es una capitular romana). Nunca tracking negativo, nunca párrafos, nunca botones ni navegación.
+- Tamaño mínimo: 14 px. Campos de formulario a 16 px (evita el zoom en móvil).
+- Titulares con `text-wrap: balance`; párrafos con `text-wrap: pretty` y 36rem de ancho como máximo.
+- Jerarquía por tamaño y peso, no por color: un titular es ink entero, sin segundas líneas en gris.
+- Sin etiquetas en mayúsculas espaciadas encima de los titulares (eyebrows/kickers): el titular se sostiene solo, y si el contexto importa va en la entradilla.
 
-**The Single Display Voice Rule.** Use Cinzel only for the hero brand; the rest of the interface speaks in Geist.
+## Espaciado y layout
 
-## Layout
+- Unidad base de 4 px. Escala en uso: 4, 8, 12, 16, 24, 32, 40, 48, 64, 96.
+- Contenedor `.wrap` centrado de 1024 px como máximo. Margen lateral de 40 px en escritorio, 28 px por debajo de 900 px y 24 px por debajo de 650 px.
+- Secciones: 96 px de espacio vertical (`.section-space`), 64 px en móvil. Las secciones se separan con una línea `line` (`.section-rule`).
+- Mobile first: diseña a 390 px, luego 650 y 1024. Las dos columnas (`.split`) colapsan a una por debajo de 650 px.
+- El hero es centrado: wordmark, entradilla (que dice qué es y dónde), línea de marca, datos clave, acciones y estado. Sin emblema: el símbolo ya está en la cabecera.
 
-A centered container caps at 1100px. Desktop gutters are 40px, decreasing to 28px at 900px and 20px at 650px. Sections use 96px vertical space, then 76px and 62px at those breakpoints. Supporting sections pair headings and content in two columns, collapsing to one below 650px.
+## Bordes, formas y profundidad
 
-The header remains an understated horizontal row. Its symbol is 64px desktop and 58px mobile; navigation links disappear on mobile while the pre-registration action remains. Hero actions stack on mobile within a 290px column. Event metadata becomes a centered vertical strip. The hero has no floating emblem.
+- Bordes de 1 px. Las listas (FAQ, tracks) se separan con líneas, no con tarjetas.
+- Radios: píldora (`9999px`) para botones; 12 px para campos y paneles. No hay otros radios.
+- Sin sombras, sin `backdrop-filter`, sin brillos radiales. Un panel se distingue por su fondo y su borde, no por elevación.
+- Panel sobre crema: fondo surface. Panel dentro de una banda surface: fondo crema.
+- Iconos de línea a 16–24 px en el color del texto que acompañan (o plum si son el acento del bloque). Solo pon una flecha si el elemento es un enlace.
 
-## Elevation & Depth
+## Componentes
 
-Depth comes mainly from aubergine tonal layering and one-pixel borders. The primary button alone has a small dark shadow (`0 3px 12px #09040d40`). The hero’s broad, low-opacity plum radial light is atmospheric, not an object or card. Avoid large floating surfaces and heavy shadows.
+### Botones (`.button`)
 
-## Shapes
+- **Principal** (`.button.primary`): fondo plum, texto crema, píldora, 48 px de alto, Geist 14 px peso 500. Hover: plum deep.
+- **Secundario** (`.button.secondary`): fondo transparente, borde mauve, texto plum. Hover: borde plum.
+- **Compacto** (`.compact`): 44 px de alto, para la cabecera y el panel de organización.
+- Pulsado: `scale(0.97)`. Deshabilitado: 60 % de opacidad, sin escala.
+- Una sola acción principal visible por pantalla: la de la cabecera es secundaria.
+- **Enlace de texto** (`.text-link`): plum, peso 500, subrayado mauve con 4 px de offset que pasa a plum en hover.
 
-Controls have gentle corners: inputs, header actions, buttons and panels use the frontmatter radii. Dividers and content rows stay square and flat. Icons are small, thin-stroked outlines. Availability indicators are tiny circular dots.
+### Formularios
 
-## Components
+- Etiqueta visible siempre encima del campo (Geist 14 px, peso 500, ink). Opcionales con «(opcional)» en ink muted.
+- Campo: fondo crema, borde mauve deep (3,8:1, visible como límite del control), radio 12 px, 16 px de texto, 48 px de alto. Hover y focus: borde plum, más el anillo de foco global.
+- Checkbox de 18 px con `accent-color: var(--plum)`.
+- Errores en texto plum deep junto al formulario, anunciados por un live region; nunca solo con color. El éxito sustituye el formulario por un mensaje de estado con icono.
 
-- **Primary action:** plum fill, pale text, fine brighter plum border and a small shadow. Hover brightens to a warmer plum. Main actions have a 52px minimum height and render around 53px with current line metrics; header actions have a 44px minimum.
-- **Secondary action:** dark plum fill, restrained plum stroke and light lavender text. Hover lightens the fill and border.
-- **Navigation:** compact muted links with a left-to-right thin rose underline on hover or keyboard focus. Color and underline transition over 280ms.
-- **Inputs:** recessed dark fill, muted plum border, persistent labels and clear placeholders. Focus changes the border and retains the shared visible outline. Consent uses a rose checkbox. Pending submission dims the button; errors retain text, and success replaces the form with a status panel.
-- **Panels and rows:** the signup panel uses a thin plum border and rounded corners. Challenge announcements use a subtle tonal gradient; FAQ uses native disclosure rows separated by fine rules.
-- **Motion:** button and header hover states transition over 280ms. The hero title settles from an 8px downward offset and 5px blur over 900ms; the ambient light breathes over 12 seconds. Reduced-motion preferences disable animation, transitions and smooth scrolling.
+### Secciones y paneles
 
-## Do's and Don'ts
+- Sección estándar: `.split` con el titular a la izquierda y el contenido a la derecha.
+- Banda destacada (preinscripción): fondo surface a ancho completo, con líneas arriba y abajo; el formulario va en un panel crema.
+- Panel: radio 12 px, borde `line`, 32 px de padding (24 px en móvil).
 
-### Do:
+### Firmas de marca
 
-- Do preserve the supplied HackUC3M symbol and original brand palette.
-- Do keep Cinzel confined to the hero brand and use Geist for interface text.
-- Do retain visible keyboard focus and disable motion for reduced-motion preferences.
+- **Línea de marca** (`.brand-rule`): solo en el hero, entre la entradilla y los datos clave.
+- **Datos clave** (`.event-facts`): fecha y lugar en Cinzel, separados por un rombo «◆» en blue.
+- **Wordmark**: «HackUC3M» en plum; en el hero, el año «'27» en mauve deep. En el pie, el wordmark entero en plum.
 
-### Don't:
+### Navegación y pie
 
-- Don’t restore the floating hero emblem or poster treatment.
-- Don’t turn the restrained interface into a field of decorative cards or accent fills.
-- Don’t communicate success or errors through color alone.
+- Cabecera: línea `line` inferior, isotipo de 48 px a la izquierda, enlaces Geist 14 px en ink soft (hover ink con subrayado plum que crece de izquierda a derecha), botón secundario compacto a la derecha.
+- Pie: línea `line` superior, wordmark en Cinzel, Geist 14 px en ink muted, enlaces con hover plum.
+
+## Movimiento
+
+- Curva única: `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)`.
+- Color y borde: 200 ms. Pulsado de botón: 160 ms.
+- Anima solo `opacity`, `transform` y color. Nunca layout, nunca `filter: blur`.
+- Sin animaciones de entrada en la carga, sin animaciones en bucle, sin parallax, sin revelados al hacer scroll.
+- `prefers-reduced-motion: reduce` desactiva transiciones, animaciones y el scroll suave.
+
+## Accesibilidad
+
+- Foco siempre visible: contorno de 2 px en plum con 3 px de offset. No lo quites sin un sustituto equivalente.
+- Zonas táctiles de 44 px como mínimo; 48 px en llamadas a la acción.
+- Controles solo-icono con nombre accesible. Imágenes e iconos decorativos con `alt=""` o `aria-hidden`.
+- Enlace «Saltar al contenido» al principio de cada página pública.
+- Idioma `es`, `color-scheme: light`.
+
+## Marca y logos
+
+Archivos en `public/`: `IsologoHackUc3m.svg` (moneda + texto), `IsotipoHackUc3m.svg` y `hackuc3m-mark.svg` (moneda), `LogotipoHackUc3m.svg` (texto), `ImagotipoHackUc3m.svg`. AISC Madrid: `public/aisc/Property1=AISCLockupColor.svg`.
+
+- Usa siempre las versiones en color: el fondo es crema.
+- Nunca apliques `filter`, cambies colores, estires, rotes ni recortes un logo.
+- Isotipo en cabecera a 48 px (40 px en móvil). Lockup de AISC a 120–160 px de ancho.
+- No afirmes ser «el primer» ni «el oficial» hackathon.
+
+## Emails
+
+Los clientes de correo no soportan variables CSS: los emails (`lib/confirmation-email.ts`) escriben en línea los hex de la tabla de color. Es la única excepción a «nunca hex sueltos», y `npm test` comprueba que solo usan colores de la paleta. Mismo sistema: fondo surface, tarjeta crema, wordmark plum en Georgia (Cinzel no está disponible en email), texto ink, botón plum en píldora y Arial como sans.
+
+## Lo que no hacemos
+
+Patrones que hacen que una página parezca generada y que este sistema excluye:
+
+- Fondos oscuros o modo oscuro.
+- Brillos radiales detrás del hero, tarjetas con degradado, glassmorphism, sombras de color.
+- Titulares que entran con desenfoque, elementos que flotan o «respiran» en bucle.
+- Una paleta paralela de grises o tonos casi iguales definidos elemento a elemento.
+- Texto de 9–12 px para metadatos.
+- Etiquetas en mayúsculas espaciadas encima de un titular («eyebrows»), en píldora o sin ella.
+- Bloques de CSS que sobrescriben reglas anteriores en lugar de cambiarlas.
+- Titulares a dos tonos (primera línea oscura, segunda gris).
+- Iconos decorativos inventados (cubos apilados, destellos) y flechas en elementos que no son enlaces.
+- Rejillas de tarjetas idénticas con icono + título + frase.
+- Inventar patrocinadores, retos, premios, cifras o fotos.
+
+## Checklist para cualquier pieza nueva
+
+- [ ] Fondo crema; solo colores de la tabla, vía tokens. `npm test` pasa.
+- [ ] Cinzel solo en el wordmark y los datos clave; el resto en Geist.
+- [ ] Tamaños de la tabla de tipografía, ninguno por debajo de 14 px; texto secundario no más claro que ink muted.
+- [ ] `npx impeccable detect app lib` y `npx impeccable detect <url local>` sin hallazgos nuevos.
+- [ ] Botones en píldora, una acción principal visible, 48 px de alto (44 px compactos).
+- [ ] Bordes de 1 px; radios de 12 px o píldora; sin sombras ni degradados (salvo la línea de marca).
+- [ ] Foco visible, zonas táctiles ≥ 44 px, `prefers-reduced-motion` respetado.
+- [ ] Si has creado un patrón reutilizable, añádelo a este documento.
