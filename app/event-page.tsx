@@ -18,6 +18,50 @@ function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   );
 }
 
+// Repite los logos para que cada mitad de la cinta llene la pantalla; la animación desplaza -50 %.
+function SponsorMarquee({ sponsors }: { sponsors: EventContent["sponsors"] }) {
+  const half = Array.from(
+    { length: Math.ceil(8 / sponsors.length) },
+    () => sponsors,
+  ).flat();
+  return (
+    <div className="marquee">
+      <div className="marquee-track">
+        {[0, 1].map((copy) => (
+          <ul key={copy} aria-hidden={copy === 1 || undefined}>
+            {half.map((s, i) => (
+              <li
+                key={i}
+                className={i >= sponsors.length ? "repeat" : undefined}
+                aria-hidden={i >= sponsors.length || undefined}
+              >
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  tabIndex={copy === 1 || i >= sponsors.length ? -1 : undefined}
+                >
+                  {s.logo ? (
+                    <Image
+                      src={s.logo}
+                      alt={s.name}
+                      width={160}
+                      height={40}
+                      unoptimized
+                    />
+                  ) : (
+                    s.name
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const collaborationMail =
   "mailto:aisc.asoc@uc3m.es?subject=HackUC3M%2027%20Colaboraci%C3%B3n";
 
@@ -77,6 +121,29 @@ export default function EventPage({ event }: { event: EventContent }) {
               ? "Preinscripción abierta. Tendrás prioridad al inscribirte."
               : "Próximamente, más novedades."}
           </p>
+        </section>
+        <section
+          className="sponsor-band section-rule"
+          aria-label="Patrocinadores"
+        >
+          {event.sponsors.length ? (
+            <SponsorMarquee sponsors={event.sponsors} />
+          ) : (
+            <a
+              className="sponsor-fallback"
+              href="https://aiscmadrid.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image
+                src="/aisc/Property1=AISCLockupColor.svg"
+                alt="Organiza AISC Madrid"
+                width={160}
+                height={41}
+                unoptimized
+              />
+            </a>
+          )}
         </section>
         <section
           id="encuentro"

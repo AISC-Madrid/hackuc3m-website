@@ -31,7 +31,14 @@ export function validContent(value: unknown): value is EventContent {
     c.tracks.every((t) => t && text(t.title, 100) && text(t.description)) &&
     Array.isArray(c.sponsors) &&
     c.sponsors.length <= 60 &&
-    c.sponsors.every((s) => s && text(s.name, 100) && url(s.url)) &&
+    c.sponsors.every(
+      (s) =>
+        s &&
+        text(s.name, 100) &&
+        url(s.url) &&
+        // Logo: vacío, https:// o un archivo de public/ ("/sponsors/x.svg").
+        (!s.logo || url(s.logo) || /^\/[\w\-./]+$/.test(s.logo)),
+    ) &&
     Array.isArray(c.faqs) &&
     c.faqs.length <= 30 &&
     c.faqs.every((f) => f && text(f.question, 200) && text(f.answer))

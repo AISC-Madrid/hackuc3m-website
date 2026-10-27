@@ -221,6 +221,11 @@
         "name": "press",
         "value": "160ms ease-out",
         "purpose": "Buttons scale to 0.97 while pressed."
+      },
+      {
+        "name": "marquee",
+        "value": "40s linear infinite",
+        "purpose": "Sponsor logo strip only; pauses on hover and focus, static row under reduced motion."
       }
     ],
     "breakpoints": [
@@ -284,7 +289,7 @@
   ],
   "narrative": {
     "northStar": "HackUC3M, on cream paper",
-    "overview": "A light, warm, university interface built on the logo’s own palette: cream, plum, mauve and a greyish blue, with a plum-derived ink for text. The Cinzel wordmark and a thin plum-to-mauve rule carry the brand voice; everything else is plain Geist.\n\nThe interface is flat. Space, one-pixel lines and tonal surfaces create structure; there are no shadows, glows, gradients (other than the brand rule) or ambient motion. Motion is limited to short colour transitions and a slight press on buttons.",
+    "overview": "A light, warm, university interface built on the logo’s own palette: cream, plum, mauve and a greyish blue, with a plum-derived ink for text. The Cinzel wordmark and a thin plum-to-mauve rule carry the brand voice; everything else is plain Geist.\n\nThe interface is flat. Space, one-pixel lines and tonal surfaces create structure; there are no shadows, glows, gradients (other than the brand rule) or ambient motion, except the sponsor logo strip. Motion is limited to short colour transitions and a slight press on buttons.",
     "keyCharacteristics": [
       "Cream page background on every surface; no dark mode.",
       "Logo palette only: plum for brand and action, mauve for detail, blue as ornament.",

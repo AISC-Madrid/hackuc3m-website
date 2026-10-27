@@ -33,7 +33,7 @@ export async function PUT(request: Request) {
     return Response.json(
       {
         error:
-          "Revisa los campos. Los enlaces de patrocinadores deben empezar por https://.",
+          "Revisa los campos. Los enlaces y logos de patrocinadores deben empezar por https:// (o / para archivos de la web).",
       },
       { status: 400 },
     );
