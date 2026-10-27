@@ -267,7 +267,8 @@ Reglas:
 - Curva única: `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)`.
 - Color y borde: 200 ms. Pulsado de botón: 160 ms.
 - Anima solo `opacity`, `transform` y color. Nunca layout, nunca `filter: blur`.
-- Sin animaciones de entrada en la carga, sin animaciones en bucle, sin parallax, sin revelados al hacer scroll.
+- Sin animaciones de entrada en la carga, sin animaciones en bucle, sin parallax, sin revelados al hacer scroll. Única excepción: la cinta de patrocinadores, acordada para mostrar muchos logos en poco espacio.
+- **Cinta de patrocinadores** (`.marquee`, encima de «Retos de la industria»): logos de `sponsors` desplazándose en bucle lineal de 40 s, solo `transform`, que se pausa en hover y foco. Sin máscaras ni degradados en los bordes. Sin logo, el patrocinador sale como nombre en texto; sin patrocinadores, el lockup de AISC estático. Con `prefers-reduced-motion` es una fila estática centrada.
 - `prefers-reduced-motion: reduce` desactiva transiciones, animaciones y el scroll suave.
 
 ## Accesibilidad
@@ -298,7 +299,7 @@ Patrones que hacen que una página parezca generada y que este sistema excluye:
 
 - Fondos oscuros o modo oscuro.
 - Brillos radiales detrás del hero, tarjetas con degradado, glassmorphism, sombras de color.
-- Titulares que entran con desenfoque, elementos que flotan o «respiran» en bucle.
+- Titulares que entran con desenfoque, elementos que flotan o «respiran» en bucle (la cinta de patrocinadores es la única excepción; ver Movimiento).
 - Una paleta paralela de grises o tonos casi iguales definidos elemento a elemento.
 - Texto de 9–12 px para metadatos.
 - Etiquetas en mayúsculas espaciadas encima de un titular («eyebrows»), en píldora o sin ella.
@@ -313,7 +314,7 @@ Patrones que hacen que una página parezca generada y que este sistema excluye:
 - [ ] Fondo crema; solo colores de la tabla, vía tokens. `npm test` pasa.
 - [ ] Cinzel solo en el wordmark y los datos clave; el resto en Geist.
 - [ ] Tamaños de la tabla de tipografía, ninguno por debajo de 14 px; texto secundario no más claro que ink muted.
-- [ ] `npx impeccable detect app lib` y `npx impeccable detect <url local>` sin hallazgos nuevos.
+- [ ] `npx impeccable detect app lib` y `npx impeccable detect <url local>` sin hallazgos nuevos. El aviso `[marquee]` de `.marquee-track` es la excepción documentada en Movimiento; cualquier otro bucle no.
 - [ ] Botones en píldora, una acción principal visible, 48 px de alto (44 px compactos).
 - [ ] Bordes de 1 px; radios de 12 px o píldora; sin sombras ni degradados (salvo la línea de marca).
 - [ ] Foco visible, zonas táctiles ≥ 44 px, `prefers-reduced-motion` respetado.

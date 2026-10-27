@@ -4,7 +4,7 @@ export type EventContent = {
   intro: string;
   waitlistOpen: boolean;
   tracks: { title: string; description: string }[];
-  sponsors: { name: string; url: string }[];
+  sponsors: { name: string; url: string; logo?: string }[];
   faqs: { question: string; answer: string }[];
 };
 

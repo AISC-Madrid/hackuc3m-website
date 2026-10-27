@@ -238,6 +238,22 @@ export default function Editor() {
                     })
                   }
                 />
+                <label htmlFor={`sponsor-logo-${i}`}>
+                  Logo, https:// o /archivo.svg <span>(opcional)</span>
+                </label>
+                <input
+                  id={`sponsor-logo-${i}`}
+                  value={sponsor.logo ?? ""}
+                  maxLength={500}
+                  onChange={(e) =>
+                    setContent({
+                      ...content,
+                      sponsors: content.sponsors.map((s, n) =>
+                        n === i ? { ...s, logo: e.target.value } : s,
+                      ),
+                    })
+                  }
+                />
                 <button
                   type="button"
                   className="button secondary compact"

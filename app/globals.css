@@ -521,6 +521,67 @@ nav a:focus-visible::after {
   color: var(--plum);
 }
 
+/* Cinta de patrocinadores */
+.sponsor-band {
+  padding-block: 40px;
+}
+.sponsor-fallback {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+}
+.sponsor-fallback img {
+  display: block;
+  width: 160px;
+  height: auto;
+}
+.marquee {
+  overflow: hidden;
+  /* Deja sitio al anillo de foco (2 px + 3 px de offset), que overflow recortaría. */
+  padding-block: 8px;
+}
+/* Única animación en bucle permitida por DESIGN.md (Movimiento). */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+.marquee ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.marquee li a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  margin-inline: 32px;
+  color: var(--ink-soft);
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 200ms var(--ease-out);
+}
+.marquee li a:hover {
+  color: var(--plum);
+}
+.marquee img {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* FAQ */
 .faq-list details {
   border-bottom: 1px solid var(--line);
@@ -733,6 +794,10 @@ details > p {
 .admin-shell form + h2 + p {
   color: var(--ink-soft);
 }
+.admin-shell label span {
+  color: var(--ink-muted);
+  font-weight: 400;
+}
 .admin-row {
   padding-block: 16px 24px;
   border-top: 1px solid var(--line);
@@ -842,6 +907,17 @@ details > p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  /* Sin movimiento la cinta pasa a ser una fila estática de logos. */
+  .marquee-track,
+  .marquee ul:first-child {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee ul + ul,
+  .marquee .repeat {
+    display: none;
   }
   *,
   *::before,
