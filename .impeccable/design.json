@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T03:15:34.176Z",
+  "generatedAt": "2026-10-27T07:40:00.578Z",
   "title": "Design System: HackUC3M",
   "extensions": {
     "colorMeta": {
@@ -187,6 +187,10 @@
       "heading": {
         "displayName": "Heading",
         "purpose": "Geist 600 20px for h3 and panel titles."
+      },
+      "numeral": {
+        "displayName": "Error numeral",
+        "purpose": "Geist 600 in plum for the 404 numeral, with Charlie's coin as the zero. Decorative only."
       },
       "body": {
         "displayName": "Interface",

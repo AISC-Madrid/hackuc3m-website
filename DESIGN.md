@@ -66,6 +66,12 @@ typography:
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.65
+  numeral:
+    fontFamily: "Geist, sans-serif"
+    fontSize: "clamp(5rem, 22vw, 10rem)"
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: "-0.02em"
   small:
     fontFamily: "Geist, sans-serif"
     fontSize: "14px"
@@ -85,6 +91,7 @@ rounded:
   pill: "9999px"
   field: "12px"
   panel: "12px"
+  circle: "50%"
 spacing:
   unit: "4px"
   control-gap: "16px"
@@ -186,6 +193,7 @@ Dos familias, cargadas con `next/font/google` en `app/layout.tsx`:
 | Entradilla | Geist | 18 px | 400 | 1.6 | 0 | Primer párrafo de un bloque |
 | Cuerpo | Geist | 16 px | 400 | 1.65 | 0 | Texto corrido |
 | Pequeño / UI | Geist | 14 px | 400–500 | 1.5 | 0 | Botones, navegación, notas, etiquetas |
+| Numeral | Geist | `clamp(5rem, 22vw, 10rem)` | 600 | 1 | -0.02em | El «404» de la página de error, en plum |
 
 Reglas:
 
@@ -208,7 +216,7 @@ Reglas:
 ## Bordes, formas y profundidad
 
 - Bordes de 1 px. Las listas (FAQ, tracks) se separan con líneas, no con tarjetas.
-- Radios: píldora (`9999px`) para botones; 12 px para campos y paneles. No hay otros radios.
+- Radios: píldora (`9999px`) para botones; 12 px para campos y paneles; círculo (`50%`) solo para la moneda de Charlie. No hay otros radios.
 - Sin sombras, sin `backdrop-filter`, sin brillos radiales. Un panel se distingue por su fondo y su borde, no por elevación.
 - Panel sobre crema: fondo surface. Panel dentro de una banda surface: fondo crema.
 - Iconos de línea a 16–24 px en el color del texto que acompañan (o plum si son el acento del bloque). Solo pon una flecha si el elemento es un enlace.
@@ -243,6 +251,12 @@ Reglas:
 - **Datos clave** (`.event-facts`): fecha y lugar en Cinzel, separados por un rombo «◆» en blue.
 - **Wordmark**: «HackUC3M» en plum; en el hero, el año «'27» en mauve deep. En el pie, el wordmark entero en plum.
 
+### Página 404 (`app/not-found.tsx`)
+
+- Centrada y sin cabecera ni pie: el numeral «4 · moneda · 4» en plum, con Charlie dentro de la moneda haciendo de cero. El numeral es decorativo (`aria-hidden`).
+- **Moneda de Charlie** (`.charlie-coin`): círculo surface con borde `line` y un canto interior de 1 px en mauve; Charlie ocupa el 78 % del diámetro.
+- Debajo, el `h1` «Real Decreto 404» con estilo de subtítulo, una entradilla en ink soft, la firma «Firmado: Carlos III» en pequeño ink muted y una sola acción principal: «Volver al inicio».
+
 ### Navegación y pie
 
 - Cabecera: línea `line` inferior, isotipo de 48 px a la izquierda, enlaces Geist 14 px en ink soft (hover ink con subrayado plum que crece de izquierda a derecha), botón secundario compacto a la derecha.
@@ -271,6 +285,7 @@ Archivos en `public/`: `IsologoHackUc3m.svg` (moneda + texto), `IsotipoHackUc3m.
 - Usa siempre las versiones en color: el fondo es crema.
 - Nunca apliques `filter`, cambies colores, estires, rotes ni recortes un logo.
 - Isotipo en cabecera a 48 px (40 px en móvil). Lockup de AISC a 120–160 px de ancho.
+- Charlie, la mascota (retrato de Carlos III), está en `public/charlie.svg` y ya usa la paleta. Mismas reglas que los logos; hoy solo aparece en la página 404.
 - No afirmes ser «el primer» ni «el oficial» hackathon.
 
 ## Emails
