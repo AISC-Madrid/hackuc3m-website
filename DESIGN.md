@@ -107,7 +107,7 @@ components:
 
 # Sistema de diseño: HackUC3M · Los Ilustrados
 
-Referencia normativa de todo lo que lleve el nombre HackUC3M: la web pública, el panel de organización, los emails y cualquier pieza nueva. Si el código contradice este documento, manda este documento. Última actualización: 2026-11-23, al pasar la landing V3 del canvas al código.
+Referencia normativa de todo lo que lleve el nombre HackUC3M: la web pública, el panel de organización, los emails y cualquier pieza nueva. Si el código contradice este documento, manda este documento. Última actualización: 2026-11-23, al pasar la landing V3 y la plantilla de documento del canvas al código.
 
 El porqué de cada decisión, con lo descartado, está en `docs/diseno-landing.md`. El canvas (https://claude.ai/artifact/89JnFK6ukw8uUHzHYmfoNf) queda como mesa de exploración: lo que se apruebe allí entra con un PR que actualiza este documento.
 
@@ -204,7 +204,7 @@ Todos en `app/globals.css`, salvo lo propio de cada sección, que vive junto a s
 - **Esquinera** (`.esq`): roleos de Van Hulsen; la tinta sale del vértice exterior al abrir la página.
 - **Filete que se traza** (`.tz`, `.tz.una`): cualquier bloque con filete arriba (y abajo).
 - **Contador**: numeradora en Xanh Mono; cada rueda gira solo cuando cambia su dígito.
-- **Pie**: colaboradores (AISC y UC3M sin teñir), correo, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
+- **Pie** (`app/pie.tsx`): colaboradores (AISC y UC3M sin teñir), correo, cómo llegar, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
 
 ## Movimiento
 
@@ -239,9 +239,21 @@ Archivos en `public/`: `IsologoHackUc3m.svg`, `IsotipoHackUc3m.svg` y `hackuc3m-
 - Nunca apliques `filter`, cambies colores, estires ni recortes un logo propio o ajeno.
 - No afirmes ser «el primer» ni «el oficial» hackathon.
 
-## Panel de organización, privacidad y 404
+## Páginas de documento
 
-Siguen en `app/interior.css` con los tokens y las fuentes del sistema, a la espera de su propio paso (la plantilla de documento llega con `/privacidad` en el PR 1.4).
+`/privacidad`, `/codigo-de-conducta`, `/como-llegar` y `/creditos` comparten la plantilla `app/documento/` (Legal.dc.html del canvas). Son estáticas y su texto sale de `contenido/*.md`, así que quien edite el texto no toca diseño; `/creditos` se genera desde `assets/creditos.json`.
+
+- **Barra fija** (`.top.fija`): isotipo y nombre siempre visibles, y el botón de preinscripción. Se vuelve a la portada con el logo.
+- **Portada**: esquineras de Van Hulsen a 150 px (84 en móvil), una viñeta sobre el título, rótulo «Documento I · HackUC3M’27», título en Ibarra 64 px (40 en móvil), entradilla en cursiva y vigencia en `.lab`. Entra en cascada como el hero.
+- **Índice** al margen, fijo, con numerales romanos en Cinzel y el filete que se traza al pasar el ratón; en móvil, plegable y pegado bajo la barra.
+- **Apartado** (`##`): numeral romano automático, texto a 38rem y glosa «En corto» (`>`) al margen en Brygada cursiva con filete ciruela; en móvil, entre el título y el texto. `###` es un rótulo en versal; las listas llevan raya ciruela o numeral en Xanh Mono.
+- **Florón** (`---`) entre apartados y **remate** al final; se descubren como las láminas. Cierra un bloque de contacto sobre papel de lis malva.
+- **Viñetas**: catálogo cerrado en `app/documento/documento.tsx` (`torre`, `corona`, `jarron`, `flor`). Ampliarlo es añadir un grabado con su crédito y darle nombre.
+- Sin textos entre corchetes: `npm test` falla si un `.md` de `contenido/` los tiene.
+
+## Panel de organización y 404
+
+Siguen en `app/interior.css` con los tokens y las fuentes del sistema, a la espera de su propio paso.
 
 ## Emails
 

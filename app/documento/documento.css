@@ -1,0 +1,460 @@
+/* Plantilla de documento (Legal.dc.html del canvas). Barra, pie, esquineras, filetes que se trazan
+   y botones vienen de app/globals.css; aquí solo la maqueta del documento. */
+
+.vin,
+.floron i,
+.cul i {
+  display: block;
+  background: var(--plum);
+  -webkit-mask: var(--m) center / contain no-repeat;
+  mask: var(--m) center / contain no-repeat;
+}
+
+/* Portada: esquineras, viñeta, rótulo, título, entradilla y vigencia. */
+.portada {
+  position: relative;
+  text-align: center;
+  padding: 56px 0 52px;
+  border-bottom: 1px solid var(--line);
+}
+.portada .esq {
+  position: absolute;
+  top: 8px;
+  width: 150px;
+  height: auto;
+  pointer-events: none;
+}
+.portada .esq.izq {
+  left: 12px;
+  transform: scaleX(-1);
+}
+.portada .esq.der {
+  right: 12px;
+}
+.portada .vin {
+  width: 96px;
+  height: 70px;
+  margin: 0 auto 18px;
+  background: var(--ink);
+}
+.portada .caps {
+  margin: 0;
+}
+.portada h1 {
+  margin: 14px 0 0;
+  font: 400 64px/1.05 var(--serif);
+  letter-spacing: -0.01em;
+}
+.portada .lead {
+  margin: 16px auto 0;
+  max-width: 34rem;
+  font: italic 400 22px/1.4 var(--serif);
+  color: var(--ink-soft);
+  text-wrap: balance;
+}
+.portada .meta {
+  margin: 22px 0 0;
+  text-wrap: balance;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .portada .wrap > * {
+    animation: entra var(--t-slow) var(--ease-out) backwards;
+  }
+  .portada .wrap > :nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .portada .wrap > :nth-child(3) {
+    animation-delay: 0.18s;
+  }
+  .portada .wrap > :nth-child(4) {
+    animation-delay: 0.28s;
+  }
+  .portada .wrap > :nth-child(5) {
+    animation-delay: 0.36s;
+  }
+}
+
+/* Cuerpo: índice fijo al margen y el documento. */
+.cuerpo {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 96px;
+  padding-top: 72px;
+  padding-bottom: 120px;
+}
+.indice {
+  position: sticky;
+  top: calc(var(--hdr) + 33px);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ind-t {
+  margin: 0 0 16px;
+}
+.ind-m {
+  display: none;
+}
+.indice summary {
+  list-style: none;
+}
+.indice summary::-webkit-details-marker {
+  display: none;
+}
+.indice ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+}
+/* Cada entrada lleva el filete que se traza al pasar el ratón, como los apartados de la barra. */
+.indice li a {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font: 400 18px/1.3 var(--serif);
+  color: var(--ink);
+  text-decoration: none;
+  background: linear-gradient(var(--plum), var(--plum)) 0 100% / 0% 1px no-repeat;
+  transition:
+    background-size var(--t-fast) var(--ease-out),
+    color var(--t-fast) ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .indice li a:hover {
+    color: var(--plum);
+    background-size: 100% 1px;
+  }
+}
+@media (hover: none) {
+  .indice li a:active {
+    background-size: 100% 1px;
+  }
+}
+.indice li span {
+  font: 600 12px/1.6 var(--caps);
+  letter-spacing: 0.2em;
+  color: var(--plum);
+}
+.indice .otro {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-size: 17px;
+}
+
+.intro p {
+  margin: 0 0 32px;
+  max-width: 40rem;
+  font: 400 26px/1.5 var(--serif);
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.intro {
+  margin-bottom: 40px;
+}
+.sec {
+  display: grid;
+  grid-template-columns: minmax(0, 38rem) 220px;
+  gap: 24px 64px;
+  padding: 40px 0 48px;
+  border-top: 1px solid var(--line);
+}
+.sec h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  font: 400 40px/1.15 var(--serif);
+}
+.sec .rn {
+  font: 600 15px/1 var(--caps);
+  letter-spacing: 0.24em;
+  color: var(--plum);
+  min-width: 44px;
+}
+.txt {
+  grid-column: 1;
+  grid-row: 2;
+}
+.txt > * {
+  margin: 0 0 16px;
+}
+.txt > *:last-child {
+  margin-bottom: 0;
+}
+.txt p,
+.txt li {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.txt strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+.txt h3 {
+  margin: 28px 0 4px;
+  font: 500 11.5px/1.5 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--plum-deep);
+}
+.txt h3:first-child {
+  margin-top: 0;
+}
+.txt h3 + p {
+  margin-top: 0;
+}
+.txt ul,
+.txt ol {
+  list-style: none;
+  padding: 0;
+}
+.txt li {
+  position: relative;
+  padding: 10px 0 10px 40px;
+  border-bottom: 1px solid var(--line);
+}
+.txt li:first-child {
+  border-top: 1px solid var(--line);
+}
+.txt ul li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1.32em;
+  width: 18px;
+  height: 1px;
+  background: var(--plum);
+}
+.txt ol {
+  counter-reset: n;
+}
+.txt ol li {
+  counter-increment: n;
+}
+.txt ol li::before {
+  content: counter(n, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 10px;
+  font: 400 19px/1.7 var(--num);
+  color: var(--plum);
+}
+.glosa {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 4px 0 0;
+  padding-left: 20px;
+  border-left: 1px solid var(--plum);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font: italic 400 15px/1.55 var(--mono);
+  color: var(--plum-deep);
+}
+.glosa .lab {
+  color: var(--plum);
+}
+.floron {
+  padding: 28px 0 0;
+  border-top: 1px solid var(--line);
+}
+.floron i {
+  width: 200px;
+  height: 56px;
+  margin: 0 auto;
+}
+.cul {
+  padding: 24px 0 48px;
+  max-width: calc(38rem + 284px);
+  border-top: 1px solid var(--line);
+}
+.cul i {
+  width: 120px;
+  height: 80px;
+  margin: 24px auto 0;
+}
+/* Florón y remate se descubren de arriba abajo al entrar, como las láminas. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .floron i,
+    .cul i {
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 0s 99999s;
+    }
+    @container style(--on: 1) {
+      .floron i,
+      .cul i {
+        clip-path: inset(0 0 0 0);
+        transition: clip-path var(--t-slow) var(--ease-io);
+      }
+    }
+  }
+}
+.contacto {
+  padding: 40px 48px;
+  background: var(--cream) url(/grabados/tramas/lis-malva.png) 0 0 / 54px 60px;
+  border: 1px solid var(--line);
+  max-width: calc(38rem + 284px);
+}
+.contacto > * {
+  background: var(--cream);
+  margin: 0;
+  display: table;
+  padding: 2px 8px;
+}
+.contacto p:not(.lab, .nota) {
+  font-size: 21px;
+  margin: 10px 0 18px;
+}
+
+/* Móvil: una columna; índice plegable fijo bajo la barra; glosa entre el título y el texto. */
+@container (max-width: 600px) {
+  .portada {
+    padding: 36px 0 32px;
+  }
+  .portada .esq {
+    width: 84px;
+    top: 6px;
+  }
+  .portada .vin {
+    width: 72px;
+    height: 52px;
+    margin-bottom: 12px;
+  }
+  .portada .caps {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+  }
+  .portada h1 {
+    font-size: 40px;
+    margin-top: 10px;
+  }
+  .portada .lead {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  .portada .meta {
+    margin-top: 16px;
+    font-size: 10px;
+    padding: 0 8px;
+  }
+  .cuerpo {
+    display: block;
+    padding-top: 0;
+    padding-bottom: 72px;
+  }
+  .indice {
+    position: sticky;
+    top: calc(var(--hdr) + 1px);
+    z-index: 4;
+    margin: 0 calc(-1 * clamp(20px, 5cqi, 64px)) 40px;
+    padding: 0 clamp(20px, 5cqi, 64px);
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .ind-d {
+    display: none;
+  }
+  .ind-m {
+    display: block;
+    padding: 2px 0;
+  }
+  .indice summary {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 48px;
+    margin: 0;
+  }
+  .indice summary span {
+    margin: 0 auto 0 8px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    font-size: 13px;
+  }
+  /* El mismo «+» que gira de las preguntas. */
+  .indice summary .pl {
+    position: relative;
+    width: 14px;
+    height: 14px;
+  }
+  .indice summary .pl::before,
+  .indice summary .pl::after {
+    content: "";
+    position: absolute;
+    background: var(--plum);
+    left: 0;
+    top: 6.5px;
+    width: 14px;
+    height: 1.5px;
+    transition: transform var(--t-fast) var(--ease-out);
+  }
+  .indice summary .pl::after {
+    transform: rotate(90deg);
+  }
+  .indice details[open] .pl::after {
+    transform: rotate(0);
+  }
+  .indice ol {
+    margin-bottom: 12px;
+    max-height: 60vh;
+    overflow: auto;
+  }
+  .indice li a {
+    font-size: 17px;
+    min-height: 44px;
+    align-items: center;
+  }
+  .indice .otro {
+    display: none;
+  }
+  .intro p {
+    font-size: 21px;
+  }
+  .sec {
+    display: block;
+    padding: 32px 0 36px;
+  }
+  .sec h2 {
+    font-size: 30px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .sec .rn {
+    min-width: 0;
+    font-size: 13px;
+  }
+  .glosa {
+    margin: 14px 0 20px;
+    padding-left: 14px;
+  }
+  .txt p,
+  .txt li {
+    font-size: 17px;
+  }
+  .txt li {
+    padding-left: 34px;
+  }
+  .txt ol li::before {
+    font-size: 17px;
+  }
+  .floron i {
+    width: 150px;
+    height: 42px;
+  }
+  .contacto {
+    padding: 24px 18px;
+  }
+  .contacto p:not(.lab, .nota) {
+    font-size: 18px;
+  }
+}

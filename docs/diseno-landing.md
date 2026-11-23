@@ -427,3 +427,14 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
 - El pie todavía no enlaza a `/codigo-de-conducta` ni a `/creditos` (llegan en el PR 1.4); la línea de créditos queda sin enlace.
 - Imágenes: los PNG grandes pasan a WebP (verjurado y filigrana reducidos a 800 y 600 px, ya que se ven al 6 y 14 %). Los SVG de potrace (skyline, moneda, viñetas de comida) siguen sin pasar por `svgo`: queda pendiente.
 - Créditos en `assets/creditos.json`, sacados de la guía de estilo. **Faltan**: la fuente de la corona de laurel y el detalle por pieza de las viñetas de la agenda (estaban en `.design-refs/grabados/creditos-vinetas.json`, que no está en el repo).
+
+## 23 nov 2026 · Páginas de documento en el código (PR 1.4)
+
+- La plantilla `Legal.dc.html` pasa a `app/documento/` y la usan `/privacidad`, `/codigo-de-conducta`, `/como-llegar` y `/creditos`. El texto sigue en markdown (`contenido/*.md`) con las mismas nueve piezas; lo lee un lector propio de 150 líneas (`lib/documento.ts`, con tests), sin dependencia de markdown.
+- Rutas con guiones (`/codigo-de-conducta`, como en el plan), no `/codigodeconducta` como en el canvas.
+- Las viñetas «torre» y «corona» del catálogo son los mismos ficheros que dos viñetas de la agenda, así que se reutilizan. Se añaden «jarron» (Cómo llegar) y «flor» (Créditos), también de la agenda. Florón y remate entran en `public/grabados/vinetas/`.
+- Código de conducta: se quita «[distintivo por definir]»; queda «Habla con cualquier persona de la organización». Sigue siendo el borrador del canvas, pendiente de revisar con el equipo.
+- Privacidad: el texto del canvas, que es el de la web anterior. Todavía no cubre la inscripción, el CV ni los plazos de borrado (P-6): dependen de las decisiones 4 y 7 y de la pregunta abierta 5, y se añadirán cuando se construya la inscripción.
+- Cómo llegar (nuevo, sin artboard): dirección de la EPS, Cercanías C-5, Metrosur y autobús, y qué traer (portátil, cargador, documento de identidad y carné). Borrador para que el equipo lo revise; el aula y la entrada se publicarán más adelante.
+- Créditos: generados desde `assets/creditos.json`, agrupados por carpeta, más tipografías (SIL OFL) y una nota de marcas. El skyline entra como dibujo propio. La corona de laurel y la ficha por pieza de varias viñetas siguen «por confirmar».
+- El pie enlaza ya a Cómo llegar, Código de conducta y Créditos.

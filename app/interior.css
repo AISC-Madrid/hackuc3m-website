@@ -1,5 +1,5 @@
 /* Páginas interiores que aún no se han pasado al sistema de la landing:
-   panel de organización, privacidad (se rehace con la plantilla de documento en el PR 1.4) y 404.
+   panel de organización y 404.
    Solo usa tokens de :root. */
 
 .button {
@@ -53,29 +53,6 @@
 }
 .text-link:hover {
   text-decoration-color: var(--plum-deep);
-}
-
-/* Privacidad */
-.prose-page {
-  max-width: 720px;
-  margin: 80px auto;
-  padding: 0 24px;
-}
-.prose-page h1 {
-  margin: 32px 0;
-  font-size: clamp(40px, 6vw, 56px);
-  line-height: 1.05;
-}
-.prose-page h2 {
-  margin: 40px 0 16px;
-  font-size: 28px;
-}
-.prose-page p {
-  margin: 16px 0;
-  color: var(--ink-soft);
-}
-.prose-page p a {
-  color: var(--plum-deep);
 }
 
 /* Panel de organización */

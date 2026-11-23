@@ -287,6 +287,11 @@
       "name": "Plate",
       "kind": "image",
       "description": "Period engraving with a one-line italic caption; uncovers top to bottom once."
+    },
+    {
+      "name": "Document page",
+      "kind": "template",
+      "description": "Static page from contenido/*.md: fixed bar, cover with corner engravings and one vignette, sticky index with Roman numerals, sections with an «En corto» margin note, fleuron, end-piece and a contact block on mauve lily paper."
     }
   ],
   "narrative": {
