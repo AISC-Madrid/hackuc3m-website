@@ -416,3 +416,14 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
 ## 23 nov 2026 · V3 cerrada para implementar
 
 - El usuario da por cerrada `V3.dc.html` para llevar la landing al código. A partir de aquí lo aprobado de la landing se implementa según `docs/plan-implementacion.md` (fase 1); los cambios nuevos se exploran en el canvas y entran con un PR que actualiza `DESIGN.md`.
+
+## 23 nov 2026 · La landing pasa al código (PR 1.1 y 1.3)
+
+- `sistema.css` entra en `app/globals.css` y los estilos propios de V3 en `app/(landing)/landing.css`. Tailwind y Geist se quitan. Fuentes con `next/font/google`. Desde aquí, `DESIGN.md` (reescrito) y el código son la referencia; el canvas queda como mesa de exploración.
+- Dos colores nuevos en la tabla, con un único uso cada uno: `paper-light` (#fffcf0, la luz del gofrado) y `gold-shadow` (#3f2c16, el texto del reverso de la moneda). Antes estaban sueltos en V3. Las transparencias pasan a `color-mix`.
+- **No se publican los logos de relleno** (Meta, Apple, Amazon, Google). Los tracks 03–06 salen como «Por anunciar», con el cuadro del logo vacío; la cinta de logos solo lleva Kapia y Bending Spoons.
+- **Sin textos entre corchetes en la web.** Lo que en V3 era `[…]` se sustituye por texto prudente que no promete nada sin decidir: las horas sin fijar dicen «por fijar»; las explicaciones de las cifras no mencionan grado/máster ni que sea gratis (decisión 3 pendiente); el bloque de empresas no menciona CVs (decisión 4) y pierde el enlace al dossier, que no existe.
+- Los vehículos dejan de ser enlaces (iban a `#`): son decorativos, con su nombre al pasar el ratón.
+- El pie todavía no enlaza a `/codigo-de-conducta` ni a `/creditos` (llegan en el PR 1.4); la línea de créditos queda sin enlace.
+- Imágenes: los PNG grandes pasan a WebP (verjurado y filigrana reducidos a 800 y 600 px, ya que se ven al 6 y 14 %). Los SVG de potrace (skyline, moneda, viñetas de comida) siguen sin pasar por `svgo`: queda pendiente.
+- Créditos en `assets/creditos.json`, sacados de la guía de estilo. **Faltan**: la fuente de la corona de laurel y el detalle por pieza de las viñetas de la agenda (estaban en `.design-refs/grabados/creditos-vinetas.json`, que no está en el repo).

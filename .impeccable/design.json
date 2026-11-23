@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T07:40:00.578Z",
-  "title": "Design System: HackUC3M",
+  "generatedAt": "2026-11-23T17:00:00.000Z",
+  "title": "Design System: HackUC3M · Los Ilustrados",
   "extensions": {
     "colorMeta": {
       "cream": {
@@ -157,72 +157,97 @@
           "oklch(84% 0.0318 238.99)",
           "oklch(95% 0.0318 238.99)"
         ]
+      },
+      "paper-light": {
+        "role": "neutral",
+        "displayName": "Paper light",
+        "tonalRamp": [
+          "oklch(15% 0.0161 95.22)",
+          "oklch(26% 0.0161 95.22)",
+          "oklch(38% 0.0161 95.22)",
+          "oklch(49% 0.0161 95.22)",
+          "oklch(61% 0.0161 95.22)",
+          "oklch(72% 0.0161 95.22)",
+          "oklch(84% 0.0161 95.22)",
+          "oklch(95% 0.0161 95.22)"
+        ]
+      },
+      "gold-shadow": {
+        "role": "accent",
+        "displayName": "Gold shadow",
+        "tonalRamp": [
+          "oklch(15% 0.0446 68.96)",
+          "oklch(26% 0.0446 68.96)",
+          "oklch(38% 0.0446 68.96)",
+          "oklch(49% 0.0446 68.96)",
+          "oklch(61% 0.0446 68.96)",
+          "oklch(72% 0.0446 68.96)",
+          "oklch(84% 0.0446 68.96)",
+          "oklch(95% 0.0446 68.96)"
+        ]
       }
     },
     "typographyMeta": {
-      "display": {
+      "wordmark": {
         "displayName": "Wordmark",
-        "purpose": "Cinzel 700 with positive tracking for the HackUC3M ’27 wordmark only."
+        "family": "Cinzel",
+        "use": "HackUC3M in the hero, plum, one line"
       },
-      "facts": {
-        "displayName": "Key facts",
-        "purpose": "Cinzel 400 for the single date ◆ venue line."
+      "rotulo": {
+        "displayName": "Rótulo",
+        "family": "Cinzel",
+        "use": "Roman-numeral date, «Gran premio final»"
       },
-      "display-mobile": {
-        "displayName": "Wordmark (mobile)",
-        "purpose": "Smaller wordmark below 650px so it stays on one line."
+      "pluma": {
+        "displayName": "Pluma",
+        "family": "Corinthia",
+        "use": "Only the ’27"
       },
-      "title": {
-        "displayName": "Page title",
-        "purpose": "Geist 600 for h1 on inner pages."
+      "titular": {
+        "displayName": "Titular",
+        "family": "Ibarra Real Nova",
+        "use": "Section headings, one tone"
       },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Geist 600 for section titles, one tone."
+      "cuerpo": {
+        "displayName": "Cuerpo",
+        "family": "Ibarra Real Nova",
+        "use": "Running text"
       },
-      "subhead": {
-        "displayName": "Subhead",
-        "purpose": "Geist 600 24px for inner-page h2 and status messages."
+      "etiqueta": {
+        "displayName": "Etiqueta",
+        "family": "Brygada 1918",
+        "use": "Upright small caps labels; never italic caps"
       },
-      "heading": {
-        "displayName": "Heading",
-        "purpose": "Geist 600 20px for h3 and panel titles."
+      "nota": {
+        "displayName": "Nota",
+        "family": "Brygada 1918 italic",
+        "use": "Captions, phrases, the email field"
       },
-      "numeral": {
-        "displayName": "Error numeral",
-        "purpose": "Geist 600 in plum for the 404 numeral, with Charlie's coin as the zero. Decorative only."
-      },
-      "body": {
-        "displayName": "Interface",
-        "purpose": "Geist for all other text; 14px minimum; no tracked-caps labels above headings."
-      },
-      "email-display": {
-        "displayName": "Email wordmark",
-        "purpose": "Georgia stands in for Cinzel in email clients."
-      },
-      "email-body": {
-        "displayName": "Email text",
-        "purpose": "Arial stands in for Geist in email clients."
+      "cifra": {
+        "displayName": "Cifra",
+        "family": "Xanh Mono",
+        "use": "Every figure and number"
       }
     },
-    "shadows": [],
-    "motion": [
-      {
-        "name": "ease-out",
-        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
-        "purpose": "The single easing curve of the system."
+    "shadows": {
+      "none": "No shadows. The primary button has an inner cream rule; the toast a double rule."
+    },
+    "motion": {
+      "tokens": {
+        "--t-fast": "200ms",
+        "--t-mid": "450ms",
+        "--t-slow": "900ms"
       },
-      {
-        "name": "state",
-        "value": "200ms ease-out",
-        "purpose": "Colour, border and underline changes."
+      "curves": {
+        "--ease-out": "cubic-bezier(.23,1,.32,1)",
+        "--ease-io": "cubic-bezier(.77,0,.175,1)"
       },
-      {
-        "name": "press",
-        "value": "160ms ease-out",
-        "purpose": "Buttons scale to 0.97 while pressed."
-      }
-    ],
+      "rules": [
+        "Scroll-linked motion only in CSS, behind @supports (animation-timeline: view()) and prefers-reduced-motion: no-preference",
+        "Things that appear do so once (latch: --on with a 99999s return transition)",
+        "Only loops (vehicles, logo ribbon) and counters keep their own durations"
+      ]
+    },
     "breakpoints": [
       {
         "name": "compact",
@@ -239,84 +264,69 @@
       "name": "Primary action",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one main action on screen: plum pill with cream text.",
-      "html": "<button class=\"ds-primary\">Preinscribirme <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
-      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 28px;font:500 14px Geist,sans-serif;line-height:1.2;border:1px solid transparent;border-radius:9999px;cursor:pointer;transition:background-color 200ms cubic-bezier(.23,1,.32,1),border-color 200ms cubic-bezier(.23,1,.32,1),color 200ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);background:#7e3a6b;color:#f3f0df}.ds-primary:hover{background:#652f56}.ds-primary:active{transform:scale(.97)}.ds-primary:disabled{opacity:.6;cursor:wait;transform:none}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "description": "Square plum button with an inner cream rule and an engraved pointing hand that advances 4px on hover."
     },
     {
       "name": "Secondary action",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Supporting action and header call: mauve outline, plum text.",
-      "html": "<button class=\"ds-secondary\">Quiero colaborar <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
-      "css": ".ds-secondary{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 28px;font:500 14px Geist,sans-serif;line-height:1.2;border:1px solid transparent;border-radius:9999px;cursor:pointer;transition:background-color 200ms cubic-bezier(.23,1,.32,1),border-color 200ms cubic-bezier(.23,1,.32,1),color 200ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);background:transparent;color:#7e3a6b;border-color:#c49db5}.ds-secondary:hover{border-color:#7e3a6b}.ds-secondary:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "description": "Outlined plum-deep button; surface paper rolls in from the left on hover."
     },
     {
-      "name": "Email field",
+      "name": "Link",
+      "kind": "link",
+      "description": "Line-coloured underline that inks to plum from left to right."
+    },
+    {
+      "name": "Field",
       "kind": "input",
       "refersTo": "input",
-      "description": "Persistent label above a cream field with a mauve-deep boundary.",
-      "html": "<label class=\"ds-label\" for=\"ds-email\">Tu email</label><input class=\"ds-input\" id=\"ds-email\" type=\"email\" placeholder=\"tu@email.com\"/>",
-      "css": ".ds-label{display:block;font:500 14px Geist,sans-serif;color:#2c1425;margin-bottom:8px}.ds-input{width:100%;min-height:48px;padding:12px 14px;background:#f3f0df;border:1px solid #9e678c;border-radius:12px;color:#2c1425;font:16px Geist,sans-serif;transition:border-color 200ms cubic-bezier(.23,1,.32,1)}.ds-input::placeholder{color:#705f64}.ds-input:hover,.ds-input:focus{border-color:#7e3a6b}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
+      "description": "Upright small-caps label and italic Brygada value on one baseline; plum rule draws on focus."
     },
     {
-      "name": "Navigation links",
-      "kind": "nav",
-      "description": "Ink-soft links with a plum underline that grows from the left.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#encuentro\">El hackathon</a><a href=\"#retos\">Tracks</a><a href=\"#dudas\">FAQ</a></nav>",
-      "css": ".ds-nav{display:flex;gap:28px;font:14px Geist,sans-serif;color:#58444e}.ds-nav a{color:inherit;text-decoration:none;position:relative;padding-block:12px;transition:color 200ms cubic-bezier(.23,1,.32,1)}.ds-nav a::after{content:\"\";position:absolute;bottom:8px;left:0;right:0;height:1px;background:#7e3a6b;transform:scaleX(0);transform-origin:left;transition:transform 200ms cubic-bezier(.23,1,.32,1)}.ds-nav a:hover{color:#2c1425}.ds-nav a:hover::after,.ds-nav a:focus-visible::after{transform:scaleX(1)}.ds-primary:focus-visible,.ds-secondary:focus-visible,.ds-input:focus-visible,.ds-nav a:focus-visible{outline:2px solid #7e3a6b;outline-offset:3px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}"
-    },
-    {
-      "name": "Panel",
-      "kind": "card",
-      "refersTo": "panel",
-      "description": "Flat surface panel with a 1px line border; no shadow.",
-      "html": "<section class=\"ds-panel\"><h3>Varios retos confirmados</h3><p>Pronto publicaremos los tracks, las empresas participantes y todos los detalles.</p></section>",
-      "css": ".ds-panel{background:#ece4d9;border:1px solid #decbcc;border-radius:12px;padding:32px;max-width:480px;font-family:Geist,sans-serif;color:#2c1425}.ds-panel h3{margin:0 0 8px;font-size:20px;font-weight:600;letter-spacing:-.01em;line-height:1.3}.ds-panel p{margin:0;font-size:16px;line-height:1.65;color:#58444e}"
-    },
-    {
-      "name": "Hero wordmark",
-      "kind": "custom",
-      "description": "Cinzel wordmark, brand rule and key facts line.",
-      "html": "<div class=\"ds-hero\"><h1>HackUC3M <span>’27</span></h1><p class=\"ds-lead\">El hackathon de la Universidad Carlos III de Madrid.</p><div class=\"ds-rule\"></div><p class=\"ds-facts\"><span>19–20 febrero 2027</span><span aria-hidden=\"true\">◆</span><span>EPS · Campus de Leganés</span></p></div>",
-      "css": ".ds-hero{background:#f3f0df;padding:48px 24px;text-align:center;color:#2c1425}.ds-lead{margin:24px auto 0;max-width:36rem;font:18px/1.6 Geist,sans-serif;color:#58444e}.ds-hero h1{margin:0;font:700 clamp(3rem,8vw,4.5rem)/1.05 Cinzel,serif;letter-spacing:.025em;color:#7e3a6b}.ds-hero h1 span{color:#9e678c}.ds-rule{max-width:28rem;height:1px;margin:40px auto;background:linear-gradient(90deg,transparent,#7e3a6b,#c49db5,transparent)}.ds-facts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;margin:0;font:18px/1.4 Cinzel,serif;letter-spacing:.025em}.ds-facts span[aria-hidden]{color:#9db2c1}"
+      "name": "Plate",
+      "kind": "image",
+      "description": "Period engraving with a one-line italic caption; uncovers top to bottom once."
     }
   ],
   "narrative": {
-    "northStar": "HackUC3M, on cream paper",
-    "overview": "A light, warm, university interface built on the logo’s own palette: cream, plum, mauve and a greyish blue, with a plum-derived ink for text. The Cinzel wordmark and a thin plum-to-mauve rule carry the brand voice; everything else is plain Geist.\n\nThe interface is flat. Space, one-pixel lines and tonal surfaces create structure; there are no shadows, glows, gradients (other than the brand rule) or ambient motion. Motion is limited to short colour transitions and a slight press on buttons.",
+    "northStar": "Los Ilustrados: Carlos III’s Enlightenment, printed for engineers of 2027",
+    "overview": "Cream paper and plum ink. Real public-domain engravings (Van Hulsen corners, Carnicero’s balloon, the Puerta de Alcalá, a rococo cartouche) tinted with CSS masks; Cinzel wordmark with a Corinthia pen ’27; Ibarra Real Nova for reading, Brygada 1918 for labels and notes, Xanh Mono for every number.\n\nThe layout is editorial: visible rules, extreme scale contrast, asymmetry and typographic indexes instead of cards. Motion is printing-press motion: things ink, draw or uncover themselves once, with three timings and two curves.",
     "keyCharacteristics": [
-      "Cream page background on every surface; no dark mode.",
-      "Logo palette only: plum for brand and action, mauve for detail, blue as ornament.",
-      "Cinzel limited to the wordmark and the key facts line; Geist for the interface, with no tracked-caps labels above headings.",
-      "Flat panels with 1px lines, pill buttons and 12px fields."
+      "Cream page, damask-of-lilies dark bands, no dark mode.",
+      "Only real engravings with credits; never hand-drawn ornaments.",
+      "Headlines in one tone, upright, with no highlighted words.",
+      "Never italic small caps; all figures in Xanh Mono.",
+      "Three timings, two curves, once-only scroll motion with a CSS fallback."
     ],
     "rules": [
       {
-        "name": "The Logo Palette Rule",
-        "body": "Use only the eleven tokens in DESIGN.md; every colour is a logo colour or derived from one. npm test enforces it.",
+        "name": "The Palette Rule",
+        "body": "Only the tokens in DESIGN.md; :root in app/globals.css is the only place in app/ that writes colours. npm test enforces it.",
         "section": "colors"
       },
       {
-        "name": "The Signature Rule",
-        "body": "Cinzel only for the wordmark and the date ◆ venue line, always with positive tracking.",
-        "section": "typography"
+        "name": "The Engraving Rule",
+        "body": "Only public-domain or CC0 engravings, each with an entry in assets/creditos.json.",
+        "section": "imagery"
       },
       {
-        "name": "The Flat Rule",
-        "body": "No shadows, glows, blur or gradients; the brand rule is the only gradient.",
-        "section": "elevation"
+        "name": "The Press Motion Rule",
+        "body": "--t-fast, --t-mid, --t-slow with --ease-out / --ease-io; scroll-linked motion only in CSS and only once.",
+        "section": "motion"
       }
     ],
     "dos": [
-      "Do keep the cream background and the logo palette on every new surface.",
-      "Do keep one visible primary action and pill-shaped buttons.",
-      "Do keep visible plum focus, 44px targets and reduced-motion support."
+      "Do use typographic indexes and rules instead of cards.",
+      "Do tint engravings with a mask over a palette colour.",
+      "Do keep each new pattern in app/globals.css and DESIGN.md."
     ],
     "donts": [
-      "Don’t bring back the dark aubergine theme, radial glow or blurred hero entrance.",
-      "Don’t add colours, greys, two-tone headlines, tracked-caps labels above headings or text below 14px.",
-      "Don’t communicate success or errors through colour alone."
+      "Don’t use Geist, pill buttons, rounded panels or the old brand gradient rule.",
+      "Don’t use shadows, gradients, glassmorphism, rays or gold gradients.",
+      "Don’t highlight a headline word in italic colour.",
+      "Don’t publish placeholder company logos.",
+      "Don’t animate with JS on scroll."
     ]
   }
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "../interior.css";
 export const metadata = { title: "Privacidad · HackUC3M" };
 export default function Privacy() {
   return (

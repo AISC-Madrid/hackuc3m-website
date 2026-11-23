@@ -1,7 +1,8 @@
 import { connection } from "next/server";
 import { readContent } from "@/lib/content";
-import EventPage from "./event-page";
+import Landing from "./(landing)/landing";
+
 export default async function Home() {
   await connection();
-  return <EventPage event={await readContent()} />;
+  return <Landing event={await readContent()} />;
 }

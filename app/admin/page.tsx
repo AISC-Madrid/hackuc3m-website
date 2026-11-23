@@ -1,3 +1,4 @@
+import "../interior.css";
 import Editor from "./editor";
 export const metadata = {
   title: "Organización · HackUC3M",

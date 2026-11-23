@@ -1,6 +1,6 @@
 // Comprueba que los colores de DESIGN.md, app/globals.css y los emails no se separan.
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
 
@@ -37,8 +37,17 @@ test("los tokens de app/globals.css coinciden con DESIGN.md", () => {
   assert.deepEqual(pairs(rootBlock, /--([a-z-]+): (#[0-9a-f]{6});/g), table);
 });
 
-test("app/globals.css solo escribe colores literales en :root", () => {
-  assert.deepEqual(css.replace(rootBlock, "").match(HEX), null);
+const COLOR = /#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|oklch|lab)\(/gi;
+const cssFiles = readdirSync(new URL("app", root), { recursive: true })
+  .filter((file) => file.endsWith(".css"))
+  .map((file) => join("app", file).replaceAll("\\", "/"));
+
+test("solo el :root de app/globals.css escribe colores literales", () => {
+  const offenders = cssFiles
+    .map((file) => [file, read(file)])
+    .map(([file, src]) => [file, (file === "app/globals.css" ? src.replace(rootBlock, "") : src).match(COLOR)])
+    .filter(([, found]) => found);
+  assert.deepEqual(offenders, []);
 });
 
 test("los emails solo usan colores de la paleta", () => {
@@ -57,4 +66,18 @@ test("los componentes no escriben colores literales", () => {
     .filter((file) => !file.endsWith("confirmation-email.ts"))
     .filter((file) => read(file.replaceAll("\\", "/")).match(HEX));
   assert.deepEqual(offenders, []);
+});
+
+test("cada grabado servido tiene su crédito en assets/creditos.json", () => {
+  const creditos = JSON.parse(read("assets/creditos.json"));
+  const conCredito = new Set(creditos.map((c) => c.fichero));
+  for (const c of creditos) {
+    for (const campo of ["fichero", "titulo", "autor", "fuente", "licencia"])
+      assert.ok(c[campo], `${c.fichero}: falta ${campo}`);
+    assert.ok(existsSync(new URL(`public/${c.fichero}`, root)), `${c.fichero} no existe`);
+  }
+  const servidos = readdirSync(new URL("public/grabados", root), { recursive: true, withFileTypes: true })
+    .filter((d) => d.isFile())
+    .map((d) => join(d.parentPath ?? d.path, d.name).replaceAll("\\", "/").split("/public/")[1]);
+  assert.deepEqual(servidos.filter((f) => !conCredito.has(f)), []);
 });

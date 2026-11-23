@@ -1,6 +1,6 @@
 ---
-name: HackUC3M
-description: Sistema visual claro de HackUC3M, construido sobre los colores del logo (crema, ciruela, malva y azul).
+name: HackUC3M · Los Ilustrados
+description: Carlos III, la Ilustración y el grabado de época con ingenieros de 2027. Papel crema, tinta ciruela, grabados reales y movimiento de imprenta.
 colors:
   cream: "#f3f0df"
   surface: "#ece4d9"
@@ -13,309 +13,259 @@ colors:
   mauve: "#c49db5"
   mauve-deep: "#9e678c"
   blue: "#9db2c1"
+  paper-light: "#fffcf0"
+  gold-shadow: "#3f2c16"
 typography:
-  display:
+  wordmark:
     fontFamily: "Cinzel, serif"
-    fontSize: "clamp(3rem, 8vw, 4.5rem)"
+    fontSize: "clamp(56px, 11cqi, 168px)"
     fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "0.025em"
-  display-mobile:
+    lineHeight: 1
+    letterSpacing: "0.02em"
+  rotulo:
     fontFamily: "Cinzel, serif"
-    fontSize: "clamp(2rem, 9.5vw, 3rem)"
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "0.025em"
-  facts:
-    fontFamily: "Cinzel, serif"
-    fontSize: "18px"
-    fontWeight: 400
+    fontSize: "13px"
+    fontWeight: 600
     lineHeight: 1.4
-    letterSpacing: "0.025em"
-  title:
-    fontFamily: "Geist, sans-serif"
-    fontSize: "clamp(2rem, 5vw, 2.75rem)"
-    fontWeight: 600
-    lineHeight: 1.15
-    letterSpacing: "-0.02em"
-  headline:
-    fontFamily: "Geist, sans-serif"
-    fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)"
-    fontWeight: 600
-    lineHeight: 1.15
-    letterSpacing: "-0.02em"
-  subhead:
-    fontFamily: "Geist, sans-serif"
-    fontSize: "24px"
-    fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: "-0.01em"
-  heading:
-    fontFamily: "Geist, sans-serif"
-    fontSize: "20px"
-    fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: "-0.01em"
-  lead:
-    fontFamily: "Geist, sans-serif"
-    fontSize: "18px"
+    letterSpacing: "0.32em"
+  manifiesto:
+    fontFamily: "Ibarra Real Nova, serif"
+    fontSize: "clamp(44px, 5.6cqi, 84px)"
     fontWeight: 400
-    lineHeight: 1.6
-  body:
-    fontFamily: "Geist, sans-serif"
-    fontSize: "16px"
+    lineHeight: 1.02
+    letterSpacing: "-0.01em"
+  titular:
+    fontFamily: "Ibarra Real Nova, serif"
+    fontSize: "clamp(40px, 4.4cqi, 60px)"
+    fontWeight: 400
+    lineHeight: 1.05
+  entradilla:
+    fontFamily: "Ibarra Real Nova, serif"
+    fontSize: "19px"
     fontWeight: 400
     lineHeight: 1.65
-  numeral:
-    fontFamily: "Geist, sans-serif"
-    fontSize: "clamp(5rem, 22vw, 10rem)"
-    fontWeight: 600
-    lineHeight: 1
-    letterSpacing: "-0.02em"
-  small:
-    fontFamily: "Geist, sans-serif"
+  cuerpo:
+    fontFamily: "Ibarra Real Nova, serif"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.65
+  etiqueta:
+    fontFamily: "Brygada 1918, serif"
+    fontSize: "11px"
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: "0.16em"
+  nota:
+    fontFamily: "Brygada 1918, serif"
     fontSize: "14px"
     fontWeight: 400
     lineHeight: 1.5
-  email-display:
-    fontFamily: "Georgia, serif"
-    fontSize: "28px"
-    fontWeight: 700
-    letterSpacing: "1px"
-  email-body:
-    fontFamily: "Arial, Helvetica, sans-serif"
-    fontSize: "16px"
+  cifra:
+    fontFamily: "Xanh Mono, monospace"
+    fontSize: "clamp(120px, 18cqi, 260px)"
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1
+    letterSpacing: "-0.04em"
+  pluma:
+    fontFamily: "Corinthia, cursive"
+    fontSize: "1.2em"
+    fontWeight: 400
+    lineHeight: 1
 rounded:
-  pill: "9999px"
-  field: "12px"
-  panel: "12px"
+  none: "0"
   circle: "50%"
 spacing:
   unit: "4px"
-  control-gap: "16px"
-  panel-padding: "32px"
-  section: "96px"
-  container: "1024px"
+  gutter: "clamp(20px, 5cqi, 64px)"
+  section: "140px"
+  container: "1280px"
+  header: "77px"
 components:
   button-primary:
     backgroundColor: "{colors.plum}"
     textColor: "{colors.cream}"
-    rounded: "{rounded.pill}"
-    padding: "12px 28px"
-    height: "48px"
+    rounded: "{rounded.none}"
+    padding: "0 26px"
+    height: "52px"
   button-primary-hover:
     backgroundColor: "{colors.plum-deep}"
   button-secondary:
     backgroundColor: "transparent"
-    textColor: "{colors.plum}"
-    borderColor: "{colors.mauve}"
-    rounded: "{rounded.pill}"
-    padding: "12px 28px"
-    height: "48px"
+    textColor: "{colors.plum-deep}"
+    borderColor: "{colors.plum-deep}"
+    rounded: "{rounded.none}"
+    padding: "0 26px"
+    height: "52px"
   button-secondary-hover:
-    borderColor: "{colors.plum}"
-  input:
-    backgroundColor: "{colors.cream}"
-    textColor: "{colors.ink}"
-    borderColor: "{colors.mauve-deep}"
-    rounded: "{rounded.field}"
-    padding: "12px 14px"
-    height: "48px"
-  panel:
     backgroundColor: "{colors.surface}"
-    borderColor: "{colors.line}"
-    rounded: "{rounded.panel}"
-    padding: "{spacing.panel-padding}"
+  input:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    borderColor: "{colors.ink}"
+    rounded: "{rounded.none}"
 ---
 
-# Sistema de diseño: HackUC3M
+# Sistema de diseño: HackUC3M · Los Ilustrados
 
-Esta es la referencia normativa para todo lo que lleve el nombre HackUC3M: la web pública, el panel de organización, los emails y cualquier pieza nueva. Si el código contradice este documento, manda este documento. Última actualización: 2026-10-27.
+Referencia normativa de todo lo que lleve el nombre HackUC3M: la web pública, el panel de organización, los emails y cualquier pieza nueva. Si el código contradice este documento, manda este documento. Última actualización: 2026-11-23, al pasar la landing V3 del canvas al código.
+
+El porqué de cada decisión, con lo descartado, está en `docs/diseno-landing.md`. El canvas (https://claude.ai/artifact/89JnFK6ukw8uUHzHYmfoNf) queda como mesa de exploración: lo que se apruebe allí entra con un PR que actualiza este documento.
 
 ## Dirección
 
-HackUC3M es claro, cálido y universitario. La paleta sale del propio logo, la moneda: crema, ciruela, malva y un azul grisáceo. La voz propia la ponen el wordmark en Cinzel y una línea fina degradada de ciruela a malva; todo lo demás es Geist, limpio y legible.
+**Los Ilustrados.** Carlos III, la Ilustración y el siglo XVIII como escenario, con ingenieros de 2027. Grabado de época, rococó, flor de lis borbónica y el saber. La ingeniería entra como nota secundaria: el skyline de la EPS y los vehículos pequeños de los equipos. Lujo discreto: escala, material y profundidad, no más cosas.
 
-Cuatro reglas resumen el sistema:
+Cinco reglas resumen el sistema:
 
-- **Fondo crema siempre.** No hay modo oscuro, ni fondos negros, ni blanco puro como fondo de página.
-- **Los colores del logo, cada uno con un papel.** Ciruela para la marca y la acción, malva para el detalle, azul como ornamento. Nada fuera de la paleta.
-- **Plano.** La estructura la dan el espacio, las líneas finas y los fondos tonales. Sin brillos, sin glassmorphism, sin sombras difuminadas.
-- **Cinzel es la firma, no la interfaz.** Solo para el wordmark y la línea de datos clave.
+- **Papel y tinta.** Fondo crema; texto en tinta; ciruela para la marca y la acción. Bandas oscuras en damasco ciruela con lis. Sin modo oscuro.
+- **Solo grabados reales.** De dominio público o CC0, con fuente y licencia en `assets/creditos.json`. Nunca ornamentos dibujados a mano en SVG o en código.
+- **Composición editorial.** Retícula visible con filetes, contraste de escala extremo, asimetría y listas tipográficas en lugar de tarjetas.
+- **Titulares en un solo tono**, en redonda y sin palabras destacadas.
+- **Movimiento de imprenta**: lo que aparece se entinta, se traza o se descubre, una sola vez, con tres tiempos y dos curvas.
 
 ## Color
 
-Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El resto se deriva de ellos: la tinta es ciruela oscurecida y los neutros son tinta o malva mezclados sobre crema.
+Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El resto se deriva de ellos. Las dos últimas filas son excepciones con un único uso.
 
 | Token | Hex | Papel |
 | --- | --- | --- |
-| Cream | `#f3f0df` | Fondo de página y de campos. La única superficie base. Color del logo. |
-| Surface | `#ece4d9` | Bandas y paneles que deben distinguirse del fondo (malva al 14 % sobre crema). |
-| Line | `#decbcc` | Separadores y bordes de paneles de 1 px (malva al 45 % sobre crema). |
-| Ink | `#2c1425` | Texto principal (ciruela al 35 % de luminosidad). |
-| Ink soft | `#58444e` | Párrafos secundarios y entradillas. |
-| Ink muted | `#705f64` | Metadatos, notas, pies, placeholders. El tono más claro permitido para texto. |
-| Plum | `#7e3a6b` | Wordmark, acción principal, enlaces, iconos de acento, foco. Color del logo. |
-| Plum deep | `#652f56` | Hover de la acción principal y mensajes de error. |
-| Mauve | `#c49db5` | Borde del botón secundario, subrayados, selección de texto, línea de marca. Nunca texto. Color del logo. |
-| Mauve deep | `#9e678c` | El año «'27» del hero y el borde de los campos de formulario. Solo texto display. |
-| Blue | `#9db2c1` | Ornamento: el rombo «◆» entre datos, puntos de estado. Nunca texto. Color del logo. |
+| Cream | `#f3f0df` | Papel: fondo de página. Texto y grabados sobre bandas oscuras. Color del logo. |
+| Surface | `#ece4d9` | Papel de lis del premio, rodillo del botón secundario, bandas que se distinguen del fondo. |
+| Line | `#decbcc` | Filetes finos, separadores, subrayado de enlace en reposo. |
+| Ink | `#2c1425` | Texto principal, filetes fuertes, grabados entintados. |
+| Ink soft | `#58444e` | Entradillas y párrafos secundarios. |
+| Ink muted | `#705f64` | Etiquetas, pies y placeholders. El tono más claro permitido para texto. |
+| Plum | `#7e3a6b` | Wordmark, acción principal, tracks, cifras del premio, foco. Color del logo. |
+| Plum deep | `#652f56` | Damasco de las bandas oscuras, hover de la acción principal, enlaces. |
+| Mauve | `#c49db5` | Estado inicial de las palabras que se leen con el scroll, selección de texto. Nunca texto en reposo. Color del logo. |
+| Mauve deep | `#9e678c` | Reservado para display a partir de 24 px. |
+| Blue | `#9db2c1` | Reservado como ornamento. Nunca texto. Color del logo. |
+| Paper light | `#fffcf0` | Solo la luz de 1,5 px del gofrado del hero. |
+| Gold shadow | `#3f2c16` | Solo el texto del reverso de la moneda del gran premio (oro viejo). |
 
-Contraste medido sobre crema: ink 14,9:1 · ink soft 7,8:1 · ink muted 5,2:1 · plum 6,8:1 · plum deep 8,8:1 · mauve deep 3,8:1 · mauve 2,1:1 · blue 1,9:1. Crema sobre plum: 6,8:1. Ink sobre mauve: 7,2:1.
+La moneda del premio va en oro viejo dentro de su propio SVG (`public/logos/moneda-oro.svg`, `moneda-reverso.svg`): es la única pieza con colores fuera de la paleta, y no se reutiliza.
 
 Reglas:
 
-- Usa los tokens, nunca hex sueltos. Los tokens viven en el `:root` de `app/globals.css` (y como colores de Tailwind vía `@theme inline`) con exactamente los valores de esta tabla. `npm test` comprueba que la tabla, el frontmatter, `globals.css` y el email coinciden.
-- No inventes colores ni grises neutros. Si de verdad hace falta un tono nuevo, derívalo de la paleta, añádelo aquí y en `globals.css` en el mismo cambio.
-- Mauve deep solo como texto a partir de 24 px. Mauve y blue nunca como texto.
-- Los colores rojo, verde o ámbar de «error / éxito / aviso» no existen: los estados se comunican con texto e iconos, y el error usa plum deep.
-- El único degradado del sistema es la **línea de marca**: 1 px de alto, `linear-gradient(90deg, transparent, plum, mauve, transparent)`. No uses degradados en fondos, botones, tarjetas ni texto.
-- Selección de texto: fondo mauve, texto ink.
+- Usa los tokens, nunca colores sueltos. `:root` de `app/globals.css` es el único sitio de `app/` que escribe colores. Las transparencias se hacen con `color-mix(in srgb, var(--token) N%, transparent)`. `npm test` comprueba que la tabla, el frontmatter, `globals.css`, los demás CSS de `app/` y los emails coinciden.
+- Los grabados se entintan con `mask` sobre un color de la paleta (crema en bandas oscuras), así que un mismo fichero sirve para cualquier color.
+- Los logos ajenos (AISC, UC3M) van con sus colores originales, sin teñir. Los logos de empresa de los tracks se tiñen en ciruela con máscara.
+- No hay rojo, verde ni ámbar de estado: el error usa ciruela y texto.
 
 ## Tipografía
 
-Dos familias, cargadas con `next/font/google` en `app/layout.tsx`:
+Cinco familias, cargadas con `next/font/google` en `app/layout.tsx` y expuestas como `--serif`, `--mono`, `--num`, `--caps` y `--hand`.
 
-- **Cinzel** (`--font-cinzel`): el wordmark «HackUC3M '27» (hero y pie) y la línea de datos clave (fecha ◆ lugar). Nada más.
-- **Geist** (`--font-geist-sans`): todo lo demás, incluidos los `h1` de páginas interiores.
-
-| Rol | Familia | Tamaño | Peso | Interlineado | Tracking | Uso |
-| --- | --- | --- | --- | --- | --- | --- |
-| Display | Cinzel | `clamp(3rem, 8vw, 4.5rem)` | 700 | 1.05 | 0.025em | Wordmark del hero |
-| Display móvil | Cinzel | `clamp(2rem, 9.5vw, 3rem)` | 700 | 1.05 | 0.025em | Wordmark por debajo de 650 px |
-| Datos clave | Cinzel | 18 px | 400 | 1.4 | 0.025em | Fecha ◆ lugar; wordmark del pie |
-| Título | Geist | `clamp(2rem, 5vw, 2.75rem)` | 600 | 1.15 | -0.02em | `h1` de páginas interiores |
-| Titular | Geist | `clamp(1.75rem, 3.5vw, 2.5rem)` | 600 | 1.15 | -0.02em | `h2` de sección |
-| Subtítulo | Geist | 24 px | 600 | 1.3 | -0.01em | `h2` de páginas interiores, mensajes de estado |
-| Encabezado | Geist | 20 px | 600 | 1.3 | -0.01em | `h3`, títulos de panel |
-| Entradilla | Geist | 18 px | 400 | 1.6 | 0 | Primer párrafo de un bloque |
-| Cuerpo | Geist | 16 px | 400 | 1.65 | 0 | Texto corrido |
-| Pequeño / UI | Geist | 14 px | 400–500 | 1.5 | 0 | Botones, navegación, notas, etiquetas |
-| Numeral | Geist | `clamp(5rem, 22vw, 10rem)` | 600 | 1 | -0.02em | El «404» de la página de error, en plum |
+| Rol | Familia | Tamaño | Uso |
+| --- | --- | --- | --- |
+| Wordmark | Cinzel 700 | `clamp(56px, 11cqi, 168px)`; 11cqi en móvil | «HackUC3M» del hero, en plum y en una línea |
+| Rótulo (`.caps`) | Cinzel 600, versal, 0.32em | 13 px; 26 px en el premio | Fecha en romanos del hero, «Gran premio final» |
+| Pluma | Corinthia 400 | 1.2em del wordmark | Solo el «’27» |
+| Manifiesto | Ibarra Real Nova | `clamp(44px, 5.6cqi, 84px)` | La frase del manifiesto |
+| Titular (`.h2`) | Ibarra Real Nova | `clamp(40px, 4.4cqi, 60px)` | Titulares de sección |
+| Cuerpo | Ibarra Real Nova | 18 px; 19 px en entradilla (`.p`) | Texto corrido |
+| Etiqueta (`.lab`) | Brygada 1918 500, versal, 0.16em | 10,5–11,5 px | Etiquetas, fechas, empresa del track |
+| Nota (`.nota`) | Brygada 1918 cursiva | 14–15 px | Pies de imagen, créditos, frases, el campo del correo |
+| Cifra | Xanh Mono | según bloque | Todas las cifras y números: banda de cifras, premio, numerales de track, horas de la agenda, contador |
 
 Reglas:
 
-- No hay más tamaños que los de esta tabla. Si hace falta otro, añádelo aquí primero.
-- El wordmark siempre en una línea.
-- Cinzel lleva tracking positivo (es una capitular romana). Nunca tracking negativo, nunca párrafos, nunca botones ni navegación.
-- Tamaño mínimo: 14 px. Campos de formulario a 16 px (evita el zoom en móvil).
-- Titulares con `text-wrap: balance`; párrafos con `text-wrap: pretty` y 36rem de ancho como máximo.
-- Jerarquía por tamaño y peso, no por color: un titular es ink entero, sin segundas líneas en gris.
-- Sin etiquetas en mayúsculas espaciadas encima de los titulares (eyebrows/kickers): el titular se sostiene solo, y si el contexto importa va en la entradilla.
+- **Nunca cursiva en versal.** Las etiquetas van en versal redonda; las frases, en cursiva.
+- La palabra que acompaña a una cifra («hackers», «en premios») va en Ibarra. Las fechas dentro de una frase y los números romanos no van en Xanh Mono.
+- Titulares con `text-wrap: balance`; párrafos con `pretty` y 36rem como máximo.
+- Descartadas y no se vuelven a proponer: Bodoni, La Belle Aurore, IM Fell, IBM Plex Mono, Libre Baskerville, Cormorant, Playfair, EB Garamond, Instrument Serif.
 
 ## Espaciado y layout
 
-- Unidad base de 4 px. Escala en uso: 4, 8, 12, 16, 24, 32, 40, 48, 64, 96.
-- Contenedor `.wrap` centrado de 1024 px como máximo. Margen lateral de 40 px en escritorio, 28 px por debajo de 900 px y 24 px por debajo de 650 px.
-- Secciones: 96 px de espacio vertical (`.section-space`), 64 px en móvil. Las secciones se separan con una línea `line` (`.section-rule`).
-- Mobile first: diseña a 390 px, luego 650 y 1024. Las dos columnas (`.split`) colapsan a una por debajo de 650 px.
-- El hero es centrado: wordmark, entradilla (que dice qué es y dónde), línea de marca, datos clave, acciones y estado. Sin emblema: el símbolo ya está en la cabecera.
+- Raíz de cada página: `.pagina` (`container-type: inline-size`). Las medidas fluidas usan `cqi` y los cortes, `@container` a 820 y 600 px.
+- Contenedor `.wrap` de 1280 px con margen `clamp(20px, 5cqi, 64px)`.
+- Secciones con 140 px de aire (96 en móvil). Barra superior de 77 px (`--hdr`).
+- Composición: alternar secciones ceremoniosas centradas (hero, premio) con secciones editoriales alineadas a la izquierda (`.split`: titular estrecho a la izquierda, contenido ancho a la derecha).
+- Índices tipográficos en lugar de tarjetas: tracks en columnas con filete vertical, agenda en fila de momentos, preguntas en lista con filete.
 
-## Bordes, formas y profundidad
+## Formas y profundidad
 
-- Bordes de 1 px. Las listas (FAQ, tracks) se separan con líneas, no con tarjetas.
-- Radios: píldora (`9999px`) para botones; 12 px para campos y paneles; círculo (`50%`) solo para la moneda de Charlie. No hay otros radios.
-- Sin sombras, sin `backdrop-filter`, sin brillos radiales. Un panel se distingue por su fondo y su borde, no por elevación.
-- Panel sobre crema: fondo surface. Panel dentro de una banda surface: fondo crema.
-- Iconos de línea a 16–24 px en el color del texto que acompañan (o plum si son el acento del bloque). Solo pon una flecha si el elemento es un enlace.
+- Sin radios (salvo la moneda). Sin sombras: el botón principal lleva un filete crema interior (`inset 0 0 0 3px plum, inset 0 0 0 4px cream`) y el aviso un doble filete.
+- Filetes de 1 px: `line` para separar, `ink` para cerrar un bloque (FAQ, pie, días de la agenda), `plum` en los tracks.
+- Tramas: damasco de lis (`.lisdark`) en cifras e inscripción; papel de lis en el premio; verjurado con filigrana en el pie.
+- Profundidad solo en el hero: gofrado de la moneda en seco y capas que suben a distinta velocidad al salir.
 
 ## Componentes
 
-### Botones (`.button`)
+Todos en `app/globals.css`, salvo lo propio de cada sección, que vive junto a su componente en `app/(landing)/`.
 
-- **Principal** (`.button.primary`): fondo plum, texto crema, píldora, 48 px de alto, Geist 14 px peso 500. Hover: plum deep.
-- **Secundario** (`.button.secondary`): fondo transparente, borde mauve, texto plum. Hover: borde plum.
-- **Compacto** (`.compact`): 44 px de alto, para la cabecera y el panel de organización.
-- Pulsado: `scale(0.97)`. Deshabilitado: 60 % de opacidad, sin escala.
-- Una sola acción principal visible por pantalla: la de la cabecera es secundaria.
-- **Enlace de texto** (`.text-link`): plum, peso 500, subrayado mauve con 4 px de offset que pasa a plum en hover.
-
-### Formularios
-
-- Etiqueta visible siempre encima del campo (Geist 14 px, peso 500, ink). Opcionales con «(opcional)» en ink muted.
-- Campo: fondo crema, borde mauve deep (3,8:1, visible como límite del control), radio 12 px, 16 px de texto, 48 px de alto. Hover y focus: borde plum, más el anillo de foco global.
-- Checkbox de 18 px con `accent-color: var(--plum)`.
-- Errores en texto plum deep junto al formulario, anunciados por un live region; nunca solo con color. El éxito sustituye el formulario por un mensaje de estado con icono.
-
-### Secciones y paneles
-
-- Sección estándar: `.split` con el titular a la izquierda y el contenido a la derecha.
-- Banda destacada (preinscripción): fondo surface a ancho completo, con líneas arriba y abajo; el formulario va en un panel crema.
-- Panel: radio 12 px, borde `line`, 32 px de padding (24 px en móvil).
-
-### Firmas de marca
-
-- **Línea de marca** (`.brand-rule`): solo en el hero, entre la entradilla y los datos clave.
-- **Datos clave** (`.event-facts`): fecha y lugar en Cinzel, separados por un rombo «◆» en blue.
-- **Wordmark**: «HackUC3M» en plum; en el hero, el año «'27» en mauve deep. En el pie, el wordmark entero en plum.
-
-### Página 404 (`app/not-found.tsx`)
-
-- Centrada y sin cabecera ni pie: el numeral «4 · moneda · 4» en plum, con Charlie dentro de la moneda haciendo de cero. El numeral es decorativo (`aria-hidden`).
-- **Moneda de Charlie** (`.charlie-coin`): círculo surface con borde `line` y un canto interior de 1 px en mauve; Charlie ocupa el 78 % del diámetro.
-- Debajo, el `h1` «Real Decreto 404» con estilo de subtítulo, una entradilla en ink soft, la firma «Firmado: Carlos III» en pequeño ink muted y una sola acción principal: «Volver al inicio».
-
-### Navegación y pie
-
-- Cabecera: línea `line` inferior, isotipo de 48 px a la izquierda, enlaces Geist 14 px en ink soft (hover ink con subrayado plum que crece de izquierda a derecha), botón secundario compacto a la derecha.
-- Pie: línea `line` superior, wordmark en Cinzel, Geist 14 px en ink muted, enlaces con hover plum.
+- **Botón principal** (`.btn.b1`): ciruela, texto crema, 52 px (44 en la barra, `.peq`), con la manecilla grabada que avanza 4 px al pasar el ratón. Pulsado: `scale(.97)`.
+- **Botón secundario** (`.btn.b2`): borde ciruela; el papel surface entra de izquierda a derecha como un rodillo.
+- **Enlace** (`.lnk`): filete `line` que se entinta en ciruela de izquierda a derecha.
+- **Barra** (`.top`): isotipo a la izquierda; «HackUC3M’27» aparece a su lado al dejar atrás el titular; apartados en Ibarra 18 px con filete al pasar el ratón; botón lleno. Se esconde al bajar pasado el manifiesto y vuelve al subir; con el foco dentro, siempre visible. En móvil solo isotipo, nombre y botón. En documentos, `.top.fija` con el nombre siempre visible.
+- **Formulario**: etiqueta en versal y campo en cursiva sobre la misma línea base, filete que se traza al enfocar, casilla propia que se estampa, errores propios con sacudida de 3 px, sello «Preinscrito» y aviso que sube desde abajo.
+- **Preguntas** (`.faq`): lista con «+» que gira; la respuesta baja 6 px al abrir y se cierra con animación donde hay `::details-content`.
+- **Lámina** (`.lamina`): grabado de época con pie de una línea en `.nota`; se descubre de arriba abajo una vez.
+- **Esquinera** (`.esq`): roleos de Van Hulsen; la tinta sale del vértice exterior al abrir la página.
+- **Filete que se traza** (`.tz`, `.tz.una`): cualquier bloque con filete arriba (y abajo).
+- **Contador**: numeradora en Xanh Mono; cada rueda gira solo cuando cambia su dígito.
+- **Pie**: colaboradores (AISC y UC3M sin teñir), correo, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
 
 ## Movimiento
 
-- Curva única: `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)`.
-- Color y borde: 200 ms. Pulsado de botón: 160 ms.
-- Anima solo `opacity`, `transform` y color. Nunca layout, nunca `filter: blur`.
-- Sin animaciones de entrada en la carga, sin animaciones en bucle, sin parallax, sin revelados al hacer scroll.
-- `prefers-reduced-motion: reduce` desactiva transiciones, animaciones y el scroll suave.
+La norma es el tablero Microanimaciones; aquí está resumida.
+
+- **Tres tiempos y dos curvas.** `--t-fast` 200 ms (ratón y pulsación), `--t-mid` 450 ms (aviso, preguntas, moneda, error), `--t-slow` 900 ms (láminas, filetes, esquineras, entrada). `--ease-out` para entrar y responder; `--ease-io` para mover en pantalla. Solo los bucles (vehículos, cinta de logos) y los contadores (1,1–1,2 s) llevan sus propias duraciones.
+- **Una sola vez.** Lo que aparece con el scroll se dispara con `animation-timeline: view()` y un «cerrojo»: `--on` pasa a 1 y la transición de vuelta espera 99999 s, así que no se deshace al subir.
+- **CSS antes que JS.** Solo hay JS para la barra que se esconde, el contador, la moneda, el formulario y para no arrancar los vehículos hasta que su carril entra en pantalla.
+- **Fallback.** Todo lo ligado al scroll va tras `@supports (animation-timeline: view())` y `prefers-reduced-motion: no-preference`; sin soporte se ve el estado final.
+- Hover solo con ratón (`hover: hover and pointer: fine`); en táctil responde `:active`. Con «reducir movimiento» no hay desplazamientos ni bucles.
+- Anima `opacity`, `transform`, `translate`, `clip-path`, `mask` y propiedades registradas. Nunca layout.
+
+## Grabados, imágenes y créditos
+
+- Servidos desde `public/grabados/{vinetas,tramas,esquinas,laminas,signos,agenda}/`, `public/campus/` (skyline) y `public/logos/`.
+- Cada fichero de `public/grabados/` tiene su entrada en `assets/creditos.json` (`fichero`, `titulo`, `autor`, `fuente`, `licencia`); `npm test` falla si falta.
+- Se optimizan una vez al subirlos (WebP para PNG grandes, `svgo` para SVG de potrace), sin optimización en el runtime. `<img>` con `width` y `height`, y `loading="lazy"` por debajo del pliegue.
+- Logos de empresa de relleno (Meta, Apple…) no se publican: un hueco sin logo es mejor que una marca que no participa.
 
 ## Accesibilidad
 
-- Foco siempre visible: contorno de 2 px en plum con 3 px de offset. No lo quites sin un sustituto equivalente.
-- Zonas táctiles de 44 px como mínimo; 48 px en llamadas a la acción.
-- Controles solo-icono con nombre accesible. Imágenes e iconos decorativos con `alt=""` o `aria-hidden`.
-- Enlace «Saltar al contenido» al principio de cada página pública.
-- Idioma `es`, `color-scheme: light`.
+- Foco visible: 2 px ciruela con 3 px de separación.
+- Zonas táctiles de 44 px como mínimo.
+- Las cifras que cuentan tienen su valor final en un `.sr` y el contador animado con `aria-hidden`.
+- Grabados decorativos con `alt=""`; láminas con texto alternativo descriptivo.
+- Enlace «Saltar al contenido» al principio de cada página.
 
 ## Marca y logos
 
-Archivos en `public/`: `IsologoHackUc3m.svg` (moneda + texto), `IsotipoHackUc3m.svg` y `hackuc3m-mark.svg` (moneda), `LogotipoHackUc3m.svg` (texto), `ImagotipoHackUc3m.svg`. AISC Madrid: `public/aisc/Property1=AISCLockupColor.svg`.
+Archivos en `public/`: `IsologoHackUc3m.svg`, `IsotipoHackUc3m.svg` y `hackuc3m-mark.svg` (moneda), `LogotipoHackUc3m.svg`, `ImagotipoHackUc3m.svg`, `charlie.svg`. Lockup de AISC en `public/logos/aisc-lockup.png` y logo de la UC3M en `public/logos/uc3m.png`. Wordmark «HackUC3M» en Cinzel ciruela con el «’27» a pluma en tinta.
 
-- Usa siempre las versiones en color: el fondo es crema.
-- Nunca apliques `filter`, cambies colores, estires, rotes ni recortes un logo.
-- Isotipo en cabecera a 48 px (40 px en móvil). Lockup de AISC a 120–160 px de ancho.
-- Charlie, la mascota (retrato de Carlos III), está en `public/charlie.svg` y ya usa la paleta. Mismas reglas que los logos. La página 404 usa `public/charlie-404.svg`, la misma ilustración pasada por SVGO con 2 decimales y conservando el `viewBox` (164 KB frente a 457 KB; sin diferencias visibles).
+- Nunca apliques `filter`, cambies colores, estires ni recortes un logo propio o ajeno.
 - No afirmes ser «el primer» ni «el oficial» hackathon.
+
+## Panel de organización, privacidad y 404
+
+Siguen en `app/interior.css` con los tokens y las fuentes del sistema, a la espera de su propio paso (la plantilla de documento llega con `/privacidad` en el PR 1.4).
 
 ## Emails
 
-Los clientes de correo no soportan variables CSS: los emails (`lib/confirmation-email.ts`) escriben en línea los hex de la tabla de color. Es la única excepción a «nunca hex sueltos», y `npm test` comprueba que solo usan colores de la paleta. Mismo sistema: fondo surface, tarjeta crema, wordmark plum en Georgia (Cinzel no está disponible en email), texto ink, botón plum en píldora y Arial como sans.
+Los clientes de correo no soportan variables CSS: los emails (`lib/confirmation-email.ts`) escriben en línea los hex de la tabla. Es la única excepción a «nunca colores sueltos», y `npm test` comprueba que solo usan colores de la paleta.
 
 ## Lo que no hacemos
 
-Patrones que hacen que una página parezca generada y que este sistema excluye:
-
-- Fondos oscuros o modo oscuro.
-- Brillos radiales detrás del hero, tarjetas con degradado, glassmorphism, sombras de color.
-- Titulares que entran con desenfoque, elementos que flotan o «respiran» en bucle.
-- Una paleta paralela de grises o tonos casi iguales definidos elemento a elemento.
-- Texto de 9–12 px para metadatos.
-- Etiquetas en mayúsculas espaciadas encima de un titular («eyebrows»), en píldora o sin ella.
-- Bloques de CSS que sobrescriben reglas anteriores en lugar de cambiarlas.
-- Titulares a dos tonos (primera línea oscura, segunda gris).
-- Una palabra del titular o del rótulo en cursiva y de otro color («Un gran *premio*» en ciruela): es un tic de página generada. El titular va en un solo tono, en redonda y sin palabras destacadas.
-- Iconos decorativos inventados (cubos apilados, destellos) y flechas en elementos que no son enlaces.
-- Rejillas de tarjetas idénticas con icono + título + frase.
+- Patente o plano como tema principal; marcas de registro, de corte o coordenadas.
+- Rehacer la landing como libro, gaceta o real cédula.
+- Una palabra del titular en cursiva y de otro color.
+- Tarjetas con sombra, degradados, glassmorphism, iconos genéricos, emojis.
+- Ornamentos dibujados en SVG o en código, o geometría «perfecta» donde debería haber grabado.
+- Rayos, destellos, degradados de oro, giros 3D al entrar o bucles en el premio.
+- Signos de imprenta que casi nadie sabe leer (solo queda la manecilla).
+- JS para animar con el scroll.
+- Pies de imagen largos o en versal.
+- Teñir logos ajenos.
 - Inventar patrocinadores, retos, premios, cifras o fotos.
 
 ## Checklist para cualquier pieza nueva
 
-- [ ] Fondo crema; solo colores de la tabla, vía tokens. `npm test` pasa.
-- [ ] Cinzel solo en el wordmark y los datos clave; el resto en Geist.
-- [ ] Tamaños de la tabla de tipografía, ninguno por debajo de 14 px; texto secundario no más claro que ink muted.
-- [ ] `npx impeccable detect app lib` y `npx impeccable detect <url local>` sin hallazgos nuevos.
-- [ ] Botones en píldora, una acción principal visible, 48 px de alto (44 px compactos).
-- [ ] Bordes de 1 px; radios de 12 px o píldora; sin sombras ni degradados (salvo la línea de marca).
-- [ ] Foco visible, zonas táctiles ≥ 44 px, `prefers-reduced-motion` respetado.
-- [ ] Si has creado un patrón reutilizable, añádelo a este documento.
+- [ ] Solo tokens; `npm test` pasa.
+- [ ] Tipos de la tabla; nunca cursiva en versal; cifras en Xanh Mono.
+- [ ] Grabados reales con crédito en `assets/creditos.json`.
+- [ ] Tres tiempos, dos curvas; una sola vez; fallback y «reducir movimiento».
+- [ ] Foco visible, zonas táctiles ≥ 44 px, textos alternativos.
+- [ ] Patrón reutilizable nuevo → añadido aquí y a `app/globals.css`.

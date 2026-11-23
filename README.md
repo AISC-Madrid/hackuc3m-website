@@ -11,7 +11,17 @@ npm run db:local
 npm run dev
 ```
 
-The public page is `/`, the editor is `/admin`, and privacy information is `/privacidad`. Local D1 data lives in `.wrangler/`, separate from production. `npm run preview` builds and runs in the Workers runtime. `npm run build` and `npm run lint` check the application.
+The public page is `/`, the editor is `/admin`, and privacy information is `/privacidad`. Local D1 data lives in `.wrangler/`, separate from production. `npm run preview` builds and runs in the Workers runtime. `npm run build`, `npm run lint` and `npm test` check the application.
+
+## Structure and design
+
+- `app/(landing)/`: the landing ("Los Ilustrados"), one component per section plus `landing.css` and `datos.ts` (tracks, agenda and figures that are not yet editable from the admin; they move to D1 in PR 1.2 of `docs/plan-implementacion.md`).
+- `app/globals.css`: design tokens in `:root` and the shared components and micro-animations. Plain CSS, no Tailwind. `app/pie.tsx` is the shared footer; `app/interior.css` keeps the admin, privacy and 404 styles until they are redone.
+- `public/grabados/`, `public/campus/`, `public/logos/`: engravings, skyline and logos served by the site. Every file in `public/grabados/` needs an entry in `assets/creditos.json` (`npm test` checks it).
+- Fonts are loaded with `next/font/google` and served from the site's own domain.
+- `DESIGN.md` is the design reference; `docs/diseno-landing.md` records why each decision was made.
+
+`npm test` checks the design tokens, the colour literals in `app/` and the engraving credits.
 
 ## Team workflow and deployment
 
