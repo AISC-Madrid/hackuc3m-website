@@ -438,3 +438,12 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
 - Cómo llegar (nuevo, sin artboard): dirección de la EPS, Cercanías C-5, Metrosur y autobús, y qué traer (portátil, cargador, documento de identidad y carné). Borrador para que el equipo lo revise; el aula y la entrada se publicarán más adelante.
 - Créditos: generados desde `assets/creditos.json`, agrupados por carpeta, más tipografías (SIL OFL) y una nota de marcas. El skyline entra como dibujo propio. La corona de laurel y la ficha por pieza de varias viñetas siguen «por confirmar».
 - El pie enlaza ya a Cómo llegar, Código de conducta y Créditos.
+
+## 23 nov 2026 · Animaciones de scroll en todos los navegadores
+
+- Pedido: que las animaciones ligadas al scroll funcionen en Firefox y en todos los navegadores de PC y móvil, no solo en Chrome.
+- Diagnóstico: Firefox y Safari anteriores a la 26 no tienen `animation-timeline` ni consultas `@container style()`, así que hasta ahora veían todo quieto en su estado final.
+- Solución: `app/desplazamiento.tsx`, que solo actúa donde no hay `animation-timeline`. Pone `sv` en `<html>`, añade `.on` a cada bloque al entrar (el mismo cerrojo de una sola vez) y escribe el progreso del scroll en variables CSS. Cubre titular que encoge y nombre en la barra, profundidad del hero, cohete, palabras que se leen, globo que sube, cifras fijas que cuentan, carril de tracks (escritorio y móvil), premio, filetes, láminas, florón, remate y filigrana del pie. Mismos tiempos y curvas; en Chrome no cambia nada.
+- Se cambia la regla «sin JS de scroll»: el JS solo corre como respaldo.
+- Probado en Chromium emulando un navegador sin `animation-timeline` (escritorio 1440 y móvil 390) y en modo nativo. No se pudo abrir un Firefox real en el entorno de trabajo: falta probarlo a mano en Firefox, Safari de iOS y Chrome de Android.
+- Única diferencia que queda: cerrar una pregunta con animación (`::details-content`) solo existe en Chrome; en el resto se cierra al instante.

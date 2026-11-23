@@ -6,6 +6,7 @@ import {
   Ibarra_Real_Nova,
   Xanh_Mono,
 } from "next/font/google";
+import Desplazamiento from "./desplazamiento";
 import "./globals.css";
 
 // next/font sirve las fuentes desde el propio dominio: no se llama a Google en tiempo de ejecución.
@@ -54,7 +55,10 @@ export default function RootLayout({
         .map((f) => f.variable)
         .join(" ")}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Desplazamiento />
+      </body>
     </html>
   );
 }

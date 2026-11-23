@@ -910,6 +910,66 @@ img {
   }
 }
 
+/* Respaldo sin animation-timeline (Firefox, Safari < 26): app/desplazamiento.tsx pone `sv` en
+   <html> y `.on` en cada bloque cuando entra, una sola vez. Mismos gestos, tiempos y curvas. */
+.sv .lamina img {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--t-slow) var(--ease-io);
+}
+.sv .lamina.on img {
+  clip-path: inset(0 0 0 0);
+}
+.sv .tz {
+  position: relative;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+.sv .pie {
+  border-top-color: transparent !important;
+}
+.sv .tz::before,
+.sv .tz::after,
+.sv .pie::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--line);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform var(--t-slow) var(--ease-io);
+  pointer-events: none;
+  z-index: 1;
+}
+.sv .tz::after {
+  top: auto;
+  bottom: 0;
+}
+.sv .tz.una::after {
+  display: none;
+}
+.sv .pie::before {
+  background: var(--ink);
+}
+.sv .tz.on::before,
+.sv .tz.on::after,
+.sv .pie.on::before {
+  transform: none;
+}
+.sv .pie-filig {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--t-slow) ease,
+    transform var(--t-slow) var(--ease-out);
+}
+.sv .pie.on .pie-filig {
+  opacity: 1;
+  transform: none;
+}
+
 /* Esquineras: la tinta se extiende desde el vértice exterior, una vez al abrir la página. */
 @media (prefers-reduced-motion: no-preference) {
   .esq {

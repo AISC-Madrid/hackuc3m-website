@@ -243,8 +243,9 @@
         "--ease-io": "cubic-bezier(.77,0,.175,1)"
       },
       "rules": [
-        "Scroll-linked motion only in CSS, behind @supports (animation-timeline: view()) and prefers-reduced-motion: no-preference",
-        "Things that appear do so once (latch: --on with a 99999s return transition)",
+        "Scroll-linked motion in CSS behind @supports (animation-timeline: view()) and prefers-reduced-motion: no-preference",
+        "Where animation-timeline is missing (Firefox, Safari < 26), app/desplazamiento.tsx adds html.sv, the .on latch and progress variables; every native rule has a .sv twin",
+        "Things that appear do so once (latch)",
         "Only loops (vehicles, logo ribbon) and counters keep their own durations"
       ]
     },
@@ -331,7 +332,7 @@
       "Don’t use shadows, gradients, glassmorphism, rays or gold gradients.",
       "Don’t highlight a headline word in italic colour.",
       "Don’t publish placeholder company logos.",
-      "Don’t animate with JS on scroll."
+      "Don’t animate with JS on scroll where CSS scroll timelines exist; JS is only the fallback."
     ]
   }
 }

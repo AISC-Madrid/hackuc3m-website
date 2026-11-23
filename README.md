@@ -22,6 +22,8 @@ The public page is `/`, the editor is `/admin`, and the document pages are `/pri
 - Fonts are loaded with `next/font/google` and served from the site's own domain.
 - `DESIGN.md` is the design reference; `docs/diseno-landing.md` records why each decision was made.
 
+Scroll animations run natively in CSS where `animation-timeline` exists (Chrome, Edge, Safari 26+) and through `app/desplazamiento.tsx` elsewhere (Firefox, older Safari). To check the fallback without Firefox, load the page in Playwright's Chromium with a route that rewrites `@supports (animation-timeline: view())` in every CSS response so it fails, plus an init script that makes `CSS.supports` return `false` for `animation-timeline`; `<html>` should get the `sv` class.
+
 `npm test` checks the design tokens, the colour literals in `app/`, the engraving credits and the `lib/` unit tests (including the Markdown reader and every file in `contenido/`).
 
 ## Team workflow and deployment

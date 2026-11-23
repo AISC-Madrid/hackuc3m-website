@@ -212,8 +212,9 @@ La norma es el tablero Microanimaciones; aquí está resumida.
 
 - **Tres tiempos y dos curvas.** `--t-fast` 200 ms (ratón y pulsación), `--t-mid` 450 ms (aviso, preguntas, moneda, error), `--t-slow` 900 ms (láminas, filetes, esquineras, entrada). `--ease-out` para entrar y responder; `--ease-io` para mover en pantalla. Solo los bucles (vehículos, cinta de logos) y los contadores (1,1–1,2 s) llevan sus propias duraciones.
 - **Una sola vez.** Lo que aparece con el scroll se dispara con `animation-timeline: view()` y un «cerrojo»: `--on` pasa a 1 y la transición de vuelta espera 99999 s, así que no se deshace al subir.
-- **CSS antes que JS.** Solo hay JS para la barra que se esconde, el contador, la moneda, el formulario y para no arrancar los vehículos hasta que su carril entra en pantalla.
-- **Fallback.** Todo lo ligado al scroll va tras `@supports (animation-timeline: view())` y `prefers-reduced-motion: no-preference`; sin soporte se ve el estado final.
+- **CSS antes que JS.** Solo hay JS para la barra que se esconde, el contador, la moneda, el formulario, para no arrancar los vehículos hasta que su carril entra en pantalla y para el respaldo de abajo.
+- **En todos los navegadores.** Lo ligado al scroll va en CSS tras `@supports (animation-timeline: view())` y `prefers-reduced-motion: no-preference` (Chrome, Edge, Safari 26+). Donde no hay `animation-timeline` (Firefox, Safari anteriores), `app/desplazamiento.tsx` pone la clase `sv` en `<html>` y reproduce los mismos gestos: añade `.on` a cada bloque al entrar (el cerrojo) y escribe variables de progreso que el CSS de `.sv` convierte en transform, opacity o clip-path. Un único bucle de `requestAnimationFrame` sobre un scroll pasivo; sin consultas `@container style()`, que Firefox no tiene. Toda regla nativa nueva lleva su gemela `.sv`.
+- Con «reducir movimiento» no se activa nada y se ve el estado final. Cerrar una pregunta con animación (`::details-content`) solo existe en Chrome; en el resto se cierra al instante.
 - Hover solo con ratón (`hover: hover and pointer: fine`); en táctil responde `:active`. Con «reducir movimiento» no hay desplazamientos ni bucles.
 - Anima `opacity`, `transform`, `translate`, `clip-path`, `mask` y propiedades registradas. Nunca layout.
 
@@ -268,7 +269,7 @@ Los clientes de correo no soportan variables CSS: los emails (`lib/confirmation-
 - Ornamentos dibujados en SVG o en código, o geometría «perfecta» donde debería haber grabado.
 - Rayos, destellos, degradados de oro, giros 3D al entrar o bucles en el premio.
 - Signos de imprenta que casi nadie sabe leer (solo queda la manecilla).
-- JS para animar con el scroll.
+- JS para animar con el scroll donde el navegador ya lo hace en CSS (el respaldo de `.sv` solo corre donde no hay `animation-timeline`).
 - Pies de imagen largos o en versal.
 - Teñir logos ajenos.
 - Inventar patrocinadores, retos, premios, cifras o fotos.
