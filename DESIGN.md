@@ -304,6 +304,7 @@ Patrones que hacen que una página parezca generada y que este sistema excluye:
 - Etiquetas en mayúsculas espaciadas encima de un titular («eyebrows»), en píldora o sin ella.
 - Bloques de CSS que sobrescriben reglas anteriores en lugar de cambiarlas.
 - Titulares a dos tonos (primera línea oscura, segunda gris).
+- Una palabra del titular o del rótulo en cursiva y de otro color («Un gran *premio*» en ciruela): es un tic de página generada. El titular va en un solo tono, en redonda y sin palabras destacadas.
 - Iconos decorativos inventados (cubos apilados, destellos) y flechas en elementos que no son enlaces.
 - Rejillas de tarjetas idénticas con icono + título + frase.
 - Inventar patrocinadores, retos, premios, cifras o fotos.
