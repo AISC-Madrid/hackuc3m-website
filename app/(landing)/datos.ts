@@ -1,39 +1,6 @@
-// Contenido de la landing que todavía no se edita desde el admin.
-// Deuda: los tracks y las empresas pasan a D1 (tablas companies, company_roles y tracks) en el PR 1.2,
-// y la agenda al JSON de event_content. Hasta entonces viven aquí. No se inventan datos: lo que no
+// Contenido de la landing que todavía no se edita desde el admin (los tracks y las empresas ya sí:
+// `retos` en event_content). Deuda: la agenda pasa al JSON de event_content. Hasta entonces vive aquí. No se inventan datos: lo que no
 // está confirmado se muestra como «por anunciar».
-
-export type Empresa = { nombre: string; logo?: string; url?: string };
-
-export type Track = {
-  empresa: Empresa | null;
-  // Etiqueta corta bajo la empresa (a qué se dedica). Opcional.
-  def?: string;
-  titulo?: string;
-  descripcion?: string;
-};
-
-const kapia: Empresa = {
-  nombre: "Kapia",
-  logo: "/logos/empresas/kapia.svg",
-};
-const bendingSpoons: Empresa = {
-  nombre: "Bending Spoons",
-  logo: "/logos/empresas/bending-spoons.svg",
-};
-
-export const tracks: Track[] = [
-  { empresa: kapia },
-  { empresa: bendingSpoons, def: "Apps para millones" },
-  { empresa: null },
-  { empresa: null },
-  { empresa: null },
-  { empresa: null },
-];
-
-export const empresasCinta: Empresa[] = tracks.flatMap((t) =>
-  t.empresa?.logo ? [t.empresa] : [],
-);
 
 export type Momento = { hora?: string; titulo: string; vineta: string };
 export type Dia = { titulo: string; etiqueta: string; momentos: Momento[] };
@@ -94,14 +61,17 @@ export const cifras: Cifra[] = [
     unidad: "en premios",
     euros: true,
     texto:
-      "Un gran premio de 1250 € al mejor proyecto y el resto, repartido entre los tracks.",
+      "Un gran premio de 1.250€ al mejor proyecto y el resto, repartido entre los tracks.",
   },
 ];
 
 export const premio = {
   total: 1250,
-  desglose: ["Premio global: 1000 €", "Premio de track: 250 €"],
+  desglose: ["Premio global: 1.000€", "Premio de track: 250€"],
 };
 
 // Inicio del evento, para el contador del hero.
 export const inicio = "2027-02-19T09:00:00+01:00";
+
+// Euros a la española de la web: punto de millar también con cuatro cifras y sin espacio («1.250€»).
+export const euros = (n: number) => String(n).replace(/\B(?=(\d{3})+$)/g, ".") + "€";

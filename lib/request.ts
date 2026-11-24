@@ -2,8 +2,16 @@ export async function readLimitedText(
   request: Request,
   limit: number,
 ): Promise<string | null> {
+  const bytes = await readLimitedBytes(request, limit);
+  return bytes && new TextDecoder().decode(bytes);
+}
+
+export async function readLimitedBytes(
+  request: Request,
+  limit: number,
+): Promise<Uint8Array | null> {
   if (Number(request.headers.get("content-length")) > limit) return null;
-  if (!request.body) return "";
+  if (!request.body) return new Uint8Array();
   const reader = request.body.getReader();
   const chunks: Uint8Array[] = [];
   let size = 0;
@@ -23,5 +31,5 @@ export async function readLimitedText(
     bytes.set(chunk, offset);
     offset += chunk.byteLength;
   }
-  return new TextDecoder().decode(bytes);
+  return bytes;
 }

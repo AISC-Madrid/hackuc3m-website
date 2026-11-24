@@ -1,6 +1,9 @@
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { bindings } from "./cloudflare";
 export async function authorized(request: Request) {
+  // En `next dev` el admin se abre sin login. `next build` fija NODE_ENV=production, así que en
+  // preview y en producción siempre se pide Cloudflare Access.
+  if (process.env.NODE_ENV === "development") return true;
   const env = await bindings();
   if (!env.ACCESS_TEAM_DOMAIN || !env.ACCESS_AUD) return false;
   const token = request.headers.get("Cf-Access-Jwt-Assertion");

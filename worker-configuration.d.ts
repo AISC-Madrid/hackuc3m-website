@@ -3,6 +3,7 @@
 // Runtime types generated with workerd@1.20261023.1 2026-10-26 global_fetch_strictly_public,nodejs_compat
 interface __BaseEnv_CloudflareEnv {
 	DB: D1Database;
+	MEDIA: R2Bucket;
 	ASSETS: Fetcher;
 	SITE_URL: "https://hackuc3m.com";
 	ACCESS_TEAM_DOMAIN: "winter-cloud-1122.cloudflareaccess.com";

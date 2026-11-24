@@ -7,7 +7,7 @@ import Pie from "../pie";
 import Cabecera from "./cabecera";
 import Carril from "./carril";
 import Contador from "./contador";
-import { agenda, cifras, empresasCinta, inicio, premio, tracks } from "./datos";
+import { agenda, cifras, euros, inicio, premio } from "./datos";
 import Moneda from "./moneda";
 import Preinscripcion from "./preinscripcion";
 import { Cohete, Dron, Formula, Icab, Moto } from "./vehiculos-svg";
@@ -29,6 +29,8 @@ function Leer({ texto }: { texto: string }) {
 const dosDigitos = (n: number) => String(n).padStart(2, "0");
 
 export default function Landing({ event }: { event: EventContent }) {
+  const tracks = event.retos;
+  const empresasCinta = tracks.flatMap((t) => (t.empresa?.logo ? [t.empresa] : []));
   const cinta = Array.from({ length: Math.max(1, Math.ceil(6 / Math.max(1, empresasCinta.length))) }, () => empresasCinta).flat();
   return (
     <div className="pagina v3">
@@ -133,8 +135,7 @@ export default function Landing({ event }: { event: EventContent }) {
               <div className="paso" key={c.unidad} style={css({ "--k": k })}>
                 <p className="num">
                   <span className="sr">
-                    {c.n}
-                    {c.euros ? " €" : ""}
+                    {c.euros ? euros(c.n) : c.n}
                   </span>
                   <span className={c.euros ? "cnt e" : "cnt"} style={css({ "--n": c.n })} aria-hidden="true" />{" "}
                   <span className="u">{c.unidad}</span>
@@ -196,7 +197,7 @@ export default function Landing({ event }: { event: EventContent }) {
                 <span className="premio-laurel" aria-hidden="true" />
                 <h3 className="caps">Gran premio final</h3>
                 <b className="premio-n">
-                  <span className="sr">{premio.total} €</span>
+                  <span className="sr">{euros(premio.total)}</span>
                   <span className="oro-cnt" style={css({ "--n": premio.total })} aria-hidden="true" />
                 </b>
                 <span className="premio-l">

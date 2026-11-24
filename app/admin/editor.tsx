@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 import type { EventContent } from "@/lib/event";
+import Retos, { limpiar } from "./retos";
 
 type Member = {
   id: number;
@@ -38,7 +39,7 @@ export default function Editor() {
       const response = await fetch("/api/admin/content", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(content),
+        body: JSON.stringify({ ...content, retos: limpiar(content!.retos) }),
       });
       const result = (await response.json()) as { error?: string };
       if (!response.ok) throw new Error(result.error);
@@ -146,127 +147,7 @@ export default function Editor() {
               />{" "}
               Lista de espera abierta
             </label>
-            <h2>Tracks</h2>
-            {content.tracks.map((track, i) => (
-              <div className="admin-row" key={i}>
-                <label htmlFor={`track-title-${i}`}>Título</label>
-                <input
-                  id={`track-title-${i}`}
-                  value={track.title}
-                  maxLength={100}
-                  required
-                  onChange={(e) =>
-                    setContent({
-                      ...content,
-                      tracks: content.tracks.map((t, n) =>
-                        n === i ? { ...t, title: e.target.value } : t,
-                      ),
-                    })
-                  }
-                />
-                <label htmlFor={`track-description-${i}`}>Descripción</label>
-                <textarea
-                  id={`track-description-${i}`}
-                  value={track.description}
-                  maxLength={2000}
-                  required
-                  onChange={(e) =>
-                    setContent({
-                      ...content,
-                      tracks: content.tracks.map((t, n) =>
-                        n === i ? { ...t, description: e.target.value } : t,
-                      ),
-                    })
-                  }
-                />
-                <button
-                  type="button"
-                  className="button secondary compact"
-                  onClick={() =>
-                    setContent({
-                      ...content,
-                      tracks: content.tracks.filter((_, n) => n !== i),
-                    })
-                  }
-                >
-                  Eliminar track
-                </button>
-              </div>
-            ))}
-            <button
-              type="button"
-              className="button secondary compact"
-              onClick={() =>
-                setContent({
-                  ...content,
-                  tracks: [...content.tracks, { title: "", description: "" }],
-                })
-              }
-            >
-              Añadir track
-            </button>
-            <h2>Patrocinadores</h2>
-            {content.sponsors.map((sponsor, i) => (
-              <div className="admin-row" key={i}>
-                <label htmlFor={`sponsor-name-${i}`}>Nombre</label>
-                <input
-                  id={`sponsor-name-${i}`}
-                  value={sponsor.name}
-                  maxLength={100}
-                  required
-                  onChange={(e) =>
-                    setContent({
-                      ...content,
-                      sponsors: content.sponsors.map((s, n) =>
-                        n === i ? { ...s, name: e.target.value } : s,
-                      ),
-                    })
-                  }
-                />
-                <label htmlFor={`sponsor-url-${i}`}>Web (https://)</label>
-                <input
-                  id={`sponsor-url-${i}`}
-                  type="url"
-                  value={sponsor.url}
-                  required
-                  onChange={(e) =>
-                    setContent({
-                      ...content,
-                      sponsors: content.sponsors.map((s, n) =>
-                        n === i ? { ...s, url: e.target.value } : s,
-                      ),
-                    })
-                  }
-                />
-                <button
-                  type="button"
-                  className="button secondary compact"
-                  onClick={() =>
-                    setContent({
-                      ...content,
-                      sponsors: content.sponsors.filter((_, n) => n !== i),
-                    })
-                  }
-                >
-                  Eliminar patrocinador
-                </button>
-              </div>
-            ))}
-            <button
-              type="button"
-              className="button secondary compact"
-              onClick={() =>
-                setContent({
-                  ...content,
-                  sponsors: [
-                    ...content.sponsors,
-                    { name: "", url: "https://" },
-                  ],
-                })
-              }
-            >
-              Añadir patrocinador
-            </button>
+            <Retos retos={content.retos} cambiar={(retos) => setContent({ ...content, retos })} />
             <h2>Preguntas frecuentes</h2>
             {content.faqs.map((faq, i) => (
               <div className="admin-row" key={i}>

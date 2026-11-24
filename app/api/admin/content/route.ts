@@ -1,6 +1,7 @@
 import { readLimitedText } from "@/lib/request";
 import { authorized, sameOrigin } from "@/lib/admin";
-import { readContent, validContent } from "@/lib/content";
+import { readContent } from "@/lib/content";
+import { validContent } from "@/lib/event";
 import { bindings } from "@/lib/cloudflare";
 export async function GET(request: Request) {
   if (!(await authorized(request)))
