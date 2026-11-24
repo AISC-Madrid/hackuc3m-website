@@ -267,7 +267,8 @@ Diseño aprobado el 24 nov 2026 en el canvas (`Admin.dc.html`) y pasado a códig
 - **Botones segmentados:** filtros en un grupo con filete `ink-muted`; el pulsado va en tinta con texto crema y lleva `aria-pressed`.
 - **Huecos vacíos:** una viñeta pequeña de la agenda (56 px) con una frase en cursiva; se levanta 3 px al pasar el ratón.
 - **Borrar:** nunca con un diálogo del navegador. Un bloque de doble filete en la propia ficha propone la alternativa (marcar como perdida) antes de borrar.
-- **Vistas previas:** copian el CSS real de la landing a 1440 px; nada aproximado.
+- **Vistas previas:** usan el marcado y el CSS reales de la landing (tracks, cinta y agenda); nada aproximado.
+- **Barra lateral** fija a la altura de la ventana: siempre se ve entera.
 
 ## 404
 

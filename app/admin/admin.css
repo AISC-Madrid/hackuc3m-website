@@ -11,6 +11,21 @@
   color: var(--ink);
   font: 400 17px/1.55 var(--serif);
 }
+/* Enlaces que son botones: sin el recuadro del navegador. */
+.adm button.lnk {
+  border: 0;
+  padding: 0 0 2px;
+  font: inherit;
+  cursor: pointer;
+}
+.adm button.lnk:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.adm button.lnk:focus-visible {
+  outline: 2px solid var(--plum);
+  outline-offset: 3px;
+}
 .adm-ayuda {
   margin: 0;
   font: italic 400 13.5px/1.4 var(--mono);
@@ -21,6 +36,13 @@
 .adm-lado {
   flex: 1 1 248px;
   max-width: 280px;
+  /* Siempre entera a la izquierda: fija a la altura de la ventana, con scroll propio si no cabe. */
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
   padding: 28px 0;
   display: flex;
   flex-direction: column;
@@ -140,6 +162,8 @@
 .adm-cuerpo {
   flex: 999 1 560px;
   min-width: 0;
+  /* La barra de publicar escondida baja un 101 %: sin esto alargaría la página. */
+  overflow-y: clip;
   display: flex;
   flex-direction: column;
 }
@@ -917,6 +941,46 @@
   color: var(--ink-soft);
 }
 
+/* ——— agenda ——— */
+.adm-agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.adm-dia {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.adm-momentos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.adm-momentos li {
+  display: grid;
+  grid-template-columns: 44px minmax(140px, 1fr) 120px minmax(0, 2fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.adm-momentos img {
+  display: block;
+  width: 44px;
+  height: 40px;
+  object-fit: contain;
+}
+@media (max-width: 900px) {
+  .adm-momentos li {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+  .adm-momentos li > :nth-child(n + 3) {
+    grid-column: 1 / -1;
+  }
+}
+
 /* ——— preguntas ——— */
 .adm-faq {
   list-style: none;
@@ -1013,6 +1077,8 @@
 }
 @media (max-width: 720px) {
   .adm-lado {
+    position: static;
+    height: auto;
     max-width: none;
     padding: 16px 0;
     gap: 12px;

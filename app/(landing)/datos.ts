@@ -1,40 +1,5 @@
-// Contenido de la landing que todavía no se edita desde el admin (los tracks y las empresas ya sí:
-// `retos` en event_content). Deuda: la agenda pasa al JSON de event_content. Hasta entonces vive aquí. No se inventan datos: lo que no
-// está confirmado se muestra como «por anunciar».
-
-export type Momento = { hora?: string; titulo: string; vineta: string };
-export type Dia = { titulo: string; etiqueta: string; momentos: Momento[] };
-
-const g = (f: string) => `/grabados/agenda/${f}`;
-
-export const agenda: Dia[] = [
-  {
-    titulo: "Viernes 19",
-    etiqueta: "Día 1",
-    momentos: [
-      { hora: "17:00", titulo: "Acreditación", vineta: g("jarron-flores.webp") },
-      { titulo: "Apertura y presentación de los tracks", vineta: g("ave-laurel.webp") },
-      { titulo: "Empieza el hacking", vineta: g("torre.webp") },
-      { titulo: "Merienda", vineta: g("croissant.svg") },
-      { titulo: "Talleres y mentorías", vineta: g("lira.webp") },
-      { titulo: "Cena", vineta: g("copa-flores.webp") },
-      { titulo: "Cierre del día 1", vineta: g("flor.webp") },
-    ],
-  },
-  {
-    titulo: "Sábado 20",
-    etiqueta: "Día 2",
-    momentos: [
-      { titulo: "Apertura de puertas y desayuno", vineta: g("cafe.svg") },
-      { titulo: "Sigue el hacking", vineta: g("torre.webp") },
-      { titulo: "Comida", vineta: g("pizza.svg") },
-      { titulo: "Merienda", vineta: g("croissant.svg") },
-      { titulo: "Entrega de proyectos", vineta: g("guirnalda.webp") },
-      { titulo: "Presentaciones al jurado", vineta: g("balanza.svg") },
-      { titulo: "Entrega de premios", vineta: g("corona-cinta.webp") },
-    ],
-  },
-];
+// Contenido de la landing que todavía no se edita desde el admin: cifras, premio y fecha de inicio.
+// Tracks, empresas (tablas de D1) y agenda (event_content.agenda) ya se editan allí. No se inventan datos.
 
 export type Cifra = { n: number; unidad: string; euros?: boolean; texto: string };
 

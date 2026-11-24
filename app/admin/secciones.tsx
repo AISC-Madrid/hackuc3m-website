@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import type { Empresa, Etapa, Track } from "@/lib/empresas";
-import type { EventContent } from "@/lib/event";
+import { VINETAS_AGENDA, type Dia, type EventContent, type Momento } from "@/lib/event";
 import { NOMBRE_ETAPA, PAPEL } from "./empresas";
 import type { Vista } from "./panel";
 
@@ -409,6 +409,7 @@ export function Evento({ content, setContent }: { content: EventContent; setCont
           </div>
         </div>
       </section>
+      <Agenda agenda={content.agenda} cambiar={(agenda) => set({ agenda })} />
       <section>
         <div className="adm-bh">
           <h2>Preguntas frecuentes</h2>
@@ -460,5 +461,132 @@ export function Evento({ content, setContent }: { content: EventContent; setCont
         </ol>
       </section>
     </div>
+  );
+}
+
+/* Agenda: días con sus momentos (hora, viñeta y texto). Vista previa con el marcado y el CSS de la landing. */
+function Agenda({ agenda, cambiar }: { agenda: Dia[]; cambiar: (a: Dia[]) => void }) {
+  const setDia = (d: number, c: Partial<Dia>) => cambiar(agenda.map((x, i) => (i === d ? { ...x, ...c } : x)));
+  const setMomentos = (d: number, f: (m: Momento[]) => Momento[]) => setDia(d, { momentos: f(agenda[d].momentos) });
+  const mover = <T,>(l: T[], i: number, j: number) => {
+    const c = [...l];
+    [c[i], c[j]] = [c[j], c[i]];
+    return c;
+  };
+  const vinetas = Object.entries(VINETAS_AGENDA);
+
+  return (
+    <section>
+      <div className="adm-bh">
+        <h2>Agenda</h2>
+        <button
+          type="button"
+          className="lnk"
+          disabled={agenda.length >= 4}
+          onClick={() => cambiar([...agenda, { titulo: "", etiqueta: `Día ${agenda.length + 1}`, momentos: [] }])}
+        >
+          Añadir día
+        </button>
+      </div>
+      <div className="adm-agenda">
+        {agenda.map((d, di) => (
+          <div key={di} className="adm-dia">
+            <div className="adm-form">
+              <div className="adm-campo">
+                <label htmlFor={`d-${di}`}>
+                  <span className="lab">Día</span>
+                </label>
+                <span className="adm-fld">
+                  <input id={`d-${di}`} value={d.titulo} maxLength={40} placeholder="Viernes 19" onChange={(e) => setDia(di, { titulo: e.target.value })} />
+                </span>
+              </div>
+              <div className="adm-campo">
+                <label htmlFor={`de-${di}`}>
+                  <span className="lab">Etiqueta</span>
+                </label>
+                <span className="adm-fld">
+                  <input id={`de-${di}`} value={d.etiqueta} maxLength={40} placeholder="Día 1" onChange={(e) => setDia(di, { etiqueta: e.target.value })} />
+                </span>
+              </div>
+            </div>
+            <ol className="adm-momentos">
+              {d.momentos.map((m, mi) => (
+                <li key={mi}>
+                  <img src={`/grabados/agenda/${m.vineta}`} alt="" />
+                  <span className="adm-fld">
+                    <select aria-label={`Viñeta del momento ${mi + 1}`} value={m.vineta} onChange={(e) => setMomentos(di, (l) => l.map((x, i) => (i === mi ? { ...x, vineta: e.target.value } : x)))}>
+                      {vinetas.map(([f, n]) => (
+                        <option key={f} value={f}>
+                          {n}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="flecha" aria-hidden="true">
+                      ▾
+                    </span>
+                  </span>
+                  <span className="adm-fld">
+                    <input type="time" aria-label={`Hora del momento ${mi + 1} (vacía: por fijar)`} value={m.hora} onChange={(e) => setMomentos(di, (l) => l.map((x, i) => (i === mi ? { ...x, hora: e.target.value } : x)))} />
+                  </span>
+                  <span className="adm-fld">
+                    <input aria-label={`Momento ${mi + 1}`} value={m.titulo} maxLength={80} placeholder="Qué pasa" onChange={(e) => setMomentos(di, (l) => l.map((x, i) => (i === mi ? { ...x, titulo: e.target.value } : x)))} />
+                  </span>
+                  <span className="adm-acc">
+                    <button type="button" className="lnk" disabled={mi === 0} onClick={() => setMomentos(di, (l) => mover(l, mi, mi - 1))}>
+                      Subir
+                    </button>
+                    <button type="button" className="lnk" disabled={mi === d.momentos.length - 1} onClick={() => setMomentos(di, (l) => mover(l, mi, mi + 1))}>
+                      Bajar
+                    </button>
+                    <button type="button" className="lnk" onClick={() => setMomentos(di, (l) => l.filter((_, i) => i !== mi))}>
+                      Quitar
+                    </button>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <div className="adm-acc">
+              <button
+                type="button"
+                className="btn b2 peq"
+                disabled={d.momentos.length >= 15}
+                onClick={() => setMomentos(di, (l) => [...l, { hora: "", titulo: "", vineta: "flor.webp" }])}
+              >
+                Añadir momento
+              </button>
+              <button type="button" className="lnk" disabled={agenda.length <= 1} onClick={() => cambiar(agenda.filter((_, i) => i !== di))}>
+                Quitar el día
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="adm-ayuda" style={{ margin: "16px 0 20px" }}>
+        Sin hora, en la web sale «por fijar». El orden de los momentos es el de la web.
+      </p>
+      <div className="pagina adm-previa" aria-hidden="true">
+        <section className="agenda" style={{ padding: "24px 0" }}>
+          <div className="wrap">
+            {agenda.map((d, di) => (
+              <div className="dia" key={di}>
+                <h3>
+                  {d.titulo || "Día sin nombre"}
+                  <span className="lab">{d.etiqueta}</span>
+                </h3>
+                <div className="momentos">
+                  {d.momentos.map((m, i) => (
+                    <div className="momento" key={i}>
+                      <img src={`/grabados/agenda/${m.vineta}`} alt="" />
+                      <span className="lab hora">{m.hora || "por fijar"}</span>
+                      <span>{m.titulo}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </section>
   );
 }

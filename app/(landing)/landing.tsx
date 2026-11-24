@@ -8,7 +8,7 @@ import Pie from "../pie";
 import Cabecera from "./cabecera";
 import Carril from "./carril";
 import Contador from "./contador";
-import { agenda, cifras, euros, inicio, premio } from "./datos";
+import { cifras, euros, inicio, premio } from "./datos";
 import Moneda from "./moneda";
 import Preinscripcion from "./preinscripcion";
 import { Cohete, Dron, Formula, Icab, Moto } from "./vehiculos-svg";
@@ -219,7 +219,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
             <h2 className="h2 leer">
               <Leer texto="Dos días, de principio a fin." />
             </h2>
-            {agenda.map((d) => (
+            {event.agenda.map((d) => (
               <div className="dia" key={d.titulo}>
                 <h3>
                   {d.titulo}
@@ -228,8 +228,8 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                 <div className="momentos">
                   {d.momentos.map((m, i) => (
                     <div className="momento" key={i}>
-                      <img src={m.vineta} alt="" loading="lazy" />
-                      <span className="lab hora">{m.hora ?? "por fijar"}</span>
+                      <img src={`/grabados/agenda/${m.vineta}`} alt="" loading="lazy" />
+                      <span className="lab hora">{m.hora || "por fijar"}</span>
                       <span>{m.titulo}</span>
                     </div>
                   ))}

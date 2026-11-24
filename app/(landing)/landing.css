@@ -168,10 +168,15 @@
   color: var(--ink);
   font-variant-numeric: lining-nums tabular-nums;
 }
+/* Ancho fijo por dígito: Ibarra no trae cifras tabulares, así que tabular-nums no basta y el
+   contador bailaba al cambiar de cifra. Recorta solo en vertical para no cortar un dígito ancho. */
 .clock .dg {
   display: inline-block;
+  width: 1ch;
   height: 1em;
-  overflow: hidden;
+  overflow-x: visible;
+  overflow-y: clip;
+  text-align: center;
   vertical-align: top;
 }
 .clock .dg i {
