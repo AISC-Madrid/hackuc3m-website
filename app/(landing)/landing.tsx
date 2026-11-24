@@ -167,10 +167,8 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
               <ol className="retos" style={css({ "--n": tracks.length })}>
                 {tracks.map((t, i) => (
                   <li key={i}>
-                    {t.empresa?.logotipo ? (
-                      <span className="marca" style={css({ "--logo": `url(${t.empresa.logotipo})` })}>
-                        <img src={t.empresa.logotipo} alt={t.empresa.nombre} />
-                      </span>
+                    {t.empresa?.isologo ? (
+                      <img className="marca" src={t.empresa.isologo} alt={t.empresa.nombre} />
                     ) : (
                       <span className="emp">{t.empresa?.nombre ?? "Por confirmar"}</span>
                     )}
@@ -180,7 +178,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                         {dosDigitos(i + 1)}.
                       </span>
                       <span className="logo" aria-hidden="true">
-                        {t.empresa?.isotipo && <i style={css({ "--logo": `url(${t.empresa.isotipo})` })} />}
+                        {t.empresa?.isotipo && <img src={t.empresa.isotipo} alt="" />}
                       </span>
                     </div>
                     <h3 className="t">{t.titulo || "Track por anunciar"}</h3>

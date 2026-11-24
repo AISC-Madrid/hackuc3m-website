@@ -14,7 +14,6 @@ export type EmpresaPublica = {
   corta: string;
   larga: string;
   isotipo: string | null;
-  logotipo: string | null;
   isologo: string | null;
   enCinta: boolean;
 };
@@ -27,7 +26,7 @@ export type Track = { id: number; empresaId: number | null; titulo: string; reto
 
 // Para la landing.
 export type TrackWeb = {
-  empresa: { nombre: string; corta: string; isotipo: string | null; logotipo: string | null } | null;
+  empresa: { nombre: string; corta: string; isotipo: string | null; isologo: string | null } | null;
   titulo: string;
   reto: string;
 };
@@ -60,7 +59,6 @@ export function validEmpresaPublica(v: unknown): v is EmpresaPublica {
     texto(e.corta, 60, true) &&
     texto(e.larga, 600, true) &&
     opcional(e.isotipo, logo) &&
-    opcional(e.logotipo, logo) &&
     opcional(e.isologo, logo) &&
     typeof e.enCinta === "boolean"
   );
@@ -116,21 +114,4 @@ export function barajar<T>(lista: T[], azar: () => number = Math.random): T[] {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
-}
-
-// Un PNG sin canal alfa ni tRNS se pintaría como un cuadrado macizo al usarlo de máscara (isotipo).
-export function pngTieneTransparencia(b: Uint8Array): boolean {
-  const firma = [137, 80, 78, 71, 13, 10, 26, 10];
-  if (b.length < 33 || firma.some((x, i) => b[i] !== x)) return false;
-  const tipoColor = b[25]; // IHDR: 4 = gris con alfa, 6 = RGBA
-  if (tipoColor === 4 || tipoColor === 6) return true;
-  // Paleta o color sin alfa: solo con un bloque tRNS antes de los datos.
-  for (let p = 8; p + 8 <= b.length; ) {
-    const largo = ((b[p] << 24) | (b[p + 1] << 16) | (b[p + 2] << 8) | b[p + 3]) >>> 0;
-    const tipo = String.fromCharCode(b[p + 4], b[p + 5], b[p + 6], b[p + 7]);
-    if (tipo === "tRNS") return true;
-    if (tipo === "IDAT" || tipo === "IEND") return false;
-    p += 12 + largo;
-  }
-  return false;
 }

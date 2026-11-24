@@ -46,7 +46,6 @@ classDiagram
     descripcion_larga
     web?
     isotipo_key?
-    logotipo_key?
     isologo_key?
     en_cinta
   }
@@ -112,7 +111,7 @@ classDiagram
 | Organizador | Equipo interno de la organización | Quién entra en `/admin`. Hoy lo decide Cloudflare Access por email; esta fila sirve para asignar responsables en la captación (en el prototipo están fijos en el código) |
 | Inscripción | Estado, prioridad, datos del formulario y consentimientos | La de `0003_inscripcion.sql`, con `persona_id` en lugar de `email` |
 | Equipo | Código para unirse | De 1 a 4 inscripciones |
-| Empresa | Ficha pública y los **tres logos** | Isotipo: el cuadro del track. Logotipo: la cinta de logos. Isologo: acreditaciones, documentos y correos. Los tres van a R2 |
+| Empresa | Ficha pública y **dos logos** | Isotipo: el cuadro del track. Isologo: la columna del track, la cinta, acreditaciones, documentos y correos. Con sus colores originales. Van a R2 |
 | PapelEmpresa | Lo que aporta, además de un track | Lista abierta en código (`PAPELES`); un papel nuevo no necesita migración. `aporta` es una nota interna («créditos de API») |
 | Membresía | Qué hace esa persona por la empresa en el evento | Mentor, jurado o ninguno. El cargo es informativo («Talent Acquisition») |
 | Track | El reto que se publica | La empresa pone nombre, etiqueta y logo; el track solo pone título, reto y premio. El track se asigna desde la pestaña Tracks, no desde la captación |
@@ -127,8 +126,8 @@ classDiagram
 - **Solo una empresa confirmada puede tener track.** El selector del track no ofrece las que están en conversación, para no anunciar en la web un patrocinador que todavía no lo es.
 - **Dos maneras de guardar.** Lo que se ve en la web (ficha pública, logos, cinta, tracks, evento y preguntas) espera a «Publicar cambios». Lo interno (captación, papeles, «qué aporta» y personas) se guarda solo.
 - **Borrar una empresa** borra su captación, sus documentos y sus membresías, y pide confirmación. Si ya hubo conversaciones, lo normal es marcarla como «perdida».
-- **Isotipo:** solo SVG o PNG con transparencia, porque se pinta con una máscara; una imagen opaca saldría como un cuadrado macizo.
-- **En la web** salen las empresas con track (en su columna) y las que tienen `en_cinta` y logotipo (en la cinta). El resto solo se ve en el admin.
+- **Logos:** se pintan tal cual, sin teñir.
+- **En la web** salen las empresas con track (en su columna) y las que tienen `en_cinta` e isologo (en la cinta). El resto solo se ve en el admin.
 - Las **personas de empresa no entran en la preinscripción ni en la inscripción.** Su acceso (check-in, acreditación) sale de la membresía.
 - **RGPD:** las personas de empresa son datos de terceros. Se guarda nombre, email de trabajo y cargo; teléfono y LinkedIn solo de la persona de contacto de la captación, que es quien los facilita para eso. Todo se borra con el resto al terminar el evento (decisión 7 del plan), salvo lo que haya que conservar por facturación.
 

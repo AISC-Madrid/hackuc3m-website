@@ -232,13 +232,6 @@
   font: italic 400 14px/1 var(--mono);
   color: var(--ink-muted);
 }
-.adm-mask {
-  display: block;
-  background: var(--ink);
-  -webkit-mask: var(--m) center / contain no-repeat;
-  mask: var(--m) center / contain no-repeat;
-  transition: background-color var(--t-fast) ease;
-}
 .adm-barra {
   display: flex;
   flex-wrap: wrap;
@@ -714,16 +707,10 @@
 .adm-fila[aria-pressed="true"] .adm-fil {
   transform: scaleX(1);
 }
-.adm-fila[aria-pressed="true"] .adm-mask {
-  background: var(--plum);
-}
 @media (hover: hover) and (pointer: fine) {
   .adm-fila:hover .adm-fil,
   .adm-trato:hover .adm-fil {
     transform: scaleX(1);
-  }
-  .adm-fila:hover .adm-mask {
-    background: var(--plum);
   }
 }
 .adm-fila .lg {
@@ -733,9 +720,10 @@
   align-items: center;
   justify-content: center;
 }
-.adm-fila .lg .adm-mask {
+.adm-fila .lg img {
   width: 32px;
   height: 32px;
+  object-fit: contain;
 }
 .adm-fila .q {
   min-width: 0;
@@ -789,7 +777,7 @@
 }
 .adm-logos {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 .adm-logo {
@@ -813,18 +801,6 @@
   display: block;
   max-width: 80%;
   max-height: 48px;
-}
-.adm-logo-v .marco {
-  display: grid;
-  place-items: center;
-  width: 96px;
-  height: 96px;
-  border: 1px solid var(--plum);
-}
-.adm-logo-v .marco .adm-mask {
-  width: 66%;
-  height: 66%;
-  background: var(--plum);
 }
 .adm-subir {
   position: relative;

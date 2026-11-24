@@ -149,7 +149,7 @@ Reglas:
 
 - Usa los tokens, nunca colores sueltos. `:root` de `app/globals.css` es el único sitio de `app/` que escribe colores. Las transparencias se hacen con `color-mix(in srgb, var(--token) N%, transparent)`. `npm test` comprueba que la tabla, el frontmatter, `globals.css`, los demás CSS de `app/` y los emails coinciden.
 - Los grabados se entintan con `mask` sobre un color de la paleta (crema en bandas oscuras), así que un mismo fichero sirve para cualquier color.
-- Los logos ajenos (AISC, UC3M) van con sus colores originales, sin teñir. Los logos de empresa de los tracks se tiñen en ciruela con máscara.
+- Los logos ajenos (AISC, UC3M) van con sus colores originales, sin teñir. Las empresas usan solo isotipo e isologo, también con sus colores originales.
 - No hay rojo, verde ni ámbar de estado: el error usa ciruela y texto.
 
 ## Tipografía
@@ -259,7 +259,7 @@ Diseño aprobado el 24 nov 2026 en el canvas (`Admin.dc.html`) y pasado a códig
 
 - **Estructura:** barra lateral en damasco de lis oscuro (`plum-deep` con la trama de lis, texto crema y numerales romanos en crema al 78 %) y zona de trabajo sobre crema. Cada pantalla abre con rótulo, titular de 44 px y el estado de publicación. En móvil el menú pasa a una fila con scroll horizontal.
 - **Cifras:** banda de cuatro cifras en Ibarra 64 px. En el resumen va sobre damasco de seda (ciruela sobre `plum-deep`); en el resto, clara, entre filetes de tinta. No se animan al cargar: el panel se ve a diario.
-- **Lista con ficha:** a la izquierda, filas de 68 px con isotipo, nombre y papeles en `.lab`; a la derecha, la ficha. La fila elegida lleva fondo `surface`, el filete superior trazado y el logo en ciruela (el gesto del track), y se marca con `aria-pressed`. Un punto lleno u hueco dice si sale en la web, con su texto oculto para lectores.
+- **Lista con ficha:** a la izquierda, filas de 68 px con isotipo, nombre y papeles en `.lab`; a la derecha, la ficha. La fila elegida lleva fondo `surface`, el filete superior trazado (el gesto del track), y se marca con `aria-pressed`. Un punto lleno u hueco dice si sale en la web, con su texto oculto para lectores.
 - **Embudo de captación:** columnas separadas por filete ciruela, como los tracks; cabecera en Cinzel versal con el recuento. Cada tarjeta lleva nombre, contacto, importe, etiqueta «Track», responsable en un cuadro con su inicial y el próximo paso; un paso vencido lleva la fecha en ciruela sobre crema invertida. «Perdidas» se pliega debajo con el «+» de las preguntas.
 - **Campos:** etiqueta `.lab` encima y campo sobre `surface` al 55 % con filete de tinta que se traza en ciruela al enfocar. Los grupos dentro de un formulario llevan un subtítulo en Cinzel versal.
 - **Dos maneras de guardar:** lo que se ve en la web espera a la **barra de publicar** (tinta, pegada abajo, sube en `--t-mid` y se va en `--t-fast`) y confirma con el aviso de doble filete. Lo interno se guarda solo y lo dice en una línea de estado.

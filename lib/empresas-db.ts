@@ -3,14 +3,14 @@ import { barajar, type Empresa, type EmpresaPublica, type Etapa, type LogoWeb, t
 
 type FilaEmpresa = {
   id: number; name: string; url: string | null; short_desc: string; long_desc: string;
-  isotipo: string | null; logotipo: string | null; isologo: string | null; en_cinta: number; etapa: Etapa;
+  isotipo: string | null; isologo: string | null; en_cinta: number; etapa: Etapa;
 };
 type FilaTrack = { id: number; company_id: number | null; title: string; challenge: string; prize: string };
 
 export async function leerTodo(): Promise<{ empresas: Empresa[]; tracks: Track[] }> {
   const { DB } = await bindings();
   const [e, r, t] = await DB.batch([
-    DB.prepare("SELECT id, name, url, short_desc, long_desc, isotipo, logotipo, isologo, en_cinta, etapa FROM companies ORDER BY name COLLATE NOCASE"),
+    DB.prepare("SELECT id, name, url, short_desc, long_desc, isotipo, isologo, en_cinta, etapa FROM companies ORDER BY name COLLATE NOCASE"),
     DB.prepare("SELECT company_id, role FROM company_roles"),
     DB.prepare("SELECT id, company_id, title, challenge, prize FROM tracks ORDER BY id"),
   ]);
@@ -20,7 +20,7 @@ export async function leerTodo(): Promise<{ empresas: Empresa[]; tracks: Track[]
   return {
     empresas: (e.results as FilaEmpresa[]).map((f) => ({
       id: f.id, nombre: f.name, web: f.url, corta: f.short_desc, larga: f.long_desc,
-      isotipo: f.isotipo, logotipo: f.logotipo, isologo: f.isologo, enCinta: f.en_cinta === 1,
+      isotipo: f.isotipo, isologo: f.isologo, enCinta: f.en_cinta === 1,
       etapa: f.etapa, papeles: papeles.get(f.id) ?? [],
     })),
     tracks: (t.results as FilaTrack[]).map((f) => ({
@@ -39,7 +39,7 @@ export async function leerWeb(): Promise<{ tracks: TrackWeb[]; cinta: LogoWeb[] 
       .map((t) => {
         const e = t.empresaId === null ? undefined : porId.get(t.empresaId);
         return {
-          empresa: e && e.etapa === "confirmada" ? { nombre: e.nombre, corta: e.corta, isotipo: e.isotipo, logotipo: e.logotipo } : null,
+          empresa: e && e.etapa === "confirmada" ? { nombre: e.nombre, corta: e.corta, isotipo: e.isotipo, isologo: e.isologo } : null,
           titulo: t.titulo,
           reto: t.reto,
         };
@@ -98,8 +98,8 @@ export async function publicar(empresas: EmpresaPublica[], tracks: Track[]) {
       : DB.prepare("DELETE FROM tracks"),
     ...empresas.map((e) =>
       DB.prepare(
-        "UPDATE companies SET name = ?, url = ?, short_desc = ?, long_desc = ?, isotipo = ?, logotipo = ?, isologo = ?, en_cinta = ? WHERE id = ?",
-      ).bind(e.nombre.trim(), e.web, e.corta.trim(), e.larga.trim(), e.isotipo, e.logotipo, e.isologo, e.enCinta && e.isologo ? 1 : 0, e.id),
+        "UPDATE companies SET name = ?, url = ?, short_desc = ?, long_desc = ?, isotipo = ?, isologo = ?, en_cinta = ? WHERE id = ?",
+      ).bind(e.nombre.trim(), e.web, e.corta.trim(), e.larga.trim(), e.isotipo, e.isologo, e.enCinta && e.isologo ? 1 : 0, e.id),
     ),
     ...tracks.map((t) =>
       t.id > 0

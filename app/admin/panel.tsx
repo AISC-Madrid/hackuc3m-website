@@ -23,7 +23,7 @@ const ROMANOS = ["I", "II", "III", "IV", "V", "VI"];
 
 const publico = (e: Empresa): EmpresaPublica => ({
   id: e.id, nombre: e.nombre, web: e.web, corta: e.corta, larga: e.larga,
-  isotipo: e.isotipo, logotipo: e.logotipo, isologo: e.isologo, enCinta: e.enCinta,
+  isotipo: e.isotipo, isologo: e.isologo, enCinta: e.enCinta,
 });
 type Base = { content: EventContent; empresas: EmpresaPublica[]; tracks: Track[] };
 const huella = (c: EventContent, e: EmpresaPublica[], t: Track[]) => JSON.stringify([c, e, t]);
@@ -101,7 +101,7 @@ export default function Panel() {
   async function crearEmpresa(etapa: Etapa) {
     try {
       const { id } = await pedir<{ id: number }>("/api/admin/empresas", { method: "POST", body: JSON.stringify({ etapa }) });
-      const nueva: Empresa = { id, nombre: "", web: null, corta: "", larga: "", isotipo: null, logotipo: null, isologo: null, enCinta: false, etapa, papeles: [] };
+      const nueva: Empresa = { id, nombre: "", web: null, corta: "", larga: "", isotipo: null, isologo: null, enCinta: false, etapa, papeles: [] };
       setEmpresas((l) => [...l, nueva]);
       setBase((b) => b && { ...b, empresas: [...b.empresas, publico(nueva)] });
       setEmpSel(id);

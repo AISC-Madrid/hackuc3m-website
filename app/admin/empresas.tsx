@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { ETAPAS, PAPELES, type Empresa, type EmpresaInterna, type EmpresaPublica, type Papel, type Track } from "@/lib/empresas";
 
 // Botón de icono para acciones repetidas en filas (mover, eliminar). El nombre va en aria-label y title.
@@ -29,7 +29,6 @@ export const PAPEL: Record<Papel, [string, string]> = {
   patrocinio: ["Patrocinio", "Dinero aparte de un track: premio, comida, material"],
   difusion: ["Difusión", "Promociona el evento o da una charla"],
 };
-const mask = (url: string) => ({ "--m": `url(${url})` }) as CSSProperties;
 const enWeb = (e: Empresa, tracks: Track[]) =>
   e.etapa === "confirmada" && ((e.enCinta && !!e.isologo) || tracks.some((t) => t.empresaId === e.id));
 
@@ -90,7 +89,7 @@ export default function Empresas(p: Props) {
                   <button type="button" className="adm-fila" aria-pressed={x.id === p.sel} onClick={() => p.elegir(x.id)}>
                     <i className="adm-fil" />
                     <span className="lg">
-                      {x.isotipo ? <i className="adm-mask" style={mask(x.isotipo)} /> : <span className="adm-ini" aria-hidden="true">{iniciales(x.nombre)}</span>}
+                      {x.isotipo ? <img src={x.isotipo} alt="" /> : <span className="adm-ini" aria-hidden="true">{iniciales(x.nombre)}</span>}
                     </span>
                     <span className="q">
                       <b className={x.nombre ? "" : "vacio"}>{x.nombre || "Empresa sin nombre"}</b>
@@ -138,10 +137,10 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
   const set = (c: Partial<EmpresaPublica>) => cambiar(e.id, c);
   const track = tracks.find((t) => t.empresaId === e.id);
 
-  async function subir(tipo: "isotipo" | "logotipo" | "isologo", f: File) {
+  async function subir(tipo: "isotipo" | "isologo", f: File) {
     setSubiendo(tipo);
     try {
-      const r = await fetch(`/api/admin/media?tipo=${tipo}`, { method: "POST", headers: { "Content-Type": f.type }, body: f });
+      const r = await fetch("/api/admin/media", { method: "POST", headers: { "Content-Type": f.type }, body: f });
       const d = (await r.json()) as { url?: string; error?: string };
       if (!r.ok || !d.url) throw new Error(d.error);
       set({ [tipo]: d.url });
@@ -153,19 +152,13 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
     }
   }
 
-  const logo = (tipo: "isotipo" | "logotipo" | "isologo", nombre: string, uso: string, accept: string) => {
+  const logo = (tipo: "isotipo" | "isologo", nombre: string, uso: string) => {
     const url = e[tipo];
     return (
       <div className="adm-logo">
         <div className="adm-logo-v">
           {url ? (
-            tipo === "isotipo" ? (
-              <span className="marco">
-                <i className="adm-mask" style={mask(url)} />
-              </span>
-            ) : (
-              <img src={url} alt="" />
-            )
+            <img src={url} alt="" />
           ) : (
             <span className="adm-ayuda">Falta el {nombre.toLowerCase()}</span>
           )}
@@ -181,7 +174,7 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
             {subiendo === tipo ? "Subiendo…" : url ? `Cambiar ${nombre.toLowerCase()}` : `Subir ${nombre.toLowerCase()}`}
             <input
               type="file"
-              accept={accept}
+              accept="image/svg+xml,image/png,image/webp,image/jpeg"
               aria-label={`Subir ${nombre.toLowerCase()}`}
               disabled={subiendo !== null}
               onChange={(ev) => {
@@ -254,9 +247,8 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
           <p className="lab">1 MB como máximo</p>
         </div>
         <div className="adm-logos">
-          {logo("isotipo", "Isotipo", "El símbolo solo. Va en el cuadro del track, teñido de ciruela. SVG o PNG con fondo transparente.", "image/svg+xml,image/png")}
-          {logo("logotipo", "Logotipo", "El nombre escrito. Abre la columna del track, teñido de ciruela. SVG o PNG con fondo transparente.", "image/svg+xml,image/png")}
-          {logo("isologo", "Isologo", "Símbolo y nombre juntos. Acreditaciones, documentos y correos.", "image/svg+xml,image/png,image/webp,image/jpeg")}
+          {logo("isotipo", "Isotipo", "El símbolo solo. Va en el cuadro del track, con sus colores.")}
+          {logo("isologo", "Isologo", "Símbolo y nombre juntos. Abre la columna del track y va en la cinta, acreditaciones, documentos y correos.")}
         </div>
       </div>
 

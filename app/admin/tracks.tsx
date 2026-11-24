@@ -51,7 +51,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                 <li key={x.id}>
                   <button type="button" className="adm-fila" aria-pressed={x.id === t?.id} onClick={() => elegir(x.id)}>
                     <i className="adm-fil" />
-                    <span className="lg">{e?.isotipo && <i className="adm-mask" style={css({ "--m": `url(${e.isotipo})` })} />}</span>
+                    <span className="lg">{e?.isotipo && <img src={e.isotipo} alt="" />}</span>
                     <span className="q">
                       <b className={x.titulo ? "" : "vacio"}>{x.titulo || "Track por anunciar"}</b>
                       <span className="lab">{e?.nombre || "Sin empresa"}</span>
@@ -162,17 +162,15 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                 const e = x.empresaId !== null ? porId.get(x.empresaId) : undefined;
                 return (
                   <li key={id}>
-                    {e?.logotipo ? (
-                      <span className="marca" style={css({ "--logo": `url(${e.logotipo})` })}>
-                        <img src={e.logotipo} alt="" />
-                      </span>
+                    {e?.isologo ? (
+                      <img className="marca" src={e.isologo} alt="" />
                     ) : (
                       <span className="emp">{e?.nombre ?? "Por confirmar"}</span>
                     )}
                     {e?.corta && <span className="def">{e.corta}</span>}
                     <div className="cab">
                       <span className="nn">{dos(i + 1)}.</span>
-                      <span className="logo">{e?.isotipo && <i style={css({ "--logo": `url(${e.isotipo})` })} />}</span>
+                      <span className="logo">{e?.isotipo && <img src={e.isotipo} alt="" />}</span>
                     </div>
                     <h3 className="t">{x.titulo || "Track por anunciar"}</h3>
                     <p className="s">{x.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
@@ -183,7 +181,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
           </div>
         </div>
         <p className="adm-ayuda" style={{ marginTop: 10 }}>
-          Mismo marcado y CSS que la web, en el orden al azar que tendrá en una visita. El nombre, la etiqueta y el isotipo vienen de la ficha de la empresa.
+          Mismo marcado y CSS que la web, en el orden al azar que tendrá en una visita. El isologo, la etiqueta y el isotipo vienen de la ficha de la empresa.
         </p>
       </section>
     </div>
