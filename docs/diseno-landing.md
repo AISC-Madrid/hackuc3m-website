@@ -447,3 +447,32 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
 - Se cambia la regla «sin JS de scroll»: el JS solo corre como respaldo.
 - Probado en Chromium emulando un navegador sin `animation-timeline` (escritorio 1440 y móvil 390) y en modo nativo. No se pudo abrir un Firefox real en el entorno de trabajo: falta probarlo a mano en Firefox, Safari de iOS y Chrome de Android.
 - Única diferencia que queda: cerrar una pregunta con animación (`::details-content`) solo existe en Chrome; en el resto se cierra al instante.
+
+- 2026-11-23 · **Fuera `/como-llegar`.** Se había colado en la plantilla de documento y no hay que implementarla: se borran la página, `contenido/como-llegar.md`, el enlace del pie y la viñeta «jarron» del catálogo.
+- 2026-11-23 · **Viñetas quietas en los documentos** (privacidad, código de conducta y créditos, que comparten plantilla). La viñeta de la portada ya no entra en cascada con el texto, y el florón y el remate dejan de descubrirse al hacer scroll (fuera también su gemela `.sv`). Los filetes `.tz` y la entrada del texto se mantienen.
+- 2026-11-24 · **Tracks nivelados.** Las columnas comparten filas con `subgrid` (empresa, etiqueta, numeral y logo, título, descripción): una etiqueta de más o un título más largo ya no descuadran las demás columnas. En móvil, el carrusel deja 40 px debajo para el filete de avance, que antes pisaba la descripción. También en V3 del canvas.
+- 2026-11-24 · **Fuera Xanh Mono.** Todas las cifras (banda de cifras, premio y reverso de la moneda, numerales de los tracks, horas de la agenda, contador, 404 y listas numeradas de los documentos) pasan a Ibarra Real Nova, la fuente principal. El contador y las cifras que cuentan usan cifras tabulares para que no bailen. Se deja de cargar la fuente y desaparece `--num`. Xanh Mono pasa a descartadas. Aplicado también en V3 y en la guía de estilo del canvas.
+- 2026-11-24 · **Euros como «1.250€».** Punto de millar también con cuatro cifras y sin espacio entre el número y el signo; el espacio se veía raro. Cambia la banda de cifras («2.500€»), el premio, el desglose, el reverso de la moneda y la frase de cifras. Los contadores en CSS parten el número en miles y resto, así que al contar pasan por «0.137€», como una numeradora. También en V3 y en la guía de estilo del canvas.
+- 2026-11-24 · **Euros al contar: el punto solo desde 1000.** Al empezar a contar se ve «0€», «137€», «999€» y el punto entra en «1.000€»; antes salía «0.000€». Se hace con estilos de contador (`@counter-style`) que dejan vacío el trozo que no toca.
+- 2026-11-24 · **Sin Puerta de Alcalá en móvil.** En las preguntas frecuentes, la lámina solo ocupaba sitio entre el titular y la lista; se oculta por debajo de 820 px.
+- 2026-11-24 · **Nombre de la barra centrado.** «HackUC3M’27» se baja 0,18em: Cinzel es casi todo versal y su tinta quedaba unos 4 px más alta que el isotipo y el botón.
+
+- 2026-11-24 · **Panel de organización: propuesta en el canvas** (`Admin.dc.html`, hoja Principal). Es Los Ilustrados en modo herramienta: barra lateral en damasco de lis oscuro, banda de cifras del resumen en damasco de seda, avisos sobre papel de lis malva y viñetas de la agenda en los huecos. Usa los gestos de Microanimaciones: pulsar, rodillo del botón secundario, filete que se entinta, campo que se traza, casilla que se estampa, aviso que sube, cinta lineal y filete del track. Lo que se ve a diario no se anima al cargar (cifras quietas).
+- 2026-11-24 · **Empresa y track son cosas distintas: la empresa tiene el track.** Hay empresas sin track: infraestructura (créditos de API, cuentas), jurado, patrocinio o difusión. Las empresas tienen personas (mentoras, jurado o sin papel). Modelo en `docs/modelo-datos.md`.
+- 2026-11-24 · **Tres logos por empresa:** isotipo (cuadro del track, teñido), logotipo (cinta, con sus colores) e isologo (acreditaciones, documentos y correos).
+- 2026-11-24 · **La vista previa del admin tiene que ser idéntica a la web:** copia el CSS de `landing.css` a 1440 px, sin aproximaciones.
+- 2026-11-24 · **Sin orden entre empresas:** todas pagan lo mismo, así que los tracks y la cinta salen al azar en cada visita. El admin no tiene «subir» ni «bajar».
+- 2026-11-24 · **Captación dentro del admin:** la herramienta de partnerships de Álvaro se rediseña como pestaña del panel, con los mismos campos que tenía (estado, importe, track, contacto con cargo, correo, teléfono y LinkedIn, responsable, próximo paso con fecha, notas y documentos), dentro de la ficha de empresa. Es solo interfaz: Álvaro conecta su lógica y su base de datos.
+- 2026-11-24 · **Cinta de logos a 40 s por vuelta**, como en el código; la norma de Microanimaciones decía 18 s y se corrige (manda el código). En el mismo tablero, `--t-fast` y `--t-slow` se referían a sí mismos y anulaban sus duraciones; arreglado.
+- 2026-11-24 · **Revisión del panel aplicada.**
+  - Lo interno se guarda solo; «Publicar» queda para lo que sale en la web.
+  - Solo las empresas confirmadas pueden tener track.
+  - Borrar una empresa pide confirmación y propone marcarla como perdida.
+  - «Perdida» se pliega bajo el embudo para que quepa a 1440 px.
+  - Arreglos de lógica: «Añadir» crea la empresa en la etapa de su columna e «Ir al track» abre el de la empresa.
+  - Los tracks se pueden eliminar y tienen un campo de premio.
+  - El isotipo solo admite SVG o PNG transparente.
+  - La cinta no se puede marcar sin logotipo.
+  - Accesibilidad: foco visible al subir logos, textos ocultos para el punto de «sale en la web» y la inicial del responsable, numerales del menú en crema al 78 % (6:1) y `aria-pressed` en las listas.
+  - «Patrocinio» queda definido como dinero aparte de un track.
+- 2026-11-24 · Panel documentado en DESIGN.md (apartado «Panel de organización») y en la guía de estilo; `.impeccable/design.json` regenerado.

@@ -1,6 +1,6 @@
 # HackUC3M ’27 · plan de implementación
 
-23 nov 2026. Parte de `docs/plan-web.md` (requisitos con ID) y del handoff `docs/handoff-plan-implementacion.md`. Aún no hay código: esto fija la arquitectura, el orden de los PR y qué hay que decidir antes de cada uno.
+23 nov 2026. Parte de `docs/plan-web.md` (requisitos con ID). Aún no hay código: esto fija la arquitectura, el orden de los PR y qué hay que decidir antes de cada uno.
 
 ## Resumen
 
@@ -12,6 +12,35 @@
 
 ---
 
+## 0. Primero: lanzar la preinscripción (replanteado el 24 nov 2026)
+
+**Objetivo:** desplegar cuanto antes una web funcional donde la gente se preinscriba. Este bloque va **antes que todo lo demás**. Las fases 1–5 siguen igual, pero empiezan después del lanzamiento, salvo lo que se cita aquí.
+
+**Qué sale en el lanzamiento:**
+- La landing V3, correcta y funcionando, con la preinscripción (`/api/waitlist`, que ya existe).
+- `/privacidad` y `/codigo-de-conducta`.
+- `/creditos`, que ya existe y es estática.
+- El admin para editar las empresas y sus tracks y para ver la lista de preinscritos.
+
+**Qué no sale:** `/como-llegar` (eliminada), la inscripción completa (fase 2) ni los CVs.
+
+| PR | Qué | Estado |
+|---|---|---|
+| L.1 | Acceso al admin. En `next dev` se entra **sin login** (`lib/admin.ts`). En `next build`, `npm run preview` y producción se pide **Cloudflare Access**, como hasta ahora. Se sigue exigiendo el mismo origen en las escrituras | Hecho |
+| L.2 | **Empresas editables desde el admin.** Los tracks y sus empresas viven en `retos` dentro del JSON de `event_content`: nombre, web, logo, etiqueta, título y descripción, en el orden de la web. Un track sin empresa sale «Por anunciar». Los logos se suben desde el admin a R2 (`POST /api/admin/media`) y se sirven por `/media/[key]`. La landing ya no lee `datos.ts` para los tracks ni para la cinta. Las tablas de 1.2 (papeles, varias empresas por track) esperan a que hagan falta | Hecho en local; falta crear el bucket `hackuc3m-media` en producción |
+| L.3 | **Depurar la landing** (en curso, a mano). Hay que probarla en Firefox, Safari de iOS y Chrome de Android. Pasar `svgo` a los SVG grandes (skyline y moneda) y comprobar el LCP en un móvil. Revisar los textos provisionales de `datos.ts`: horas de la agenda y cifras del premio | En curso |
+| L.4 | **Textos legales para la preinscripción.** La privacidad tiene que cubrir lo que se recoge al preinscribirse (email, nombre y consentimiento) y no más. El código de conducta pasa de borrador a definitivo. Los dos necesitan el visto bueno del equipo | Pendiente |
+| L.5 | **Seguridad.** Next 16.4.3 tiene una vulnerabilidad conocida: actualizar antes de desplegar, con permiso | Pendiente |
+| L.6 | **Despliegue**, solo con autorización explícita. Merge a `main`, y Workers Builds lo publica. Comprobar antes: migraciones aplicadas en D1 remota, la aplicación de Access cubre `/admin` y `/api/admin/*`, secretos de Resend en Cloudflare y la preinscripción probada con `npm run preview` | Pendiente |
+
+**Cambios pedidos después de L.2 (24 nov 2026), por hacer en código:** empresa y track separados, con tres logos por empresa, papeles y personas (`docs/modelo-datos.md`). Sin orden: la landing baraja los tracks y la cinta en cada visita, y el editor quita «Subir» y «Bajar». El diseño del panel está en el canvas (`Admin.dc.html`).
+
+**Logos (decidido el 24 nov 2026): bucket R2 privado `hackuc3m-media`** (binding `MEDIA`). En local lo simula miniflare. Antes de desplegar hay que crearlo en la cuenta (`npx wrangler r2 bucket create hackuc3m-media`), y solo con autorización.
+
+Después del lanzamiento, el orden sigue en la fase 2 (2.1 estados, 2.2 enlace mágico…).
+
+---
+
 ## 1. Arquitectura objetivo
 
 ### 1.1 Rutas y render
@@ -20,7 +49,7 @@
 |---|---|---|---|
 | `/` | Landing V3 | Dinámica (`await connection()`, una lectura de D1 en lote) | P-1, P-2, P-3, E-1, D-3 |
 | `/agenda` | Agenda y avisos en vivo | Dinámica | D-2 |
-| `/privacidad`, `/codigo-de-conducta`, `/como-llegar`, `/creditos` | Páginas de documento (plantilla Legal del canvas) | Estáticas en el build | P-4, P-5, P-6 |
+| `/privacidad`, `/codigo-de-conducta`, `/creditos` | Páginas de documento (plantilla Legal del canvas) | Estáticas en el build | P-4, P-5, P-6 |
 | `/inscripcion` | Pide el email y envía el enlace mágico | Estática más un formulario cliente | I-1 |
 | `/inscripcion/entrar?t=…` | Canjea el token, crea la sesión y redirige | Route handler | I-1 |
 | `/mi-plaza` | Formulario, estado, confirmar o cancelar, QR | Dinámica, con sesión | I-2…I-6, I-9, I-10 |
@@ -142,7 +171,7 @@ Las fechas viven en el JSON de contenido (`borrarDatosEl`) para que el cron no d
 - **CSS plano y global, sin Tailwind.** Hoy Tailwind se usa en 5 `className` y en un `@theme`. `sistema.css` ya es CSS por clases (`.btn`, `.lnk`, `.tz`, `.faq`…). Mantener dos sistemas sería coste sin beneficio, así que en el PR de migración se quitan `tailwindcss` y `@tailwindcss/postcss`, y con ello dos dependencias menos.
 - `app/globals.css` = `:root` (colores, tiempos `--t-fast`, `--t-mid` y `--t-slow`, curvas `--ease-out` y `--ease-io`, familias) + el resto de `sistema.css` tal cual, sin `.hk` (en la web no hace falta aislar nada). Lo propio de cada sección del `<helmet>` de V3 va a un CSS al lado de su componente (`app/(landing)/hero.css`…), importado desde ese componente.
 - **La regla «`:root` es el único sitio con colores» se mantiene.** Los colores que hoy escribe `.hk` en `sistema.css` suben a `:root`. Los `rgba(44,20,37,.06)` del pie pasan a `color-mix(in srgb, var(--ink) 6%, transparent)`. El test de tokens se amplía para que también mire los CSS de `app/` además de `globals.css`.
-- **Fuentes** con `next/font/google`, que las sirve desde el propio dominio sin llamar a Google en tiempo de ejecución: Ibarra Real Nova, Brygada 1918, Cinzel, Corinthia y Xanh Mono (si sigue en `--num`). Geist se va.
+- **Fuentes** con `next/font/google`, que las sirve desde el propio dominio sin llamar a Google en tiempo de ejecución: Ibarra Real Nova, Brygada 1918, Cinzel y Corinthia (Xanh Mono se retiró el 24 nov 2026). Geist se va.
 
 ### 2.2 Microanimaciones: CSS o React
 
@@ -208,7 +237,7 @@ Bloquea: nada. Riesgo: subir algo con derechos de terceros; se revisa `git ls-fi
 | 1.1 | `DESIGN.md` reescrito con «Los Ilustrados»; `globals.css` con `sistema.css`; fuentes; fuera Tailwind y Geist; test de tokens ampliado; `.impeccable/design.json` regenerado; `AGENTS.md` (canvas ya no es la referencia) | Diseño |
 | 1.2 | Migración 0002 (empresas, papeles, tracks); bucket R2 y `/media`; CRUD en el admin con subida de isotipo, logotipo e isologo | A-7, A-8, E-4, E-5 |
 | 1.3 | Landing V3 en componentes: cabecera, hero, cinta de logos, manifiesto, cifras, tracks, agenda, gran premio, inscripción (formulario de preinscripción actual), empresas, FAQ y pie | P-1, P-2, P-3, E-1 |
-| 1.4 | Plantilla de documento y `/privacidad` (actualizada), `/codigo-de-conducta`, `/como-llegar` y `/creditos` | P-4, P-5, P-6 |
+| 1.4 | Plantilla de documento y `/privacidad` (actualizada), `/codigo-de-conducta` y `/creditos` | P-4, P-5, P-6 |
 
 Bloquea: V3 está cerrada (23 nov 2026); falta reescribir `DESIGN.md`, que es el propio PR 1.1. Los textos legales de P-6 dependen de las decisiones 4 y 7. La 2 (idioma) decide si los textos se escriben ya con clave de idioma.
 Riesgo: el rendimiento del hero con muchas capas y SVG grandes. Antes de mergear 1.3, comprobar LCP en un móvil normal.

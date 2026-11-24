@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-23T17:00:00.000Z",
+  "generatedAt": "2026-11-24T12:00:00.000Z",
   "title": "Design System: HackUC3M · Los Ilustrados",
   "extensions": {
     "colorMeta": {
@@ -225,7 +225,7 @@
       },
       "cifra": {
         "displayName": "Cifra",
-        "family": "Xanh Mono",
+        "family": "Ibarra Real Nova",
         "use": "Every figure and number"
       }
     },
@@ -246,7 +246,7 @@
         "Scroll-linked motion in CSS behind @supports (animation-timeline: view()) and prefers-reduced-motion: no-preference",
         "Where animation-timeline is missing (Firefox, Safari < 26), app/desplazamiento.tsx adds html.sv, the .on latch and progress variables; every native rule has a .sv twin",
         "Things that appear do so once (latch)",
-        "Only loops (vehicles, logo ribbon) and counters keep their own durations"
+        "Only loops and counters keep their own durations; the logo ribbon runs 40s per loop, linear, paused on hover"
       ]
     },
     "breakpoints": [
@@ -293,16 +293,46 @@
       "name": "Document page",
       "kind": "template",
       "description": "Static page from contenido/*.md: fixed bar, cover with corner engravings and one vignette, sticky index with Roman numerals, sections with an «En corto» margin note, fleuron, end-piece and a contact block on mauve lily paper."
+    },
+    {
+      "name": "Admin shell",
+      "kind": "layout",
+      "description": "Organiser panel: sidebar on dark damask of lilies with Roman-numeral nav in cream, cream work area with label, 44px headline and publish status."
+    },
+    {
+      "name": "List with record",
+      "kind": "layout",
+      "description": "Left list of 68px rows (isotype, name, roles); selected row gets surface background, traced top rule and plum logo, aria-pressed. Right: the record."
+    },
+    {
+      "name": "Pipeline",
+      "kind": "board",
+      "description": "Sponsorship funnel: columns split by plum rules like the tracks, Cinzel caps headers with counts, cards with amount, owner initial and next step; lost deals folded below."
+    },
+    {
+      "name": "Publish bar",
+      "kind": "feedback",
+      "description": "Ink bar stuck to the bottom when public changes are pending; rises in --t-mid, leaves in --t-fast. Internal data autosaves instead."
+    },
+    {
+      "name": "Notice paper",
+      "kind": "feedback",
+      "description": "Fixed note on mauve lily paper with a double rule; the text carries its own cream background."
+    },
+    {
+      "name": "Segmented filter",
+      "kind": "control",
+      "description": "Grouped filter buttons with an ink-muted rule; the pressed one is ink with cream text, aria-pressed."
     }
   ],
   "narrative": {
     "northStar": "Los Ilustrados: Carlos III’s Enlightenment, printed for engineers of 2027",
-    "overview": "Cream paper and plum ink. Real public-domain engravings (Van Hulsen corners, Carnicero’s balloon, the Puerta de Alcalá, a rococo cartouche) tinted with CSS masks; Cinzel wordmark with a Corinthia pen ’27; Ibarra Real Nova for reading, Brygada 1918 for labels and notes, Xanh Mono for every number.\n\nThe layout is editorial: visible rules, extreme scale contrast, asymmetry and typographic indexes instead of cards. Motion is printing-press motion: things ink, draw or uncover themselves once, with three timings and two curves.",
+    "overview": "Cream paper and plum ink. Real public-domain engravings (Van Hulsen corners, Carnicero’s balloon, the Puerta de Alcalá, a rococo cartouche) tinted with CSS masks; Cinzel wordmark with a Corinthia pen ’27; Ibarra Real Nova for reading and for every number, Brygada 1918 for labels and notes.\n\nThe layout is editorial: visible rules, extreme scale contrast, asymmetry and typographic indexes instead of cards. Motion is printing-press motion: things ink, draw or uncover themselves once, with three timings and two curves.",
     "keyCharacteristics": [
       "Cream page, damask-of-lilies dark bands, no dark mode.",
       "Only real engravings with credits; never hand-drawn ornaments.",
       "Headlines in one tone, upright, with no highlighted words.",
-      "Never italic small caps; all figures in Xanh Mono.",
+      "Never italic small caps; figures in Ibarra Real Nova; Xanh Mono is retired.",
       "Three timings, two curves, once-only scroll motion with a CSS fallback."
     ],
     "rules": [

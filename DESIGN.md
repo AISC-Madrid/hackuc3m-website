@@ -61,7 +61,7 @@ typography:
     fontWeight: 400
     lineHeight: 1.5
   cifra:
-    fontFamily: "Xanh Mono, monospace"
+    fontFamily: "Ibarra Real Nova, serif"
     fontSize: "clamp(120px, 18cqi, 260px)"
     fontWeight: 400
     lineHeight: 1
@@ -154,7 +154,7 @@ Reglas:
 
 ## Tipografía
 
-Cinco familias, cargadas con `next/font/google` en `app/layout.tsx` y expuestas como `--serif`, `--mono`, `--num`, `--caps` y `--hand`.
+Cuatro familias, cargadas con `next/font/google` en `app/layout.tsx` y expuestas como `--serif`, `--mono`, `--caps` y `--hand`.
 
 | Rol | Familia | Tamaño | Uso |
 | --- | --- | --- | --- |
@@ -166,14 +166,15 @@ Cinco familias, cargadas con `next/font/google` en `app/layout.tsx` y expuestas 
 | Cuerpo | Ibarra Real Nova | 18 px; 19 px en entradilla (`.p`) | Texto corrido |
 | Etiqueta (`.lab`) | Brygada 1918 500, versal, 0.16em | 10,5–11,5 px | Etiquetas, fechas, empresa del track |
 | Nota (`.nota`) | Brygada 1918 cursiva | 14–15 px | Pies de imagen, créditos, frases, el campo del correo |
-| Cifra | Xanh Mono | según bloque | Todas las cifras y números: banda de cifras, premio, numerales de track, horas de la agenda, contador |
+| Cifra | Ibarra Real Nova | según bloque | Todas las cifras y números: banda de cifras, premio, numerales de track, horas de la agenda, contador |
 
 Reglas:
 
 - **Nunca cursiva en versal.** Las etiquetas van en versal redonda; las frases, en cursiva.
-- La palabra que acompaña a una cifra («hackers», «en premios») va en Ibarra. Las fechas dentro de una frase y los números romanos no van en Xanh Mono.
+- La palabra que acompaña a una cifra («hackers», «en premios») va en Ibarra. Las cifras van en Ibarra, como el texto: no hay fuente propia para números (Xanh Mono se retiró el 24 nov 2026).
+- Euros con punto de millar (también con cuatro cifras) y el signo pegado: «1.250€», «250€». En código, `euros()` de `app/(landing)/datos.ts`; en los contadores CSS, miles y resto con `round()` y `mod()`.
 - Titulares con `text-wrap: balance`; párrafos con `pretty` y 36rem como máximo.
-- Descartadas y no se vuelven a proponer: Bodoni, La Belle Aurore, IM Fell, IBM Plex Mono, Libre Baskerville, Cormorant, Playfair, EB Garamond, Instrument Serif.
+- Descartadas y no se vuelven a proponer: Bodoni, La Belle Aurore, IM Fell, IBM Plex Mono, Libre Baskerville, Xanh Mono, Cormorant, Playfair, EB Garamond, Instrument Serif.
 
 ## Espaciado y layout
 
@@ -203,14 +204,14 @@ Todos en `app/globals.css`, salvo lo propio de cada sección, que vive junto a s
 - **Lámina** (`.lamina`): grabado de época con pie de una línea en `.nota`; se descubre de arriba abajo una vez.
 - **Esquinera** (`.esq`): roleos de Van Hulsen; la tinta sale del vértice exterior al abrir la página.
 - **Filete que se traza** (`.tz`, `.tz.una`): cualquier bloque con filete arriba (y abajo).
-- **Contador**: numeradora en Xanh Mono; cada rueda gira solo cuando cambia su dígito.
+- **Contador**: numeradora en Ibarra con cifras tabulares; cada rueda gira solo cuando cambia su dígito.
 - **Pie** (`app/pie.tsx`): colaboradores (AISC y UC3M sin teñir), correo, cómo llegar, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
 
 ## Movimiento
 
 La norma es el tablero Microanimaciones; aquí está resumida.
 
-- **Tres tiempos y dos curvas.** `--t-fast` 200 ms (ratón y pulsación), `--t-mid` 450 ms (aviso, preguntas, moneda, error), `--t-slow` 900 ms (láminas, filetes, esquineras, entrada). `--ease-out` para entrar y responder; `--ease-io` para mover en pantalla. Solo los bucles (vehículos, cinta de logos) y los contadores (1,1–1,2 s) llevan sus propias duraciones.
+- **Tres tiempos y dos curvas.** `--t-fast` 200 ms (ratón y pulsación), `--t-mid` 450 ms (aviso, preguntas, moneda, error), `--t-slow` 900 ms (láminas, filetes, esquineras, entrada). `--ease-out` para entrar y responder; `--ease-io` para mover en pantalla. Solo los bucles y los contadores (1,1–1,2 s) llevan sus propias duraciones: la cinta de logos va a 40 s por vuelta, lineal, y se para bajo el ratón.
 - **Una sola vez.** Lo que aparece con el scroll se dispara con `animation-timeline: view()` y un «cerrojo»: `--on` pasa a 1 y la transición de vuelta espera 99999 s, así que no se deshace al subir.
 - **CSS antes que JS.** Solo hay JS para la barra que se esconde, el contador, la moneda, el formulario, para no arrancar los vehículos hasta que su carril entra en pantalla y para el respaldo de abajo.
 - **En todos los navegadores.** Lo ligado al scroll va en CSS tras `@supports (animation-timeline: view())` y `prefers-reduced-motion: no-preference` (Chrome, Edge, Safari 26+). Donde no hay `animation-timeline` (Firefox, Safari anteriores), `app/desplazamiento.tsx` pone la clase `sv` en `<html>` y reproduce los mismos gestos: añade `.on` a cada bloque al entrar (el cerrojo) y escribe variables de progreso que el CSS de `.sv` convierte en transform, opacity o clip-path. Un único bucle de `requestAnimationFrame` sobre un scroll pasivo; sin consultas `@container style()`, que Firefox no tiene. Toda regla nativa nueva lleva su gemela `.sv`.
@@ -242,19 +243,35 @@ Archivos en `public/`: `IsologoHackUc3m.svg`, `IsotipoHackUc3m.svg` y `hackuc3m-
 
 ## Páginas de documento
 
-`/privacidad`, `/codigo-de-conducta`, `/como-llegar` y `/creditos` comparten la plantilla `app/documento/` (Legal.dc.html del canvas). Son estáticas y su texto sale de `contenido/*.md`, así que quien edite el texto no toca diseño; `/creditos` se genera desde `assets/creditos.json`.
+`/privacidad`, `/codigo-de-conducta` y `/creditos` comparten la plantilla `app/documento/` (Legal.dc.html del canvas). Son estáticas y su texto sale de `contenido/*.md`, así que quien edite el texto no toca diseño; `/creditos` se genera desde `assets/creditos.json`.
 
 - **Barra fija** (`.top.fija`): isotipo y nombre siempre visibles, y el botón de preinscripción. Se vuelve a la portada con el logo.
-- **Portada**: esquineras de Van Hulsen a 150 px (84 en móvil), una viñeta sobre el título, rótulo «Documento I · HackUC3M’27», título en Ibarra 64 px (40 en móvil), entradilla en cursiva y vigencia en `.lab`. Entra en cascada como el hero.
+- **Portada**: esquineras de Van Hulsen a 150 px (84 en móvil), una viñeta sobre el título, rótulo «Documento I · HackUC3M’27», título en Ibarra 64 px (40 en móvil), entradilla en cursiva y vigencia en `.lab`. El texto entra en cascada como el hero; la viñeta, quieta.
 - **Índice** al margen, fijo, con numerales romanos en Cinzel y el filete que se traza al pasar el ratón; en móvil, plegable y pegado bajo la barra.
-- **Apartado** (`##`): numeral romano automático, texto a 38rem y glosa «En corto» (`>`) al margen en Brygada cursiva con filete ciruela; en móvil, entre el título y el texto. `###` es un rótulo en versal; las listas llevan raya ciruela o numeral en Xanh Mono.
-- **Florón** (`---`) entre apartados y **remate** al final; se descubren como las láminas. Cierra un bloque de contacto sobre papel de lis malva.
-- **Viñetas**: catálogo cerrado en `app/documento/documento.tsx` (`torre`, `corona`, `jarron`, `flor`). Ampliarlo es añadir un grabado con su crédito y darle nombre.
+- **Apartado** (`##`): numeral romano automático, texto a 38rem y glosa «En corto» (`>`) al margen en Brygada cursiva con filete ciruela; en móvil, entre el título y el texto. `###` es un rótulo en versal; las listas llevan raya ciruela o numeral en Ibarra.
+- **Florón** (`---`) entre apartados y **remate** al final, quietos (sin animación). Cierra un bloque de contacto sobre papel de lis malva.
+- **Viñetas**: catálogo cerrado en `app/documento/documento.tsx` (`torre`, `corona`, `flor`). Ampliarlo es añadir un grabado con su crédito y darle nombre.
 - Sin textos entre corchetes: `npm test` falla si un `.md` de `contenido/` los tiene.
 
-## Panel de organización y 404
+## Panel de organización
 
-Siguen en `app/interior.css` con los tokens y las fuentes del sistema, a la espera de su propio paso.
+Diseño aprobado el 24 nov 2026 en el canvas (`Admin.dc.html`); el código aún usa `app/interior.css` hasta que se migre. Es Los Ilustrados en modo herramienta: los mismos tokens, tipos, filetes y gestos, más densos y sin grabados grandes. Modelo de datos en `docs/modelo-datos.md`.
+
+- **Estructura:** barra lateral en damasco de lis oscuro (`plum-deep` con la trama de lis, texto crema y numerales romanos en crema al 78 %) y zona de trabajo sobre crema. Cada pantalla abre con rótulo, titular de 44 px y el estado de publicación. En móvil el menú pasa a una fila con scroll horizontal.
+- **Cifras:** banda de cuatro cifras en Ibarra 64 px. En el resumen va sobre damasco de seda (ciruela sobre `plum-deep`); en el resto, clara, entre filetes de tinta. No se animan al cargar: el panel se ve a diario.
+- **Lista con ficha:** a la izquierda, filas de 68 px con isotipo, nombre y papeles en `.lab`; a la derecha, la ficha. La fila elegida lleva fondo `surface`, el filete superior trazado y el logo en ciruela (el gesto del track), y se marca con `aria-pressed`. Un punto lleno u hueco dice si sale en la web, con su texto oculto para lectores.
+- **Embudo de captación:** columnas separadas por filete ciruela, como los tracks; cabecera en Cinzel versal con el recuento. Cada tarjeta lleva nombre, contacto, importe, etiqueta «Track», responsable en un cuadro con su inicial y el próximo paso; un paso vencido lleva la fecha en ciruela sobre crema invertida. «Perdidas» se pliega debajo con el «+» de las preguntas.
+- **Campos:** etiqueta `.lab` encima y campo sobre `surface` al 55 % con filete de tinta que se traza en ciruela al enfocar. Los grupos dentro de un formulario llevan un subtítulo en Cinzel versal.
+- **Dos maneras de guardar:** lo que se ve en la web espera a la **barra de publicar** (tinta, pegada abajo, sube en `--t-mid` y se va en `--t-fast`) y confirma con el aviso de doble filete. Lo interno se guarda solo y lo dice en una línea de estado.
+- **Papel de aviso:** notas fijas (datos personales, «solo interfaz») sobre papel de lis malva con doble filete; el texto lleva su propio fondo crema.
+- **Botones segmentados:** filtros en un grupo con filete `ink-muted`; el pulsado va en tinta con texto crema y lleva `aria-pressed`.
+- **Huecos vacíos:** una viñeta pequeña de la agenda (56 px) con una frase en cursiva; se levanta 3 px al pasar el ratón.
+- **Borrar:** nunca con un diálogo del navegador. Un bloque de doble filete en la propia ficha propone la alternativa (marcar como perdida) antes de borrar.
+- **Vistas previas:** copian el CSS real de la landing a 1440 px; nada aproximado.
+
+## 404
+
+Sigue en `app/interior.css` con los tokens y las fuentes del sistema.
 
 ## Emails
 
@@ -277,7 +294,7 @@ Los clientes de correo no soportan variables CSS: los emails (`lib/confirmation-
 ## Checklist para cualquier pieza nueva
 
 - [ ] Solo tokens; `npm test` pasa.
-- [ ] Tipos de la tabla; nunca cursiva en versal; cifras en Xanh Mono.
+- [ ] Tipos de la tabla; nunca cursiva en versal; cifras en Ibarra.
 - [ ] Grabados reales con crédito en `assets/creditos.json`.
 - [ ] Tres tiempos, dos curvas; una sola vez; fallback y «reducir movimiento».
 - [ ] Foco visible, zonas táctiles ≥ 44 px, textos alternativos.

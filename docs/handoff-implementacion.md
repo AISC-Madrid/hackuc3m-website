@@ -20,12 +20,14 @@ Sigue implementando la web de HackUC3M ’27 según `docs/plan-implementacion.md
 
 - **PR 1.1:** `app/globals.css` con los tokens y el `sistema.css` del canvas; fuentes con `next/font`; sin Tailwind ni Geist. `npm test` comprueba los colores de todo el CSS de `app/` y que cada grabado tenga crédito.
 - **PR 1.3:** la landing V3 en `app/(landing)/`, con una sección por componente y `landing.css`. Los tracks, la agenda y las cifras salen de `app/(landing)/datos.ts`, de forma provisional hasta el PR 1.2. La preinscripción está conectada a `/api/waitlist`.
-- **PR 1.4:** plantilla de documento en `app/documento/`. `/privacidad`, `/codigo-de-conducta` y `/como-llegar` salen de `contenido/*.md`, que lee `lib/documento.ts` (con tests). `/creditos` se genera desde `assets/creditos.json`. Todas son estáticas.
+- **PR 1.4:** plantilla de documento en `app/documento/`. `/privacidad` y `/codigo-de-conducta` salen de `contenido/*.md`, que lee `lib/documento.ts` (con tests). `/creditos` se genera desde `assets/creditos.json`. Todas son estáticas.
 - **PR 0.2:** `npm test` ejecuta también `lib/**/*.test.ts`.
 - **Animaciones de scroll en todos los navegadores:** en CSS donde hay `animation-timeline`; en Firefox y Safari anterior a la 26, con el respaldo `app/desplazamiento.tsx` y las reglas gemelas `.sv`. Cualquier animación nueva ligada al scroll necesita su gemela `.sv`.
 - **Assets:** bajados del canvas a `public/grabados/`, `public/campus/` y `public/logos/`, optimizados a WebP donde pesaban.
 
 ## Qué toca ahora (por orden)
+
+**Prioridad (24 nov 2026): lanzar la preinscripción.** Sigue `docs/plan-implementacion.md` § 0 (PR L.1–L.6) antes que lo de abajo. L.1 y L.2 ya están hechos: el admin se abre sin login en `next dev` y edita los tracks y las empresas, con los logos subidos a R2. Falta crear el bucket de producción (con permiso).
 
 1. **PR 2.1: migración `0003_inscripcion.sql` y `lib/estados.ts` con tests.** No tiene bloqueos: el modelo de estados es el mismo con cualquier sistema de selección. Sigue el esquema y las reglas del apartado 1.3 del plan. `transicion(app, nuevo)` es lógica pura y devuelve el email que toca enviar. Prueba la migración con `npm run db:local`.
 2. **PR 1.2: empresas, papeles y tracks** (migración `0002_empresas.sql`, `/media/[key]` y CRUD en el admin con subida de logos a R2).
@@ -45,7 +47,6 @@ Sigue implementando la web de HackUC3M ’27 según `docs/plan-implementacion.md
 - **Créditos por confirmar:** la corona de laurel y la ficha por pieza de varias viñetas. Estaban en `.design-refs/grabados/creditos-vinetas.json`, que no está en el repo.
 - **Textos que debe revisar el equipo:**
   - El código de conducta es un borrador.
-  - `/como-llegar` también es un borrador: dirección, transporte y documentos en la acreditación.
   - La privacidad aún no cubre la inscripción, el CV ni los plazos de borrado (P-6, decisiones 4 y 7, pregunta abierta 5).
 - **Contenido provisional de la landing** en `datos.ts`:
   - Los tracks 03–06 salen «por anunciar», a propósito: no se publican logos de relleno.

@@ -92,7 +92,7 @@ Prioridades: **Imprescindible** · **Debería** · **Opcional**. **[TBD]** = pen
 
 ## Decisiones pendientes
 
-Preguntas enviadas al equipo (borrador en `docs/decisiones-pendientes.md`). Faltan las respuestas.
+Preguntas enviadas al equipo; su efecto en cada PR está en `docs/plan-implementacion.md` § 4. Faltan las respuestas.
 
 | # | Decisión | Recomendación | Bloquea |
 |---|---|---|---|
