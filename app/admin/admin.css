@@ -1122,3 +1122,49 @@
     transition-property: opacity, background-color, color, visibility;
   }
 }
+
+/* ——— botones de icono (mover, eliminar) ——— */
+.adm .adm-acc:has(> .adm-ico) {
+  gap: 6px;
+}
+.adm-ico {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out);
+}
+.adm-ico svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (hover: hover) {
+  .adm-ico:hover:not(:disabled) {
+    border-color: var(--ink);
+  }
+  .adm-ico.peligro:hover:not(:disabled) {
+    border-color: var(--plum);
+    color: var(--plum);
+  }
+}
+.adm-ico:active:not(:disabled) {
+  transform: scale(0.94);
+}
+.adm-ico:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.adm-ico:focus-visible {
+  outline: 2px solid var(--plum);
+  outline-offset: 2px;
+}

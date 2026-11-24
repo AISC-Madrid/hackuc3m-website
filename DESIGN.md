@@ -269,6 +269,7 @@ Diseño aprobado el 24 nov 2026 en el canvas (`Admin.dc.html`) y pasado a códig
 - **Borrar:** nunca con un diálogo del navegador. Un bloque de doble filete en la propia ficha propone la alternativa (marcar como perdida) antes de borrar.
 - **Vistas previas:** usan el marcado y el CSS reales de la landing (tracks, cinta y agenda); nada aproximado.
 - **Barra lateral** fija a la altura de la ventana: siempre se ve entera.
+- **Botones de icono (`Ico`, `.adm-ico`):** solo en el panel y solo para acciones repetidas en cada fila: subir, bajar y eliminar. Son de 36 px, con filete `--line`, trazo de 1,5 px en `currentColor`, y eliminar en `--plum` al pasar el ratón. El nombre va siempre en `aria-label` y `title`. Las acciones únicas, como «Quitar el día» o «Vaciar», siguen siendo texto.
 - **Tamaños de herramienta:** el panel es más denso que la landing. Enlaces y botones pequeños a 16 px (como `.btn.peq`), filtros, contadores y textos secundarios de lista a 15 px, ayudas en cursiva a 13,5 px. El cuerpo sigue a 17–18 px y los titulares a 28 y 44 px.
 
 ## 404

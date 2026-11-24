@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { Empresa, Etapa, Track } from "@/lib/empresas";
 import { VINETAS_AGENDA, type Dia, type EventContent, type Momento } from "@/lib/event";
-import { NOMBRE_ETAPA, PAPEL } from "./empresas";
+import { Ico, NOMBRE_ETAPA, PAPEL } from "./empresas";
 import type { Vista } from "./panel";
 
 export type Persona = {
@@ -444,15 +444,9 @@ export function Evento({ content, setContent }: { content: EventContent; setCont
                     </span>
                   </div>
                   <div className="adm-acc">
-                    <button type="button" className="lnk" onClick={() => mover(i, -1)} disabled={i === 0}>
-                      Subir
-                    </button>
-                    <button type="button" className="lnk" onClick={() => mover(i, 1)} disabled={i === faqs.length - 1}>
-                      Bajar
-                    </button>
-                    <button type="button" className="lnk" onClick={() => set({ faqs: faqs.filter((_, n) => n !== i) })}>
-                      Eliminar
-                    </button>
+                    <Ico tipo="subir" label={`Subir la pregunta ${i + 1}`} onClick={() => mover(i, -1)} disabled={i === 0} />
+                    <Ico tipo="bajar" label={`Bajar la pregunta ${i + 1}`} onClick={() => mover(i, 1)} disabled={i === faqs.length - 1} />
+                    <Ico tipo="eliminar" label={`Eliminar la pregunta ${i + 1}`} onClick={() => set({ faqs: faqs.filter((_, n) => n !== i) })} />
                   </div>
                 </div>
               </details>
@@ -532,15 +526,9 @@ function Agenda({ agenda, cambiar }: { agenda: Dia[]; cambiar: (a: Dia[]) => voi
                     <input aria-label={`Momento ${mi + 1}`} value={m.titulo} maxLength={80} placeholder="Qué pasa" onChange={(e) => setMomentos(di, (l) => l.map((x, i) => (i === mi ? { ...x, titulo: e.target.value } : x)))} />
                   </span>
                   <span className="adm-acc">
-                    <button type="button" className="lnk" disabled={mi === 0} onClick={() => setMomentos(di, (l) => mover(l, mi, mi - 1))}>
-                      Subir
-                    </button>
-                    <button type="button" className="lnk" disabled={mi === d.momentos.length - 1} onClick={() => setMomentos(di, (l) => mover(l, mi, mi + 1))}>
-                      Bajar
-                    </button>
-                    <button type="button" className="lnk" onClick={() => setMomentos(di, (l) => l.filter((_, i) => i !== mi))}>
-                      Quitar
-                    </button>
+                    <Ico tipo="subir" label={`Subir el momento ${mi + 1}`} disabled={mi === 0} onClick={() => setMomentos(di, (l) => mover(l, mi, mi - 1))} />
+                    <Ico tipo="bajar" label={`Bajar el momento ${mi + 1}`} disabled={mi === d.momentos.length - 1} onClick={() => setMomentos(di, (l) => mover(l, mi, mi + 1))} />
+                    <Ico tipo="eliminar" label={`Quitar el momento ${mi + 1}`} onClick={() => setMomentos(di, (l) => l.filter((_, i) => i !== mi))} />
                   </span>
                 </li>
               ))}

@@ -3,6 +3,22 @@
 import { useState, type CSSProperties } from "react";
 import { ETAPAS, PAPELES, type Empresa, type EmpresaInterna, type EmpresaPublica, type Papel, type Track } from "@/lib/empresas";
 
+// Botón de icono para acciones repetidas en filas (mover, eliminar). El nombre va en aria-label y title.
+const TRAZOS = {
+  subir: "M5 12.5 10 7.5l5 5",
+  bajar: "M5 7.5 10 12.5l5-5",
+  eliminar: "M4 6h12M8 6V4h4v2M6 6l.8 10h6.4L14 6M8.7 9v4.5M11.3 9v4.5",
+};
+export function Ico({ tipo, label, ...b }: { tipo: keyof typeof TRAZOS; label: string } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button type="button" className={`adm-ico${tipo === "eliminar" ? " peligro" : ""}`} aria-label={label} title={label} {...b}>
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <path d={TRAZOS[tipo]} />
+      </svg>
+    </button>
+  );
+}
+
 export const NOMBRE_ETAPA: Record<string, string> = {
   contactar: "Por contactar", contactada: "Contactada", reunion: "Reunión",
   negociando: "Negociando", confirmada: "Confirmada", perdida: "Perdida",
@@ -176,9 +192,7 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
             />
           </label>
           {url && (
-            <button type="button" className="lnk" onClick={() => set({ [tipo]: null })}>
-              Quitar
-            </button>
+            <Ico tipo="eliminar" label={`Quitar ${nombre.toLowerCase()}`} onClick={() => set({ [tipo]: null })} />
           )}
         </div>
       </div>
