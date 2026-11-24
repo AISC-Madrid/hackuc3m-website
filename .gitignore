@@ -43,3 +43,5 @@ next-env.d.ts
 .dev.vars*
 .impeccable/review/
 .design-refs/
+
+.claude/settings.local.json
