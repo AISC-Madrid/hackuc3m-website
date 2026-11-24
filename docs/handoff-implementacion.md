@@ -27,7 +27,7 @@ Sigue implementando la web de HackUC3M ’27 según `docs/plan-implementacion.md
 
 ## Qué toca ahora (por orden)
 
-**Prioridad (24 nov 2026): lanzar la preinscripción.** Sigue `docs/plan-implementacion.md` § 0 (PR L.1–L.6) antes que lo de abajo. L.1 y L.2 ya están hechos: el admin se abre sin login en `next dev` y edita los tracks y las empresas, con los logos subidos a R2. Falta crear el bucket de producción (con permiso).
+**Prioridad (24 nov 2026): lanzar la preinscripción.** Sigue `docs/plan-implementacion.md` § 0 (PR L.1–L.6) antes que lo de abajo. L.1 y L.2 ya están hechos: el admin se abre sin login en `next dev` y es el panel nuevo (`app/admin/`, diseño en `Admin.dc.html`), con empresas, papeles y tracks en D1 y tres logos por empresa en R2. Falta crear el bucket de producción (con permiso) y que Álvaro conecte la captación.
 
 1. **PR 2.1: migración `0003_inscripcion.sql` y `lib/estados.ts` con tests.** No tiene bloqueos: el modelo de estados es el mismo con cualquier sistema de selección. Sigue el esquema y las reglas del apartado 1.3 del plan. `transicion(app, nuevo)` es lógica pura y devuelve el email que toca enviar. Prueba la migración con `npm run db:local`.
 2. **PR 1.2: empresas, papeles y tracks** (migración `0002_empresas.sql`, `/media/[key]` y CRUD en el admin con subida de logos a R2).

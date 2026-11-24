@@ -15,8 +15,8 @@ The public page is `/`, the editor is `/admin`, and the document pages are `/pri
 
 ## Structure and design
 
-- `app/(landing)/`: the landing ("Los Ilustrados"), one component per section plus `landing.css` and `datos.ts` (agenda, figures and prize, not yet editable from the admin; tracks and companies come from `retos` in `event_content`).
-- `app/globals.css`: design tokens in `:root` and the shared components and micro-animations. Plain CSS, no Tailwind. `app/pie.tsx` is the shared footer; `app/interior.css` keeps the admin and 404 styles until they are redone.
+- `app/(landing)/`: the landing ("Los Ilustrados"), one component per section plus `landing.css` and `datos.ts` (agenda, figures and prize, not yet editable from the admin; tracks and companies live in D1 (`companies`, `company_roles`, `tracks`, migration `0002_empresas.sql`) and are shuffled on every request).
+- `app/globals.css`: design tokens in `:root` and the shared components and micro-animations. Plain CSS, no Tailwind. `app/pie.tsx` is the shared footer; `app/interior.css` keeps the 404 styles; the organiser panel lives in `app/admin/` with its own `admin.css`.
 - Document pages (`/privacidad`, `/codigo-de-conducta`, `/creditos`) share the template in `app/documento/`. Their text is Markdown in `contenido/*.md` (header, `##` sections, `>` margin note, `###`, lists, `**bold**`, links, `---` fleuron; see `lib/documento.ts`), read at build time, so the pages are static. `/creditos` is generated from `assets/creditos.json`.
 - `public/grabados/`, `public/campus/`, `public/logos/`: engravings, skyline and logos served by the site. Every file in `public/grabados/` needs an entry in `assets/creditos.json` (`npm test` checks it).
 - Fonts are loaded with `next/font/google` and served from the site's own domain.

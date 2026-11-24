@@ -255,7 +255,7 @@ Archivos en `public/`: `IsologoHackUc3m.svg`, `IsotipoHackUc3m.svg` y `hackuc3m-
 
 ## Panel de organización
 
-Diseño aprobado el 24 nov 2026 en el canvas (`Admin.dc.html`); el código aún usa `app/interior.css` hasta que se migre. Es Los Ilustrados en modo herramienta: los mismos tokens, tipos, filetes y gestos, más densos y sin grabados grandes. Modelo de datos en `docs/modelo-datos.md`.
+Diseño aprobado el 24 nov 2026 en el canvas (`Admin.dc.html`) y pasado a código en `app/admin/` (`admin.css`, que importa también `landing.css` para las vistas previas). Es Los Ilustrados en modo herramienta: los mismos tokens, tipos, filetes y gestos, más densos y sin grabados grandes. Modelo de datos en `docs/modelo-datos.md`.
 
 - **Estructura:** barra lateral en damasco de lis oscuro (`plum-deep` con la trama de lis, texto crema y numerales romanos en crema al 78 %) y zona de trabajo sobre crema. Cada pantalla abre con rótulo, titular de 44 px y el estado de publicación. En móvil el menú pasa a una fila con scroll horizontal.
 - **Cifras:** banda de cuatro cifras en Ibarra 64 px. En el resumen va sobre damasco de seda (ciruela sobre `plum-deep`); en el resto, clara, entre filetes de tinta. No se animan al cargar: el panel se ve a diario.
@@ -271,7 +271,7 @@ Diseño aprobado el 24 nov 2026 en el canvas (`Admin.dc.html`); el código aún 
 
 ## 404
 
-Sigue en `app/interior.css` con los tokens y las fuentes del sistema.
+Sigue en `app/interior.css` (solo la 404) con los tokens y las fuentes del sistema.
 
 ## Emails
 

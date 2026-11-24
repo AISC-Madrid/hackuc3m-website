@@ -1,5 +1,5 @@
 import { bindings } from "@/lib/cloudflare";
-import { CLAVE_MEDIA } from "@/lib/event";
+import { CLAVE_MEDIA } from "@/lib/empresas";
 
 // Sirve los ficheros públicos del bucket (logos). Las claves llevan un UUID y no se reescriben,
 // así que se cachean para siempre. La CSP con sandbox impide que un SVG ejecute nada si se abre suelto.

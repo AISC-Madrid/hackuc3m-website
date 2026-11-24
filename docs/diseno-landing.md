@@ -476,3 +476,4 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
   - Accesibilidad: foco visible al subir logos, textos ocultos para el punto de «sale en la web» y la inicial del responsable, numerales del menú en crema al 78 % (6:1) y `aria-pressed` en las listas.
   - «Patrocinio» queda definido como dinero aparte de un track.
 - 2026-11-24 · Panel documentado en DESIGN.md (apartado «Panel de organización») y en la guía de estilo; `.impeccable/design.json` regenerado.
+- 2026-11-24 · **Panel pasado a código** (`app/admin/`): las vistas previas de tracks y cinta usan el marcado y el CSS reales de la landing, en vez de una copia. El estilo antiguo del admin sale de `interior.css`, que queda solo para la 404.

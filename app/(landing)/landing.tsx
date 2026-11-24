@@ -2,6 +2,7 @@
 // Landing V3 «Los Ilustrados». Las imágenes van con <img> normal: la optimización de next/image en
 // Workers pediría Cloudflare Images, y los ficheros ya se optimizan al subirlos.
 import type { CSSProperties } from "react";
+import type { LogoWeb, TrackWeb } from "@/lib/empresas";
 import type { EventContent } from "@/lib/event";
 import Pie from "../pie";
 import Cabecera from "./cabecera";
@@ -28,9 +29,8 @@ function Leer({ texto }: { texto: string }) {
 
 const dosDigitos = (n: number) => String(n).padStart(2, "0");
 
-export default function Landing({ event }: { event: EventContent }) {
-  const tracks = event.retos;
-  const empresasCinta = tracks.flatMap((t) => (t.empresa?.logo ? [t.empresa] : []));
+// Tracks y cinta llegan ya barajados (lib/empresas-db.ts): no hay orden porque todas las empresas pagan lo mismo.
+export default function Landing({ event, tracks, cinta: empresasCinta }: { event: EventContent; tracks: TrackWeb[]; cinta: LogoWeb[] }) {
   const cinta = Array.from({ length: Math.max(1, Math.ceil(6 / Math.max(1, empresasCinta.length))) }, () => empresasCinta).flat();
   return (
     <div className="pagina v3">
@@ -91,7 +91,7 @@ export default function Landing({ event }: { event: EventContent }) {
                   <ul key={copia} aria-hidden={copia === 1 || undefined}>
                     {cinta.map((e, i) => (
                       <li key={i}>
-                        <img src={e.logo} alt={copia === 0 && i < empresasCinta.length ? e.nombre : ""} />
+                        <img src={e.logotipo} alt={copia === 0 && i < empresasCinta.length ? e.nombre : ""} />
                       </li>
                     ))}
                   </ul>
@@ -168,17 +168,17 @@ export default function Landing({ event }: { event: EventContent }) {
                 {tracks.map((t, i) => (
                   <li key={i}>
                     <span className="emp">{t.empresa?.nombre ?? "Por anunciar"}</span>
-                    {t.def && <span className="def">{t.def}</span>}
+                    {t.empresa?.corta && <span className="def">{t.empresa.corta}</span>}
                     <div className="cab">
                       <span className="nn" aria-hidden="true">
                         {dosDigitos(i + 1)}.
                       </span>
                       <span className="logo" aria-hidden="true">
-                        {t.empresa?.logo && <i style={css({ "--logo": `url(${t.empresa.logo})` })} />}
+                        {t.empresa?.isotipo && <i style={css({ "--logo": `url(${t.empresa.isotipo})` })} />}
                       </span>
                     </div>
-                    <h3 className="t">{t.titulo ?? "Track por anunciar"}</h3>
-                    <p className="s">{t.descripcion ?? "Publicaremos el reto antes de abrir las inscripciones."}</p>
+                    <h3 className="t">{t.titulo || "Track por anunciar"}</h3>
+                    <p className="s">{t.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
                   </li>
                 ))}
               </ol>

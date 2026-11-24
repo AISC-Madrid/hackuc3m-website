@@ -7,9 +7,10 @@ export async function readContent(): Promise<EventContent> {
     "SELECT content FROM event_content WHERE id = 1",
   ).first<{ content: string }>();
   if (!row) return initialContent;
-  // Las filas guardadas antes de L.2 traen `tracks` y `sponsors` (ya sin uso) y no traen `retos`.
+  // Tracks y empresas viven en sus tablas (0002_empresas.sql); las claves viejas del JSON se ignoran.
   const guardado = JSON.parse(row.content);
   delete guardado.tracks;
   delete guardado.sponsors;
+  delete guardado.retos;
   return { ...initialContent, ...guardado };
 }
