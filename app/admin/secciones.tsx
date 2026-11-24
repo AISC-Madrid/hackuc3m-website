@@ -118,7 +118,7 @@ export function Resumen({ personas, empresas, tracks, ir }: { personas: Persona[
             <li>
               <span className={faltan ? "adm-punto hueco" : "adm-punto"} />
               <p>
-                Tracks sin empresa<small>{faltan ? `${faltan} salen «por anunciar»` : "todos tienen empresa"}</small>
+                Tracks sin empresa<small>{faltan ? `${faltan} salen «por confirmar»` : "todos tienen empresa"}</small>
               </p>
               <button type="button" className="lnk" onClick={() => ir("tracks")}>
                 Completar

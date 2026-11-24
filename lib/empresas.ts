@@ -31,7 +31,7 @@ export type TrackWeb = {
   titulo: string;
   reto: string;
 };
-export type LogoWeb = { nombre: string; logotipo: string };
+export type LogoWeb = { nombre: string; isologo: string };
 
 // Clave de R2 que genera /api/admin/media.
 export const CLAVE_MEDIA = /^logo-[0-9a-f-]{36}\.(png|webp|jpg|svg)$/;

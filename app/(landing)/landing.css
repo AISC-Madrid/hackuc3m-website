@@ -244,7 +244,7 @@
   display: block;
   width: auto;
   height: 40px;
-  max-width: 160px;
+  max-width: 280px;
   object-fit: contain;
 }
 @keyframes marquee {

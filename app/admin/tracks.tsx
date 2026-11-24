@@ -53,7 +53,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                     <i className="adm-fil" />
                     <span className="lg">{e?.isotipo && <i className="adm-mask" style={css({ "--m": `url(${e.isotipo})` })} />}</span>
                     <span className="q">
-                      <b className={x.titulo ? "" : "vacio"}>{x.titulo || "Track por anunciar"}</b>
+                      <b className={x.titulo ? "" : "vacio"}>{x.titulo || "Track por confirmar"}</b>
                       <span className="lab">{e?.nombre || "Sin empresa"}</span>
                     </span>
                   </button>
@@ -93,7 +93,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                   </label>
                   <span className="adm-fld">
                     <select id="t-emp" value={t.empresaId ?? ""} onChange={(ev) => set({ empresaId: ev.target.value ? Number(ev.target.value) : null })}>
-                      <option value="">Sin empresa todavía · sale «Por anunciar»</option>
+                      <option value="">Sin empresa todavía · sale «Por confirmar»</option>
                       {empresas
                         .filter((e) => e.nombre && e.etapa !== "perdida")
                         .map((e) => {
@@ -118,7 +118,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                     <span className="adm-ayuda">{t.titulo.length} / 120</span>
                   </label>
                   <span className="adm-fld">
-                    <input id="t-tit" value={t.titulo} maxLength={120} placeholder="Vacío: «Track por anunciar»" onChange={(ev) => set({ titulo: ev.target.value })} />
+                    <input id="t-tit" value={t.titulo} maxLength={120} placeholder="Vacío: «Track por confirmar»" onChange={(ev) => set({ titulo: ev.target.value })} />
                   </span>
                 </div>
                 <div className="adm-campo ancho">
@@ -162,13 +162,13 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                 const e = x.empresaId !== null ? porId.get(x.empresaId) : undefined;
                 return (
                   <li key={id}>
-                    <span className="emp">{e?.nombre ?? "Por anunciar"}</span>
+                    <span className="emp">{e?.nombre ?? "Por confirmar"}</span>
                     {e?.corta && <span className="def">{e.corta}</span>}
                     <div className="cab">
                       <span className="nn">{dos(i + 1)}.</span>
                       <span className="logo">{e?.isotipo && <i style={css({ "--logo": `url(${e.isotipo})` })} />}</span>
                     </div>
-                    <h3 className="t">{x.titulo || "Track por anunciar"}</h3>
+                    <h3 className="t">{x.titulo || "Track por confirmar"}</h3>
                     <p className="s">{x.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
                   </li>
                 );

@@ -34,17 +34,20 @@ export async function leerWeb(): Promise<{ tracks: TrackWeb[]; cinta: LogoWeb[] 
   const { empresas, tracks } = await leerTodo();
   const porId = new Map(empresas.map((e) => [e.id, e]));
   return {
-    tracks: barajar(tracks).map((t) => {
-      const e = t.empresaId === null ? undefined : porId.get(t.empresaId);
-      return {
-        empresa: e && e.etapa === "confirmada" ? { nombre: e.nombre, corta: e.corta, isotipo: e.isotipo } : null,
-        titulo: t.titulo,
-        reto: t.reto,
-      };
-    }),
+    // Primero los tracks con empresa confirmada (barajados), después los vacíos («Por confirmar»).
+    tracks: [...barajar(tracks)]
+      .map((t) => {
+        const e = t.empresaId === null ? undefined : porId.get(t.empresaId);
+        return {
+          empresa: e && e.etapa === "confirmada" ? { nombre: e.nombre, corta: e.corta, isotipo: e.isotipo } : null,
+          titulo: t.titulo,
+          reto: t.reto,
+        };
+      })
+      .sort((a, b) => Number(a.empresa === null) - Number(b.empresa === null)),
     cinta: barajar(
       empresas.flatMap((e) =>
-        e.enCinta && e.logotipo && e.etapa === "confirmada" ? [{ nombre: e.nombre, logotipo: e.logotipo }] : [],
+        e.enCinta && e.isologo && e.etapa === "confirmada" ? [{ nombre: e.nombre, isologo: e.isologo }] : [],
       ),
     ),
   };

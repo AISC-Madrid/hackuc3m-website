@@ -31,7 +31,7 @@ export const PAPEL: Record<Papel, [string, string]> = {
 };
 const mask = (url: string) => ({ "--m": `url(${url})` }) as CSSProperties;
 const enWeb = (e: Empresa, tracks: Track[]) =>
-  e.etapa === "confirmada" && ((e.enCinta && !!e.logotipo) || tracks.some((t) => t.empresaId === e.id));
+  e.etapa === "confirmada" && ((e.enCinta && !!e.isologo) || tracks.some((t) => t.empresaId === e.id));
 
 type Filtro = "todas" | "confirmadas" | "track" | Papel;
 
@@ -199,7 +199,7 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
     );
   };
 
-  const cinta = empresas.filter((x) => x.etapa === "confirmada" && x.enCinta && x.logotipo);
+  const cinta = empresas.filter((x) => x.etapa === "confirmada" && x.enCinta && x.isologo);
   const repetida = Array.from({ length: Math.max(1, Math.ceil(6 / Math.max(1, cinta.length))) }, () => cinta).flat();
 
   return (
@@ -255,7 +255,7 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
         </div>
         <div className="adm-logos">
           {logo("isotipo", "Isotipo", "El símbolo solo. Va en el cuadro del track, teñido de ciruela. SVG o PNG con fondo transparente.", "image/svg+xml,image/png")}
-          {logo("logotipo", "Logotipo", "El nombre escrito. Va en la cinta de logos, con sus colores.", "image/svg+xml,image/png,image/webp,image/jpeg")}
+          {logo("logotipo", "Logotipo", "El nombre escrito.", "image/svg+xml,image/png,image/webp,image/jpeg")}
           {logo("isologo", "Isologo", "Símbolo y nombre juntos. Acreditaciones, documentos y correos.", "image/svg+xml,image/png,image/webp,image/jpeg")}
         </div>
       </div>
@@ -337,13 +337,13 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
           <h2>Cinta de logos</h2>
           <p className="lab">Vista previa con el CSS de la web</p>
         </div>
-        <label className="chk" aria-disabled={!e.logotipo}>
-          <input type="checkbox" checked={e.enCinta && !!e.logotipo} disabled={!e.logotipo} onChange={(ev) => set({ enCinta: ev.target.checked })} />
+        <label className="chk" aria-disabled={!e.isologo}>
+          <input type="checkbox" checked={e.enCinta && !!e.isologo} disabled={!e.isologo} onChange={(ev) => set({ enCinta: ev.target.checked })} />
           <span className="caja" />
           <span>
             Sale en la cinta de logos
             <span className="adm-ayuda" style={{ display: "block" }}>
-              {e.logotipo ? "Usa el logotipo. El orden se baraja en cada visita. Solo salen empresas confirmadas." : "Falta el logotipo: súbelo para poder sacarla en la cinta."}
+              {e.isologo ? "Usa el isologo. El orden se baraja en cada visita. Solo salen empresas confirmadas." : "Falta el isologo: súbelo para poder sacarla en la cinta."}
             </span>
           </span>
         </label>
@@ -356,7 +356,7 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
                     <ul key={c}>
                       {repetida.map((x, i) => (
                         <li key={i}>
-                          <img src={x.logotipo!} alt="" />
+                          <img src={x.isologo!} alt="" />
                         </li>
                       ))}
                     </ul>

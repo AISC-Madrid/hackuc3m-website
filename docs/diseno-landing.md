@@ -459,7 +459,7 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
 
 - 2026-11-24 · **Panel de organización: propuesta en el canvas** (`Admin.dc.html`, hoja Principal). Es Los Ilustrados en modo herramienta: barra lateral en damasco de lis oscuro, banda de cifras del resumen en damasco de seda, avisos sobre papel de lis malva y viñetas de la agenda en los huecos. Usa los gestos de Microanimaciones: pulsar, rodillo del botón secundario, filete que se entinta, campo que se traza, casilla que se estampa, aviso que sube, cinta lineal y filete del track. Lo que se ve a diario no se anima al cargar (cifras quietas).
 - 2026-11-24 · **Empresa y track son cosas distintas: la empresa tiene el track.** Hay empresas sin track: infraestructura (créditos de API, cuentas), jurado, patrocinio o difusión. Las empresas tienen personas (mentoras, jurado o sin papel). Modelo en `docs/modelo-datos.md`.
-- 2026-11-24 · **Tres logos por empresa:** isotipo (cuadro del track, teñido), logotipo (cinta, con sus colores) e isologo (acreditaciones, documentos y correos).
+- 2026-11-24 · **Tres logos por empresa:** isotipo (cuadro del track, teñido), logotipo (el nombre solo) e isologo (cinta de logos, acreditaciones, documentos y correos).
 - 2026-11-24 · **La vista previa del admin tiene que ser idéntica a la web:** copia el CSS de `landing.css` a 1440 px, sin aproximaciones.
 - 2026-11-24 · **Sin orden entre empresas:** todas pagan lo mismo, así que los tracks y la cinta salen al azar en cada visita. El admin no tiene «subir» ni «bajar».
 - 2026-11-24 · **Captación dentro del admin:** la herramienta de partnerships de Álvaro se rediseña como pestaña del panel, con los mismos campos que tenía (estado, importe, track, contacto con cargo, correo, teléfono y LinkedIn, responsable, próximo paso con fecha, notas y documentos), dentro de la ficha de empresa. Es solo interfaz: Álvaro conecta su lógica y su base de datos.
@@ -472,7 +472,7 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
   - Arreglos de lógica: «Añadir» crea la empresa en la etapa de su columna e «Ir al track» abre el de la empresa.
   - Los tracks se pueden eliminar y tienen un campo de premio.
   - El isotipo solo admite SVG o PNG transparente.
-  - La cinta no se puede marcar sin logotipo.
+  - La cinta no se puede marcar sin isologo.
   - Accesibilidad: foco visible al subir logos, textos ocultos para el punto de «sale en la web» y la inicial del responsable, numerales del menú en crema al 78 % (6:1) y `aria-pressed` en las listas.
   - «Patrocinio» queda definido como dinero aparte de un track.
 - 2026-11-24 · Panel documentado en DESIGN.md (apartado «Panel de organización») y en la guía de estilo; `.impeccable/design.json` regenerado.

@@ -91,7 +91,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                   <ul key={copia} aria-hidden={copia === 1 || undefined}>
                     {cinta.map((e, i) => (
                       <li key={i}>
-                        <img src={e.logotipo} alt={copia === 0 && i < empresasCinta.length ? e.nombre : ""} />
+                        <img src={e.isologo} alt={copia === 0 && i < empresasCinta.length ? e.nombre : ""} />
                       </li>
                     ))}
                   </ul>
@@ -167,7 +167,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
               <ol className="retos" style={css({ "--n": tracks.length })}>
                 {tracks.map((t, i) => (
                   <li key={i}>
-                    <span className="emp">{t.empresa?.nombre ?? "Por anunciar"}</span>
+                    <span className="emp">{t.empresa?.nombre ?? "Por confirmar"}</span>
                     {t.empresa?.corta && <span className="def">{t.empresa.corta}</span>}
                     <div className="cab">
                       <span className="nn" aria-hidden="true">
@@ -177,7 +177,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                         {t.empresa?.isotipo && <i style={css({ "--logo": `url(${t.empresa.isotipo})` })} />}
                       </span>
                     </div>
-                    <h3 className="t">{t.titulo || "Track por anunciar"}</h3>
+                    <h3 className="t">{t.titulo || "Track por confirmar"}</h3>
                     <p className="s">{t.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
                   </li>
                 ))}
