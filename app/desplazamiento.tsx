@@ -108,17 +108,12 @@ export default function Desplazamiento() {
             const t = (entrado - 0.7 * vh - k * tramo) / tramo;
             const primero = k === 0;
             const ultimo = k === pasos.length - 1;
-            // Como los keyframes nativos: entra con fundido y escala (0–15 %), sale con fundido (85–100 %).
-            const sube = primero ? 1 : recorta(t / 0.15);
-            const baja = ultimo ? 1 : recorta((1 - t) / 0.15);
+            // Como --act en la versión nativa: el scroll solo dice qué cifra toca; el CSS funde por tiempo.
             if (t >= 0) paso.classList.add("on");
-            paso.style.opacity = Math.min(sube, baja).toFixed(3);
-            paso.style.transform = sube < 1 ? `scale(${(0.96 + 0.04 * sube).toFixed(4)})` : "";
+            paso.classList.toggle("act", (primero || t >= 0) && (ultimo || t < 1));
           });
         } else {
           pasos.forEach((paso) => {
-            paso.style.opacity = "";
-            paso.style.transform = "";
             const r = paso.getBoundingClientRect();
             if (vh - r.top >= 0.5 * Math.min(r.height, vh)) paso.classList.add("on");
           });

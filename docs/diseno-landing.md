@@ -477,3 +477,5 @@ Recogidas de la conversación; no son decisiones cerradas. Cuando se elija lo qu
   - «Patrocinio» queda definido como dinero aparte de un track.
 - 2026-11-24 · Panel documentado en DESIGN.md (apartado «Panel de organización») y en la guía de estilo; `.impeccable/design.json` regenerado.
 - 2026-11-24 · **Panel pasado a código** (`app/admin/`): las vistas previas de tracks y cinta usan el marcado y el CSS reales de la landing, en vez de una copia. El estilo antiguo del admin sale de `interior.css`, que queda solo para la 404.
+- 2026-11-24 · **Cifras: el fundido ya no va ligado al scroll.** Si se dejaba de bajar a mitad del cambio, la cifra se quedaba medio transparente. Ahora el scroll solo decide qué cifra toca (`--act`, sin valores intermedios; `.act` en el respaldo) y el fundido con escala va por tiempo (entra en `--t-mid`, sale en `--t-fast`), como ya se hacía con la cuenta. Descartados: imantar el scroll a cada cifra (`scroll-snap`, se nota secuestrado) y acortar el fundido (solo encoge la zona trabada).
+- 2026-11-24 · Vehículos sin bocadillo al pasar el ratón; el iCab cruza sin pararse a mitad.

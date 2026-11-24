@@ -5,12 +5,10 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 // primera pasada se vea; sin IntersectionObserver arranca al cargar. Es decorativo: aria-hidden.
 export default function Carril({
   clase,
-  nombre,
   style,
   children,
 }: {
   clase: string;
-  nombre: string;
   style?: CSSProperties;
   children: ReactNode;
 }) {
@@ -38,7 +36,6 @@ export default function Carril({
     <div ref={ref} className={visto ? "lane" : "lane espera"} style={style} aria-hidden="true">
       <span className={`mv ${clase}`}>
         {children}
-        <span className="tip">{nombre}</span>
       </span>
     </div>
   );

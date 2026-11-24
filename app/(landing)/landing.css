@@ -223,9 +223,13 @@
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
+/* Cada copia mide al menos el ancho de la página: si no, con pocos logos o pantallas anchas, al
+   final de la vuelta quedaba un hueco. Si sobra sitio, los logos se reparten. */
 .marquee ul {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  min-width: 100cqi;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -758,32 +762,12 @@
   overflow: hidden;
   pointer-events: none;
 }
-.lane .mv {
-  pointer-events: auto;
-}
 .mv {
   position: absolute;
   left: 0;
   bottom: 0;
   color: inherit;
   line-height: 0;
-}
-.tip {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translate(-50%, -6px);
-  white-space: nowrap;
-  font: italic 400 12px/1.4 var(--mono);
-  background: var(--ink);
-  color: var(--cream);
-  padding: 3px 8px;
-  opacity: 0;
-  transition: opacity var(--t-fast) var(--ease-out);
-  pointer-events: none;
-}
-.mv:hover .tip {
-  opacity: 1;
 }
 .mv .ruedas > g {
   transform-box: fill-box;
@@ -829,13 +813,10 @@
 .icab .ruedas > g {
   animation-duration: 1.1s;
 }
+/* Cruza a velocidad constante, sin pararse, y espera fuera de pantalla. */
 @keyframes icabLoop {
   0% {
     transform: translateX(-60px);
-  }
-  25%,
-  35% {
-    transform: translateX(45cqi);
   }
   60%,
   100% {
@@ -1192,8 +1173,10 @@
       }
     }
 
-    /* Cifras en escritorio: la banda se queda fija en el 70 % de abajo y cada 50svh de scroll
-       cambia la cifra con un fundido y una escala; al aparecer, el número cuenta de 0 a su valor. */
+    /* Cifras en escritorio: la banda se queda fija en el 70 % de abajo y cada 50svh de scroll toca
+       otra cifra. El scroll solo decide cuál (--act, sin valores intermedios); el fundido y la
+       escala van por tiempo, así que una cifra nunca se queda a medias si dejas de bajar. Al
+       aparecer, el número cuenta de 0 a su valor. */
     @container (min-width: 821px) {
       .cifras-s {
         --d: 200svh;
@@ -1213,14 +1196,27 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        opacity: 0;
+        /* Fuera de su tramo la animación no aplica y --act vuelve a 0; la primera vale 1 antes de
+           su tramo y la última después. */
         animation:
-          paso linear both,
+          pasoAct linear,
           pasoOn linear both;
         animation-timeline: --cif, --cif;
         animation-range:
           cover calc(70svh + var(--k) * var(--d) / 4) cover calc(70svh + (var(--k) + 1) * var(--d) / 4),
           cover calc(70svh + var(--k) * var(--d) / 4) cover calc(70svh + var(--k) * var(--d) / 4 + 1px);
+      }
+      .cifras-s .paso:first-child {
+        animation-fill-mode: backwards, both;
+      }
+      .cifras-s .paso:last-child {
+        animation-fill-mode: forwards, both;
+      }
+      @keyframes pasoAct {
+        from,
+        to {
+          --act: 1;
+        }
       }
       @keyframes pasoOn {
         from {
@@ -1230,44 +1226,20 @@
           --on: 1;
         }
       }
-      .cifras-s .paso:first-child {
-        animation-name: paso1, pasoOn;
+      .cifras-s .paso > * {
+        opacity: 0;
+        scale: 0.96;
+        transition:
+          opacity var(--t-fast) var(--ease-out),
+          scale var(--t-fast) var(--ease-out);
       }
-      .cifras-s .paso:last-child {
-        animation-name: pasoN, pasoOn;
-      }
-      @keyframes paso {
-        0% {
-          opacity: 0;
-          transform: scale(0.96);
-        }
-        15%,
-        85% {
+      @container style(--act: 1) {
+        .cifras-s .paso > * {
           opacity: 1;
-          transform: none;
-        }
-        100% {
-          opacity: 0;
-        }
-      }
-      @keyframes paso1 {
-        0%,
-        85% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-        }
-      }
-      @keyframes pasoN {
-        0% {
-          opacity: 0;
-          transform: scale(0.96);
-        }
-        15%,
-        100% {
-          opacity: 1;
-          transform: none;
+          scale: 1;
+          transition:
+            opacity var(--t-mid) var(--ease-out),
+            scale var(--t-mid) var(--ease-out);
         }
       }
 
@@ -1629,7 +1601,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  /* Como --act en la versión nativa: el scroll pone .act y el fundido va por tiempo. */
+  .sv .cifras-s .paso > * {
     opacity: 0;
+    scale: 0.96;
+    transition:
+      opacity var(--t-fast) var(--ease-out),
+      scale var(--t-fast) var(--ease-out);
+  }
+  .sv .cifras-s .paso.act > * {
+    opacity: 1;
+    scale: 1;
+    transition:
+      opacity var(--t-mid) var(--ease-out),
+      scale var(--t-mid) var(--ease-out);
   }
   .sv .rieles {
     height: calc(100svh + var(--d));

@@ -66,7 +66,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
               <img src="/campus/edificios/auditorio.svg" alt="Auditorio" className="auditorio" width={399} height={178} />
               <img src="/campus/edificios/biblioteca.svg" alt="Biblioteca" className="biblioteca" width={284} height={189} />
             </div>
-            <Carril clase="rocket" nombre="Equipo de cohetes" style={{ position: "absolute", left: "clamp(8px, 2cqi, 32px)", bottom: 1, width: 44, height: 560 }}>
+            <Carril clase="rocket" style={{ position: "absolute", left: "clamp(8px, 2cqi, 32px)", bottom: 1, width: 44, height: 560 }}>
               <Cohete />
             </Carril>
             <div className="suelo" />
@@ -103,7 +103,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
 
         {/* 3 · Manifiesto: el globo de Aranjuez y el texto que se lee con el scroll */}
         <section>
-          <Carril clase="drone" nombre="Equipo de drones" style={{ height: 120, color: "var(--ink)" }}>
+          <Carril clase="drone" style={{ height: 120, color: "var(--ink)" }}>
             <Dron />
           </Carril>
           <div className="wrap mani">
@@ -184,7 +184,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
               </ol>
             </div>
           </div>
-          <Carril clase="car" nombre="Equipo de Formula Student" style={{ height: 40, marginTop: 24, color: "var(--ink)" }}>
+          <Carril clase="car" style={{ height: 40, marginTop: 24, color: "var(--ink)" }}>
             <Formula />
           </Carril>
           <div className="premio">
@@ -250,7 +250,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
             </div>
             <Preinscripcion abierta={event.waitlistOpen} />
           </div>
-          <Carril clase="moto" nombre="Equipo de motociclismo" style={{ height: 40, marginTop: 96, color: "var(--cream)" }}>
+          <Carril clase="moto" style={{ height: 40, marginTop: 96, color: "var(--cream)" }}>
             <Moto />
           </Carril>
         </section>
@@ -308,7 +308,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
           </div>
         </section>
 
-        <Carril clase="icab" nombre="Vehículo autónomo" style={{ height: 48, color: "var(--ink)" }}>
+        <Carril clase="icab" style={{ height: 48, color: "var(--ink)" }}>
           <Icab />
         </Carril>
       </main>

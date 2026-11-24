@@ -13,6 +13,11 @@
   inherits: true;
   initial-value: 0;
 }
+@property --act {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
 @property --v {
   syntax: "<integer>";
   inherits: false;
@@ -496,9 +501,11 @@ img {
     opacity var(--t-fast) ease,
     filter var(--t-fast) ease;
 }
+/* Centrado en todo el botón: conserva el ancho de «Preinscribirme» y la manecilla, que se ocultan. */
 .envia .t2 {
   position: absolute;
-  left: 26px;
+  inset-inline: 0;
+  text-align: center;
   opacity: 0;
   filter: blur(2px);
   white-space: nowrap;
@@ -604,7 +611,9 @@ img {
     inset 0 0 0 4px var(--line);
   padding: 14px 18px;
   font-size: 16px;
-  transform: translate(-50%, calc(100% + 32px));
+  /* Escondido sube solo 16 px: con más, al final de la página asomaba por debajo y alargaba el
+     scroll con un hueco bajo el pie. */
+  transform: translate(-50%, 16px);
   opacity: 0;
   transition:
     transform var(--t-fast) var(--ease-out),
