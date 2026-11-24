@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24T12:00:00.000Z",
+  "generatedAt": "2026-11-24T14:00:00.000Z",
   "title": "Design System: HackUC3M · Los Ilustrados",
   "extensions": {
     "colorMeta": {
@@ -227,6 +227,9 @@
         "displayName": "Cifra",
         "family": "Ibarra Real Nova",
         "use": "Every figure and number"
+      },
+      "adminScale": {
+        "description": "Organiser panel tool sizes: 16px small links/buttons, 15px filters and list secondary text, 13.5px italic help; body 17–18px; headings 28px and 44px."
       }
     },
     "shadows": {
