@@ -57,7 +57,7 @@
   text-wrap: balance;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .portada .wrap > * {
+  .portada .wrap > :not(.vin) {
     animation: entra var(--t-slow) var(--ease-out) backwards;
   }
   .portada .wrap > :nth-child(2) {
@@ -242,7 +242,7 @@
   position: absolute;
   left: 0;
   top: 10px;
-  font: 400 19px/1.7 var(--num);
+  font: 400 19px/1.7 var(--serif);
   color: var(--plum);
 }
 .glosa {
@@ -279,33 +279,6 @@
   width: 120px;
   height: 80px;
   margin: 24px auto 0;
-}
-/* Florón y remate se descubren de arriba abajo al entrar, como las láminas. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .floron i,
-    .cul i {
-      clip-path: inset(0 0 100% 0);
-      transition: clip-path 0s 99999s;
-    }
-    @container style(--on: 1) {
-      .floron i,
-      .cul i {
-        clip-path: inset(0 0 0 0);
-        transition: clip-path var(--t-slow) var(--ease-io);
-      }
-    }
-  }
-}
-/* Respaldo sin animation-timeline (ver app/desplazamiento.tsx). */
-.sv .floron i,
-.sv .cul i {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path var(--t-slow) var(--ease-io);
-}
-.sv .floron.on i,
-.sv .cul.on i {
-  clip-path: inset(0 0 0 0);
 }
 .contacto {
   padding: 40px 48px;

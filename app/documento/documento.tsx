@@ -14,7 +14,6 @@ import "./documento.css";
 const VINETAS: Record<string, string> = {
   torre: "/grabados/agenda/torre.webp",
   corona: "/grabados/agenda/corona-cinta.webp",
-  jarron: "/grabados/agenda/jarron-flores.webp",
   flor: "/grabados/agenda/flor.webp",
 };
 
