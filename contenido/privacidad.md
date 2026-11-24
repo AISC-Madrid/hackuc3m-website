@@ -23,6 +23,13 @@ Te apuntas de forma voluntaria y puedes retirar tu consentimiento en cualquier m
 
 Preinscribirte no confirma una plaza en el evento.
 
+## Cómo los tratamos
+> Según el RGPD, solo para HackUC3M y sin venderlos ni cederlos.
+
+AISC Madrid es la responsable de tus datos. Los guardamos y los tratamos conforme al Reglamento General de Protección de Datos (Reglamento (UE) 2016/679, RGPD) y a la Ley Orgánica 3/2018 de Protección de Datos y garantía de los derechos digitales. La base legal es tu consentimiento.
+
+Los guardamos de forma segura, solo accede a ellos la organización y no los vendemos ni los cedemos a terceros, salvo a los servicios técnicos de abajo para que la web funcione.
+
 ---
 
 ## Servicios que usamos
@@ -44,4 +51,4 @@ Conservaremos los datos hasta que termine la gestión de esta edición o hasta q
 3. Su eliminación.
 4. Retirar tu consentimiento.
 
-Escribe a [aisc.asoc@uc3m.es](mailto:aisc.asoc@uc3m.es).
+Escribe a [aisc.asoc@uc3m.es](mailto:aisc.asoc@uc3m.es). Si crees que no hemos tratado bien tus datos, puedes reclamar ante la Agencia Española de Protección de Datos ([aepd.es](https://www.aepd.es)).
