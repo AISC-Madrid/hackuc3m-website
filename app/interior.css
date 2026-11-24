@@ -151,7 +151,7 @@
   align-items: center;
   gap: 0.15em;
   margin: 0 0 32px;
-  font: 400 clamp(5rem, 22vw, 10rem) / 1 var(--num);
+  font: 400 clamp(5rem, 22vw, 10rem) / 1 var(--serif);
   color: var(--plum);
 }
 .charlie-coin {

@@ -2,7 +2,7 @@
 titulo: Privacidad
 documento: I
 entradilla: Tu correo, para HackUC3M y para nada más.
-vigencia: Vigente desde el 26 · X · 2026
+vigencia: Vigente desde el 26 · 11 · 2026
 vineta: torre
 otro: /codigo-de-conducta · Código de conducta
 ---

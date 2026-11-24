@@ -35,11 +35,10 @@ const apartados: Apartado[] = GRUPOS.flatMap(([prefijo, titulo, glosa]): Borrado
         {
           t: "ul",
           items: [
-            "Ibarra Real Nova, para leer y titular",
+            "Ibarra Real Nova, para leer, titular y las cifras",
             "Brygada 1918, para etiquetas y notas",
             "Cinzel, para el nombre y los rótulos",
             "Corinthia, para el ’27 a pluma",
-            "Xanh Mono, para las cifras",
           ].map((t) => inline(`**${t}**. Google Fonts · SIL Open Font License 1.1.`)),
         },
       ],

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { euros } from "./datos";
 
 // Moneda del gran premio: al pasar el ratón (CSS) o al pulsar, se da la vuelta y enseña el reverso.
 export default function Moneda({ total }: { total: number }) {
@@ -22,7 +23,7 @@ export default function Moneda({ total }: { total: number }) {
           <img src="/logos/moneda-reverso.svg" alt="" width={1000} height={1000} loading="lazy" />
           <span className="rev-t">
             <span className="caps">Gran premio</span>
-            <b>{total} €</b>
+            <b>{euros(total)}</b>
             <span className="caps">MMXXVII</span>
           </span>
         </span>

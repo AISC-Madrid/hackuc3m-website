@@ -4,7 +4,6 @@ import {
   Cinzel,
   Corinthia,
   Ibarra_Real_Nova,
-  Xanh_Mono,
 } from "next/font/google";
 import Desplazamiento from "./desplazamiento";
 import "./globals.css";
@@ -31,11 +30,6 @@ const corinthia = Corinthia({
   weight: "400",
   preload: false,
 });
-const xanh = Xanh_Mono({
-  variable: "--font-xanh",
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export const metadata: Metadata = {
   title: "HackUC3M ’27 · Hackathon en la Universidad Carlos III de Madrid",
@@ -51,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={[ibarra, brygada, cinzel, corinthia, xanh]
+      className={[ibarra, brygada, cinzel, corinthia]
         .map((f) => f.variable)
         .join(" ")}
     >

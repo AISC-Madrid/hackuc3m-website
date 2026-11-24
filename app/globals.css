@@ -42,7 +42,6 @@
   --t-slow: 900ms;
   --serif: var(--font-ibarra), "Ibarra Real Nova", serif;
   --mono: var(--font-brygada), "Brygada 1918", serif;
-  --num: var(--font-xanh), "Xanh Mono", monospace;
   --caps: var(--font-cinzel), Cinzel, serif;
   --hand: var(--font-corinthia), Corinthia, cursive;
   --hdr: 77px;
@@ -337,9 +336,9 @@ img {
   font: 400 18px/1 var(--serif);
   color: var(--ink);
   text-decoration: none;
-  padding: 14px 0 4px;
-  background: linear-gradient(currentColor, currentColor) 0 100% / 0% 1px
-    no-repeat;
+  padding: 9px 0;
+  background: linear-gradient(currentColor, currentColor) 0 calc(100% - 5px) /
+    0% 1px no-repeat;
   transition: background-size var(--t-fast) var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -365,6 +364,9 @@ img {
   height: 46px;
 }
 .marca .mini {
+  /* Cinzel es casi todo versal: su tinta queda alta respecto al isotipo y al botón; se baja 0,18em. */
+  position: relative;
+  top: 0.18em;
   font: 700 22px/1 var(--caps);
   color: var(--plum);
   letter-spacing: 0.02em;
