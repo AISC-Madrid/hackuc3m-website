@@ -31,10 +31,23 @@ const corinthia = Corinthia({
   preload: false,
 });
 
+const titulo = "HackUC3M ’27 · Hackathon en la Universidad Carlos III de Madrid";
+const descripcion =
+  "19 y 20 de febrero de 2027 · EPS, Campus de Leganés. Dos días para resolver en equipo retos reales de la industria.";
+
+// La imagen al compartir es app/opengraph-image.png; metadataBase hace absoluta su URL.
 export const metadata: Metadata = {
-  title: "HackUC3M ’27 · Hackathon en la Universidad Carlos III de Madrid",
-  description:
-    "19 y 20 de febrero de 2027 · EPS, Campus de Leganés. Dos días para resolver en equipo retos reales de la industria.",
+  metadataBase: new URL("https://hackuc3m.com"),
+  title: titulo,
+  description: descripcion,
+  openGraph: {
+    title: titulo,
+    description: descripcion,
+    siteName: "HackUC3M",
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
