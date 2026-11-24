@@ -39,7 +39,7 @@ export async function leerWeb(): Promise<{ tracks: TrackWeb[]; cinta: LogoWeb[] 
       .map((t) => {
         const e = t.empresaId === null ? undefined : porId.get(t.empresaId);
         return {
-          empresa: e && e.etapa === "confirmada" ? { nombre: e.nombre, corta: e.corta, isotipo: e.isotipo } : null,
+          empresa: e && e.etapa === "confirmada" ? { nombre: e.nombre, corta: e.corta, isotipo: e.isotipo, logotipo: e.logotipo } : null,
           titulo: t.titulo,
           reto: t.reto,
         };
@@ -99,7 +99,7 @@ export async function publicar(empresas: EmpresaPublica[], tracks: Track[]) {
     ...empresas.map((e) =>
       DB.prepare(
         "UPDATE companies SET name = ?, url = ?, short_desc = ?, long_desc = ?, isotipo = ?, logotipo = ?, isologo = ?, en_cinta = ? WHERE id = ?",
-      ).bind(e.nombre.trim(), e.web, e.corta.trim(), e.larga.trim(), e.isotipo, e.logotipo, e.isologo, e.enCinta && e.logotipo ? 1 : 0, e.id),
+      ).bind(e.nombre.trim(), e.web, e.corta.trim(), e.larga.trim(), e.isotipo, e.logotipo, e.isologo, e.enCinta && e.isologo ? 1 : 0, e.id),
     ),
     ...tracks.map((t) =>
       t.id > 0

@@ -440,14 +440,31 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
+/* Logotipo de la empresa, entintado en ciruela: el <img> (invisible) da el tamaño y la máscara lo pinta. */
+.retos .marca {
+  grid-row: 1;
+  justify-self: start;
+  align-self: center;
+  background: var(--plum);
+  -webkit-mask: var(--logo) left center / contain no-repeat;
+  mask: var(--logo) left center / contain no-repeat;
+}
+.retos .marca img {
+  display: block;
+  height: 22px;
+  width: auto;
+  max-width: 100%;
+  opacity: 0;
+}
+/* Lo que la empresa hace, en la etiqueta rellena que antes llevaba el nombre. */
 .retos .def {
   grid-row: 2;
   justify-self: start;
-  margin-top: 6px;
+  margin-top: 8px;
   padding: 3px 10px;
-  border: 1px solid var(--plum);
-  color: var(--plum);
-  font: 500 10.5px/1.4 var(--mono);
+  background: var(--plum);
+  color: var(--cream);
+  font: 500 11.5px/1.4 var(--mono);
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }

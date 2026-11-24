@@ -118,7 +118,7 @@ export default function PaginaDocumento({ doc, children }: { doc: Documento; chi
       <header className="top fija">
         <div className="wrap topin">
           <Link href="/" className="marca" aria-label="HackUC3M, inicio">
-            <img src="/hackuc3m-mark.svg" alt="" width={46} height={46} />
+            <img src="/hackuc3m-mark.webp" alt="" width={46} height={46} />
             <span className="mini" aria-hidden="true">
               HackUC3M<span>’27</span>
             </span>
@@ -132,8 +132,8 @@ export default function PaginaDocumento({ doc, children }: { doc: Documento; chi
       </header>
       <main id="contenido">
         <div className="portada">
-          <img className="esq izq" src="/grabados/esquinas/hulsen.webp" alt="" width={900} height={910} />
-          <img className="esq der" src="/grabados/esquinas/hulsen.webp" alt="" width={900} height={910} />
+          <img className="esq izq" src="/grabados/esquinas/hulsen.webp" alt="" width={760} height={768} />
+          <img className="esq der" src="/grabados/esquinas/hulsen.webp" alt="" width={760} height={768} />
           <div className="wrap">
             <i className="vin" aria-hidden="true" style={mascara(vineta)} />
             <p className="caps">Documento {doc.documento} · HackUC3M’27</p>

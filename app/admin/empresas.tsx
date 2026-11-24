@@ -255,7 +255,7 @@ function Ficha({ e, tracks, empresas, cambiar, cambiarInterno, borrar, irAlTrack
         </div>
         <div className="adm-logos">
           {logo("isotipo", "Isotipo", "El símbolo solo. Va en el cuadro del track, teñido de ciruela. SVG o PNG con fondo transparente.", "image/svg+xml,image/png")}
-          {logo("logotipo", "Logotipo", "El nombre escrito.", "image/svg+xml,image/png,image/webp,image/jpeg")}
+          {logo("logotipo", "Logotipo", "El nombre escrito. Abre la columna del track, teñido de ciruela. SVG o PNG con fondo transparente.", "image/svg+xml,image/png")}
           {logo("isologo", "Isologo", "Símbolo y nombre juntos. Acreditaciones, documentos y correos.", "image/svg+xml,image/png,image/webp,image/jpeg")}
         </div>
       </div>

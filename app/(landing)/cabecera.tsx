@@ -31,7 +31,7 @@ export default function Cabecera() {
       <div className="wrap topin">
         <a href="#" className="marca" aria-label="HackUC3M, inicio">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/hackuc3m-mark.svg" alt="" width={46} height={46} />
+          <img src="/hackuc3m-mark.webp" alt="" width={46} height={46} />
           <span className="mini" aria-hidden="true">
             HackUC3M<span>’27</span>
           </span>

@@ -170,7 +170,7 @@ export default function Panel() {
     <div className="adm">
       <aside className="adm-lado lisdark" aria-label="Panel">
         <a className="adm-marca" href="/admin">
-          <img src="/hackuc3m-mark.svg" alt="" width={40} height={40} />
+          <img src="/hackuc3m-mark.webp" alt="" width={40} height={40} />
           <span>
             <b>
               HackUC3M<span>’27</span>

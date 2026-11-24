@@ -41,8 +41,8 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
       <main id="contenido">
         {/* 1 · Hero: esquineras, gofrado, titular, skyline y contador */}
         <section className="hero">
-          <img className="esq izq" fetchPriority="high" src="/grabados/esquinas/hulsen.webp" alt="" width={900} height={910} />
-          <img className="esq der" fetchPriority="high" src="/grabados/esquinas/hulsen.webp" alt="" width={900} height={910} />
+          <img className="esq izq" fetchPriority="high" src="/grabados/esquinas/hulsen.webp" alt="" width={760} height={768} />
+          <img className="esq der" fetchPriority="high" src="/grabados/esquinas/hulsen.webp" alt="" width={760} height={768} />
           <span className="gof" aria-hidden="true">
             <i className="luz" />
             <i className="som" />
@@ -62,9 +62,9 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
           </div>
           <div className="sky">
             <div className="sky-fila">
-              <img src="/campus/edificios/sabatini.svg" alt="Edificio Sabatini" className="sabatini" width={534} height={156} />
-              <img src="/campus/edificios/auditorio.svg" alt="Auditorio" className="auditorio" width={399} height={178} />
-              <img src="/campus/edificios/biblioteca.svg" alt="Biblioteca" className="biblioteca" width={284} height={189} />
+              <img src="/campus/edificios/sabatini.svg" alt="Edificio Sabatini" className="sabatini" decoding="async" width={534} height={156} />
+              <img src="/campus/edificios/auditorio.svg" alt="Auditorio" className="auditorio" decoding="async" width={399} height={178} />
+              <img src="/campus/edificios/biblioteca.svg" alt="Biblioteca" className="biblioteca" decoding="async" width={284} height={189} />
             </div>
             <Carril clase="rocket" style={{ position: "absolute", left: "clamp(8px, 2cqi, 32px)", bottom: 1, width: 44, height: 560 }}>
               <Cohete />
@@ -167,7 +167,13 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
               <ol className="retos" style={css({ "--n": tracks.length })}>
                 {tracks.map((t, i) => (
                   <li key={i}>
-                    <span className="emp">{t.empresa?.nombre ?? "Por confirmar"}</span>
+                    {t.empresa?.logotipo ? (
+                      <span className="marca" style={css({ "--logo": `url(${t.empresa.logotipo})` })}>
+                        <img src={t.empresa.logotipo} alt={t.empresa.nombre} />
+                      </span>
+                    ) : (
+                      <span className="emp">{t.empresa?.nombre ?? "Por confirmar"}</span>
+                    )}
                     {t.empresa?.corta && <span className="def">{t.empresa.corta}</span>}
                     <div className="cab">
                       <span className="nn" aria-hidden="true">
@@ -177,7 +183,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                         {t.empresa?.isotipo && <i style={css({ "--logo": `url(${t.empresa.isotipo})` })} />}
                       </span>
                     </div>
-                    <h3 className="t">{t.titulo || "Track por confirmar"}</h3>
+                    <h3 className="t">{t.titulo || "Track por anunciar"}</h3>
                     <p className="s">{t.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
                   </li>
                 ))}

@@ -27,7 +27,7 @@ export type Track = { id: number; empresaId: number | null; titulo: string; reto
 
 // Para la landing.
 export type TrackWeb = {
-  empresa: { nombre: string; corta: string; isotipo: string | null } | null;
+  empresa: { nombre: string; corta: string; isotipo: string | null; logotipo: string | null } | null;
   titulo: string;
   reto: string;
 };
