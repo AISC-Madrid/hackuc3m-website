@@ -44,7 +44,17 @@ Use these settings:
 
 Cloudflare creates or lets you select its build token; **no Cloudflare API token is needed in GitHub**. The selected Cloudflare build token must also have **Account → D1 → Edit**, because the deploy command applies database migrations. The automatically generated default token may need that permission added in Cloudflare's **My Profile → API Tokens**. Keep the Resend key in the existing Worker's runtime secrets; do not put it in build variables.
 
-The connected production branch must contain this PR before its first successful build: the current old `main` does not yet contain the OpenNext scripts or Worker configuration. Keep automatic preview builds disabled until preview bindings use a separate database and email configuration; preview version URLs must not write to production D1 or send real confirmation emails.
+### Preview builds
+
+Pull request branches deploy as [Worker Previews](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds). Previews inherit no bindings, vars or secrets from production; the `previews` block in `wrangler.jsonc` points them to a separate D1 database (`hackuc3m-preview`). Since previews have no `RESEND_API_KEY`, they never send email. Do not add one with `wrangler preview base-config secret put`.
+
+In **Settings → Build**, switch the Worker to Worker Previews (a one-time change), enable preview builds under **Branch control**, and set:
+
+| Setting         | Value                         |
+| --------------- | ----------------------------- |
+| Preview command | `npm run preview:cloudflare`  |
+
+That command applies the branch's migrations to the preview database (via `wrangler.preview-migrations.jsonc`) and runs `wrangler preview`. When you add a binding (D1, R2, KV…) at the top level, add it under `previews` too, pointing to a preview resource. Every branch shares the preview database; if branches leave it inconsistent, recreate it and run `npm run db:preview`.
 
 Merge reviewed changes to `main`; Cloudflare then builds and deploys that commit. Disconnect the old Vercel deployment as part of the platform cutover so there is one production deployment path. Connecting GitHub, configuring the native build, changing DNS, and disconnecting Vercel are dashboard setup steps, not changes performed by a local deploy command.
 

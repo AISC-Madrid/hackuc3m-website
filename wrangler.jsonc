@@ -49,5 +49,32 @@
       "zone_name": "hackuc3m.com"
     }
   ],
-  "workers_dev": true
+  "workers_dev": true,
+  // Worker Previews (Workers Builds preview command: `npm run preview:cloudflare`).
+  // Previews inherit no bindings, vars or secrets from production: every binding
+  // above must be repeated here pointing to a preview resource. Without
+  // RESEND_API_KEY, previews never send email.
+  "previews": {
+    "services": [
+      {
+        "binding": "WORKER_SELF_REFERENCE",
+        "service": "hackuc3m"
+      }
+    ],
+    "d1_databases": [
+      {
+        "binding": "DB",
+        "database_name": "hackuc3m-preview",
+        "database_id": "f9eeda9b-e805-4d05-971a-6c5a0ba75a61",
+        "migrations_dir": "migrations"
+      }
+    ],
+    "vars": {
+      "SITE_URL": "https://hackuc3m.aisc-asoc.workers.dev",
+      "ACCESS_TEAM_DOMAIN": "winter-cloud-1122.cloudflareaccess.com",
+      "ACCESS_AUD": "273f530cbfab52a539da9b4494ff2c1dc95fc043f874400f3ac76257f4186ec8",
+      "ADMIN_EMAIL": "aisc.asoc@uc3m.es",
+      "EMAIL_FROM": "HackUC3M <hola@hackuc3m.com>"
+    }
+  }
 }
