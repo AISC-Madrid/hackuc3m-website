@@ -8,7 +8,7 @@ export default function Pie() {
       <div className="wrap pie-cols">
         <div>
           <p className="lab" style={{ margin: "0 0 12px" }}>
-            Colaboradores
+            Organiza
           </p>
           <div className="pie-logos">
             <a href="https://aiscmadrid.com">
@@ -24,7 +24,7 @@ export default function Pie() {
               <img
                 src="/logos/uc3m.png"
                 alt="Universidad Carlos III de Madrid"
-                width={134}
+                width={162}
                 height={48}
                 loading="lazy"
               />
@@ -60,12 +60,12 @@ export default function Pie() {
         </div>
       </div>
       <div className="wrap pie-final">
-        <p className="nota" style={{ margin: 0 }}>
+{/*         <p className="nota" style={{ margin: 0 }}>
           Grabados de dominio público y CC0 · Wikimedia Commons y Rijksmuseum ·{" "}
           <a className="lnk" href="/creditos">
             Créditos
           </a>
-        </p>
+        </p> */}
         <a className="arriba" href="#">
           Volver arriba <span className="gl manecilla" aria-hidden="true" />
         </a>
