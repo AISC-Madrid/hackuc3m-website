@@ -205,6 +205,9 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
             <h2 className="h2 leer">
               <Leer texto="Dos días, de principio a fin." />
             </h2>
+            <p className="nota" style={{ marginTop: 16 }}>
+              Horario provisional, sujeto a cambios.
+            </p>
             {event.agenda.map((d) => (
               <div className="dia" key={d.titulo}>
                 <h3>
