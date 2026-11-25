@@ -49,7 +49,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
             <i className="base" />
           </span>
           <div className="wrap capa">
-            <div className="caps fecha">XIX – XX · II · MMXXVII</div>
+            {/* <div className="caps fecha">XIX – XX · II · MMXXVII</div> */}
             <h1 className="wm">
               HackUC3M<span>’27</span>
             </h1>
@@ -183,8 +183,8 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                         {t.empresa?.isotipo && <img src={t.empresa.isotipo} alt="" />}
                       </span>
                     </div>
-                    <h3 className="t">{t.titulo || "Track por anunciar"}</h3>
-                    <p className="s">{t.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
+                    <h3 className="t">{t.titulo || "Reto por anunciar"}</h3>
+                    {/* <p className="s">{t.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p> */}
                   </li>
                 ))}
               </ol>

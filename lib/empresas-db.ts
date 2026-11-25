@@ -35,7 +35,7 @@ export async function leerWeb(): Promise<{ tracks: TrackWeb[]; cinta: LogoWeb[] 
   const porId = new Map(empresas.map((e) => [e.id, e]));
   return {
     // Solo los tracks con empresa confirmada, barajados. Los huecos sin empresa no se publican;
-    // sin título salen como «Track por anunciar».
+    // sin título salen como «Reto por anunciar».
     tracks: barajar(tracks).flatMap((t) => {
       const e = t.empresaId === null ? undefined : porId.get(t.empresaId);
       if (!e || e.etapa !== "confirmada") return [];
