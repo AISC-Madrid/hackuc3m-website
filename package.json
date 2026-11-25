@@ -12,7 +12,9 @@
     "cf:typegen": "wrangler types --env-interface CloudflareEnv",
     "db:local": "wrangler d1 migrations apply hackuc3m --local",
     "db:remote": "wrangler d1 migrations apply hackuc3m --remote",
-    "build:cloudflare": "opennextjs-cloudflare build"
+    "db:preview": "wrangler d1 migrations apply DB --remote --env preview",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "upload:preview": "npm run db:preview && opennextjs-cloudflare upload --env preview"
   },
   "dependencies": {
     "next": "16.4.3",

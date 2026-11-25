@@ -31,7 +31,15 @@ Use these settings:
 
 Cloudflare creates or lets you select its build token; **no Cloudflare API token is needed in GitHub**. The selected Cloudflare build token must also have **Account → D1 → Edit**, because the deploy command applies database migrations. The automatically generated default token may need that permission added in Cloudflare's **My Profile → API Tokens**. Keep the Resend key in the existing Worker's runtime secrets; do not put it in build variables.
 
-The connected production branch must contain this PR before its first successful build: the current old `main` does not yet contain the OpenNext scripts or Worker configuration. Keep automatic preview builds disabled until preview bindings use a separate database and email configuration; preview version URLs must not write to production D1 or send real confirmation emails.
+### Preview builds
+
+Pull request branches build preview versions of the same `hackuc3m` Worker. They use the `preview` environment in `wrangler.jsonc`: a separate D1 database (`hackuc3m-preview`) and `EMAIL_DELIVERY=off`, so previews never write to production data or send real emails. In **Settings → Builds**, enable non-production branch builds and set:
+
+| Setting                          | Value                    |
+| -------------------------------- | ------------------------ |
+| Non-production deploy command    | `npm run upload:preview` |
+
+That command applies the branch's migrations to the preview database and uploads the version with `--env preview`. Environment bindings are not inherited, so when you add a binding (D1, R2, KV…) at the top level, add it under `env.preview` too, pointing to a preview resource. Never run `wrangler deploy --env preview`: the preview environment uses the production Worker name. The preview database is shared by every branch; if branches leave it inconsistent, it can be recreated and rebuilt with `npm run db:preview`.
 
 Merge reviewed changes to `main`; Cloudflare then builds and deploys that commit. Disconnect the old Vercel deployment as part of the platform cutover so there is one production deployment path. Connecting GitHub, configuring the native build, changing DNS, and disconnecting Vercel are dashboard setup steps, not changes performed by a local deploy command.
 
