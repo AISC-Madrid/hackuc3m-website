@@ -375,22 +375,8 @@
   align-items: flex-end;
   gap: 32px;
 }
-.retos-h .reg {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex: 0 1 auto;
-}
-.retos-h .reg::before {
-  content: "";
-  width: clamp(48px, 7cqi, 96px);
-  height: 1px;
-  background: var(--plum);
-}
-.retos-h .reg p {
-  margin: 0;
+.retos-h .reg-cta {
   font: italic 400 14px/1.6 var(--mono);
-  color: var(--plum);
   white-space: nowrap;
 }
 .tracks-sec {
@@ -1012,12 +998,6 @@
   .retos-h {
     flex-direction: column;
     align-items: flex-start;
-  }
-  .retos-h .reg::before {
-    display: none;
-  }
-  .retos-h .reg p {
-    white-space: normal;
   }
   .premio .wrap {
     grid-template-columns: 1fr;

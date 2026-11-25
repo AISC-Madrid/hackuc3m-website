@@ -153,15 +153,9 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
           <div className="wrap">
             <div className="retos-h">
               <h2 className="h2">Seis tracks. Un gran premio.</h2>
-              <div className="reg">
-                <p>
-                  Seis empresas.
-                  <br />
-                  Seis problemas reales.
-                  <br />
-                  Un único gran premio.
-                </p>
-              </div>
+              <a className="lnk reg-cta" href="#empresas">
+                ¿Tu empresa quiere un track? <span aria-hidden="true">→</span>
+              </a>
             </div>
           </div>
           <div className="rieles">
