@@ -7,7 +7,7 @@ import type { EventContent } from "@/lib/event";
 import Pie from "../pie";
 import Cabecera from "./cabecera";
 import Carril from "./carril";
-import ColumnaTrack from "./columna-track";
+import ListaTracks, { columnasTracks } from "./columna-track";
 import Contador from "./contador";
 import { cifras, euros, inicio, premio } from "./datos";
 import Moneda from "./moneda";
@@ -147,7 +147,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
         </section>
 
         {/* 5 · Tracks y gran premio */}
-        <section id="tracks" className="tracks-sec">
+        <section id="tracks" className="tracks-sec" style={css({ "--cols": columnasTracks(tracks) })}>
           <div className="wrap">
             <div className="retos-h">
               <h2 className="h2">Seis tracks. Un gran premio.</h2>
@@ -164,11 +164,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
           </div>
           <div className="rieles">
             <div className="pin">
-              <ol className="retos" style={css({ "--n": tracks.length })}>
-                {tracks.map((t, i) => (
-                  <ColumnaTrack key={i} n={i + 1} track={t} />
-                ))}
-              </ol>
+              <ListaTracks tracks={tracks} />
             </div>
           </div>
           <Carril clase="car" style={{ height: 40, marginTop: 24, color: "var(--ink)" }}>

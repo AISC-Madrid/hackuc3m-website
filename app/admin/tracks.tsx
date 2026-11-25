@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState, type CSSProperties } from "react";
 import { barajar, type Empresa, type Track, type TrackWeb } from "@/lib/empresas";
-import ColumnaTrack from "../(landing)/columna-track";
+import ListaTracks, { columnasTracks } from "../(landing)/columna-track";
 
 const css = (v: Record<string, string | number>) => v as CSSProperties;
 
@@ -106,7 +106,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                   </label>
                   <span className="adm-fld">
                     <select id="t-emp" value={t.empresaId ?? ""} onChange={(ev) => set({ empresaId: ev.target.value ? Number(ev.target.value) : null })}>
-                      <option value="">Sin empresa todavía · sale «Próximamente»</option>
+                      <option value="">Sin empresa todavía · cuenta en «Y … tracks más»</option>
                       {empresas
                         .filter((e) => e.nombre && e.etapa !== "perdida")
                         .map((e) => {
@@ -167,12 +167,8 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
         </div>
         {/* El propio marcado y CSS de la sección de tracks de la landing. */}
         <div className="pagina adm-previa" aria-hidden="true" inert>
-          <div className="tracks-sec">
-            <ol className="retos" style={css({ "--n": previa.length })}>
-              {previa.map((x, i) => (
-                <ColumnaTrack key={i} n={i + 1} track={x} />
-              ))}
-            </ol>
+          <div className="tracks-sec" style={css({ "--cols": columnasTracks(previa) })}>
+            <ListaTracks tracks={previa} />
           </div>
         </div>
         <p className="adm-ayuda" style={{ marginTop: 10 }}>

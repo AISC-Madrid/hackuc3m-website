@@ -397,7 +397,8 @@
   --pad: clamp(20px, 5cqi, 64px);
   --pl: max(var(--pad), calc((100cqi - 1280px) / 2 + var(--pad)));
   --cw: max(300px, calc((min(100cqi, 1280px) - 2 * var(--pad)) / 3));
-  --d: calc(6 * var(--cw) + 2 * var(--pl) - 100cqi);
+  /* Recorrido del carril: las columnas que haya (--cols, desde ListaTracks) menos lo que ya se ve. */
+  --d: max(0px, calc(var(--cols, 6) * var(--cw) + 2 * var(--pl) - 100cqi));
 }
 .retos {
   list-style: none;
@@ -464,28 +465,29 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-/* Hueco sin empresa: «Próximamente» en voz baja. Etiqueta sin caja, numeral en malva oscuro
-   (display, así que puede) y cuadro del logo vacío con filete claro. */
-.retos .pronto .lab {
+/* Cierre: los huecos sin empresa juntos en una columna, con un grabado entintado en malva oscuro
+   (se levanta como las viñetas de la agenda), «Y tres tracks más.» y la invitación a las empresas. */
+.retos .cierre .lab {
   grid-row: 1;
   justify-self: start;
   align-self: center;
   font-size: 11.5px;
 }
-.retos .pronto .nn {
-  color: var(--mauve-deep);
-}
-.retos .pronto .logo {
-  border-color: var(--line);
-}
-/* Grabado del hueco: entintado en malva oscuro con máscara; se levanta como las viñetas de la agenda. */
-.retos .pronto .vin {
-  width: 62%;
-  height: 62%;
+.retos .cierre .vin {
+  display: block;
+  height: calc(1.36 * var(--fs));
+  aspect-ratio: 336 / 376;
   background: var(--mauve-deep);
-  -webkit-mask: var(--vin) center / contain no-repeat;
-  mask: var(--vin) center / contain no-repeat;
+  -webkit-mask: url(/grabados/agenda/ave-laurel.webp) left bottom / contain no-repeat;
+  mask: url(/grabados/agenda/ave-laurel.webp) left bottom / contain no-repeat;
   transition: transform var(--t-fast) var(--ease-out);
+}
+.retos .cierre .mas {
+  grid-row: 4;
+  padding: 24px 0;
+  border-top: 1px solid var(--plum);
+  font: 400 clamp(30px, 3cqi, 42px) / 1.05 var(--serif);
+  text-wrap: balance;
 }
 /* --fs: tamaño del numeral; estirado 1,7 en vertical mide 1,36 × --fs, igual que el cuadro del logo. */
 .retos .cab {
@@ -931,7 +933,7 @@
     transform: rotateY(180deg);
   }
   .momento:hover img,
-  .retos .pronto:hover .vin {
+  .retos .cierre:hover .vin {
     transform: translateY(-3px) rotate(-4deg);
   }
   .retos li:hover .cab::before {
@@ -940,7 +942,7 @@
 }
 @media (hover: none) {
   .momento:active img,
-  .retos .pronto:active .vin {
+  .retos .cierre:active .vin {
     transform: translateY(-3px) rotate(-4deg);
   }
   .retos li:active .cab::before {
@@ -1853,7 +1855,7 @@
     animation: none !important;
   }
   .momento img,
-  .retos .pronto .vin,
+  .retos .cierre .vin,
   .retos .cab::before {
     transition-property: opacity, background-color, clip-path;
   }
