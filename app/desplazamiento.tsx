@@ -16,6 +16,7 @@ type Cerrojo = { sel: string; umbral: number; px?: boolean };
 // Mismos rangos que el CSS nativo: «entry N%» = N % de lo que puede entrar del elemento.
 const CERROJOS: Cerrojo[] = [
   { sel: ".lamina", umbral: 0.4 },
+  { sel: ".retratos", umbral: 0.4 },
   { sel: ".tz", umbral: 0.15 },
   { sel: ".pie", umbral: 0.7 },
   { sel: ".premio", umbral: 0.4 },
