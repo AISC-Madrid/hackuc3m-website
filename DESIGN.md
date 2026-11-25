@@ -14,6 +14,8 @@ colors:
   mauve-deep: "#9e678c"
   blue: "#9db2c1"
   paper-light: "#fffcf0"
+  gold: "#b9933f"
+  gold-light: "#e3cb8a"
   gold-shadow: "#3f2c16"
 typography:
   wordmark:
@@ -125,7 +127,7 @@ Cinco reglas resumen el sistema:
 
 ## Color
 
-Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El resto se deriva de ellos. Las dos últimas filas son excepciones con un único uso.
+Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El resto se deriva de ellos. Las cuatro últimas filas son excepciones con un único uso.
 
 | Token | Hex | Papel |
 | --- | --- | --- |
@@ -141,9 +143,11 @@ Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El rest
 | Mauve deep | `#9e678c` | Reservado para display a partir de 24 px. |
 | Blue | `#9db2c1` | Reservado como ornamento. Nunca texto. Color del logo. |
 | Paper light | `#fffcf0` | Solo la luz de 1,5 px del gofrado del hero. |
-| Gold shadow | `#3f2c16` | Solo el texto del reverso de la moneda del gran premio (oro viejo). |
+| Gold | `#b9933f` | Solo el disco de la moneda del gran premio (oro viejo). |
+| Gold light | `#e3cb8a` | Solo la luz de 1 px del gofrado de la moneda del gran premio. |
+| Gold shadow | `#3f2c16` | Solo la sombra del gofrado y los rótulos del reverso de la moneda del gran premio. |
 
-La moneda del premio va en oro viejo dentro de su propio SVG (`public/logos/moneda-oro.svg`, `moneda-reverso.svg`): es la única pieza con colores fuera de la paleta, y no se reutiliza.
+La moneda del premio es la del gofrado del hero (`public/logos/gofrado.webp`) acuñada en oro viejo: un disco plano `gold` con el relieve de 1 px de luz (`gold-light`) y de sombra (`gold-shadow`), sin degradados ni brillos. El reverso conserva solo el canto estriado y estampa «Gran premio · cifra · MMXXVII» con el mismo relieve. Es la única pieza dorada de la web: el oro no se reutiliza en ningún otro sitio.
 
 Reglas:
 
