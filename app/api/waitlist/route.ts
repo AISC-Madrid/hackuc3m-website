@@ -1,7 +1,7 @@
 import { readLimitedText } from "@/lib/request";
 import { bindings } from "@/lib/cloudflare";
 import { readContent } from "@/lib/content";
-import { emailKey, sendConfirmation } from "@/lib/email";
+import { sendConfirmation } from "@/lib/email";
 import { sameOrigin } from "@/lib/admin";
 
 export async function POST(request: Request) {
@@ -72,7 +72,7 @@ export async function POST(request: Request) {
       .bind(email, name)
       .first<{ id: number }>();
     // The unique email and immutable joining time preserve priority on retries.
-    if (row && emailKey(env)) {
+    if (row && env.RESEND_API_KEY) {
       try {
         if (!(await sendConfirmation(row.id, email)))
           console.error("waitlist_confirmation_failed", { id: row.id });

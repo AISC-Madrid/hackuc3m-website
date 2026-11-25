@@ -33,13 +33,15 @@ Cloudflare creates or lets you select its build token; **no Cloudflare API token
 
 ### Preview builds
 
-Pull request branches build preview versions of the same `hackuc3m` Worker. They use the `preview` environment in `wrangler.jsonc`: a separate D1 database (`hackuc3m-preview`) and `EMAIL_DELIVERY=off`, so previews never write to production data or send real emails. In **Settings → Builds**, enable non-production branch builds and set:
+Pull request branches deploy as [Worker Previews](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds). Previews inherit no bindings, vars or secrets from production; the `previews` block in `wrangler.jsonc` points them to a separate D1 database (`hackuc3m-preview`). Since previews have no `RESEND_API_KEY`, they never send email. Do not add one with `wrangler preview base-config secret put`.
 
-| Setting                          | Value                    |
-| -------------------------------- | ------------------------ |
-| Non-production deploy command    | `npm run upload:preview` |
+In **Settings → Build**, switch the Worker to Worker Previews (a one-time change), enable preview builds under **Branch control**, and set:
 
-That command applies the branch's migrations to the preview database and uploads the version with `--env preview`. Environment bindings are not inherited, so when you add a binding (D1, R2, KV…) at the top level, add it under `env.preview` too, pointing to a preview resource. Never run `wrangler deploy --env preview`: the preview environment uses the production Worker name. The preview database is shared by every branch; if branches leave it inconsistent, it can be recreated and rebuilt with `npm run db:preview`.
+| Setting         | Value                         |
+| --------------- | ----------------------------- |
+| Preview command | `npm run preview:cloudflare`  |
+
+That command applies the branch's migrations to the preview database (via `wrangler.preview-migrations.jsonc`) and runs `wrangler preview`. When you add a binding (D1, R2, KV…) at the top level, add it under `previews` too, pointing to a preview resource. Every branch shares the preview database; if branches leave it inconsistent, recreate it and run `npm run db:preview`.
 
 Merge reviewed changes to `main`; Cloudflare then builds and deploys that commit. Disconnect the old Vercel deployment as part of the platform cutover so there is one production deployment path. Connecting GitHub, configuring the native build, changing DNS, and disconnecting Vercel are dashboard setup steps, not changes performed by a local deploy command.
 

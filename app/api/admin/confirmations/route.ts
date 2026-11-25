@@ -1,16 +1,13 @@
 import { authorized, sameOrigin } from "@/lib/admin";
 import { bindings } from "@/lib/cloudflare";
-import { emailKey, sendConfirmation } from "@/lib/email";
+import { sendConfirmation } from "@/lib/email";
 export async function POST(request: Request) {
   if (!sameOrigin(request) || !(await authorized(request)))
     return Response.json({ error: "No autorizado" }, { status: 403 });
   const env = await bindings();
-  if (!emailKey(env))
+  if (!env.RESEND_API_KEY)
     return Response.json(
-      {
-        error:
-          "El envío de correos está desactivado: falta RESEND_API_KEY o es un preview.",
-      },
+      { error: "Configura RESEND_API_KEY antes de enviar correos." },
       { status: 503 },
     );
   const pending = await env.DB.prepare(

@@ -1,21 +1,14 @@
 import { bindings } from "./cloudflare";
 import { confirmationEmail } from "./confirmation-email";
 import { readContent } from "./content";
-// Preview versions share the Worker's secrets, so EMAIL_DELIVERY=off is what
-// keeps them from sending real email (see the preview env in wrangler.jsonc).
-export function emailKey(env: CloudflareEnv) {
-  return env.EMAIL_DELIVERY === "off" ? undefined : env.RESEND_API_KEY;
-}
-
 export async function sendConfirmation(id: number, email: string) {
   const env = await bindings();
-  const key = emailKey(env);
-  if (!key) return false;
+  if (!env.RESEND_API_KEY) return false;
   const message = confirmationEmail(await readContent());
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${key}`,
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
       "Idempotency-Key": `waitlist-confirmation-${id}`,
     },
