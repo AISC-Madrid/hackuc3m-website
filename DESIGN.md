@@ -183,7 +183,7 @@ Reglas:
 - Secciones con 140 px de aire (96 en móvil). Barra superior de 77 px (`--hdr`).
 - Composición: alternar secciones ceremoniosas centradas (hero, premio) con secciones editoriales alineadas a la izquierda (`.split`: titular estrecho a la izquierda, contenido ancho a la derecha).
 - Índices tipográficos en lugar de tarjetas: tracks en columnas con filete vertical, agenda en fila de momentos, preguntas en lista con filete.
-- **Track sin anunciar:** con empresa y sin título, solo logotipo, numeral y logo (el título y el reto salen cuando existen). Sin empresa, «Próximamente» en `.lab` sin caja, numeral en `mauve-deep` y cuadro del logo vacío con filete `line`, detrás de los confirmados.
+- **Track sin anunciar:** con empresa y sin título, solo logotipo, numeral y logo (el título y el reto salen cuando existen). Sin empresa, «Próximamente» en `.lab` sin caja, numeral en `mauve-deep`, cuadro del logo con filete `line` y un grabado de la agenda entintado en `mauve-deep` (uno distinto por columna, se levanta 3 px con el ratón), y debajo «¿Será el de tu empresa?» enlazando a `#empresas`. Van detrás de los confirmados.
 
 ## Formas y profundidad
 

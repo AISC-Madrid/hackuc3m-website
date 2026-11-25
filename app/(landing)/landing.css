@@ -478,6 +478,15 @@
 .retos .pronto .logo {
   border-color: var(--line);
 }
+/* Grabado del hueco: entintado en malva oscuro con máscara; se levanta como las viñetas de la agenda. */
+.retos .pronto .vin {
+  width: 62%;
+  height: 62%;
+  background: var(--mauve-deep);
+  -webkit-mask: var(--vin) center / contain no-repeat;
+  mask: var(--vin) center / contain no-repeat;
+  transition: transform var(--t-fast) var(--ease-out);
+}
 /* --fs: tamaño del numeral; estirado 1,7 en vertical mide 1,36 × --fs, igual que el cuadro del logo. */
 .retos .cab {
   --fs: clamp(80px, 7.5cqi, 112px);
@@ -921,7 +930,8 @@
   .moneda:hover .giro {
     transform: rotateY(180deg);
   }
-  .momento:hover img {
+  .momento:hover img,
+  .retos .pronto:hover .vin {
     transform: translateY(-3px) rotate(-4deg);
   }
   .retos li:hover .cab::before {
@@ -929,7 +939,8 @@
   }
 }
 @media (hover: none) {
-  .momento:active img {
+  .momento:active img,
+  .retos .pronto:active .vin {
     transform: translateY(-3px) rotate(-4deg);
   }
   .retos li:active .cab::before {
@@ -1842,6 +1853,7 @@
     animation: none !important;
   }
   .momento img,
+  .retos .pronto .vin,
   .retos .cab::before {
     transition-property: opacity, background-color, clip-path;
   }

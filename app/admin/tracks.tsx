@@ -166,7 +166,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
           </button>
         </div>
         {/* El propio marcado y CSS de la sección de tracks de la landing. */}
-        <div className="pagina adm-previa" aria-hidden="true">
+        <div className="pagina adm-previa" aria-hidden="true" inert>
           <div className="tracks-sec">
             <ol className="retos" style={css({ "--n": previa.length })}>
               {previa.map((x, i) => (

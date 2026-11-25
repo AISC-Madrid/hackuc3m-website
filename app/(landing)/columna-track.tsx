@@ -1,10 +1,16 @@
+import type { CSSProperties } from "react";
 import type { TrackWeb } from "@/lib/empresas";
+
+// Grabados de la agenda (ya con crédito en assets/creditos.json) para los huecos: uno distinto en
+// cada columna vacía, entintado en malva con máscara.
+const VINETAS = ["lira", "corona-cinta", "ave-laurel", "copa-flores", "guirnalda", "jarron-flores"];
 
 // Una columna de la sección de tracks. La usan la landing y la vista previa del panel, así que
 // las dos se ven igual por construcción.
 // - Con empresa: isologo, etiqueta, numeral y logo. El título y el reto salen solo cuando existen;
 //   sin título no se anuncia nada, el track se nombra solo para lectores de pantalla.
-// - Sin empresa: «Próximamente», numeral en malva y cuadro vacío, en voz baja.
+// - Sin empresa: «Próximamente», numeral en malva, un grabado en el cuadro del logo y una
+//   invitación a las empresas.
 export default function ColumnaTrack({ n, track }: { n: number; track: TrackWeb }) {
   const numeral = `${String(n).padStart(2, "0")}.`;
   const { empresa, titulo, reto } = track;
@@ -15,9 +21,16 @@ export default function ColumnaTrack({ n, track }: { n: number; track: TrackWeb 
         <span className="lab">Próximamente</span>
         <div className="cab" aria-hidden="true">
           <span className="nn">{numeral}</span>
-          <span className="logo" />
+          <span className="logo">
+            <span className="vin" style={{ "--vin": `url(/grabados/agenda/${VINETAS[(n - 1) % VINETAS.length]}.webp)` } as CSSProperties} />
+          </span>
         </div>
         <h3 className="sr">Track {n}: próximamente</h3>
+        <p className="s">
+          <a className="lnk" href="#empresas">
+            ¿Será el de tu empresa?
+          </a>
+        </p>
       </li>
     );
 
