@@ -135,8 +135,10 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
               <div className="paso" key={c.unidad} style={css({ "--k": k })}>
                 <p className="num">
                   <span className="sr">
+                    {c.mas && "+ "}
                     {c.euros ? euros(c.n) : c.n}
                   </span>
+                  {c.mas && <span className="mas" aria-hidden="true">+</span>}
                   <span className={c.euros ? "cnt e" : "cnt"} style={css({ "--n": c.n })} aria-hidden="true" />{" "}
                   <span className="u">{c.unidad}</span>
                 </p>
@@ -201,17 +203,18 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                 <span className="premio-laurel" aria-hidden="true" />
                 <h3 className="caps">Gran premio final</h3>
                 <b className="premio-n">
-                  <span className="sr">{euros(premio.total)}</span>
+                  <span className="sr">+ {euros(premio.total)}</span>
+                  <span className="mas" aria-hidden="true">+</span>
                   <span className="oro-cnt" style={css({ "--n": premio.total })} aria-hidden="true" />
                 </b>
-                <span className="premio-l">
+{/*                 <span className="premio-l">
                   {premio.desglose.map((l, i) => (
                     <span key={l}>
                       {i > 0 && <br />}
                       {l}
                     </span>
                   ))}
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

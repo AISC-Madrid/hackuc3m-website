@@ -612,12 +612,20 @@
 .rev-t b {
   font: 400 clamp(30px, 4cqi, 56px) / 1 var(--serif);
   margin: 6px 0 4px;
+  white-space: nowrap;
 }
 .moneda.vuelta .giro {
   transform: rotateY(180deg);
 }
 .premio-t {
   text-align: center;
+}
+/* «+» delante de una cifra (premios): a media altura y más pequeño, para que «+ 1.250€» quepa en
+   una línea en la columna del premio y en la moneda. */
+.mas {
+  font-size: 0.5em;
+  vertical-align: 0.4em;
+  margin-right: 0.15em;
 }
 .premio-laurel {
   display: block;
@@ -639,6 +647,7 @@
   font: 400 clamp(96px, 11.6cqi, 168px) / 0.95 var(--serif);
   letter-spacing: -0.02em;
   color: var(--plum);
+  white-space: nowrap;
 }
 .premio-l {
   display: block;

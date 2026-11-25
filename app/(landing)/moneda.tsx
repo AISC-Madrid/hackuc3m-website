@@ -23,7 +23,10 @@ export default function Moneda({ total }: { total: number }) {
           <img src="/logos/moneda-reverso.svg" alt="" width={1000} height={1000} loading="lazy" />
           <span className="rev-t">
             <span className="caps">Gran premio</span>
-            <b>{euros(total)}</b>
+            <b>
+              <span className="mas">+</span>
+              {euros(total)}
+            </b>
             <span className="caps">MMXXVII</span>
           </span>
         </span>
