@@ -1,0 +1,15 @@
+// Only used to apply migrations to the preview database (`npm run db:preview`).
+// Keep it in sync with `previews.d1_databases` in wrangler.jsonc.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hackuc3m",
+  "account_id": "5a698af4c4ad2ddb4dcb235f73183314",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "hackuc3m-preview",
+      "database_id": "f9eeda9b-e805-4d05-971a-6c5a0ba75a61",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
