@@ -3,8 +3,8 @@ import type { TrackWeb } from "@/lib/empresas";
 
 // La lista de tracks. La usan la landing y la vista previa del panel, así que las dos se ven
 // igual por construcción.
-// - Track con empresa: isologo, etiqueta, numeral y logo. El título y el reto salen solo cuando
-//   existen; sin título, el track se nombra solo para lectores de pantalla.
+// - Track con empresa: isologo, etiqueta, numeral y logo. Con título, título y reto; sin título,
+//   el título va desenfocado («reto por desvelar») y una línea anuncia el reto de la empresa.
 // - Track sin empresa: «sellado». Columna en damasco oscuro, numeral en crema y un grabado y un
 //   título desenfocados, como algo que ya existe pero aún no se ha desvelado.
 
@@ -48,8 +48,21 @@ function Columna({ n, track }: { n: number; track: TrackWeb }) {
         <span className="nn">{numeral(n)}</span>
         <span className="logo">{empresa.isotipo && <img src={empresa.isotipo} alt="" />}</span>
       </div>
-      {titulo ? <h3 className="t">{titulo}</h3> : <h3 className="sr">Track {n}: {empresa.nombre}</h3>}
-      {titulo && <p className="s">{reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>}
+      {titulo ? (
+        <>
+          <h3 className="t">{titulo}</h3>
+          <p className="s">{reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
+        </>
+      ) : (
+        // Empresa confirmada, reto aún sellado: el título va desenfocado, como en los sellados.
+        <>
+          <h3 className="sr">Track {n}: {empresa.nombre}, reto por desvelar</h3>
+          <p className="t" aria-hidden="true">
+            <span className="velo">Reto por desvelar</span>
+          </p>
+          <p className="s">El reto de {empresa.nombre}, muy pronto.</p>
+        </>
+      )}
     </li>
   );
 }

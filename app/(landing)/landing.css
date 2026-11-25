@@ -521,7 +521,8 @@
 .retos .sellado .t {
   border-color: color-mix(in srgb, var(--cream) 35%, transparent);
 }
-.retos .sellado .t .velo {
+/* Título aún sellado (con o sin empresa): desenfocado entre filetes nítidos. */
+.retos .t .velo {
   display: block;
   filter: blur(7px);
   user-select: none;
