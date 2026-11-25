@@ -7,6 +7,7 @@ import type { EventContent } from "@/lib/event";
 import Pie from "../pie";
 import Cabecera from "./cabecera";
 import Carril from "./carril";
+import ListaTracks, { columnasTracks } from "./columna-track";
 import Contador from "./contador";
 import { cifras, euros, inicio, premio } from "./datos";
 import Moneda from "./moneda";
@@ -27,7 +28,6 @@ function Leer({ texto }: { texto: string }) {
   ));
 }
 
-const dosDigitos = (n: number) => String(n).padStart(2, "0");
 
 // Tracks y cinta llegan ya barajados (lib/empresas-db.ts): no hay orden porque todas las empresas pagan lo mismo.
 export default function Landing({ event, tracks, cinta: empresasCinta }: { event: EventContent; tracks: TrackWeb[]; cinta: LogoWeb[] }) {
@@ -149,7 +149,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
         </section>
 
         {/* 5 · Tracks y gran premio */}
-        <section id="tracks" className="tracks-sec">
+        <section id="tracks" className="tracks-sec" style={css({ "--cols": columnasTracks(tracks) })}>
           <div className="wrap">
             <div className="retos-h">
               <h2 className="h2">Seis tracks. Un gran premio.</h2>
@@ -166,28 +166,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
           </div>
           <div className="rieles">
             <div className="pin">
-              <ol className="retos" style={css({ "--n": tracks.length })}>
-                {tracks.map((t, i) => (
-                  <li key={i}>
-                    {t.empresa?.isologo ? (
-                      <img className="marca" src={t.empresa.isologo} alt={t.empresa.nombre} />
-                    ) : (
-                      <span className="emp">{t.empresa?.nombre ?? "Por confirmar"}</span>
-                    )}
-                    {t.empresa?.corta && <span className="def">{t.empresa.corta}</span>}
-                    <div className="cab">
-                      <span className="nn" aria-hidden="true">
-                        {dosDigitos(i + 1)}.
-                      </span>
-                      <span className="logo" aria-hidden="true">
-                        {t.empresa?.isotipo && <img src={t.empresa.isotipo} alt="" />}
-                      </span>
-                    </div>
-                    <h3 className="t">{t.titulo || "Reto por anunciar"}</h3>
-                    {/* <p className="s">{t.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p> */}
-                  </li>
-                ))}
-              </ol>
+              <ListaTracks tracks={tracks} />
             </div>
           </div>
           <Carril clase="car" style={{ height: 40, marginTop: 24, color: "var(--ink)" }}>

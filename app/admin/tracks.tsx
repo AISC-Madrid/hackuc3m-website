@@ -1,9 +1,9 @@
 "use client";
 import { useMemo, useState, type CSSProperties } from "react";
-import { barajar, type Empresa, type Track } from "@/lib/empresas";
+import { barajar, type Empresa, type Track, type TrackWeb } from "@/lib/empresas";
+import ListaTracks, { columnasTracks } from "../(landing)/columna-track";
 
 const css = (v: Record<string, string | number>) => v as CSSProperties;
-const dos = (n: number) => String(n).padStart(2, "0");
 
 type Props = {
   empresas: Empresa[];
@@ -22,12 +22,19 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
   // El orden de la vista previa solo cambia al pulsar «Barajar otra vez», no al escribir.
   const ids = tracks.map((x) => x.id).join();
   const orden = useMemo(() => barajar(ids.split(",")), [ids, semilla]); // eslint-disable-line react-hooks/exhaustive-deps
-  // Como en la web: solo se publican los tracks con empresa confirmada.
-  const visibles = orden.filter((id) => {
-    const x = tracks.find((y) => String(y.id) === id);
-    const e = x && x.empresaId !== null ? porId.get(x.empresaId) : undefined;
-    return e?.etapa === "confirmada";
-  });
+  // Como en la web: primero los tracks con empresa confirmada, después los huecos.
+  const previa = orden
+    .map((id) => tracks.find((y) => String(y.id) === id))
+    .filter((x): x is Track => !!x)
+    .map((x): TrackWeb => {
+      const e = x.empresaId !== null ? porId.get(x.empresaId) : undefined;
+      return {
+        empresa: e?.etapa === "confirmada" ? { nombre: e.nombre, corta: e.corta, isotipo: e.isotipo, isologo: e.isologo } : null,
+        titulo: x.titulo,
+        reto: x.reto,
+      };
+    })
+    .sort((a, b) => Number(a.empresa === null) - Number(b.empresa === null));
 
   function anadir() {
     const id = -Date.now();
@@ -59,7 +66,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                     <i className="adm-fil" />
                     <span className="lg">{e?.isotipo && <img src={e.isotipo} alt="" />}</span>
                     <span className="q">
-                      <b className={x.titulo ? "" : "vacio"}>{x.titulo || "Track por anunciar"}</b>
+                      <b className={x.titulo ? "" : "vacio"}>{x.titulo || "Sin título"}</b>
                       <span className="lab">{e?.nombre || "Sin empresa"}</span>
                     </span>
                   </button>
@@ -99,7 +106,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                   </label>
                   <span className="adm-fld">
                     <select id="t-emp" value={t.empresaId ?? ""} onChange={(ev) => set({ empresaId: ev.target.value ? Number(ev.target.value) : null })}>
-                      <option value="">Sin empresa todavía · no sale en la web</option>
+                      <option value="">Sin empresa todavía · sale «Por desvelar»</option>
                       {empresas
                         .filter((e) => e.nombre && e.etapa !== "perdida")
                         .map((e) => {
@@ -124,7 +131,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                     <span className="adm-ayuda">{t.titulo.length} / 120</span>
                   </label>
                   <span className="adm-fld">
-                    <input id="t-tit" value={t.titulo} maxLength={120} placeholder="Vacío: «Track por anunciar»" onChange={(ev) => set({ titulo: ev.target.value })} />
+                    <input id="t-tit" value={t.titulo} maxLength={120} placeholder="Vacío: en la web sale solo el logo y el número" onChange={(ev) => set({ titulo: ev.target.value })} />
                   </span>
                 </div>
                 <div className="adm-campo ancho">
@@ -159,31 +166,9 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
           </button>
         </div>
         {/* El propio marcado y CSS de la sección de tracks de la landing. */}
-        <div className="pagina adm-previa" aria-hidden="true">
-          <div className="tracks-sec">
-            <ol className="retos" style={css({ "--n": visibles.length })}>
-              {visibles.map((id, i) => {
-                const x = tracks.find((y) => String(y.id) === id);
-                if (!x) return null;
-                const e = x.empresaId !== null ? porId.get(x.empresaId) : undefined;
-                return (
-                  <li key={id}>
-                    {e?.isologo ? (
-                      <img className="marca" src={e.isologo} alt="" />
-                    ) : (
-                      <span className="emp">{e?.nombre ?? "Por confirmar"}</span>
-                    )}
-                    {e?.corta && <span className="def">{e.corta}</span>}
-                    <div className="cab">
-                      <span className="nn">{dos(i + 1)}.</span>
-                      <span className="logo">{e?.isotipo && <img src={e.isotipo} alt="" />}</span>
-                    </div>
-                    <h3 className="t">{x.titulo || "Track por anunciar"}</h3>
-                    <p className="s">{x.reto || "Publicaremos el reto antes de abrir las inscripciones."}</p>
-                  </li>
-                );
-              })}
-            </ol>
+        <div className="pagina adm-previa" aria-hidden="true" inert>
+          <div className="tracks-sec" style={css({ "--cols": columnasTracks(previa) })}>
+            <ListaTracks tracks={previa} />
           </div>
         </div>
         <p className="adm-ayuda" style={{ marginTop: 10 }}>
