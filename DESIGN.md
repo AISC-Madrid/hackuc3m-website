@@ -191,7 +191,7 @@ Reglas:
 
 ## Formas y profundidad
 
-- Sin radios (salvo la moneda). Sin sombras: el botón principal lleva un filete crema interior (`inset 0 0 0 3px plum, inset 0 0 0 4px cream`) y el aviso un doble filete.
+- Sin radios (salvo la moneda y el óvalo de los retratos). Sin sombras: el botón principal lleva un filete crema interior (`inset 0 0 0 3px plum, inset 0 0 0 4px cream`) y el aviso un doble filete.
 - Filetes de 1 px: `line` para separar, `ink` para cerrar un bloque (FAQ, pie, días de la agenda), `plum` en los tracks.
 - Tramas: damasco de lis (`.lisdark`) en cifras e inscripción; papel de lis en el premio; verjurado con filigrana en el pie.
 - Profundidad solo en el hero: gofrado de la moneda en seco y capas que suben a distinta velocidad al salir.
@@ -210,7 +210,7 @@ Todos en `app/globals.css`, salvo lo propio de cada sección, que vive junto a s
 - **Esquinera** (`.esq`): roleos de Van Hulsen; la tinta sale del vértice exterior al abrir la página.
 - **Filete que se traza** (`.tz`, `.tz.una`): cualquier bloque con filete arriba (y abajo).
 - **Contador**: numeradora en Ibarra con cifras tabulares; cada rueda gira solo cuando cambia su dígito.
-- **Pie** (`app/pie.tsx`): colaboradores (AISC y UC3M sin teñir), correo, cómo llegar, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
+- **Pie** (`app/pie.tsx`): colaboradores (AISC y UC3M sin teñir), correo, cómo llegar, quiénes somos, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
 
 ## Movimiento
 
@@ -257,6 +257,16 @@ Archivos en `public/`: `IsologoHackUc3m.svg`, `IsotipoHackUc3m.svg` y `hackuc3m-
 - **Florón** (`---`) entre apartados y **remate** al final, quietos (sin animación). Cierra un bloque de contacto sobre papel de lis malva.
 - **Viñetas**: catálogo cerrado en `app/documento/documento.tsx` (`torre`, `corona`, `flor`). Ampliarlo es añadir un grabado con su crédito y darle nombre.
 - Sin textos entre corchetes: `npm test` falla si un `.md` de `contenido/` los tiene.
+
+## Quiénes somos
+
+`/quienes-somos` (`app/quienes-somos/`), enlazada desde el pie, no desde la landing. Usa la barra fija y la portada de los documentos (`app/barra-fija.tsx`, `app/documento/documento.css`), sin índice.
+
+- **Manifiesto corto** centrado bajo la portada, en Ibarra a `clamp(26px, 3.1cqi, 40px)`, tinta y `text-wrap: balance`.
+- **Retrato** (`.retrato`): las fotos de la organización, al modo de los *Retratos de los españoles ilustres* (1791). Óvalo 3:4 con doble filete (tinta fuera, `line` dentro, 4 px de papel entre ambos) y la foto en **duotono de ciruela**: escala de grises en `multiply` sobre crema y una capa `plum-deep` en `lighten`, que lleva las sombras a la ciruela. Solo el nombre de pila, en rótulo Cinzel versal de 13 px, debajo; sin cargos.
+- **Galería** entre dos filetes que se trazan: los ocho en una fila (cuatro por fila bajo 820 px, dos bajo 600). El orden se baraja en cada petición (la página es dinámica). Los retratos se descubren de arriba abajo, como las láminas, uno tras otro (70 ms entre cada uno), una sola vez.
+- Fotos en `public/equipo/`, a 480 px en WebP, sacadas de aiscmadrid.com/team.php. Son fotos reales de la organización, no grabados: no llevan crédito en `assets/creditos.json`.
+- Cierra con el bloque de contacto de los documentos.
 
 ## Panel de organización
 

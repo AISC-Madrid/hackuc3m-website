@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24T14:00:00.000Z",
+  "generatedAt": "2026-11-25T12:00:00.000Z",
   "title": "Design System: HackUC3M · Los Ilustrados",
   "extensions": {
     "colorMeta": {
@@ -354,6 +354,11 @@
       "name": "Segmented filter",
       "kind": "control",
       "description": "Grouped filter buttons with an ink-muted rule; the pressed one is ink with cream text, aria-pressed."
+    },
+    {
+      "name": "Portrait",
+      "kind": "image",
+      "description": "Organiser photo in a 3:4 oval with a double rule (ink outside, line inside); plum-deep duotone on cream (grayscale multiply + plum-deep lighten), first name only in Cinzel caps below. Revealed top to bottom like the plates, staggered 70ms, once. Only on /quienes-somos."
     }
   ],
   "narrative": {

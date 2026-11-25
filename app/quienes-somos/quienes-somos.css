@@ -1,0 +1,146 @@
+/* «Quiénes somos». La portada, la barra y el bloque de contacto vienen de la plantilla de documento
+   (app/documento/documento.css) y de app/globals.css; aquí, el manifiesto y la galería de retratos. */
+
+.qs {
+  padding-top: 88px;
+  padding-bottom: 120px;
+}
+
+/* Manifiesto corto: centrado, como la portada que lo abre. */
+.qs-mani {
+  margin: 0 auto;
+  max-width: 46rem;
+  font: 400 clamp(26px, 3.1cqi, 40px) / 1.25 var(--serif);
+  color: var(--ink);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Galería entre dos filetes. */
+.galeria {
+  margin: 80px 0 72px;
+  padding: 56px 0 48px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.retratos {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 40px clamp(14px, 2cqi, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Retrato: óvalo con doble filete (tinta fuera, papel y línea dentro) y foto en duotono de ciruela
+   sobre crema, como una estampa: escala de grises que se multiplica sobre el papel y una capa
+   plum-deep en «aclarar» que levanta las sombras hasta la ciruela. */
+.retrato {
+  margin: 0;
+  text-align: center;
+}
+.ovalo {
+  display: block;
+  padding: 4px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+.foto {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 50%;
+  outline: 1px solid var(--line);
+  outline-offset: -1px;
+  background: var(--cream);
+  isolation: isolate;
+}
+.foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  filter: grayscale(1) contrast(1.12);
+  mix-blend-mode: multiply;
+}
+.foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--plum-deep);
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
+.retrato figcaption {
+  margin-top: 16px;
+  font: 600 13px/1.4 var(--caps);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.qs .contacto {
+  margin: 0 auto;
+  max-width: 40rem;
+}
+.qs .contacto p {
+  text-wrap: balance;
+}
+
+@container (max-width: 820px) {
+  .retratos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@container (max-width: 600px) {
+  .qs {
+    padding-top: 48px;
+    padding-bottom: 72px;
+  }
+  .galeria {
+    margin: 48px 0;
+    padding: 40px 0 32px;
+  }
+  .retratos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 20px;
+    padding: 0 8px;
+  }
+  .retrato figcaption {
+    font-size: 12px;
+  }
+  .qs .contacto {
+    padding: 28px 20px;
+  }
+}
+
+/* Movimiento: los retratos se descubren de arriba abajo, como las láminas, uno tras otro y una sola
+   vez. Mismo cerrojo que .lamina; gemela .sv para Firefox y Safari anteriores. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .retratos {
+      animation: lamOn linear both;
+      animation-timeline: view();
+      animation-range: entry 40% entry 41%;
+    }
+    .retrato .foto {
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 0s 99999s;
+    }
+    @container style(--on: 1) {
+      .retrato .foto {
+        clip-path: inset(0 0 0 0);
+        transition: clip-path var(--t-slow) var(--ease-io) calc(var(--i) * 70ms);
+      }
+    }
+  }
+}
+.sv .retrato .foto {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--t-slow) var(--ease-io) calc(var(--i) * 70ms);
+}
+.sv .retratos.on .foto {
+  clip-path: inset(0 0 0 0);
+}
