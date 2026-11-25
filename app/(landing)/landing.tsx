@@ -122,7 +122,7 @@ export default function Landing({ event, tracks, cinta: empresasCinta }: { event
                 <Leer texto="Retos de la industria. Talento universitario. Dos días para convertir una idea en algo que funcione." />
               </p>
               <p className="p" style={{ marginTop: 36 }}>
-                En equipos de 1 a 4, en la Escuela Politécnica Superior del campus de Leganés.
+                En equipos de 3 a 5, en la Escuela Politécnica Superior del campus de Leganés.
               </p>
             </div>
           </div>
