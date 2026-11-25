@@ -464,6 +464,20 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
+/* Hueco sin empresa: «Próximamente» en voz baja. Etiqueta sin caja, numeral en malva oscuro
+   (display, así que puede) y cuadro del logo vacío con filete claro. */
+.retos .pronto .lab {
+  grid-row: 1;
+  justify-self: start;
+  align-self: center;
+  font-size: 11.5px;
+}
+.retos .pronto .nn {
+  color: var(--mauve-deep);
+}
+.retos .pronto .logo {
+  border-color: var(--line);
+}
 /* --fs: tamaño del numeral; estirado 1,7 en vertical mide 1,36 × --fs, igual que el cuadro del logo. */
 .retos .cab {
   --fs: clamp(80px, 7.5cqi, 112px);
