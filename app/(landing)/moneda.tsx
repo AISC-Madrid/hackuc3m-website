@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { euros } from "./datos";
 
-// Moneda del gran premio: la misma moneda gofrada del hero, acuñada en oro. Al pasar el ratón
-// (CSS) o al pulsar, se da la vuelta y enseña el reverso: el canto estriado y la cifra estampada.
+// Moneda del gran premio: al pasar el ratón (CSS) o al pulsar, se da la vuelta y enseña el reverso.
 export default function Moneda({ total }: { total: number }) {
   const [vuelta, setVuelta] = useState(false);
   return (
@@ -15,15 +14,13 @@ export default function Moneda({ total }: { total: number }) {
       onClick={() => setVuelta((v) => !v)}
     >
       <span className="giro">
-        <span className="cara" aria-hidden="true">
-          <i className="som" />
-          <i className="luz" />
-          <i className="base" />
+        <span className="cara">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logos/moneda-oro.svg" alt="" width={1000} height={1000} loading="lazy" />
         </span>
         <span className="cara rev">
-          <i className="som" aria-hidden="true" />
-          <i className="luz" aria-hidden="true" />
-          <i className="base" aria-hidden="true" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logos/moneda-reverso.svg" alt="" width={1000} height={1000} loading="lazy" />
           <span className="rev-t">
             <span className="caps">Gran premio</span>
             <b>

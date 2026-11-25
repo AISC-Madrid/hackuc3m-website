@@ -4,9 +4,9 @@
 // florón entre apartados, remate y bloque de contacto. El texto sale de contenido/*.md.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { leerDocumento, type Bloque, type Documento, type Inline } from "@/lib/documento";
-import BarraFija from "../barra-fija";
 import Pie from "../pie";
 import "./documento.css";
 
@@ -115,7 +115,21 @@ export default function PaginaDocumento({ doc, children }: { doc: Documento; chi
       <a className="salto" href="#contenido">
         Saltar al contenido
       </a>
-      <BarraFija />
+      <header className="top fija">
+        <div className="wrap topin">
+          <Link href="/" className="marca" aria-label="HackUC3M, inicio">
+            <img src="/hackuc3m-mark.webp" alt="" width={46} height={46} />
+            <span className="mini" aria-hidden="true">
+              HackUC3M<span>’27</span>
+            </span>
+          </Link>
+          <div className="topder">
+            <Link href="/#inscripcion" className="btn b1 peq">
+              Preinscríbete <span className="ar gl manecilla" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </header>
       <main id="contenido">
         <div className="portada">
           <img className="esq izq" src="/grabados/esquinas/hulsen.webp" alt="" width={760} height={768} />

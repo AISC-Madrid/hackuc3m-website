@@ -14,8 +14,6 @@ colors:
   mauve-deep: "#9e678c"
   blue: "#9db2c1"
   paper-light: "#fffcf0"
-  gold: "#b9933f"
-  gold-light: "#e3cb8a"
   gold-shadow: "#3f2c16"
 typography:
   wordmark:
@@ -127,7 +125,7 @@ Cinco reglas resumen el sistema:
 
 ## Color
 
-Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El resto se deriva de ellos. Las cuatro últimas filas son excepciones con un único uso.
+Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El resto se deriva de ellos. Las dos últimas filas son excepciones con un único uso.
 
 | Token | Hex | Papel |
 | --- | --- | --- |
@@ -143,11 +141,9 @@ Los cuatro colores base son los del logo (`public/IsologoHackUc3m.svg`). El rest
 | Mauve deep | `#9e678c` | Reservado para display a partir de 24 px. |
 | Blue | `#9db2c1` | Reservado como ornamento. Nunca texto. Color del logo. |
 | Paper light | `#fffcf0` | Solo la luz de 1,5 px del gofrado del hero. |
-| Gold | `#b9933f` | Solo el disco de la moneda del gran premio (oro viejo). |
-| Gold light | `#e3cb8a` | Solo la luz de 1 px del gofrado de la moneda del gran premio. |
-| Gold shadow | `#3f2c16` | Solo la sombra del gofrado y los rótulos del reverso de la moneda del gran premio. |
+| Gold shadow | `#3f2c16` | Solo el texto del reverso de la moneda del gran premio (oro viejo). |
 
-La moneda del premio es la del gofrado del hero (`public/logos/gofrado.webp`) acuñada en oro viejo: un disco plano `gold` con el relieve de 1 px de luz (`gold-light`) y de sombra (`gold-shadow`), sin degradados ni brillos. El reverso conserva solo el canto estriado y estampa «Gran premio · cifra · MMXXVII» con el mismo relieve. Es la única pieza dorada de la web: el oro no se reutiliza en ningún otro sitio.
+La moneda del premio va en oro viejo dentro de su propio SVG (`public/logos/moneda-oro.svg`, `moneda-reverso.svg`): es la única pieza con colores fuera de la paleta, y no se reutiliza.
 
 Reglas:
 
@@ -191,7 +187,7 @@ Reglas:
 
 ## Formas y profundidad
 
-- Sin radios (salvo la moneda y el óvalo de los retratos). Sin sombras: el botón principal lleva un filete crema interior (`inset 0 0 0 3px plum, inset 0 0 0 4px cream`) y el aviso un doble filete.
+- Sin radios (salvo la moneda). Sin sombras: el botón principal lleva un filete crema interior (`inset 0 0 0 3px plum, inset 0 0 0 4px cream`) y el aviso un doble filete.
 - Filetes de 1 px: `line` para separar, `ink` para cerrar un bloque (FAQ, pie, días de la agenda), `plum` en los tracks.
 - Tramas: damasco de lis (`.lisdark`) en cifras e inscripción; papel de lis en el premio; verjurado con filigrana en el pie.
 - Profundidad solo en el hero: gofrado de la moneda en seco y capas que suben a distinta velocidad al salir.
@@ -210,7 +206,7 @@ Todos en `app/globals.css`, salvo lo propio de cada sección, que vive junto a s
 - **Esquinera** (`.esq`): roleos de Van Hulsen; la tinta sale del vértice exterior al abrir la página.
 - **Filete que se traza** (`.tz`, `.tz.una`): cualquier bloque con filete arriba (y abajo).
 - **Contador**: numeradora en Ibarra con cifras tabulares; cada rueda gira solo cuando cambia su dígito.
-- **Pie** (`app/pie.tsx`): colaboradores (AISC y UC3M sin teñir), correo, cómo llegar, quiénes somos, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
+- **Pie** (`app/pie.tsx`): colaboradores (AISC y UC3M sin teñir), correo, cómo llegar, privacidad, código de conducta, Instagram y LinkedIn (tinta → ciruela), créditos y «Volver arriba» con la manecilla girada.
 
 ## Movimiento
 
@@ -257,16 +253,6 @@ Archivos en `public/`: `IsologoHackUc3m.svg`, `IsotipoHackUc3m.svg` y `hackuc3m-
 - **Florón** (`---`) entre apartados y **remate** al final, quietos (sin animación). Cierra un bloque de contacto sobre papel de lis malva.
 - **Viñetas**: catálogo cerrado en `app/documento/documento.tsx` (`torre`, `corona`, `flor`). Ampliarlo es añadir un grabado con su crédito y darle nombre.
 - Sin textos entre corchetes: `npm test` falla si un `.md` de `contenido/` los tiene.
-
-## Quiénes somos
-
-`/quienes-somos` (`app/quienes-somos/`), enlazada desde el pie, no desde la landing. Usa la barra fija y la portada de los documentos (`app/barra-fija.tsx`, `app/documento/documento.css`), sin índice.
-
-- **Manifiesto corto** centrado bajo la portada, en Ibarra a `clamp(26px, 3.1cqi, 40px)`, tinta y `text-wrap: balance`.
-- **Retrato** (`.retrato`): las fotos de la organización, al modo de los *Retratos de los españoles ilustres* (1791). Óvalo 3:4 con doble filete (tinta fuera, `line` dentro, 4 px de papel entre ambos) y la foto en **duotono de ciruela**: escala de grises en `multiply` sobre crema y una capa `plum-deep` en `lighten`, que lleva las sombras a la ciruela. Solo el nombre de pila, en rótulo Cinzel versal de 13 px, debajo; sin cargos.
-- **Galería** entre dos filetes que se trazan: los ocho en una fila (cuatro por fila bajo 820 px, dos bajo 600). El orden se baraja en cada petición (la página es dinámica). Los retratos se descubren de arriba abajo, como las láminas, uno tras otro (70 ms entre cada uno), una sola vez.
-- Fotos en `public/equipo/`, a 480 px en WebP, sacadas de aiscmadrid.com/team.php. Son fotos reales de la organización, no grabados: no llevan crédito en `assets/creditos.json`.
-- Cierra con el bloque de contacto de los documentos.
 
 ## Panel de organización
 

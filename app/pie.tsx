@@ -35,9 +35,6 @@ export default function Pie() {
           <a className="lnk" href="mailto:aisc.asoc@uc3m.es">
             aisc.asoc@uc3m.es
           </a>
-          <a className="lnk" href="/quienes-somos">
-            Quiénes somos
-          </a>
           <a className="lnk" href="/privacidad">
             Privacidad
           </a>
