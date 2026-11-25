@@ -22,6 +22,12 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
   // El orden de la vista previa solo cambia al pulsar «Barajar otra vez», no al escribir.
   const ids = tracks.map((x) => x.id).join();
   const orden = useMemo(() => barajar(ids.split(",")), [ids, semilla]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Como en la web: solo se publican los tracks con empresa confirmada.
+  const visibles = orden.filter((id) => {
+    const x = tracks.find((y) => String(y.id) === id);
+    const e = x && x.empresaId !== null ? porId.get(x.empresaId) : undefined;
+    return e?.etapa === "confirmada";
+  });
 
   function anadir() {
     const id = -Date.now();
@@ -93,7 +99,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                   </label>
                   <span className="adm-fld">
                     <select id="t-emp" value={t.empresaId ?? ""} onChange={(ev) => set({ empresaId: ev.target.value ? Number(ev.target.value) : null })}>
-                      <option value="">Sin empresa todavía · sale «Por confirmar»</option>
+                      <option value="">Sin empresa todavía · no sale en la web</option>
                       {empresas
                         .filter((e) => e.nombre && e.etapa !== "perdida")
                         .map((e) => {
@@ -155,8 +161,8 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
         {/* El propio marcado y CSS de la sección de tracks de la landing. */}
         <div className="pagina adm-previa" aria-hidden="true">
           <div className="tracks-sec">
-            <ol className="retos" style={css({ "--n": tracks.length })}>
-              {orden.map((id, i) => {
+            <ol className="retos" style={css({ "--n": visibles.length })}>
+              {visibles.map((id, i) => {
                 const x = tracks.find((y) => String(y.id) === id);
                 if (!x) return null;
                 const e = x.empresaId !== null ? porId.get(x.empresaId) : undefined;
