@@ -3,30 +3,34 @@ import type { TrackWeb } from "@/lib/empresas";
 
 // La lista de tracks. La usan la landing y la vista previa del panel, así que las dos se ven
 // igual por construcción.
-// - Cada track con empresa es una columna: isologo, etiqueta, numeral y logo. El título y el reto
-//   salen solo cuando existen; sin título, el track se nombra solo para lectores de pantalla.
-// - Los huecos sin empresa no tienen columna propia: se juntan en una columna de cierre con un
-//   grabado, «Y tres tracks más.» y la invitación a las empresas.
+// - Track con empresa: isologo, etiqueta, numeral y logo. El título y el reto salen solo cuando
+//   existen; sin título, el track se nombra solo para lectores de pantalla.
+// - Track sin empresa: «sellado». Columna en damasco oscuro, numeral en crema y un grabado y un
+//   título desenfocados, como algo que ya existe pero aún no se ha desvelado.
 
-const NUMEROS = ["", "un", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+// Grabados de la agenda (con crédito en assets/creditos.json): uno distinto en cada track sellado.
+const VINETAS = ["lira", "corona-cinta", "ave-laurel", "copa-flores", "guirnalda", "jarron-flores"];
 
 // Columnas que ocupa la lista: el carril de escritorio calcula con ellas cuánto se desplaza.
 export function columnasTracks(tracks: TrackWeb[]) {
-  const confirmados = tracks.filter((t) => t.empresa).length;
-  return confirmados + (confirmados < tracks.length ? 1 : 0);
+  return tracks.length;
 }
 
 export default function ListaTracks({ tracks }: { tracks: TrackWeb[] }) {
-  const confirmados = tracks.filter((t) => t.empresa);
-  const huecos = tracks.length - confirmados.length;
+  // Primero los que tienen empresa; los sellados, detrás (lib/empresas-db.ts ya los ordena así).
+  const orden = [...tracks].sort((a, b) => Number(a.empresa === null) - Number(b.empresa === null));
+  let sellado = 0;
   return (
-    <ol className="retos" style={{ "--n": columnasTracks(tracks) } as CSSProperties}>
-      {confirmados.map((t, i) => (
-        <Columna key={i} n={i + 1} track={t} />
-      ))}
-      {huecos > 0 && <Cierre huecos={huecos} />}
+    <ol className="retos" style={{ "--n": tracks.length } as CSSProperties}>
+      {orden.map((t, i) =>
+        t.empresa ? <Columna key={i} n={i + 1} track={t} /> : <Sellado key={i} n={i + 1} vineta={VINETAS[sellado++ % VINETAS.length]} />,
+      )}
     </ol>
   );
+}
+
+function numeral(n: number) {
+  return `${String(n).padStart(2, "0")}.`;
 }
 
 function Columna({ n, track }: { n: number; track: TrackWeb }) {
@@ -41,7 +45,7 @@ function Columna({ n, track }: { n: number; track: TrackWeb }) {
       )}
       {empresa.corta && <span className="def">{empresa.corta}</span>}
       <div className="cab" aria-hidden="true">
-        <span className="nn">{`${String(n).padStart(2, "0")}.`}</span>
+        <span className="nn">{numeral(n)}</span>
         <span className="logo">{empresa.isotipo && <img src={empresa.isotipo} alt="" />}</span>
       </div>
       {titulo ? <h3 className="t">{titulo}</h3> : <h3 className="sr">Track {n}: {empresa.nombre}</h3>}
@@ -50,22 +54,23 @@ function Columna({ n, track }: { n: number; track: TrackWeb }) {
   );
 }
 
-function Cierre({ huecos }: { huecos: number }) {
-  const cuantos = NUMEROS[huecos] ?? String(huecos);
+function Sellado({ n, vineta }: { n: number; vineta: string }) {
   return (
-    <li className="cierre">
-      <span className="lab">Próximamente</span>
+    <li className="sellado">
+      <span className="lab">Por desvelar</span>
       <div className="cab" aria-hidden="true">
-        <span className="vin" />
+        <span className="nn">{numeral(n)}</span>
+        <span className="logo">
+          <span className="velo">
+            <span className="vin" style={{ "--vin": `url(/grabados/agenda/${vineta}.webp)` } as CSSProperties} />
+          </span>
+        </span>
       </div>
-      <h3 className="mas">
-        Y {cuantos} {huecos === 1 ? "track" : "tracks"} más.
-      </h3>
-      <p className="s">
-        <a className="lnk" href="#empresas">
-          ¿Tu empresa quiere uno?
-        </a>
+      <h3 className="sr">Track {n}: por desvelar</h3>
+      <p className="t" aria-hidden="true">
+        <span className="velo">Track por desvelar</span>
       </p>
+      <p className="s">Muy pronto.</p>
     </li>
   );
 }

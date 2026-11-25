@@ -397,7 +397,7 @@
   --pad: clamp(20px, 5cqi, 64px);
   --pl: max(var(--pad), calc((100cqi - 1280px) / 2 + var(--pad)));
   --cw: max(300px, calc((min(100cqi, 1280px) - 2 * var(--pad)) / 3));
-  /* Recorrido del carril: las columnas que haya (--cols, desde ListaTracks) menos lo que ya se ve. */
+  /* Recorrido del carril: las columnas que haya (--cols, de columnasTracks) menos lo que ya se ve. */
   --d: max(0px, calc(var(--cols, 6) * var(--cw) + 2 * var(--pl) - 100cqi));
 }
 .retos {
@@ -465,29 +465,72 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-/* Cierre: los huecos sin empresa juntos en una columna, con un grabado entintado en malva oscuro
-   (se levanta como las viñetas de la agenda), «Y tres tracks más.» y la invitación a las empresas. */
-.retos .cierre .lab {
+/* Track sellado (sin empresa todavía): columna en damasco oscuro (como .lisdark) con todo en crema.
+   El grabado del cuadro y el título van desenfocados: existe, pero aún no se ha desvelado.
+   Es desenfoque del contenido, no un panel translúcido (sin glassmorphism). */
+.retos .sellado {
+  position: relative;
+  isolation: isolate;
+  padding-block: 24px 32px;
+  border-left-color: transparent;
+  color: var(--cream);
+}
+/* El damasco va en un pseudo-elemento: el fondo del li lo usa el filete que se traza con el scroll. */
+.retos .sellado::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--plum-deep) url(/grabados/tramas/lis-damasco.png) 0 0 / 72px 80px;
+}
+.retos .sellado + .sellado {
+  border-left-color: color-mix(in srgb, var(--cream) 18%, transparent);
+}
+.retos .sellado:first-child {
+  padding-left: 32px;
+}
+.retos .sellado:last-child {
+  padding-right: 32px;
+}
+.retos .sellado .lab {
   grid-row: 1;
   justify-self: start;
   align-self: center;
   font-size: 11.5px;
+  color: color-mix(in srgb, var(--cream) 78%, transparent);
 }
-.retos .cierre .vin {
+.retos .sellado .logo {
+  border-color: color-mix(in srgb, var(--cream) 35%, transparent);
+}
+/* El desenfoque va en un envoltorio: sobre el propio grabado se aplicaría antes que la máscara. */
+.retos .sellado .logo .velo {
+  display: grid;
+  place-items: center;
+  width: 62%;
+  height: 62%;
+  filter: blur(4px);
+  opacity: 0.85;
+}
+.retos .sellado .vin {
+  width: 100%;
+  height: 100%;
+  background: var(--cream);
+  -webkit-mask: var(--vin) center / contain no-repeat;
+  mask: var(--vin) center / contain no-repeat;
+}
+.retos .sellado .t {
+  border-color: color-mix(in srgb, var(--cream) 35%, transparent);
+}
+.retos .sellado .t .velo {
   display: block;
-  height: calc(1.36 * var(--fs));
-  aspect-ratio: 336 / 376;
-  background: var(--mauve-deep);
-  -webkit-mask: url(/grabados/agenda/ave-laurel.webp) left bottom / contain no-repeat;
-  mask: url(/grabados/agenda/ave-laurel.webp) left bottom / contain no-repeat;
-  transition: transform var(--t-fast) var(--ease-out);
+  filter: blur(7px);
+  user-select: none;
 }
-.retos .cierre .mas {
-  grid-row: 4;
-  padding: 24px 0;
-  border-top: 1px solid var(--plum);
-  font: 400 clamp(30px, 3cqi, 42px) / 1.05 var(--serif);
-  text-wrap: balance;
+.retos .sellado .s {
+  color: color-mix(in srgb, var(--cream) 78%, transparent);
+}
+.retos .sellado .cab::before {
+  background: var(--cream);
 }
 /* --fs: tamaño del numeral; estirado 1,7 en vertical mide 1,36 × --fs, igual que el cuadro del logo. */
 .retos .cab {
@@ -932,8 +975,7 @@
   .moneda:hover .giro {
     transform: rotateY(180deg);
   }
-  .momento:hover img,
-  .retos .cierre:hover .vin {
+  .momento:hover img {
     transform: translateY(-3px) rotate(-4deg);
   }
   .retos li:hover .cab::before {
@@ -941,8 +983,7 @@
   }
 }
 @media (hover: none) {
-  .momento:active img,
-  .retos .cierre:active .vin {
+  .momento:active img {
     transform: translateY(-3px) rotate(-4deg);
   }
   .retos li:active .cab::before {
@@ -1855,7 +1896,6 @@
     animation: none !important;
   }
   .momento img,
-  .retos .cierre .vin,
   .retos .cab::before {
     transition-property: opacity, background-color, clip-path;
   }

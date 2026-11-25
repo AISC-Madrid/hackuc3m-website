@@ -106,7 +106,7 @@ export default function Tracks({ empresas, tracks, setTracks, sel, elegir }: Pro
                   </label>
                   <span className="adm-fld">
                     <select id="t-emp" value={t.empresaId ?? ""} onChange={(ev) => set({ empresaId: ev.target.value ? Number(ev.target.value) : null })}>
-                      <option value="">Sin empresa todavía · cuenta en «Y … tracks más»</option>
+                      <option value="">Sin empresa todavía · sale «Por desvelar»</option>
                       {empresas
                         .filter((e) => e.nombre && e.etapa !== "perdida")
                         .map((e) => {

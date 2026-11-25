@@ -183,7 +183,7 @@ Reglas:
 - Secciones con 140 px de aire (96 en móvil). Barra superior de 77 px (`--hdr`).
 - Composición: alternar secciones ceremoniosas centradas (hero, premio) con secciones editoriales alineadas a la izquierda (`.split`: titular estrecho a la izquierda, contenido ancho a la derecha).
 - Índices tipográficos en lugar de tarjetas: tracks en columnas con filete vertical, agenda en fila de momentos, preguntas en lista con filete.
-- **Track sin anunciar:** con empresa y sin título, solo logotipo, numeral y logo (el título y el reto salen cuando existen). Los huecos sin empresa no tienen columna: se juntan en una **columna de cierre** al final, con «Próximamente» en `.lab`, un grabado entintado en `mauve-deep` a la altura de los numerales, «Y tres tracks más.» en Ibarra 400 bajo filete ciruela y un enlace a `#empresas`. Componente `app/(landing)/columna-track.tsx`, compartido con la vista previa del panel.
+- **Track sin anunciar:** con empresa y sin título, solo logotipo, numeral y logo (el título y el reto salen cuando existen). Sin empresa, **track sellado**: su columna en damasco oscuro de lis con todo en crema, «Por desvelar», numeral, grabado desenfocado en el cuadro del logo, título desenfocado entre filetes nítidos y «Muy pronto.»; van detrás de los confirmados. El desenfoque es del contenido sobre fondo opaco, nunca un panel translúcido. Componente `app/(landing)/columna-track.tsx`, compartido con la vista previa del panel.
 
 ## Formas y profundidad
 
