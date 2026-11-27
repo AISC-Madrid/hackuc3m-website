@@ -1,0 +1,62 @@
+/* Página 404. Solo usa tokens de :root. El panel de organización tiene su propio admin.css. */
+
+/* 404 · Real Decreto */
+.not-found {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  text-align: center;
+}
+.not-found-code {
+  display: flex;
+  align-items: center;
+  gap: 0.15em;
+  margin: 0 0 32px;
+  font: 400 clamp(5rem, 22vw, 10rem) / 1 var(--serif);
+  color: var(--plum);
+}
+.charlie-coin {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 0.9em;
+  height: 0.9em;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+}
+.charlie-coin::after {
+  content: "";
+  position: absolute;
+  inset: 0.05em;
+  border: 1px solid var(--mauve);
+  border-radius: 50%;
+}
+.charlie-coin img {
+  width: 0.7em;
+  height: auto;
+}
+.not-found h1 {
+  font: 600 20px/1.4 var(--caps);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+.not-found-lead {
+  max-width: 36rem;
+  margin: 12px 0 0;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.not-found-signature {
+  margin: 12px 0 0;
+  font: italic 400 15px/1.5 var(--mono);
+  color: var(--ink-muted);
+}
+.not-found .btn {
+  margin-top: 32px;
+}

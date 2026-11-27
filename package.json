@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test scripts/design-tokens.test.mjs",
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs \"lib/**/*.test.ts\"",
     "preview": "npm run build:cloudflare && opennextjs-cloudflare preview",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv",
     "db:local": "wrangler d1 migrations apply hackuc3m --local",
@@ -17,20 +17,18 @@
     "preview:cloudflare": "npm run db:preview && wrangler preview"
   },
   "dependencies": {
-    "next": "16.4.3",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
     "@opennextjs/cloudflare": "1.20.13",
-    "jose": "^6.1.0"
+    "jose": "^6.1.0",
+    "next": "16.4.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.4.3",
-    "tailwindcss": "^4",
+    "eslint-config-next": "16.4.6",
     "typescript": "^5",
     "wrangler": "^4.93.1"
   },

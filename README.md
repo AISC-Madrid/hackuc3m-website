@@ -11,7 +11,20 @@ npm run db:local
 npm run dev
 ```
 
-The public page is `/`, the editor is `/admin`, and privacy information is `/privacidad`. Local D1 data lives in `.wrangler/`, separate from production. `npm run preview` builds and runs in the Workers runtime. `npm run build` and `npm run lint` check the application.
+The public page is `/`, the editor is `/admin`, and the document pages are `/privacidad`, `/codigo-de-conducta` and `/creditos`. Local D1 data lives in `.wrangler/`, separate from production. `npm run preview` builds and runs in the Workers runtime. `npm run build`, `npm run lint` and `npm test` check the application.
+
+## Structure and design
+
+- `app/(landing)/`: the landing ("Los Ilustrados"), one component per section plus `landing.css` and `datos.ts` (agenda, figures and prize, not yet editable from the admin; tracks and companies live in D1 (`companies`, `company_roles`, `tracks`, migration `0002_empresas.sql`) and are shuffled on every request).
+- `app/globals.css`: design tokens in `:root` and the shared components and micro-animations. Plain CSS, no Tailwind. `app/pie.tsx` is the shared footer; `app/interior.css` keeps the 404 styles; the organiser panel lives in `app/admin/` with its own `admin.css`.
+- Document pages (`/privacidad`, `/codigo-de-conducta`, `/creditos`) share the template in `app/documento/`. Their text is Markdown in `contenido/*.md` (header, `##` sections, `>` margin note, `###`, lists, `**bold**`, links, `---` fleuron; see `lib/documento.ts`), read at build time, so the pages are static. `/creditos` is generated from `assets/creditos.json`.
+- `public/grabados/`, `public/campus/`, `public/logos/`: engravings, skyline and logos served by the site. Every file in `public/grabados/` needs an entry in `assets/creditos.json` (`npm test` checks it).
+- Fonts are loaded with `next/font/google` and served from the site's own domain.
+- `DESIGN.md` is the design reference; `docs/diseno-landing.md` records why each decision was made.
+
+Scroll animations run natively in CSS where `animation-timeline` exists (Chrome, Edge, Safari 26+) and through `app/desplazamiento.tsx` elsewhere (Firefox, older Safari). To check the fallback without Firefox, load the page in Playwright's Chromium with a route that rewrites `@supports (animation-timeline: view())` in every CSS response so it fails, plus an init script that makes `CSS.supports` return `false` for `animation-timeline`; `<html>` should get the `sv` class.
+
+`npm test` checks the design tokens, the colour literals in `app/`, the engraving credits and the `lib/` unit tests (including the Markdown reader and every file in `contenido/`).
 
 ## Team workflow and deployment
 
@@ -53,7 +66,7 @@ The project is configured for the AISC Cloudflare account (`aisc.asoc@uc3m.es`).
 
 ## Organizer access
 
-The editor API denies all access until configured. Create a Cloudflare Access self-hosted application covering **both** `hackuc3m.com/admin*` and `hackuc3m.com/api/admin/*`; allow only `aisc.asoc@uc3m.es` using email one-time PIN. Put the Access team hostname (e.g. `your-team.cloudflareaccess.com`, without `https://`) and application AUD into `ACCESS_TEAM_DOMAIN` and `ACCESS_AUD` in `wrangler.jsonc`, then submit the change through a PR. The backend validates the signed Access JWT, issuer, audience, expiry, algorithm, and organizer email. Forging the email header does not grant access. No local authentication bypass is provided.
+The editor API denies all access until configured. Create a Cloudflare Access self-hosted application covering **both** `hackuc3m.com/admin*` and `hackuc3m.com/api/admin/*`; allow only `aisc.asoc@uc3m.es` using email one-time PIN. Put the Access team hostname (e.g. `your-team.cloudflareaccess.com`, without `https://`) and application AUD into `ACCESS_TEAM_DOMAIN` and `ACCESS_AUD` in `wrangler.jsonc`, then submit the change through a PR. The backend validates the signed Access JWT, issuer, audience, expiry, algorithm, and organizer email. Forging the email header does not grant access. Company logos are uploaded from the editor to the private R2 bucket `hackuc3m-media` (binding `MEDIA`; local runs use Miniflare) and served at `/media/<key>`. The production bucket must exist before deploying. Start the dev server with `npm run dev` on `localhost`: with `-H 0.0.0.0`, Next builds request URLs with that host and the editor's same-origin check rejects saves made from `localhost`. With `next dev` (and only there: `NODE_ENV=development`), `/admin` and `/api/admin/*` open without login so the editor can be tried against local D1; `next build`, `npm run preview` and production always require Access.
 
 The editor publishes date, venue, introduction, tracks, sponsor names/links, FAQs and waitlist status. It exports waitlist membership as CSV in original signup order. Confirmed sponsors are rendered as text links until logo management is added.
 

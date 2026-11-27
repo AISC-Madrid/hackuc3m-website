@@ -26,6 +26,13 @@
       "migrations_dir": "migrations"
     }
   ],
+  // Logos de empresas (y, más adelante, CVs). Privado: se sirve por /media/[key].
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "hackuc3m-media"
+    }
+  ],
   "vars": {
     "SITE_URL": "https://hackuc3m.com",
     "ACCESS_TEAM_DOMAIN": "winter-cloud-1122.cloudflareaccess.com",
@@ -60,6 +67,12 @@
         "database_name": "hackuc3m-preview",
         "database_id": "f9eeda9b-e805-4d05-971a-6c5a0ba75a61",
         "migrations_dir": "migrations"
+      }
+    ],
+    "r2_buckets": [
+      {
+        "binding": "MEDIA",
+        "bucket_name": "hackuc3m-media-preview"
       }
     ],
     "vars": {

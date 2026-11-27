@@ -1,7 +1,10 @@
 import { connection } from "next/server";
 import { readContent } from "@/lib/content";
-import EventPage from "./event-page";
+import { leerWeb } from "@/lib/empresas-db";
+import Landing from "./(landing)/landing";
+
 export default async function Home() {
   await connection();
-  return <EventPage event={await readContent()} />;
+  const [event, { tracks, cinta }] = await Promise.all([readContent(), leerWeb()]);
+  return <Landing event={event} tracks={tracks} cinta={cinta} />;
 }

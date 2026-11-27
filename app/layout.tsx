@@ -1,18 +1,53 @@
 import type { Metadata } from "next";
-import { Cinzel, Geist } from "next/font/google";
+import {
+  Brygada_1918,
+  Cinzel,
+  Corinthia,
+  Ibarra_Real_Nova,
+} from "next/font/google";
+import Desplazamiento from "./desplazamiento";
 import "./globals.css";
 
-const cinzel = Cinzel({ variable: "--font-cinzel", subsets: ["latin"] });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// next/font sirve las fuentes desde el propio dominio: no se llama a Google en tiempo de ejecución.
+const ibarra = Ibarra_Real_Nova({
+  variable: "--font-ibarra",
   subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+const brygada = Brygada_1918({
+  variable: "--font-brygada",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+});
+const corinthia = Corinthia({
+  variable: "--font-corinthia",
+  subsets: ["latin"],
+  weight: "400",
+  preload: false,
 });
 
+const titulo = "HackUC3M ’27 · Hackathon en la Universidad Carlos III de Madrid";
+const descripcion =
+  "19 y 20 de febrero de 2027 · EPS, Campus de Leganés. Dos días para resolver en equipo retos reales de la industria.";
+
+// La imagen al compartir es app/opengraph-image.png; metadataBase hace absoluta su URL.
 export const metadata: Metadata = {
-  title: "HackUC3M '27 · Hackathon en la Universidad Carlos III de Madrid",
-  description:
-    "19 y 20 de febrero de 2027 · EPS, Campus de Leganés. Dos días, retos reales propuestos por la industria y el mejor talento técnico universitario.",
+  metadataBase: new URL("https://hackuc3m.com"),
+  title: titulo,
+  description: descripcion,
+  openGraph: {
+    title: titulo,
+    description: descripcion,
+    siteName: "HackUC3M",
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -23,9 +58,14 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${cinzel.variable} h-full antialiased`}
+      className={[ibarra, brygada, cinzel, corinthia]
+        .map((f) => f.variable)
+        .join(" ")}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body>
+        {children}
+        <Desplazamiento />
+      </body>
     </html>
   );
 }

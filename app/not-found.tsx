@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import "./interior.css";
 export const metadata = { title: "Página no encontrada · HackUC3M" };
 export default function NotFound() {
   return (
@@ -17,7 +18,7 @@ export default function NotFound() {
         estos dominios.
       </p>
       <p className="not-found-signature">Firmado: Carlos III</p>
-      <Link className="button primary" href="/">
+      <Link className="btn b1" href="/">
         Volver al inicio
       </Link>
     </main>
