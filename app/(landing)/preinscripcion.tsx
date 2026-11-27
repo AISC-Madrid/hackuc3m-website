@@ -48,10 +48,14 @@ export default function Preinscripcion({ abierta }: { abierta: boolean }) {
     setError(null);
     setEstado("enviando");
     try {
+      const ref = new URLSearchParams(window.location.search).get("ref")?.trim();
       const respuesta = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        body: JSON.stringify({
+          ...Object.fromEntries(new FormData(form)),
+          referral: ref && ref.length <= 64 ? ref : undefined,
+        }),
         signal: AbortSignal.timeout(20000),
       });
       const datos = (await respuesta.json().catch(() => ({}))) as {

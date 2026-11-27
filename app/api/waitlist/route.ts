@@ -23,6 +23,8 @@ export async function POST(request: Request) {
     const email =
       typeof data.email === "string" ? data.email.trim().toLowerCase() : "";
     const name = typeof data.name === "string" ? data.name.trim() : "";
+    const ref = typeof data.referral === "string" ? data.referral.trim() : "";
+    const referral = /^[a-z0-9][a-z0-9_-]{0,63}$/i.test(ref) ? ref.toLowerCase() : null;
     if (
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
       email.length > 254 ||
@@ -67,9 +69,9 @@ export async function POST(request: Request) {
       .bind(now)
       .run();
     const row = await env.DB.prepare(
-      "INSERT INTO waitlist (email, name, consent_version) VALUES (?, ?, '2026-10-26') ON CONFLICT(email) DO NOTHING RETURNING id",
+      "INSERT INTO waitlist (email, name, consent_version, referral) VALUES (?, ?, '2026-10-26', ?) ON CONFLICT(email) DO NOTHING RETURNING id",
     )
-      .bind(email, name)
+      .bind(email, name, referral)
       .first<{ id: number }>();
     // The unique email and immutable joining time preserve priority on retries.
     if (row && env.RESEND_API_KEY) {
