@@ -12,6 +12,7 @@ export type Persona = {
   name: string;
   joined_at: string;
   confirmation_sent_at: string | null;
+  referral: string | null;
 };
 
 const dia = (d: Date) => d.toISOString().slice(0, 10);
@@ -266,7 +267,10 @@ export function Preinscritos({ personas, avisar }: { personas: Persona[]; avisar
 
   function csv() {
     const celda = (v: string | number | null) => `"${String(v ?? "").replace(/^[=+@\-\t\r]/, "'$&").replaceAll('"', '""')}"`;
-    const filas = [["Orden", "Email", "Nombre", "Fecha de alta", "Confirmación enviada"], ...personas.map((p) => [p.id, p.email, p.name, p.joined_at, p.confirmation_sent_at])];
+    const filas = [
+      ["Orden", "Email", "Nombre", "Fecha de alta", "Confirmación enviada", "Procedencia"],
+      ...personas.map((p) => [p.id, p.email, p.name, p.joined_at, p.confirmation_sent_at, p.referral]),
+    ];
     const url = URL.createObjectURL(new Blob(["﻿", filas.map((f) => f.map(celda).join(",")).join("\r\n")], { type: "text/csv;charset=utf-8" }));
     const a = document.createElement("a");
     a.href = url;

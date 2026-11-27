@@ -82,6 +82,8 @@ The sender is `HackUC3M <hola@hackuc3m.com>`; replies go to `aisc.asoc@uc3m.es`.
 
 ## Priority and registration
 
+Share a pre-registration link like `https://hackuc3m.com/?ref=instagram#inscripcion` to track its source. Use a short channel label of up to 64 ASCII letters, digits, hyphens or underscores, starting with a letter or digit. The first signup for each email stores the label in lowercase. The organizer CSV shows it in the **Procedencia** column, which is blank for older signups and submissions without a valid label.
+
 Each normalized email has one record. Repeated submissions preserve its original ID and timestamp. The database stores consent version and email status. Signup requests are limited to 60 per IP-derived ten-minute bucket; raw IPs are not stored. The form also has a honeypot, same-origin validation, server validation and a waitlist-open check.
 
 The list records eligibility for priority; registration itself is a future flow. Before opening it, decide the early-access window and connect registration to verified email membership (or hashed invitation tokens). Columns are reserved for invitation tokens, expiry, invitation delivery, and registration. Do not infer a confirmed event place from waitlist membership. No registration invitations are sent automatically.
